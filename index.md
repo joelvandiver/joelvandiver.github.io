@@ -6,7 +6,7 @@ layout: default
 
 #### [](#header-4)2/18/2018
 
-* [/daily/2018/02/18/fractals/1.html](/daily/2018/02/18/fractals/1.html).
-* [/daily/2018/02/18/fractals/2.html](/daily/2018/02/18/fractals/2.html).
-* [/daily/2018/02/18/fractals/3.html](/daily/2018/02/18/fractals/3.html).
-* [/daily/2018/02/18/fractals/4.html](/daily/2018/02/18/fractals/4.html).
+* [1](/daily/2018/02/18/fractals/1.html).
+* [2](/daily/2018/02/18/fractals/2.html).
+* [3](/daily/2018/02/18/fractals/3.html).
+* [4](/daily/2018/02/18/fractals/4.html).

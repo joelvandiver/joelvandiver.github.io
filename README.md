@@ -1,1 +1,0 @@
-# joelvandiver.github.io

@@ -6,7 +6,7 @@ open Fable.Helpers.React
 open Helpers
 open Fulma
 
-let templatePath = resolve "${entryDir}/templates/template.hbs"
+let templatePath = resolve "${entryDir}/../templates/template.hbs"
 let markdownPath = resolve "${entryDir}/../posts/home.md"
 let indexPath = resolve "${entryDir}/../index.html"
 

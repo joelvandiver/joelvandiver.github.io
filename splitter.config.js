@@ -9,7 +9,6 @@ function runScript(scriptPath) {
   try {
       console.log("Running script")
       var childProcess = require("child_process");
-      var path = require("path");
       var cp = childProcess.fork(scriptPath);
       cp.on("exit", function (code, signal) {
           if (code === 0) {

@@ -21,8 +21,7 @@ let accumulate<'T> (accumulator: 'T -> 'T -> 'T) (l: 'T list) : 'T list =
 
     accumulate l.Tail [l.Head]
 
-let multiply a b = a * b
-let multiplier = accumulate multiply
+let multiplier = accumulate (*)
 
 let dotConcat a b = a + "." + b
 let dotMapper = accumulate dotConcat

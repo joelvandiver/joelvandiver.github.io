@@ -1,1 +1,3 @@
-> 10/28/2018
+Welcome to my Github blog.
+
+Check out my posts (coming soon.)

@@ -11,10 +11,10 @@ let postPath = resolve "${entryDir}/../posts.html"
 
 let posts = 
     [
-        "${entryDir}/../index.md"
-        "${entryDir}/../posts/2018-11-10/test.md"
-        "${entryDir}/../posts/2018-11-11/test.md"
-        "${entryDir}/../posts/2018-11-17/test.md"
+        resolve "${entryDir}/../index.md"
+        resolve "${entryDir}/../posts/2018-11-10/test.md"
+        resolve "${entryDir}/../posts/2018-11-11/test.md"
+        resolve "${entryDir}/../posts/2018-11-17/test.md"
     ]
 
 let navs() =

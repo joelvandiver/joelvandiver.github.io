@@ -7,9 +7,9 @@
           content="IE=edge">
     <meta name="viewport"
           content="width=device-width, initial-scale=1">
-    <title>{{ title }}</title>
+    <title>Joel Vandiver</title>
     <link rel="shortcut icon"
-          href="../assets/favicon.ico"
+          href="/assets/favicon.ico"
           type="image/x-icon">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +20,7 @@
           href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
     <link rel="stylesheet"
           type="text/css"
-          href="../assets/site.css">
+          href="/assets/site.css">
   </head>
 
   <body>
@@ -30,7 +30,7 @@
           <div class="container">
             <div class="navbar-brand">
               <a class="navbar-item is-size-1"
-                 href="../">
+                 href="/">
                 JV
               </a>
               <span class="navbar-burger burger"
@@ -52,10 +52,12 @@
               <h2 class="subtitle">
                 Full Stack Web Developer
               </h2>
-              {{{ posts }}}
+              <ul>
+                {{#postnavs}}{{> postnav}}{{/postnavs}}
+              </ul>
             </div>
             <div class="column is-8 section">
-              {{{ post }}}
+              {{post}}
             </div>
           </div>
         </div>

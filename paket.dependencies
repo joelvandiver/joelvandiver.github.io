@@ -3,13 +3,5 @@ framework: netstandard2.0
 source https://www.nuget.org/api/v2
 
 nuget Expecto
-nuget Fable.Core 2.0.0
-nuget Fable.Import.Browser
-nuget Fable.React
-nuget Fable.PowerPack 2.0.1
-#nuget Fable.Elmish.Bulma
-nuget Fable.Import.Node
 nuget FSharp.Formatting
-nuget Fulma
-
-clitool dotnet-fable 2.0.3
+nuget Handlebars.Net

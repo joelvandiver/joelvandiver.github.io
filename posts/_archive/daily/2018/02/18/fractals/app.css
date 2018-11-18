@@ -1,0 +1,22 @@
+body {
+  margin: 0;
+}
+
+#canvas-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+#canvas {
+  padding: 0;
+  margin: auto;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}

@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible"
+          content="IE=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <title>Joel Vandiver</title>
+    <link rel="shortcut icon"
+          href="/assets/favicon.ico"
+          type="image/x-icon">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700"
+          rel="stylesheet">
+    <!-- Bulma Version 0.7.2-->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+    <link rel="stylesheet"
+          type="text/css"
+          href="/assets/site.css">
+  </head>
+
+  <body>
+    <section class="hero is-fullheight">
+      <div class="hero-head">
+        <nav class="navbar">
+          <div class="container">
+            <div class="navbar-brand">
+              <a class="navbar-item is-size-1"
+                 href="/">
+                JV
+              </a>
+              <span class="navbar-burger burger"
+                    data-target="navbarMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+              </span>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="column is-4 has-text-centered">
+              <h1 class="is-size-1">Joel Vandiver</h1>
+              <h2 class="subtitle">
+                Full Stack Web Developer
+              </h2>
+              <ul>
+                
+  <li><a href=""></a></li>
+
+  <li><a href="/posts/2018/11/10">2018/11/10</a></li>
+
+  <li><a href="/posts/2018/11/11">2018/11/11</a></li>
+
+  <li><a href="/posts/2018/11/17">2018/11/17</a></li>
+
+  <li><a href="/posts/_archive">_archive</a></li>
+
+              </ul>
+            </div>
+            <div class="column is-8 section">
+              <hr />
+<h2>layout: default</h2>
+<h1><a href="#header-1"></a>Fractals</h1>
+<h2><a href="#header-2"></a>F# Snippets</h2>
+<h3><a href="#header-3"></a>Printing Properties in FSI</h3>
+<p>Printing Properties of any given type to the FSI console for quick coding.</p>
+<pre><code class="language-fs">let printProperities&lt;'T&gt; () =
+	typedefof&lt;'T&gt;
+    	.GetProperties()
+    	|&gt; Seq.map(fun y -&gt; y.Name)
+    	|&gt; Seq.iter(fun z -&gt; printfn "%s" z)
+
+type MyType =
+  { PropA     : string
+    PropB     : int
+    PropC     : System.Guid  }
+
+// FSI
+&gt; printProperities&lt;MyType&gt;();;
+PropA
+PropB
+PropC
+val it : unit = ()
+</code></pre>
+<h2><a href="#header-6"></a>Haskell Snippets</h2>
+<p>Basic factorial implementation</p>
+<pre><code class="language-hs">fac n = if n == 0 then 1 else n * fac (n-1)
+
+main = print (fac 42)
+</code></pre>
+<h2><a href="#header-6"></a>Functional TS Snippets</h2>
+<p>Add a value to the beginning of a copy of an array.
+Return a new array to avoid mutation of the source array.</p>
+<pre><code class="language-ts">export default function add&lt;T&gt;(values: T[], value: T) {
+  return [value].concat(values);
+}
+</code></pre>
+<h2><a href="#header-6"></a>React Snippets</h2>
+<p>React Seed: index.ts</p>
+<pre><code class="language-tsx">import * as React from "react";
+import * as ReactDOM from "react-dom";
+
+import { APP } from "./components/App";
+
+ReactDOM.render(&lt;APP name="React App" /&gt;, document.getElementById("app"));
+</code></pre>
+<p>React Seed: ./components/App</p>
+<pre><code class="language-tsx">import * as React from "react";
+
+export interface IApp {
+  readonly name: string;
+}
+
+export const APP = (props: IApp) =&gt; (
+  &lt;div&gt;
+    &lt;h1&gt;{props.name}&lt;/h1&gt;
+  &lt;/div&gt;
+);
+</code></pre>
+<h2><a href="#header-5"></a>Daily Posts</h2>
+<h4><a href="#header-4"></a>2/18/2018</h4>
+<p>Today, I'm changing some parameters with color in HTML5 Canvas:</p>
+<ul>
+<li><a href="/daily/2018/02/18/fractals/1.html">1</a></li>
+<li><a href="/daily/2018/02/18/fractals/2.html">2</a></li>
+<li><a href="/daily/2018/02/18/fractals/3.html">3</a></li>
+<li><a href="/daily/2018/02/18/fractals/4.html">4</a></li>
+</ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </body>
+
+</html>

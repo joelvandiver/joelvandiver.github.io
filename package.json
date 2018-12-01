@@ -1,0 +1,30 @@
+{
+  "name": "joelvandiver.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "bulma": "^0.7.2"
+  },
+  "devDependencies": {
+    "gulp-sass": "^4.0.2",
+    "node-sass": "^4.10.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelvandiver/joelvandiver.github.io.git"
+  },
+  "author": "Joel Vandiver <joelvandiver@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelvandiver/joelvandiver.github.io/issues"
+  },
+  "homepage": "https://github.com/joelvandiver/joelvandiver.github.io#readme"
+}

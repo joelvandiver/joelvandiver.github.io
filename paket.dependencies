@@ -4,4 +4,3 @@ source https://www.nuget.org/api/v2
 
 nuget Expecto
 nuget FSharp.Formatting
-nuget Handlebars.Net

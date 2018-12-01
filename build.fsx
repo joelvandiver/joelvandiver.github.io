@@ -9,7 +9,7 @@ let root = __SOURCE_DIRECTORY__
 let postPath = root + @"\posts"
 let indexMarkdown = root + @"\index.md"
 let indexTemplate = root + @"\index.hbs"
-
+df
 type FileText = 
     {  file : string
        path : string }

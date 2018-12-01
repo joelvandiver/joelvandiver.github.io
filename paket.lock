@@ -10,6 +10,8 @@ NUGET
       System.Diagnostics.FileVersionInfo (>= 4.3)
     FSharp.Compiler.Service (2.0.0.6)
     FSharp.Core (4.5.4)
+    FSharp.Data (3.0)
+      FSharp.Core (>= 4.3.4)
     FSharp.Formatting (2.14.4)
       FSharp.Compiler.Service (2.0.0.6)
       FSharpVSPowerTools.Core (>= 2.3 < 2.4)

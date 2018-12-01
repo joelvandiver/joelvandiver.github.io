@@ -7,7 +7,7 @@
          "label": "build",
          "type": "shell",
          "windows": {
-            "command": "fsi C:/git/joelvandiver.github.io/build.fsx"
+            "command": "fake run build.fsx"
          },
          "group": {
             "kind": "build",

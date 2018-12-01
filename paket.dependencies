@@ -1,5 +1,14 @@
 source https://www.nuget.org/api/v2
 
-nuget Expecto
+nuget FSharp.Core
 nuget FSharp.Data
 nuget FSharp.Formatting
+nuget Expecto
+
+// [ FAKE GROUP ]
+group Build
+    storage none
+    source https://api.nuget.org/v3/index.json
+    nuget Fake.DotNet.Cli
+    nuget Fake.IO.FileSystem
+    nuget Fake.Core.Target

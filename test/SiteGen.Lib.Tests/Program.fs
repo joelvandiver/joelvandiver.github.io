@@ -1,5 +1,8 @@
 ﻿open System
 open Expecto
+open SiteGen.Lib
+
+let say = Say.hello "Joel"
 
 let tests =
   test "A simple test" {

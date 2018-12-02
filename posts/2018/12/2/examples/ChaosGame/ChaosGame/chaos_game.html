@@ -1,0 +1,747 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+
+<title>HTML5 Canvas</title>
+
+<script src="../Modernizr/modernizr-2.0.6.js"></script>
+
+<script type="text/javascript">
+
+window.addEventListener("load", windowLoadHandler, false);
+/*
+Dan Gries
+rectangleworld.com
+*/
+
+
+//for debug messages
+var Debugger = function() { };
+Debugger.log = function(message) {
+	try {
+		console.log(message);
+	}
+	catch (exception) {
+		return;
+	}
+}
+
+function windowLoadHandler() {
+	canvasApp();
+}
+
+function canvasSupport() {
+	return Modernizr.canvas;
+}
+
+function canvasApp() {
+	if (!canvasSupport()) {
+		return;
+	}
+	
+	var displayCanvas = document.getElementById("displayCanvas");
+	var context = displayCanvas.getContext("2d");
+	var displayWidth = displayCanvas.width;
+	var displayHeight = displayCanvas.height;
+	
+	var buffer;
+	var imageData;
+	var pixelData;
+	var maps;
+	var colors;
+	var bgColor;
+	var urlColor;
+	var applyBubble;
+	var maxIter;
+	var timerStep;
+	var timer;
+	var mapHistory;
+	var colorHistory;
+	var historyLength = 20;
+	
+	var lowPoints  = 1000000;
+	var medPoints  = 10000000;
+	var highPoints = 100000000;
+		
+	//controls
+	var btnRegenerate = document.getElementById("btnRegenerate");
+	btnRegenerate.addEventListener("click", regeneratePressed, false);
+
+	var btnExport = document.getElementById("btnExport");
+	btnExport.addEventListener("click", exportPressed, false);
+	
+	var btnBack = document.getElementById("btnBack");
+
+	var rbFixColors = document.getElementById("rbFixColors");
+	var cbFixMaps = document.getElementById("cbFixMaps");
+	var rbGrayscale = document.getElementById("rbGrayscale");
+	var rbNumPoints1 = document.getElementById("rbNumPoints1");
+	var rbNumPoints2 = document.getElementById("rbNumPoints2");
+	var rbNumPoints3 = document.getElementById("rbNumPoints3");
+	var cbLessRotation = document.getElementById("cbLessRotation");
+	var cbShorterVectors = document.getElementById("cbShorterVectors");
+	var cbShowMaps = document.getElementById("cbShowMaps");
+	var cbHighGamma = document.getElementById("cbHighGamma");
+	var cbBubble = document.getElementById("cbBubble");
+	var cbLessSkew = document.getElementById("cbLessSkew");
+	var cbNoReflection = document.getElementById("cbNoReflection");
+	
+	
+	init();
+	
+	function init() {
+		bgColor = "#000000";
+		urlColor = "#222222";
+		if (rbNumPoints1.checked) {
+			maxIter = lowPoints;
+		}
+		else if (rbNumPoints2.checked) {
+			maxIter = medPoints;
+		}
+		else {
+			maxIter = highPoints;
+		}
+		
+		mapHistory = [];
+		colorHistory = [];
+		
+		setUpBuffer();
+		setCoeffs();
+		setColors();
+		generate();
+	}
+	
+	function regeneratePressed(evt) {
+		btnBack.removeEventListener("click", backPressed, false);
+		btnRegenerate.removeEventListener("click", regeneratePressed, false);
+		//record history for undo
+		var lastMaps = maps.slice(0);
+		var lastColors = colors.slice(0);
+		mapHistory.push(lastMaps);
+		colorHistory.push(lastColors);
+		if (mapHistory.length > historyLength) {
+			mapHistory.splice(0,1);
+		}
+		if (colorHistory.length > historyLength) {
+			colorHistory.splice(0,1);
+		}
+		
+		if (rbNumPoints1.checked) {
+			maxIter = lowPoints;
+		}
+		else if (rbNumPoints2.checked) {
+			maxIter = medPoints;
+		}
+		else {
+			maxIter = highPoints;
+		}
+		
+		if (!cbFixMaps.checked) {
+			setCoeffs();
+		}
+		
+		applyBubble = cbBubble.checked;
+
+		setColors();
+		
+		setUpBuffer();
+		
+		timerStep = 0;
+		if (timer == null) {
+			timer = window.setInterval(onTimer,1);
+		}
+	}
+	
+	function backPressed(evt) {
+		btnBack.removeEventListener("click", backPressed, false);
+		btnRegenerate.removeEventListener("click", regeneratePressed, false);
+		
+		if (mapHistory.length == 0) {
+			btnBack.addEventListener("click", backPressed, false);
+			btnRegenerate.addEventListener("click", regeneratePressed, false);
+			return;
+		}
+		//copy maps from history
+		maps = mapHistory.splice(mapHistory.length - 1, 1)[0];
+		//copy colors from history
+		colors = colorHistory.splice(colorHistory.length - 1, 1)[0];
+		
+		//generate
+		if (rbNumPoints1.checked) {
+			maxIter = lowPoints;
+		}
+		else if (rbNumPoints2.checked) {
+			maxIter = medPoints;
+		}
+		else {
+			maxIter = highPoints;
+		}
+				
+		applyBubble = cbBubble.checked;
+
+		setUpBuffer();
+		
+		timerStep = 0;
+		if (timer == null) {
+			timer = window.setInterval(onTimer,10);
+		}
+	}
+	
+	function onTimer() {
+		//the use of a timer is to allow the appearance of the "please wait" message before beginning the generation process.
+		if (timerStep == 0) {
+			waitMessage();
+		}
+		else {
+			
+			window.clearInterval(timer);
+			timer = null;
+			window.setTimeout(generate,10);
+			btnBack.addEventListener("click", backPressed, false);
+			btnRegenerate.addEventListener("click", regeneratePressed, false);
+		}
+		timerStep++;
+	}	
+	
+	function waitMessage() {
+		context.shadowColor = "rgba(0,0,0,0.6)";
+		context.shadowOffsetX = 6;
+		context.shadowOffsetY = 6;
+		context.shadowBlur = 4;
+		
+		context.fillStyle = "rgba(255,255,255,0.9)";
+		context.font = 'bold italic 48px Helvetica, Arial, sans-serif';
+		context.fillText("please wait...", displayWidth/2 - 150,displayHeight/2);
+		
+		context.shadowColor = "rgba(100,100,100,0)";
+		context.shadowOffsetX = 0;
+		context.shadowOffsetY = 0;
+		context.shadowBlur = 0;
+	}
+	
+	function setUpBuffer() {
+		var i;
+		buffer = [];
+		for (i = 0; i < displayHeight*displayWidth; i++) {
+			buffer.push(0);
+		}
+	}
+		
+	function setCoeffs() {
+		var x1,y1,x0,y0;
+		var det;
+		var numMatrices = 2+Math.floor(Math.random()*5);
+		var maxDet = 1;
+		var scale;
+		
+		var angle1, angle2, rad1, rad2;
+		var transX, transY;
+		var transRad,transAngle;
+		var transFactor;
+		var sign;
+		var rotAngle;
+		var skewAngle;
+		var rotAngleMax;
+		var skewAngleMax;
+		var maxScale;
+		var minScale;
+		
+		if (cbLessRotation.checked) {
+			rotAngleMax = Math.PI/12;
+		}
+		else {
+			rotAngleMax = 2*Math.PI;
+		}
+		
+		if (cbLessSkew.checked) {
+			skewAngleMax = Math.PI/12;
+		}
+		else {
+			skewAngleMax = Math.PI/4;
+		}
+		
+		if (cbShorterVectors.checked) {
+			maxScale = 0.67;
+			minScale = 0.33;
+		}
+		else {
+			maxScale = 1;
+			minScale = 0.4;
+		}
+		
+		maps = [];
+		for (var i = 0; i < numMatrices; i++) {
+			rotAngle = (1-2*Math.random())*rotAngleMax;
+			skewAngle = (1-2*Math.pow(Math.random(),3))*skewAngleMax;
+			angle1 = rotAngle + skewAngle;
+			angle2 = rotAngle - skewAngle;
+			if (cbNoReflection.checked) {
+				rad1 = minScale + Math.random()*(maxScale - minScale);
+				rad2 = minScale + Math.random()*(maxScale - minScale);
+			}
+			else {
+				rad1 = (Math.random() < 0.5 ? -1 : 1)*(minScale + Math.random()*(maxScale - minScale));
+				rad2 = (Math.random() < 0.5 ? -1 : 1)*(minScale + Math.random()*(maxScale - minScale));
+			}
+			
+			x0 = rad1*Math.cos(angle1);
+			y0 = rad1*Math.sin(angle1);
+			x1 = -rad2*Math.sin(angle2);
+			y1 = rad2*Math.cos(angle2);
+			
+			
+			var maxX = Math.abs(x0) + Math.abs(x1);
+			if (maxX > 1) {
+				//scale down the whole matrix
+				x0 /= maxX;
+				x1 /= maxX;
+				y0 /= maxX;
+				y1 /= maxX;
+			}
+			var maxY = Math.abs(y0) + Math.abs(y1);
+			if (maxY > 1) {
+				x0 /= maxY;
+				x1 /= maxY;
+				y0 /= maxY;
+				y1 /= maxY;
+			}
+			
+			transX = Math.pow(Math.random(),0.5)*(Math.random() < 0.5 ? -1 : 1)*(1 - Math.abs(x0) - Math.abs(x1));
+			transY = Math.pow(Math.random(),0.5)*(Math.random() < 0.5 ? -1 : 1)*(1 - Math.abs(y0) - Math.abs(y1));
+			
+			var mat = {
+				a: x0,
+				b: x1,
+				c: y0,
+				d: y1,
+				tx: transX,
+				ty: transY
+			}
+			maps.push(mat);
+		}
+	
+	}
+	
+	function setColors() {
+		var numColorsToAdd;
+		
+		var colorMin = 48;
+		var colorMax = 255;
+		var r0, g0, b0;
+		var maxComponent;
+		
+		if (!rbFixColors.checked) {
+			colors = [];
+		}
+		
+		if (maps.length < colors.length) {
+			return;
+		}
+		else {
+			numColorsToAdd = maps.length - colors.length;
+		}
+		
+		for (var i = 0; i < numColorsToAdd; i++) {
+			r0 = colorMin + Math.random()*(colorMax - colorMin);
+			g0 = colorMin + Math.random()*(colorMax - colorMin);
+			b0 = colorMin + Math.random()*(colorMax - colorMin);
+			
+			maxComponent = Math.max(r0, Math.max(g0,b0));
+			
+			var col = {
+				r: Math.round(255/maxComponent*r0),
+				g: Math.round(255/maxComponent*g0),
+				b: Math.round(255/maxComponent*b0)
+				//r: 255,
+				//g: 255,
+				//b: 255
+			}
+			colors.push(col);
+		}
+	}
+	
+	function mapText() {
+		var j;
+		var string = "";
+		for (j = 0; j < maps.length; j++) {
+			var map = maps[j];
+			string += "["+map.a+", "+map.b+", "+map.tx+ "]\n[" + map.c + ", " + map.d + "," + map.ty + "]";
+			string += "\n\n";
+		}
+		return string;
+	}
+	
+	function mapTextArray() {
+		var j;
+		var string;
+		var stringArray = [];
+		for (j = 0; j < maps.length; j++) {
+			var map = maps[j];
+			string = "[" + map.a + ", " + map.b + ", "+ map.tx + "]";
+			stringArray.push(string);
+			string = "[" + map.c + ", " + map.d + "," + map.ty + "]";
+			stringArray.push(string);
+			stringArray.push(""); //line space
+		}
+		return stringArray;
+	}
+
+	
+	function generate() {
+		var ignoreCount = 20;
+		var i,j;
+		var x,y;
+		var numFunctions = maps.length;
+		var f;
+		var p;
+		var pixelX,pixelY;
+		var inBounds;
+		var index;
+		var index4;
+		var mapIndex;
+		var tempX;
+		var matrix;
+		var r,g,b;
+		var color;
+		var rad, theta;
+		var maxCount = 0;
+		var grayscale = rbGrayscale.checked;
+		var gammaRecip;
+		var blendweight = 1;
+		var c;
+		var bubbleFactor;
+		var bufferAmt;
+		var halfWidth = displayWidth/2;
+		var halfHeight = displayHeight/2;
+		
+		/*
+		Debugger.log("maps:");
+		for (j = 0; j < maps.length; j++) {
+			var map = maps[j];
+			Debugger.log(mapText());
+		}
+		*/
+		
+		if (cbHighGamma.checked) {
+			gammaRecip = 0.3;
+		}
+		else {
+			gammaRecip = 0.45;
+		}
+		
+		//background color
+		context.fillStyle = "#000000";
+		context.fillRect(0,0,displayWidth,displayHeight);
+		
+		//set up image data
+		imageData = context.getImageData(0,0,displayWidth,displayHeight);
+		pixelData = imageData.data;
+				
+		x = 1 - 2*Math.random();
+		y = 1 - 2*Math.random();
+		
+		r = g = b = 0;
+						
+		for (i = 0; i < maxIter; ++i) {
+			//pick a random map and apply it
+			//Note ~~() does same thing as Math.floor() if the argument is positive.
+			matrix = maps[mapIndex = ~~(numFunctions*Math.random())];
+			tempX = matrix.a*x + matrix.b*y + matrix.tx;
+			y = matrix.c*x + matrix.d*y + matrix.ty;
+			x = tempX;
+				
+			if (applyBubble) {
+				bubbleFactor = 4.5/(4+Math.sqrt(x*x+y*y));
+				x *= bubbleFactor;
+				y *= bubbleFactor;
+			}
+							
+			if (!grayscale) {
+				color = colors[mapIndex];
+				r = (r+color.r)*0.5;
+				g = (g+color.g)*0.5;
+				b = (b+color.b)*0.5;
+			}
+			
+			if (i > ignoreCount) {
+				pixelX = Math.round((x+1)*halfWidth);
+				pixelY = Math.round((y+1)*halfHeight);
+				
+				if ((pixelX < displayWidth) && (pixelY < displayHeight) && (pixelX >= 0) && (pixelY >= 0)) {
+					//write to buffer and image data
+					index = Math.floor(pixelY*displayWidth + pixelX);
+					index4 = 4*index;
+					
+					bufferAmt = ++buffer[index];
+					
+					if (bufferAmt > maxCount) {
+						maxCount = bufferAmt;
+					}
+					
+					if (grayscale) {
+						pixelData[index4] = 255;
+						pixelData[index4+1] = 255;
+						pixelData[index4+2] = 255;
+					}
+					else {
+						pixelData[index4]   = (bufferAmt*pixelData[index4] + r)/(bufferAmt + 1);
+						pixelData[index4+1] = (bufferAmt*pixelData[index4+1] + g)/(bufferAmt + 1);
+						pixelData[index4+2] = (bufferAmt*pixelData[index4+2] + b)/(bufferAmt + 1);
+					}
+											
+				}	
+			}			
+		}
+		
+		//render
+		//loop through whole display and set alpha according to count
+		var len = displayWidth*displayHeight;
+		var ln2Recip = 1/Math.LN2;
+		var maxCountRecip = 1/maxCount;
+		var alphaIndex = 3;
+		for (i = 0; i < len; ++i) {
+			if (buffer[i] != 0) {
+				pixelData[alphaIndex] = Math.floor(Math.pow(Math.log(1+buffer[i]*maxCountRecip)*ln2Recip,gammaRecip)*255);
+			}
+			alphaIndex += 4;
+		}
+		
+		//draw display
+		context.putImageData(imageData,0,0);
+		
+		
+		//draw solid background - needs to be done because there are low-alpha pixels in display now.
+		context.globalCompositeOperation = "destination-over";
+		context.fillStyle = "#000000";
+		context.fillRect(0,0,displayWidth,displayHeight);
+		context.globalCompositeOperation = "source-over";
+	}
+	
+	
+	function exportPressed(evt) {
+		
+		var lineSpacing = 11;
+		var URLmargin = 30;
+		var stringArray;
+		
+		var exportHeight;
+		if (cbShowMaps.checked) {
+			stringArray = mapTextArray();
+			exportHeight = URLmargin + displayHeight + stringArray.length*lineSpacing + 5;
+			if (applyBubble) {
+				exportHeight += lineSpacing + 10;
+			}
+		}
+		else {
+			exportHeight = URLmargin + displayHeight;
+		}
+		
+		//off screen canvas used only when exporting image
+		var exportCanvas = document.createElement('canvas');
+		exportCanvas.width = displayWidth;
+		exportCanvas.height = exportHeight;
+		var exportCanvasContext = exportCanvas.getContext("2d");
+		
+		//background - otherwise background will be transparent.
+		exportCanvasContext.fillStyle = bgColor;
+		exportCanvasContext.fillRect(0,0,displayWidth, exportHeight);
+		
+		//draw
+		exportCanvasContext.drawImage(displayCanvas, 0,0,displayWidth,displayHeight,0,URLmargin,displayWidth,displayHeight);
+		
+		//add printed url to image
+		exportCanvasContext.fillStyle = urlColor;
+		exportCanvasContext.font = 'bold italic 16px Helvetica, Arial, sans-serif';
+		exportCanvasContext.textBaseline = "top";
+		var metrics = exportCanvasContext.measureText("rectangleworld.com");
+		exportCanvasContext.fillText("rectangleworld.com", displayWidth - metrics.width - 10, 5);
+		
+		
+		//print maps
+		if (cbShowMaps.checked) {
+			exportCanvasContext.font = 'bold 10px Helvetica, Arial, sans-serif';
+			var lineY = URLmargin + displayHeight + 5;
+			for (var i = 0; i < stringArray.length; i++) {
+				exportCanvasContext.fillText(stringArray[i], 5, lineY);
+				lineY += lineSpacing;
+			}
+			if (applyBubble) {
+				exportCanvasContext.fillText('with nonlinear "bubble" variation f(x,y) = 4.5/(4+r^2)*(x,y)', 5, lineY);
+			}
+		}
+
+		//we will open a new window with the image contained within:		
+		//retrieve canvas image as data URL:
+		var dataURL = exportCanvas.toDataURL("image/png");
+		//open a new window of appropriate size to hold the image:
+		var imageWindow = window.open("", "fractalLineImage", "left=0,top=0,width="+displayWidth+",height="+exportHeight+",toolbar=0,resizable=0,scrollbars=1");
+		//write some html into the new window, creating an empty image:
+		imageWindow.document.write("<title>Export Image</title>")
+		imageWindow.document.write("<img id='exportImage'"
+									+ " alt=''"
+									+ " height='" + exportHeight + "'"
+									+ " width='"  + displayWidth  + "'"
+									+ " style='position:absolute;left:0;top:0'/>");
+		imageWindow.document.close();
+		//copy the image into the empty img in the newly opened window:
+		var exportImage = imageWindow.document.getElementById("exportImage");
+		exportImage.src = dataURL;
+	}
+
+}
+
+</script>
+
+<title>HTML5 Canvas Chaos Game</title>
+
+<style type="text/css">
+	body {background-color:#111111; color:#888888;} 
+	p {font-family: sans-serif; color:#888888; font-size:12px;}
+	a {font-family: sans-serif; color:#d15423; text-decoration:none;}
+	h {font-family: sans-serif; color:#d15423; text-decoration:none;}
+	form {font-family: sans-serif; color:#888888; font-size:13px;}
+	
+	#container {
+		width:1000px;
+		margin:0px auto;
+	}
+	
+	#displayCanvas {
+		float:left;
+		height:600px;
+		width:600px;
+	}
+	
+	#titleText {
+		float:left;
+		width:378px;
+		padding-left:10px;
+		padding-right:10px;
+		background:#222;
+		border:1px solid #000;
+	}
+	
+	#rectangleworldURL {
+		text-align:left;
+		width:178px;
+		height:20px;
+		line-height:20px;
+		float:left;
+		padding:10px;
+		font-size:14px;
+		background:#111;
+		border:1px solid #000;
+	}
+	
+	#panelColumn {
+		float:left;
+		width:200px;
+		padding:0px;
+	}
+	
+	#panel {
+		line-height:150%;
+		float:left;
+		width:178px;
+		padding:10px;
+		background:#222;
+		border:1px solid #000;
+	}
+	
+	#exportPanel {
+		float:left;
+		width:178px;
+		padding:10px;
+		background:#222;
+		border:1px solid #000;
+	}
+	
+</style>
+
+</head>
+<body>
+
+<div id="container">
+
+	<canvas id="displayCanvas" width="1200px" height="1200px">Your browser does not support HTML5 canvas.</canvas>
+	
+    <div id="titleText">
+    	<p>
+            <i><span style="color:#ccc; font-size:15px">HTML5 Canvas Fractals:<br>The Chaos Game with Random Maps.</span></i>
+        </p>
+    </div>
+    <div id="panelColumn">
+        <div id="panel">
+            <p>Maps</p>
+            <form>
+                <input type="checkbox" id="cbFixMaps">fix these maps</input>
+                <br>
+                <input type="checkbox" id="cbLessRotation">less rotation</input>
+                <br>
+                <input type="checkbox" id="cbLessSkew" checked>less skewing</input>
+                <br>
+                <input type="checkbox" id="cbNoReflection">no reflection</input>
+                <br>
+                <input type="checkbox" id="cbShorterVectors">shorter vectors</input>
+                <br>
+                <p>non-linearity:</p>
+                <input type="checkbox" id="cbBubble">apply "bubble" variation</input>
+        </form>
+        </div>
+        <div id="panel">
+            <p>Colors</p>
+            <form>
+                <input type="radio" id="rbFixColors" name="colorgroup">fix these colors</input>
+                <br>
+                <input type="radio" id="rbNewColors" name="colorgroup" checked>generate new colors</input>
+                <br>
+                <input type="radio" id="rbGrayscale" name="colorgroup">grayscale</input>
+                <br><br>
+                <input type="checkbox" id="cbHighGamma">high gamma</input>
+                <br>
+                
+                
+        </form>
+        </div>
+        
+        <div id="rectangleworldURL">
+                <a href="http://www.rectangleworld.com">rectangleworld.com</a>
+        </div>
+    </div>
+    <div id="panelColumn">
+        <div id="panel">
+            <p>Number of points</p>
+            <form>
+                <input type="radio" id="rbNumPoints1" name="group1">lots of points</input>
+                <br>
+                <input type="radio" id="rbNumPoints2" name="group1" checked>lots and lots of points</input>
+                <br>
+                <input type="radio" id="rbNumPoints3" name="group1">browser-crashing points</input>
+                <p style="line-height:normal">(At higher settings, your browser may complain about a long-running script, but you should be able to ignore the warning and let the calculations finish.)</p>
+                <input type="button" style="width:140px; height:24px; font-weight:bold" id="btnRegenerate" value="regenerate!"/>
+            </form>
+        </div>
+        <div id="panel">
+        	<form>
+        		<input type="button" style="width:140px; height:24px" id="btnBack" value="back to previous"/>
+            </form>
+        </div>
+        <div id="exportPanel">
+            <p>Click the button below to export. The image (twice as large lengthwise as the one displayed here) will open in a new window. Right click on it and select "save as..."
+            <form>
+                <input type="button" style="width:140px; height:24px" id="btnExport" value="export image (png)"/>
+                <br>
+                <input type="checkbox" id="cbShowMaps">stamp image with maps</input>
+            </form>
+        </div>
+    </div>
+    
+
+    
+    
+</div>
+
+</body>
+</html>

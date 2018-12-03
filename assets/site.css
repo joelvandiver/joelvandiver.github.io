@@ -6313,7 +6313,8 @@ a.text-dark:hover, a.text-dark:focus {
   color: white;
   text-align: left;
   font-size: 18px;
-  margin-left: 5vw; }
+  margin-left: 5vw;
+  padding-top: 7px; }
   .masthead-text a {
     background-color: rgba(255, 255, 255, 0.1);
     color: white;

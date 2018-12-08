@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Joel Vandiver</title>
+    <title>{page-title}</title>
     <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
 
     <!-- Custom fonts for this template -->
@@ -22,6 +22,7 @@
     <link href="/assets/grayscale.css" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="/assets/site.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/literate.css" />
   </head>
 
   <body id="page-top">
@@ -77,6 +78,11 @@
       </div>
     </header>
 
+    <div class="container">
+       {document}
+       {tooltips}
+    </div>
+
     <!-- Footer -->
     <footer class="bg-black small text-center text-white-50">
       <div class="container">
@@ -93,5 +99,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="/assets/js/grayscale.min.js"></script>
+    <script src="/assets/js/literate.js"></script>
   </body>
 </html>

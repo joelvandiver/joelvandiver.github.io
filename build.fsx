@@ -1,19 +1,10 @@
-#load ".fake/build.fsx/intellisense.fsx"
-open Fake.Core
-open Fake.DotNet
-open Fake.IO
-open Fake.IO.FileSystemOperators
-open Fake.IO.Globbing.Operators
-open Fake.Core.TargetOperators
-open Fake.DotNet.Testing
+#load @"packages/FSharp.Formatting/FSharp.Formatting.fsx"
 
-Target.create "Build" (fun _ ->
-    printfn "Building..."
-)
+open System.IO
+open FSharp.Literate
 
-Target.create "All" ignore
+let source = __SOURCE_DIRECTORY__
+let template = Path.Combine(__SOURCE_DIRECTORY__, @"/content/template.html")
+let script = Path.Combine(source, "posts/2018/12/08/literate.fsx")
 
-"Build"
-  ==> "All"
-
-Target.runOrDefault "All"
+Literate.ProcessScriptFile(script, template)

@@ -4,7 +4,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{page-title}</title>
+    <title>F# Literate Site Gen
+</title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
 
     <!-- Custom fonts for this template -->
@@ -23,8 +24,20 @@
         </h1>
       </div>
       <div class="main">
-        {document} 
-        {tooltips}
+        <h1>F# Literate Site Gen</h1>
+<p>Some more documentation using <code>Markdown</code>.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="f">helloWorld</span>() <span class="o">=</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="f">printfn</span> <span class="s">&quot;Hello world!&quot;</span>
+</code></pre></td>
+</tr>
+</table>
+<h2>Second-level heading</h2>
+<p>With some more documentation</p>
+ 
+        <div class="tip" id="fs1">val helloWorld : unit -&gt; unit<br /><br />Full name: Index.helloWorld</div>
+<div class="tip" id="fs2">val printfn : format:Printf.TextWriterFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.printfn</div>
+
       </div>
     </div>
 

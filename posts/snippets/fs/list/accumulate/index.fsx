@@ -36,7 +36,7 @@ val accumulate : accumulator:('T -> 'T -> 'T) -> l:'T list -> 'T list
 ## Example:  Mathematical Adder
 *)
 let adder = accumulate (+)
-let d = [0;1;2;3;4;5]
+let d = [0; 1; 2; 3; 4; 5]
 let r = adder d
 
 (**
@@ -53,7 +53,7 @@ val r : int list = [0; 1; 3; 6; 10; 15]
 ## Example:  Mathematical Multiplier
 *)
 let multiplier = accumulate (*)
-let d = [1;2;3;4;5]
+let d = [1; 2; 3; 4; 5]
 let r = multiplier d
 
 (**

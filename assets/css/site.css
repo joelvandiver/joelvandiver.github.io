@@ -6337,6 +6337,9 @@ a.text-dark:hover, a.text-dark:focus {
     width: 50%;
     padding: 20px; }
 
+ol, ul {
+  list-style: none; }
+
 .tip {
   background-color: black;
   display: none;

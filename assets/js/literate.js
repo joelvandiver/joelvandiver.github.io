@@ -1,13 +1,12 @@
 var currentElement = null;
 
-document.onkeydown = hideTip2;
-document.onclick = hideTip2;
+document.addEventListener("click", hideTip2)
 
 function hideTip(evt,name) {
   // Stub for F# Literate onmouseout
 }
 
-function hideTip2() {
+function hideTip2(evt) {
   if (currentElement) {
     currentElement.style.display = "none";
   }
@@ -15,6 +14,12 @@ function hideTip2() {
 }
 
 function showTip(evt,name) {
+  // Do not change the tooltip if there is a selection on the window.
+  if (window.getSelection().toString().length > 0) {
+    return;
+  }
+
+  // Hide the previous tip if there is one.
   hideTip2();
 
   var parent = evt.srcElement ? evt.srcElement : evt.target;
@@ -25,6 +30,9 @@ function showTip(evt,name) {
 
   var el = document.getElementById(name);
   currentElement = el;
+  el.addEventListener("click", function (clickEvt) {
+    clickEvt.stopPropagation();
+  });
   el.style.position = "fixed";
   el.style.left = posx + "px";
   el.style.top = posy + 30 + "px";

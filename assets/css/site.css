@@ -6340,10 +6340,22 @@ a.text-dark:hover, a.text-dark:focus {
 .tip {
   background-color: black;
   color: white;
-  padding: 12px;
+  padding: 18px;
   font-size: 85%;
   opacity: 0.9;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 18px;
   border: solid 1px #f8f9fa; }
+  .tip::before {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+    left: 0;
+    top: -20px;
+    border: 10px solid transparent;
+    border-bottom-color: white; }
 
 table.pre {
   margin: 10px 0;

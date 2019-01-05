@@ -1,51 +1,32 @@
-var currentTip = null;
-var currentTipElement = null;
+var currentElement = null;
 
-function hideTip(evt, name, unique)
-{
-  var el = document.getElementById(name);
-  el.style.display = "none";
-  currentTip = null;
+document.onkeydown = hideTip2;
+document.onclick = hideTip2;
+
+function hideTip(evt,name) {
+  // Stub for F# Literate onmouseout
 }
 
-function findPos(obj)
-{
-  // no idea why, but it behaves differently in webbrowser component
-  if (window.location.search == "?inapp")
-    return [obj.offsetLeft + 10, obj.offsetTop + 30];
+function hideTip2() {
+  if (currentElement) {
+    currentElement.style.display = "none";
+  }
 
-  var curleft = 0;
-  var curtop = obj.offsetHeight;
-  while (obj)
-  {
-    curleft += obj.offsetLeft;
-    curtop += obj.offsetTop;
-    obj = obj.offsetParent;
-  };
-  return [curleft, curtop];
 }
 
-function hideUsingEsc(e)
-{
-  if (!e) { e = event; }
-  hideTip(e, currentTipElement, currentTip);
-}
+function showTip(evt,name) {
+  hideTip2();
 
-function showTip(evt, name, unique, owner)
-{
-  document.onkeydown = hideUsingEsc;
-  if (currentTip == unique) return;
-  currentTip = unique;
-  currentTipElement = name;
+  var parent = evt.srcElement ? evt.srcElement : evt.target;
 
-  var pos = findPos(owner ? owner : (evt.srcElement ? evt.srcElement : evt.target));
-  var posx = pos[0];
-  var posy = pos[1];
+  var rect = parent.getBoundingClientRect();
+  var posx = rect.x;
+  var posy = rect.y;
 
   var el = document.getElementById(name);
-  var parent = (document.documentElement == null) ? document.body : document.documentElement;
-  el.style.position = "absolute";
+  currentElement = el;
+  el.style.position = "fixed";
   el.style.left = posx + "px";
-  el.style.top = posy + "px";
+  el.style.top = posy + 30 + "px";
   el.style.display = "block";
 }

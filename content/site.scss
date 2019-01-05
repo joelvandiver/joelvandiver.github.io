@@ -68,6 +68,7 @@
   width: calc(100% - 350px);
   z-index: 100;
   padding: 48px;
+  overflow-x: auto;
 
   img {
     width: 50%;

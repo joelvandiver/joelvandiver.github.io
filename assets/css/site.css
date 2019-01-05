@@ -6332,7 +6332,8 @@ a.text-dark:hover, a.text-dark:focus {
   left: 350px;
   width: calc(100% - 350px);
   z-index: 100;
-  padding: 48px; }
+  padding: 48px;
+  overflow-x: auto; }
   .main img {
     width: 50%;
     padding: 20px; }

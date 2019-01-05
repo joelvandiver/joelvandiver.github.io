@@ -6362,11 +6362,12 @@ table.pre {
   margin: 10px 0;
   background: black; }
   table.pre td {
-    padding: 8px; }
+    padding: 15px; }
   table.pre pre {
-    color: white; }
+    color: white;
+    margin-bottom: 0; }
   table.pre .lines {
-    padding: 10px; }
+    padding: 15px 0 15px 15px; }
     table.pre .lines .l {
       color: #adb5bd; }
   table.pre code .prep, table.pre code .inactive {
@@ -6377,7 +6378,7 @@ table.pre {
   table.pre code .f {
     color: #b389f9; }
   table.pre code .t {
-    color: #17a2b8; }
+    color: #52e3b8; }
   table.pre code .i {
     color: #36cee6; }
   table.pre code .s {

@@ -30,15 +30,16 @@ table.pre {
   background:black;  
 
   td {
-    padding: 8px;
+    padding: 15px;
   }
 
   pre {
     color: white;
+    margin-bottom: 0;
   }
 
   .lines {
-    padding: 10px; 
+    padding: 15px 0 15px 15px;
 
     // line number
     .l {
@@ -64,7 +65,7 @@ table.pre {
 
     // type
     .t {
-      color: $cyan;
+      color: $lightteal;
     }
 
     // value

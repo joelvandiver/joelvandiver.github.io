@@ -66,6 +66,11 @@
   width: calc(100% - 350px);
   z-index: 100;
   padding: 48px;
+
+  img {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 }
 
 // From F# Literate:

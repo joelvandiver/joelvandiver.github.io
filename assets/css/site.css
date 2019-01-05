@@ -6333,6 +6333,9 @@ a.text-dark:hover, a.text-dark:focus {
   width: calc(100% - 350px);
   z-index: 100;
   padding: 48px; }
+  .main img {
+    width: 100%;
+    margin-bottom: 10px; }
 
 /* identifier */
 span.i {

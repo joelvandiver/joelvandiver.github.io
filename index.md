@@ -7,6 +7,7 @@
 - [/posts/explorations/math/functions/domain-and-range/](/posts/explorations/math/functions/domain-and-range/)
 - [/posts/explorations/math/functions/relations-and-functions/](/posts/explorations/math/functions/relations-and-functions/)
 - [/posts/explorations/perf/collections/contains/](/posts/explorations/perf/collections/contains/)
+- [/posts/fun/art/animations/](/posts/fun/art/animations/)
 - [/posts/fun/german/conversation/](/posts/fun/german/conversation/)
 - [/posts/guides/fs/list/accumulate/](/posts/guides/fs/list/accumulate/)
 - [/posts/tutorials/fs/json-serialization/](/posts/tutorials/fs/json-serialization/)

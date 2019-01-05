@@ -9,6 +9,7 @@
 - [/posts/explorations/math/functions/relations-vs-functions/](/posts/explorations/math/functions/relations-vs-functions/)
 - [/posts/explorations/perf/collections/contains/](/posts/explorations/perf/collections/contains/)
 - [/posts/fun/art/animations/](/posts/fun/art/animations/)
+- [/posts/fun/art/fractals/](/posts/fun/art/fractals/)
 - [/posts/fun/german/conversation/](/posts/fun/german/conversation/)
 - [/posts/snippets/fs/list/accumulate/](/posts/snippets/fs/list/accumulate/)
 - [/posts/tutorials/fs/json-serialization/](/posts/tutorials/fs/json-serialization/)

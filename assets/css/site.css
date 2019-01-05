@@ -1027,21 +1027,22 @@ pre {
   .offset-xl-11 {
     margin-left: 91.66667%; } }
 
-.table {
+.table, table {
   width: 100%;
   margin-bottom: 1rem;
   background-color: transparent; }
-  .table th,
-  .table td {
+  .table th, table th,
+  .table td,
+  table td {
     padding: 0.75rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6; }
-  .table thead th {
+  .table thead th, table thead th {
     vertical-align: bottom;
     border-bottom: 2px solid #dee2e6; }
-  .table tbody + tbody {
+  .table tbody + tbody, table tbody + tbody {
     border-top: 2px solid #dee2e6; }
-  .table .table {
+  .table .table, table .table, .table table, table table {
     background-color: #fff; }
 
 .table-sm th,
@@ -1168,12 +1169,12 @@ pre {
   .table-hover .table-active:hover > th {
     background-color: rgba(0, 0, 0, 0.075); }
 
-.table .thead-dark th {
+.table .thead-dark th, table .thead-dark th {
   color: #fff;
   background-color: #212529;
   border-color: #32383e; }
 
-.table .thead-light th {
+.table .thead-light th, table .thead-light th {
   color: #495057;
   background-color: #e9ecef;
   border-color: #dee2e6; }
@@ -6287,10 +6288,11 @@ a.text-dark:hover, a.text-dark:focus {
     display: none; }
   .badge {
     border: 1px solid #000; }
-  .table {
+  .table, table {
     border-collapse: collapse !important; }
+    
     .table td,
-    .table th {
+    table td, .table th, table th {
       background-color: #fff !important; }
   .table-bordered th,
   .table-bordered td {
@@ -6302,7 +6304,7 @@ a.text-dark:hover, a.text-dark:focus {
     .table-dark thead th,
     .table-dark tbody + tbody {
       border-color: #dee2e6; }
-  .table .thead-dark th {
+  .table .thead-dark th, table .thead-dark th {
     color: inherit;
     border-color: #dee2e6; } }
 
@@ -6338,12 +6340,24 @@ a.text-dark:hover, a.text-dark:focus {
     width: 50%;
     padding: 20px; }
 
+blockquote p {
+  background: #e9ecef;
+  padding: 15px; }
+
 ol, ul {
   list-style: none; }
 
 #fractal-logo {
   width: calc(100% - 20px);
   margin: 10px; }
+
+table p {
+  margin-bottom: 0; }
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 2px solid rgba(0, 0, 0, 0.1); }
 
 .tip {
   background-color: black;
@@ -6375,7 +6389,8 @@ table.pre {
     color: white;
     margin-bottom: 0; }
   table.pre .lines {
-    padding: 15px 0 15px 15px; }
+    padding: 15px 0 15px 15px;
+    width: 30px; }
     table.pre .lines .l {
       color: #adb5bd; }
   table.pre code .prep, table.pre code .inactive {

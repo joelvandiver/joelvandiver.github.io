@@ -76,6 +76,11 @@
   }
 }
 
+blockquote p {
+  background: $gray-200;
+  padding: 15px;
+}
+
 ol, ul {
   list-style: none;
 }
@@ -83,6 +88,20 @@ ol, ul {
 #fractal-logo {
   width: calc(100% - 20px);
   margin: 10px;
+}
+
+table {
+  @extend .table;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+hr {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
 }
 
 @import "literate";

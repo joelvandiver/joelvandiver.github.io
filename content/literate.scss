@@ -1,0 +1,75 @@
+@import "variables";
+@import "site_variables";
+
+.tip {
+  background-color: black;
+  color: white;
+  padding: 12px;
+  font-size: 85%;
+  opacity: 0.9;
+  border: solid 1px $gray-100;
+}
+
+table.pre {
+  margin: 10px 0;
+  background:black;  
+
+  td {
+    padding: 8px;
+  }
+
+  pre {
+    color: white;
+  }
+
+  .lines {
+    padding: 10px; 
+    // line number
+    .l {
+      color: $gray-500;
+    }
+  }
+
+  code {
+    .prep, .inactive {
+      color: #aaa;
+      font-weight: 800;
+    }
+
+    // keyword
+    .k {
+      color: $lightblue;
+    }
+
+    // function
+    .f {
+      color: $lightindigo;
+    }
+
+    // type
+    .t {
+      color: $cyan;
+    }
+
+    // value
+    .i {
+      color: $lightcyan;
+    }
+
+    // string
+    .s {
+      color: $lightgreen;
+    }
+
+    // operator
+    .o {
+      color: $gray-100;
+    }
+
+    // number
+    .n {
+      color: $gray-400;
+    }
+  }
+}
+

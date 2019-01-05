@@ -4,6 +4,7 @@
 
 ## Posts
 - [/posts/daily/2018/12/08/](/posts/daily/2018/12/08/)
+- [/posts/daily/2019/01/05/fs-logo/](/posts/daily/2019/01/05/fs-logo/)
 - [/posts/explorations/math/functions/domain-and-range/](/posts/explorations/math/functions/domain-and-range/)
 - [/posts/explorations/math/functions/relations-and-functions/](/posts/explorations/math/functions/relations-and-functions/)
 - [/posts/explorations/perf/collections/contains/](/posts/explorations/perf/collections/contains/)

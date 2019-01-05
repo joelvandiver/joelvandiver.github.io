@@ -37,13 +37,6 @@
 @import "site_variables";
 
 .sidebar {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 100;
-  padding: 22% 48px;
-  width: 350px;
   background-color: black;
   color: white;
   text-align: center;
@@ -55,25 +48,76 @@
   }
 
   img {    
-    width: 75%;
     background-color: white;
-    margin-top: 27px;
   }
 }
 
 .main {
-  position: absolute;
-  top: 0;
-  left: 350px;
-  width: calc(100% - 350px);
-  z-index: 100;
-  padding: 48px;
   overflow-x: auto;
 
   img {
     width: 50%;
     padding: 20px;
   }
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 22% 48px;
+    width: 350px;
+  
+    img {    
+      width: 75%;
+      margin-top: 27px;
+    }
+  }
+  
+  .main {
+    position: absolute;
+    top: 0;
+    left: 350px;
+    width: calc(100% - 350px);
+    z-index: 100;
+    padding: 48px;
+  
+    img {
+      width: 50%;
+      padding: 20px;
+    }
+  }  
+}
+
+@media (min-width: 100px) and
+       (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .sidebar {
+    z-index: 100;
+    padding: 20px 10px;
+    width: 100%;
+  
+    img {    
+      width: 60%;
+      margin: 7px;
+    }
+  }
+  
+  .main {
+    padding: 22px 33px;
+  }  
+
+  pre {
+    white-space: pre-line;
+  }
+
 }
 
 blockquote p {

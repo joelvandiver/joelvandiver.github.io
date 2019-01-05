@@ -13,6 +13,14 @@
             "kind": "build",
             "isDefault": true
          }
+      },
+      {
+         "label": "build-single",
+         "type": "shell",
+         "windows": {
+            "command": "fsi build-single.fsx"
+         },
+         "problemMatcher": []
       }
    ]
 }

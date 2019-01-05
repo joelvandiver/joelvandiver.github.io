@@ -20,7 +20,7 @@
       <div class="sidebar">
         <h1>
           <a href="/">Joel Vandiver</a>
-          <img src="/posts/fun/art/animations/2018-12-08.2.gif" />
+          <canvas id="fractal-logo"></canvas>
         </h1>
       </div>
       <div class="main">
@@ -82,7 +82,7 @@ values in the list in ascending order.</p>
 <span class="l">3: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 41)" onmouseover="showTip(event, 'fs14', 41)" class="f">adder</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 42)" onmouseover="showTip(event, 'fs1', 42)" class="f">accumulate</span> (<span class="o">+</span>)
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 43)" onmouseover="showTip(event, 'fs15', 43)" class="i">d</span> <span class="o">=</span> [<span class="n">0</span>;<span class="n">1</span>;<span class="n">2</span>;<span class="n">3</span>;<span class="n">4</span>;<span class="n">5</span>]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 43)" onmouseover="showTip(event, 'fs15', 43)" class="i">d</span> <span class="o">=</span> [<span class="n">0</span>; <span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 44)" onmouseover="showTip(event, 'fs16', 44)" class="i">r</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs14', 45)" onmouseover="showTip(event, 'fs14', 45)" class="f">adder</span> <span onmouseout="hideTip(event, 'fs15', 46)" onmouseover="showTip(event, 'fs15', 46)" class="i">d</span>
 </code></pre></td>
 </tr>
@@ -106,7 +106,7 @@ values in the list in ascending order.</p>
 <span class="l">3: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs18', 55)" onmouseover="showTip(event, 'fs18', 55)" class="f">multiplier</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 56)" onmouseover="showTip(event, 'fs1', 56)" class="f">accumulate</span> <span class="o">(*)</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 57)" onmouseover="showTip(event, 'fs15', 57)" class="i">d</span> <span class="o">=</span> [<span class="n">1</span>;<span class="n">2</span>;<span class="n">3</span>;<span class="n">4</span>;<span class="n">5</span>]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 57)" onmouseover="showTip(event, 'fs15', 57)" class="i">d</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 58)" onmouseover="showTip(event, 'fs16', 58)" class="i">r</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs18', 59)" onmouseover="showTip(event, 'fs18', 59)" class="f">multiplier</span> <span onmouseout="hideTip(event, 'fs15', 60)" onmouseover="showTip(event, 'fs15', 60)" class="i">d</span>
 </code></pre></td>
 </tr>
@@ -194,6 +194,7 @@ values in the list in ascending order.</p>
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/assets/js/fractal-logo.js"></script>
     <script src="/assets/js/literate.js"></script>
   </body>
 </html>

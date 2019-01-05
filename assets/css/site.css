@@ -6341,6 +6341,10 @@ a.text-dark:hover, a.text-dark:focus {
 ol, ul {
   list-style: none; }
 
+#fractal-logo {
+  width: calc(100% - 20px);
+  margin: 10px; }
+
 .tip {
   background-color: black;
   display: none;

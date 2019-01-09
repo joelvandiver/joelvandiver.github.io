@@ -4,7 +4,7 @@ open System.IO
 open System.Text.RegularExpressions
 open FSharp.Literate
 
-// TODO:  Build Single with Current File through VSCode Task
+// Builds the Current File through VSCode Task
 
 let args = 
    fsi.CommandLineArgs 

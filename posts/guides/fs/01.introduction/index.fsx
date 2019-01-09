@@ -1,7 +1,7 @@
 (**
 # F# Introduction
 
-#### Value Definition
+### Value Definition
 Let's start our F# journey with a simple `let` value binding:
 *)
 

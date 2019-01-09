@@ -18,7 +18,7 @@
          "label": "build-single",
          "type": "shell",
          "windows": {
-            "command": "fsi build-single.fsx"
+            "command": "fsi build-single.fsx file:${file}"
          },
          "problemMatcher": []
       }

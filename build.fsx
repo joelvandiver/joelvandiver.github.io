@@ -7,9 +7,9 @@ open FSharp.Literate
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 
-// TODO:  Build home with links to all posts
-// TODO:  Put navigation back home in all sub pages.
-// TODO:  Build Navigate to all other pages.
+// TODO:  Only build files that have changed after the template changed.
+// TODO:  Build markdown pages.
+// TODO:  Build navigation to all other pages.
 
 let mdLink (path: string) = 
    let clean = path.Replace("\\", "/")

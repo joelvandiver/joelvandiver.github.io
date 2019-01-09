@@ -14,29 +14,26 @@ let x = ()
 > The use of the term *value* is preferrable over *variable* since *variable* implies that the value may change over time.
 
 #### Note on Immutability
-F# enforces immutability on values by default.  Attempting to set a value to a new value after definition will not compile.  The `willNotCompile` value below will fail on the second line.
+F# enforces immutability on values by default.  Attempting to set a value to a new value after definition will not compile.  The `isImmuatable` value below will fail on the second line.
 *)
 
-let willNotCompile = 1
+let isImmuatable = true
 
 (**
 *Output*:
 ```console
-val willNotCompile : int = 1
+val isImmuatable : bool = true
 ```
-*)
 
-willNotCompile <- 2
-
-(**
 Note the F# mutation operator `<-` below.
 
 ```fsharp
+isImmuatable <- false
 ```
 
 *Output*:
 ```console
-index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mutable keyword, e.g. 'let mutable willNotCompile = expression'.
+index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mutable keyword, e.g. 'let mutable isImmuatable = expression'.
 ``` 
 *)
 

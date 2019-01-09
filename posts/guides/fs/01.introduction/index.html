@@ -37,33 +37,33 @@
 <p>The use of the term <em>value</em> is preferrable over <em>variable</em> since <em>variable</em> implies that the value may change over time.</p>
 </blockquote>
 <h4>Note on Immutability</h4>
-<p>F# enforces immutability on values by default.  Attempting to set a value to a new value after definition will not compile.  The <code>willNotCompile</code> value below will fail on the second line.</p>
+<p>F# enforces immutability on values by default.  Attempting to set a value to a new value after definition will not compile.  The <code>isImmuatable</code> value below will fail on the second line.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">willNotCompile</span> <span class="o">=</span> <span class="n">1</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">isImmuatable</span> <span class="o">=</span> <span class="k">true</span>
 </code></pre></td>
 </tr>
 </table>
 <p><em>Output</em>:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="console">val willNotCompile : int = 1
+<td class="snippet"><pre class="fssnip"><code lang="console">val isImmuatable : bool = true
 </code></pre></td></tr></table>
 <p>Note the F# mutation operator <code>&lt;-</code> below.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">willNotCompile</span> <span class="o">&lt;-</span> <span class="n">2</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">isImmuatable</span> <span class="o">&lt;-</span> <span class="k">false</span>
 </code></pre></td>
 </tr>
 </table>
 <p><em>Output</em>:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="console">index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mutable keyword, e.g. 'let mutable willNotCompile = expression'.
+<td class="snippet"><pre class="fssnip"><code lang="console">index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mutable keyword, e.g. 'let mutable isImmuatable = expression'.
 </code></pre></td></tr></table>
  
         <div class="tip" id="fs1">val x : unit<br /><br />Full name: Index.x</div>
-<div class="tip" id="fs2">val willNotCompile : int<br /><br />Full name: Index.willNotCompile</div>
+<div class="tip" id="fs2">val isImmuatable : bool<br /><br />Full name: Index.isImmuatable</div>
 
       </div>
     </div>

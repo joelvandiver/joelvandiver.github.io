@@ -4,7 +4,7 @@
    "version": "2.0.0",
    "tasks": [
       {
-         "label": "build",
+         "label": "Build",
          "type": "shell",
          "windows": {
             "command": "fsi build.fsx"
@@ -15,7 +15,7 @@
          }
       },
       {
-         "label": "build-single",
+         "label": "Build Single",
          "type": "shell",
          "windows": {
             "command": "fsi build-single.fsx file:${file}"

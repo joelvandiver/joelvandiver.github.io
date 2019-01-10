@@ -21,6 +21,7 @@ let mdLink (path: string) =
       rel
          .Replace("\\posts\\", "")
          .Replace("\\", " - ")
+         .Replace(" Fs", " F#")
    let clean = rel.Replace("\\", "/")
    sprintf "[%s](%s)" dirs clean
 

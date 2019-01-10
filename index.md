@@ -4,7 +4,7 @@
 
 ## Posts
 - [Daily - 2018 - 12 - 08](/posts/Daily/2018/12/08)
-- [Daily - 2019 - 01 - 05 - Fs-Logo](/posts/Daily/2019/01/05/Fs-Logo)
+- [Daily - 2019 - 01 - 05 - F#-Logo](/posts/Daily/2019/01/05/Fs-Logo)
 - [Explorations - Interview-Questions - Colum-Header-Number](/posts/Explorations/Interview-Questions/Colum-Header-Number)
 - [Explorations - Math - Functions - Domain-And-Range](/posts/Explorations/Math/Functions/Domain-And-Range)
 - [Explorations - Math - Functions - Relations-vs-Functions](/posts/Explorations/Math/Functions/Relations-vs-Functions)
@@ -13,7 +13,7 @@
 - [Fun - Art - Animations](/posts/Fun/Art/Animations)
 - [Fun - Art - Fractals](/posts/Fun/Art/Fractals)
 - [Fun - German - Conversation](/posts/Fun/German/Conversation)
-- [Guides - Fs - 01.Introduction](/posts/Guides/Fs/01.Introduction)
-- [Snippets - Fs - List - Accumulate](/posts/Snippets/Fs/List/Accumulate)
-- [Snippets - Fs - Regex - Extract](/posts/Snippets/Fs/Regex/Extract)
-- [Tutorials - Fs - FSX - CLI-Args](/posts/Tutorials/Fs/FSX/CLI-Args)
+- [Guides - F# - 01.Introduction](/posts/Guides/Fs/01.Introduction)
+- [Snippets - F# - List - Accumulate](/posts/Snippets/Fs/List/Accumulate)
+- [Snippets - F# - Regex - Extract](/posts/Snippets/Fs/Regex/Extract)
+- [Tutorials - F# - FSX - CLI-Args](/posts/Tutorials/Fs/FSX/CLI-Args)

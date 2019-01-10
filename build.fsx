@@ -7,7 +7,6 @@ open FSharp.Literate
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 
-// TODO:  Put the Folders in links
 // TODO:  Style root links
 // TODO:  Only build files that have changed after the template changed.
 // TODO:  Build markdown pages.
@@ -16,16 +15,16 @@ let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 
 let mdLink (path: string) = 
    let pattern = "\n# (.*?)\r"
-   let file = File.ReadAllText(path)
-   let regex = new Regex("\n# (?<title>.*?)\n")
-   let m = regex.Match(file)
-   let title = m.Groups.["title"].Value
-   let clean = 
+   let rel = 
       path
          .Replace(source, "")
-         .Replace("index.fsx", "")
-         .Replace("\\", "/")
-   sprintf "[%s](%s)" title clean
+         .Replace("\\index.fsx", "")
+   let dirs = 
+      rel
+         .Replace("\\posts\\", "")
+         .Replace("\\", " - ")
+   let clean = rel.Replace("\\", "/")
+   sprintf "[%s](%s)" dirs clean
 
 let postFiles = 
    Directory.GetFiles(Path.Combine(source, "posts"), "index.fsx", SearchOption.AllDirectories)

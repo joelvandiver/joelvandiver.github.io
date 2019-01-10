@@ -1,6 +1,5 @@
 (**
-F# JSON List Deserialization
-============================
+# F# JSON List Deserialization
 
 F# promotes immutability and deemphasizes null checks that plague object oriented languages.
 However, though this is a guiding principle in coding in F#, F# does have some limitations.  Typically, these limitations arise at the boundaries of the system.  

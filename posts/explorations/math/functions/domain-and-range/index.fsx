@@ -1,6 +1,5 @@
 (**
-Domain and Range Exploration
-============================
+# Domain and Range Exploration
 
 *)
 let S = [(1, 4); (2, 3); (2, 2); (4, 3); (5, 4)] |> Set.ofList

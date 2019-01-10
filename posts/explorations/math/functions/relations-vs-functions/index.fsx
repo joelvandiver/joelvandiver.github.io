@@ -1,7 +1,6 @@
 
 (**
-Relations vs Functions
-=======================
+# Relations vs Functions
 
 A relation of inputs and outputs as ordered pairs can be generated for every algorithm.  
 

@@ -1,6 +1,5 @@
 (**
-F# Logo Generator
-=================
+# F# Logo Generator
 
 [Addapted from FSSnip](http://www.fssnip.net/tH/title/F-logo-generator)
 *)

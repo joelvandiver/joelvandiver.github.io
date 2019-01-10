@@ -3,16 +3,17 @@
 <!-- ![Fractal 1](assets\img\fractals\9.22.13-4.svg "Fractal 1") -->
 
 ## Posts
-- [/posts/daily/2018/12/08/](/posts/daily/2018/12/08/)
-- [/posts/daily/2019/01/05/fs-logo/](/posts/daily/2019/01/05/fs-logo/)
-- [/posts/explorations/interview-questions/column-header-number/](/posts/explorations/interview-questions/column-header-number/)
-- [/posts/explorations/math/functions/domain-and-range/](/posts/explorations/math/functions/domain-and-range/)
-- [/posts/explorations/math/functions/relations-vs-functions/](/posts/explorations/math/functions/relations-vs-functions/)
-- [/posts/explorations/perf/collections/contains/](/posts/explorations/perf/collections/contains/)
-- [/posts/explorations/problems/json-list-deserialization/](/posts/explorations/problems/json-list-deserialization/)
-- [/posts/fun/art/animations/](/posts/fun/art/animations/)
-- [/posts/fun/art/fractals/](/posts/fun/art/fractals/)
-- [/posts/fun/german/conversation/](/posts/fun/german/conversation/)
-- [/posts/guides/fs/01.introduction/](/posts/guides/fs/01.introduction/)
-- [/posts/snippets/fs/list/accumulate/](/posts/snippets/fs/list/accumulate/)
-- [/posts/tutorials/fs/fsx/cli-args/](/posts/tutorials/fs/fsx/cli-args/)
+- [Accessing Command Line Arguments in an FSX Script](/posts/Tutorials/Fs/FSX/CLI-Args/)
+- [Animations](/posts/Fun/Art/Animations/)
+- [Convert Spreadsheet Column Headers to a Number](/posts/Explorations/Interview-Questions/Colum-Header-Number/)
+- [Domain and Range Exploration](/posts/Explorations/Math/Functions/Domain-And-Range/)
+- [Extract a Text from a String](/posts/Snippets/Fs/Regex/Extract/)
+- [F# Deutsche <|> English](/posts/Fun/German/Conversation/)
+- [F# Introduction](/posts/Guides/Fs/01.Introduction/)
+- [F# JSON List Deserialization](/posts/Explorations/Problems/Json-List-Deserialization/)
+- [F# Literate Site Gen](/posts/Daily/2018/12/08/)
+- [F# Logo Generator](/posts/Daily/2019/01/05/fs-logo/)
+- [Fractals](/posts/Fun/Art/Fractals/)
+- [List Accumulator Function ](/posts/Snippets/Fs/List/Accumulate/)
+- [Relations vs Functions](/posts/Explorations/Math/Functions/Relations-vs-Functions/)
+- [](/posts/Explorations/Perf/Collections/Contains/)

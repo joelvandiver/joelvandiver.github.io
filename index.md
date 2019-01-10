@@ -3,8 +3,6 @@
 <!-- ![Fractal 1](assets\img\fractals\9.22.13-4.svg "Fractal 1") -->
 
 ## Posts
-- [Daily - 2018 - 12 - 08](/posts/Daily/2018/12/08)
-- [Daily - 2019 - 01 - 05 - F#-Logo](/posts/Daily/2019/01/05/Fs-Logo)
 - [Explorations - Interview-Questions - Colum-Header-Number](/posts/Explorations/Interview-Questions/Colum-Header-Number)
 - [Explorations - Math - Functions - Domain-And-Range](/posts/Explorations/Math/Functions/Domain-And-Range)
 - [Explorations - Math - Functions - Relations-vs-Functions](/posts/Explorations/Math/Functions/Relations-vs-Functions)

@@ -32,6 +32,7 @@ let postFiles =
 let writeHome () =
    let links = 
       postFiles
+      |> List.filter(fun f -> f.Contains("_archive") |> not)
       |> List.map mdLink
       |> List.map(fun l -> "- " + l)
       |> List.sort

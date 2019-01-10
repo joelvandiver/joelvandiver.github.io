@@ -7,11 +7,9 @@ open FSharp.Literate
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 
-// TODO:  Style root links
-// TODO:  Only build files that have changed after the template changed.
 // TODO:  Build markdown pages.
 // TODO:  Separate links into sections by the folders.
-// TODO:  Build navigation to all other pages.
+// TODO:  Only build files that have changed after the template changed.
 
 let mdLink (path: string) = 
    let pattern = "\n# (.*?)\r"

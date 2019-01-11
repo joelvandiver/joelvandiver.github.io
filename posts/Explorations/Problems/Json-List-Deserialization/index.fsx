@@ -62,7 +62,6 @@ index.fsx(28,42): error FS0043: The type 'string list' does not have 'null' as a
 ```
 *)
 
-
 (**
 ___
 

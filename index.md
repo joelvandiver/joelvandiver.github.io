@@ -12,6 +12,6 @@
 - [Fun - Art - Fractals](/posts/Fun/Art/Fractals)
 - [Fun - German - Conversation](/posts/Fun/German/Conversation)
 - [Guides - F# - 01.Introduction](/posts/Guides/Fs/01.Introduction)
+- [Snippets - F# - FSX - CLI-Args](/posts/Snippets/Fs/FSX/CLI-Args)
 - [Snippets - F# - List - Accumulate](/posts/Snippets/Fs/List/Accumulate)
 - [Snippets - F# - Regex - Extract](/posts/Snippets/Fs/Regex/Extract)
-- [Tutorials - F# - FSX - CLI-Args](/posts/Tutorials/Fs/FSX/CLI-Args)

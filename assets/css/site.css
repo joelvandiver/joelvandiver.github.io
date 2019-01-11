@@ -6411,7 +6411,8 @@ table.pre {
     padding: 15px; }
   table.pre pre {
     color: white;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    white-space: initial; }
   table.pre .lines {
     padding: 15px 0 15px 15px;
     width: 30px; }

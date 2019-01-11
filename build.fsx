@@ -11,7 +11,7 @@ let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 // TODO:  Separate links into sections by folders.
 // TODO:  Only build files that have changed after the template changed.
 
-let mdLink (path: string) = 
+let fsxLink (path: string) = 
    let pattern = "\n# (.*?)\r"
    let rel = 
       path
@@ -33,7 +33,7 @@ let writeHome () =
    let links = 
       postFiles
       |> List.filter(fun f -> f.Contains("_archive") |> not)
-      |> List.map mdLink
+      |> List.map fsxLink
       |> List.map(fun l -> "- " + l)
       |> List.sort
       |> List.fold(fun a b -> a + "\r\n" + b) ""

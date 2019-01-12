@@ -19,3 +19,4 @@ Choosing between implicit and explicit value declarations will largely depend on
 
 Simple value declarations are easier to work with as implicit declarations, but values involving complex type systems are generally easier to maintain with explicit declarations.  
 *)
+

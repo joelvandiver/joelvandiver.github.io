@@ -6319,15 +6319,13 @@ a.text-dark:hover, a.text-dark:focus {
   .sidebar img {
     background-color: white; }
 
-.main {
-  overflow-x: auto; }
-  .main img {
-    width: 50%;
-    padding: 20px; }
+.main img {
+  width: 50%;
+  padding: 20px; }
 
 @media (min-width: 768px) {
   .sidebar {
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -6346,7 +6344,9 @@ a.text-dark:hover, a.text-dark:focus {
     padding: 48px; }
     .main img {
       width: 50%;
-      padding: 20px; } }
+      padding: 20px; }
+    .main .post-nav-next {
+      text-align: right; } }
 
 @media (min-width: 100px) and (max-width: 768px) {
   .container {
@@ -6383,6 +6383,13 @@ hr {
   margin-bottom: 2rem;
   border-top: 2px solid rgba(0, 0, 0, 0.1); }
 
+.post-nav {
+  border-top: solid 1px #ced4da;
+  padding-top: 20px;
+  margin-top: 45px; }
+  .post-nav ul {
+    padding-left: 0; }
+
 .tip {
   background-color: black;
   display: none;
@@ -6409,6 +6416,8 @@ table.pre {
   background: black; }
   table.pre td {
     padding: 15px; }
+  table.pre td.snippet {
+    max-width: 100px; }
   table.pre pre {
     color: white;
     margin-bottom: 0; }
@@ -6417,22 +6426,20 @@ table.pre {
     width: 30px; }
     table.pre .lines .l {
       color: #adb5bd; }
-  table.pre code {
-    white-space: pre-line; }
-    table.pre code .prep, table.pre code .inactive {
-      color: #aaa;
-      font-weight: 800; }
-    table.pre code .k {
-      color: #4da3ff; }
-    table.pre code .f {
-      color: #b389f9; }
-    table.pre code .t {
-      color: #52e3b8; }
-    table.pre code .i {
-      color: #36cee6; }
-    table.pre code .s {
-      color: #48d368; }
-    table.pre code .o {
-      color: #f8f9fa; }
-    table.pre code .n {
-      color: #ced4da; }
+  table.pre code .prep, table.pre code .inactive {
+    color: #aaa;
+    font-weight: 800; }
+  table.pre code .k {
+    color: #4da3ff; }
+  table.pre code .f {
+    color: #b389f9; }
+  table.pre code .t {
+    color: #52e3b8; }
+  table.pre code .i {
+    color: #36cee6; }
+  table.pre code .s {
+    color: #48d368; }
+  table.pre code .o {
+    color: #f8f9fa; }
+  table.pre code .n {
+    color: #ced4da; }

@@ -53,8 +53,6 @@
 }
 
 .main {
-  overflow-x: auto;
-
   img {
     width: 50%;
     padding: 20px;
@@ -63,7 +61,7 @@
 
 @media (min-width: 768px) {
   .sidebar {
-    position: fixed;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -88,6 +86,10 @@
     img {
       width: 50%;
       padding: 20px;
+    }
+
+    .post-nav-next {
+      text-align: right;
     }
   }  
 }
@@ -146,6 +148,16 @@ hr {
   margin-top: 2rem;
   margin-bottom: 2rem;
   border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.post-nav {
+  border-top: solid 1px $gray-400;
+  padding-top: 20px;
+  margin-top: 45px;
+
+  ul {
+    padding-left: 0;
+  }
 }
 
 @import "literate";

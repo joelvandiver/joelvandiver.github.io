@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Get the Previous and Next Value Per Item
+</title>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- Custom fonts for this template -->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h1><a href="/">Joel Vandiver</a></h1>
+        <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
+      </div>
+      <div class="main">
+        <h1>Get the Previous and Next Value Per Item</h1>
+<h2>With Default Value or With Option</h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+<span class="l">24: </span>
+<span class="l">25: </span>
+<span class="l">26: </span>
+<span class="l">27: </span>
+<span class="l">28: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="f">convertToPrevAndNext</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">T</span><span class="o">&gt;</span> (<span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">defaultValue</span><span class="o">:</span> <span class="o">&#39;</span><span class="i">T</span>) (<span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">items</span><span class="o">:</span> <span class="o">&#39;</span><span class="i">T</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="t">list</span>) <span class="o">:</span> (<span class="o">&#39;</span><span class="i">T</span> <span class="o">*</span> <span class="o">&#39;</span><span class="i">T</span> <span class="o">*</span> <span class="o">&#39;</span><span class="i">T</span>) <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="t">list</span> <span class="o">=</span> 
+   <span class="k">match</span> <span onmouseout="hideTip(event, 'fs3', 6)" onmouseover="showTip(event, 'fs3', 6)" class="i">items</span> <span class="k">with</span> 
+   | [] <span class="k">-&gt;</span> []
+   | <span onmouseout="hideTip(event, 'fs5', 7)" onmouseover="showTip(event, 'fs5', 7)" class="i">h</span> <span class="o">::</span> [] <span class="k">-&gt;</span> [<span onmouseout="hideTip(event, 'fs2', 8)" onmouseover="showTip(event, 'fs2', 8)" class="i">defaultValue</span>, <span onmouseout="hideTip(event, 'fs5', 9)" onmouseover="showTip(event, 'fs5', 9)" class="i">h</span>, <span onmouseout="hideTip(event, 'fs2', 10)" onmouseover="showTip(event, 'fs2', 10)" class="i">defaultValue</span>]
+   | _ <span class="k">-&gt;</span> 
+      <span class="k">let</span> <span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="i">max</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs3', 12)" onmouseover="showTip(event, 'fs3', 12)" class="i">items</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 13)" onmouseover="showTip(event, 'fs7', 13)" class="i">Length</span> <span class="o">-</span> <span class="n">1</span>
+      <span onmouseout="hideTip(event, 'fs3', 14)" onmouseover="showTip(event, 'fs3', 14)" class="i">items</span>
+      <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs8', 15)" onmouseover="showTip(event, 'fs8', 15)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 16)" onmouseover="showTip(event, 'fs7', 16)" class="i">mapi</span>(
+         <span class="k">fun</span> <span class="i">i</span> <span class="i">x</span> <span class="k">-&gt;</span> 
+            <span class="k">match</span> <span class="i">i</span> <span class="k">with</span> 
+            | <span class="n">0</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs2', 17)" onmouseover="showTip(event, 'fs2', 17)" class="i">defaultValue</span>, <span class="i">x</span>, <span onmouseout="hideTip(event, 'fs3', 18)" onmouseover="showTip(event, 'fs3', 18)" class="i">items</span><span class="o">.</span>[<span class="n">1</span>]
+            | <span class="i">i</span> <span class="k">when</span> <span class="i">i</span> <span class="o">&lt;</span> <span onmouseout="hideTip(event, 'fs6', 19)" onmouseover="showTip(event, 'fs6', 19)" class="i">max</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs3', 20)" onmouseover="showTip(event, 'fs3', 20)" class="i">items</span><span class="o">.</span>[<span class="i">i</span> <span class="o">-</span> <span class="n">1</span>], <span class="i">x</span>, <span onmouseout="hideTip(event, 'fs3', 21)" onmouseover="showTip(event, 'fs3', 21)" class="i">items</span><span class="o">.</span>[<span class="i">i</span> <span class="o">+</span> <span class="n">1</span>]
+            | <span class="i">i</span> <span class="k">when</span> <span class="i">i</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs6', 22)" onmouseover="showTip(event, 'fs6', 22)" class="i">max</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs3', 23)" onmouseover="showTip(event, 'fs3', 23)" class="i">items</span><span class="o">.</span>[<span class="i">i</span> <span class="o">-</span> <span class="n">1</span>], <span class="i">x</span>, <span onmouseout="hideTip(event, 'fs2', 24)" onmouseover="showTip(event, 'fs2', 24)" class="i">defaultValue</span>
+            | _ <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs2', 25)" onmouseover="showTip(event, 'fs2', 25)" class="i">defaultValue</span>, <span onmouseout="hideTip(event, 'fs2', 26)" onmouseover="showTip(event, 'fs2', 26)" class="i">defaultValue</span>, <span onmouseout="hideTip(event, 'fs2', 27)" onmouseover="showTip(event, 'fs2', 27)" class="i">defaultValue</span>)
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs9', 28)" onmouseover="showTip(event, 'fs9', 28)" class="f">convertToPrevAndNextOption</span><span class="o">&lt;</span><span class="o">&#39;</span><span class="i">T</span><span class="o">&gt;</span> (<span onmouseout="hideTip(event, 'fs3', 29)" onmouseover="showTip(event, 'fs3', 29)" class="i">items</span><span class="o">:</span> <span class="o">&#39;</span><span class="i">T</span> <span onmouseout="hideTip(event, 'fs4', 30)" onmouseover="showTip(event, 'fs4', 30)" class="t">list</span>) <span class="o">:</span> (<span class="o">&#39;</span><span class="i">T</span> <span onmouseout="hideTip(event, 'fs10', 31)" onmouseover="showTip(event, 'fs10', 31)" class="t">option</span> <span class="o">*</span> <span class="o">&#39;</span><span class="i">T</span> <span class="o">*</span> <span class="o">&#39;</span><span class="i">T</span> <span onmouseout="hideTip(event, 'fs10', 32)" onmouseover="showTip(event, 'fs10', 32)" class="t">option</span> ) <span onmouseout="hideTip(event, 'fs4', 33)" onmouseover="showTip(event, 'fs4', 33)" class="t">list</span> <span class="o">=</span> 
+   <span class="k">match</span> <span onmouseout="hideTip(event, 'fs3', 34)" onmouseover="showTip(event, 'fs3', 34)" class="i">items</span> <span class="k">with</span> 
+   | [] <span class="k">-&gt;</span> []
+   | <span onmouseout="hideTip(event, 'fs5', 35)" onmouseover="showTip(event, 'fs5', 35)" class="i">h</span> <span class="o">::</span> [] <span class="k">-&gt;</span> [<span onmouseout="hideTip(event, 'fs11', 36)" onmouseover="showTip(event, 'fs11', 36)" class="p">None</span>, <span onmouseout="hideTip(event, 'fs5', 37)" onmouseover="showTip(event, 'fs5', 37)" class="i">h</span>, <span onmouseout="hideTip(event, 'fs11', 38)" onmouseover="showTip(event, 'fs11', 38)" class="p">None</span>]
+   | _ <span class="k">-&gt;</span> 
+      <span class="k">let</span> <span onmouseout="hideTip(event, 'fs6', 39)" onmouseover="showTip(event, 'fs6', 39)" class="i">max</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs3', 40)" onmouseover="showTip(event, 'fs3', 40)" class="i">items</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 41)" onmouseover="showTip(event, 'fs7', 41)" class="i">Length</span> <span class="o">-</span> <span class="n">1</span>
+      <span onmouseout="hideTip(event, 'fs3', 42)" onmouseover="showTip(event, 'fs3', 42)" class="i">items</span>
+      <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs8', 43)" onmouseover="showTip(event, 'fs8', 43)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 44)" onmouseover="showTip(event, 'fs7', 44)" class="i">mapi</span>(
+         <span class="k">fun</span> <span class="i">i</span> <span class="i">x</span> <span class="k">-&gt;</span> 
+            <span class="k">match</span> <span class="i">i</span> <span class="k">with</span> 
+            | <span class="n">0</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs11', 45)" onmouseover="showTip(event, 'fs11', 45)" class="i">None</span>, <span class="i">x</span>, <span onmouseout="hideTip(event, 'fs12', 46)" onmouseover="showTip(event, 'fs12', 46)" class="i">Some</span> <span onmouseout="hideTip(event, 'fs3', 47)" onmouseover="showTip(event, 'fs3', 47)" class="i">items</span><span class="o">.</span>[<span class="n">1</span>]
+            | <span class="i">i</span> <span class="k">when</span> <span class="i">i</span> <span class="o">&lt;</span> <span onmouseout="hideTip(event, 'fs6', 48)" onmouseover="showTip(event, 'fs6', 48)" class="i">max</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs12', 49)" onmouseover="showTip(event, 'fs12', 49)" class="i">Some</span> <span onmouseout="hideTip(event, 'fs3', 50)" onmouseover="showTip(event, 'fs3', 50)" class="i">items</span><span class="o">.</span>[<span class="i">i</span> <span class="o">-</span> <span class="n">1</span>], <span class="i">x</span>, <span onmouseout="hideTip(event, 'fs12', 51)" onmouseover="showTip(event, 'fs12', 51)" class="i">Some</span> <span onmouseout="hideTip(event, 'fs3', 52)" onmouseover="showTip(event, 'fs3', 52)" class="i">items</span><span class="o">.</span>[<span class="i">i</span> <span class="o">+</span> <span class="n">1</span>]
+            | _ <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs12', 53)" onmouseover="showTip(event, 'fs12', 53)" class="i">Some</span> <span onmouseout="hideTip(event, 'fs3', 54)" onmouseover="showTip(event, 'fs3', 54)" class="i">items</span><span class="o">.</span>[<span class="i">i</span> <span class="o">-</span> <span class="n">1</span>], <span class="i">x</span>, <span onmouseout="hideTip(event, 'fs11', 55)" onmouseover="showTip(event, 'fs11', 55)" class="i">None</span>)
+</code></pre></td>
+</tr>
+</table>
+<h3>Test Default Value</h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs13', 56)" onmouseover="showTip(event, 'fs13', 56)" class="i">items</span> <span class="o">=</span> [<span class="s">&quot;a&quot;</span>; <span class="s">&quot;b&quot;</span>; <span class="s">&quot;c&quot;</span>; <span class="s">&quot;d&quot;</span>]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 57)" onmouseover="showTip(event, 'fs14', 57)" class="i">defaultValue</span> <span class="o">=</span> <span class="s">&quot;&quot;</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 58)" onmouseover="showTip(event, 'fs15', 58)" class="i">expected</span> <span class="o">=</span> [
+   <span class="s">&quot;&quot;</span>, <span class="s">&quot;a&quot;</span>, <span class="s">&quot;b&quot;</span>
+   <span class="s">&quot;a&quot;</span>, <span class="s">&quot;b&quot;</span>, <span class="s">&quot;c&quot;</span>
+   <span class="s">&quot;b&quot;</span>, <span class="s">&quot;c&quot;</span>, <span class="s">&quot;d&quot;</span>
+   <span class="s">&quot;c&quot;</span>, <span class="s">&quot;d&quot;</span>, <span class="s">&quot;&quot;</span>
+]
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 59)" onmouseover="showTip(event, 'fs16', 59)" class="i">actual</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 60)" onmouseover="showTip(event, 'fs1', 60)" class="f">convertToPrevAndNext</span> <span onmouseout="hideTip(event, 'fs14', 61)" onmouseover="showTip(event, 'fs14', 61)" class="i">defaultValue</span> <span onmouseout="hideTip(event, 'fs13', 62)" onmouseover="showTip(event, 'fs13', 62)" class="i">items</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs17', 63)" onmouseover="showTip(event, 'fs17', 63)" class="i">test</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs16', 64)" onmouseover="showTip(event, 'fs16', 64)" class="i">actual</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs15', 65)" onmouseover="showTip(event, 'fs15', 65)" class="i">expected</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+<span class="l">9: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val convertToPrevAndNext :
+  defaultValue:'T -&gt; items:'T list -&gt; ('T * 'T * 'T) list
+val items : string list = ["a"; "b"; "c"; "d"]
+val defaultValue : string = ""
+val expected : (string * string * string) list =
+  [("", "a", "b"); ("a", "b", "c"); ("b", "c", "d"); ("c", "d", "")]
+val actual : (string * string * string) list =
+  [("", "a", "b"); ("a", "b", "c"); ("b", "c", "d"); ("c", "d", "")]
+val test : bool = true
+</code></pre></td></tr></table>
+<h3>Test With Option</h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+<span class="l">9: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs18', 66)" onmouseover="showTip(event, 'fs18', 66)" class="i">expectedOption</span> <span class="o">=</span> [
+   <span onmouseout="hideTip(event, 'fs11', 67)" onmouseover="showTip(event, 'fs11', 67)" class="p">None</span>, <span class="s">&quot;a&quot;</span>, <span onmouseout="hideTip(event, 'fs12', 68)" onmouseover="showTip(event, 'fs12', 68)" class="p">Some</span> <span class="s">&quot;b&quot;</span>
+   <span onmouseout="hideTip(event, 'fs12', 69)" onmouseover="showTip(event, 'fs12', 69)" class="p">Some</span> <span class="s">&quot;a&quot;</span>, <span class="s">&quot;b&quot;</span>, <span onmouseout="hideTip(event, 'fs12', 70)" onmouseover="showTip(event, 'fs12', 70)" class="p">Some</span> <span class="s">&quot;c&quot;</span>
+   <span onmouseout="hideTip(event, 'fs12', 71)" onmouseover="showTip(event, 'fs12', 71)" class="p">Some</span> <span class="s">&quot;b&quot;</span>, <span class="s">&quot;c&quot;</span>, <span onmouseout="hideTip(event, 'fs12', 72)" onmouseover="showTip(event, 'fs12', 72)" class="p">Some</span> <span class="s">&quot;d&quot;</span>
+   <span onmouseout="hideTip(event, 'fs12', 73)" onmouseover="showTip(event, 'fs12', 73)" class="p">Some</span> <span class="s">&quot;c&quot;</span>, <span class="s">&quot;d&quot;</span>, <span onmouseout="hideTip(event, 'fs11', 74)" onmouseover="showTip(event, 'fs11', 74)" class="p">None</span>
+]
+
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs19', 75)" onmouseover="showTip(event, 'fs19', 75)" class="i">actualOption</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs9', 76)" onmouseover="showTip(event, 'fs9', 76)" class="f">convertToPrevAndNextOption</span> <span onmouseout="hideTip(event, 'fs13', 77)" onmouseover="showTip(event, 'fs13', 77)" class="i">items</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs20', 78)" onmouseover="showTip(event, 'fs20', 78)" class="i">testOption</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs19', 79)" onmouseover="showTip(event, 'fs19', 79)" class="i">actualOption</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs18', 80)" onmouseover="showTip(event, 'fs18', 80)" class="i">expectedOption</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+<span class="l">9: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val convertToPrevAndNextOption :
+  items:'T list -&gt; ('T option * 'T * 'T option) list
+val expectedOption : (string option * string * string option) list =
+  [(None, "a", Some "b"); (Some "a", "b", Some "c"); (Some "b", "c", Some "d");
+   (Some "c", "d", None)]
+val actualOption : (string option * string * string option) list =
+  [(None, "a", Some "b"); (Some "a", "b", Some "c"); (Some "b", "c", Some "d");
+   (Some "c", "d", None)]
+val testOption : bool = true
+</code></pre></td></tr></table>
+ 
+        <div class="tip" id="fs1">val convertToPrevAndNext : defaultValue:&#39;T -&gt; items:&#39;T list -&gt; (&#39;T * &#39;T * &#39;T) list<br /><br />Full name: Index.convertToPrevAndNext</div>
+<div class="tip" id="fs2">val defaultValue : &#39;T</div>
+<div class="tip" id="fs3">val items : &#39;T list</div>
+<div class="tip" id="fs4">type &#39;T list = List&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Collections.list&lt;_&gt;</div>
+<div class="tip" id="fs5">val h : &#39;T</div>
+<div class="tip" id="fs6">val max : int</div>
+<div class="tip" id="fs7"></div>
+<div class="tip" id="fs8">Multiple items<br />module List<br /><br />from Microsoft.FSharp.Collections<br /><br />--------------------</div>
+<div class="tip" id="fs9">val convertToPrevAndNextOption : items:&#39;T list -&gt; (&#39;T option * &#39;T * &#39;T option) list<br /><br />Full name: Index.convertToPrevAndNextOption</div>
+<div class="tip" id="fs10">type &#39;T option = Option&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Core.option&lt;_&gt;</div>
+<div class="tip" id="fs11">union case Option.None: Option&lt;&#39;T&gt;</div>
+<div class="tip" id="fs12">union case Option.Some: Value: &#39;T -&gt; Option&lt;&#39;T&gt;</div>
+<div class="tip" id="fs13">val items : string list<br /><br />Full name: Index.items</div>
+<div class="tip" id="fs14">val defaultValue : string<br /><br />Full name: Index.defaultValue</div>
+<div class="tip" id="fs15">val expected : (string * string * string) list<br /><br />Full name: Index.expected</div>
+<div class="tip" id="fs16">val actual : (string * string * string) list<br /><br />Full name: Index.actual</div>
+<div class="tip" id="fs17">val test : bool<br /><br />Full name: Index.test</div>
+<div class="tip" id="fs18">val expectedOption : (string option * string * string option) list<br /><br />Full name: Index.expectedOption</div>
+<div class="tip" id="fs19">val actualOption : (string option * string * string option) list<br /><br />Full name: Index.actualOption</div>
+<div class="tip" id="fs20">val testOption : bool<br /><br />Full name: Index.testOption</div>
+
+        
+     <div class="row post-nav">
+       <div class="col-md-6 post-nav-prev">
+         <h4>Previous</h4><ul>
+<li><a href="/posts/Snippets/Fs/List/Accumulate">Snippets - F# - List - Accumulate</a></li>
+</ul>
+
+       </div>
+       <div class="col-md-6 post-nav-next">
+         <h4>Next</h4><ul>
+<li><a href="/posts/Snippets/Fs/Regex/Extract">Snippets - F# - Regex - Extract</a></li>
+</ul>
+
+       </div>
+     </div>
+      </div>
+    </div>
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/assets/js/literate.js"></script>
+  </body>
+</html>

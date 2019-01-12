@@ -19,4 +19,5 @@
 - [Snippets - F# - FSX - CLI-Args](/posts/Snippets/Fs/FSX/CLI-Args)
 - [Snippets - F# - Html - Clean](/posts/Snippets/Fs/Html/Clean)
 - [Snippets - F# - List - Accumulate](/posts/Snippets/Fs/List/Accumulate)
+- [Snippets - F# - List - Previous-and-Next](/posts/Snippets/Fs/List/Previous-and-Next)
 - [Snippets - F# - Regex - Extract](/posts/Snippets/Fs/Regex/Extract)

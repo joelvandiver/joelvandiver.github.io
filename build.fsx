@@ -8,6 +8,7 @@ let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 
 // TODO:  Build markdown pages.
+// TODO:  Create links for already created index.html
 // TODO:  Separate links into sections by folders.
 // TODO:  Only build files that have changed after the template changed.
 

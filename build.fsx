@@ -4,7 +4,6 @@ open System.IO
 open System.Text.RegularExpressions
 open FSharp.Literate
 
-// TODO:  Separate links into sections by folders.
 // TODO:  Fix VSCode F# Intellisense
 // TODO:  Fix VS 2019 Preview
 
@@ -44,7 +43,7 @@ let writeHome () =
    let contents = File.ReadAllText(home)
    let pattern = "## Posts(.|\n)*"
    let replaced = 
-      let text = sprintf "## Posts%s\r\n" links
+      let text = sprintf "## Posts\r\n%s\r\n\r\n" links
       Regex.Replace(contents, pattern, text)
    File.WriteAllText(home, replaced)
 

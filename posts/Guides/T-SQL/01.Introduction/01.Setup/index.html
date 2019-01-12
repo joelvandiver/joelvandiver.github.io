@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>T-SQL Introduction
+</title>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- Custom fonts for this template -->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h1><a href="/">Joel Vandiver</a></h1>
+        <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
+      </div>
+      <div class="main">
+        <h1>T-SQL Introduction</h1>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="sql"><span class="k">CREATE</span> <span class="k">DATABASE</span> TestDB
+<span class="k">GO</span>
+
+<span class="k">USE</span> TestDB;
+<span class="k">GO</span>
+
+<span class="k">CREATE</span> <span class="k">TABLE</span> TestTable (Id <span class="k">INT</span>)
+<span class="k">GO</span>
+
+<span class="k">INSERT</span> <span class="k">INTO</span> TestTable(Id) <span class="k">VALUES</span> (<span class="n">1</span>), (<span class="n">2</span>), (<span class="n">3</span>), (<span class="n">4</span>), (<span class="n">5</span>)
+<span class="k">GO</span>
+
+<span class="k">SELECT</span> * <span class="k">FROM</span> TestTable
+
+<span class="k">DELETE</span> <span class="k">FROM</span> TestTable
+</code></pre></td></tr></table>
+<table>
+<thead>
+<tr class="header">
+<th><p>Id</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>1</p></td>
+</tr>
+<tr class="even">
+<td><p>2</p></td>
+</tr>
+<tr class="odd">
+<td><p>3</p></td>
+</tr>
+<tr class="even">
+<td><p>4</p></td>
+</tr>
+<tr class="odd">
+<td><p>5</p></td>
+</tr>
+</tbody>
+</table>
+
+ 
+        
+        
+     <div class="row post-nav">
+       <div class="col-md-6 post-nav-prev">
+         <h4>Previous</h4><ul>
+<li><a href="/posts/Guides/Fs/01.Introduction/03.Primitives">Guides - F# - 01.Introduction - 03.Primitives</a></li>
+</ul>
+
+       </div>
+       <div class="col-md-6 post-nav-next">
+         <h4>Next</h4><ul>
+<li><a href="/posts/Snippets/Fs/FSX/CLI-Args">Snippets - F# - FSX - CLI-Args</a></li>
+</ul>
+
+       </div>
+     </div>
+      </div>
+    </div>
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/assets/js/literate.js"></script>
+  </body>
+</html>

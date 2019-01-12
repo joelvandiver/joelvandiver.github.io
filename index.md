@@ -16,5 +16,7 @@
 - [Guides - Canvas](/posts/Guides/Canvas)
 - [Guides - F# - 01.Introduction - 01.Values](/posts/Guides/Fs/01.Introduction/01.Values)
 - [Snippets - F# - FSX - CLI-Args](/posts/Snippets/Fs/FSX/CLI-Args)
+- [Snippets - F# - Html - Clean - Index.html](/posts/Snippets/Fs/Html/Clean/Index.html)
+- [Snippets - F# - Html - Clean](/posts/Snippets/Fs/Html/Clean)
 - [Snippets - F# - List - Accumulate](/posts/Snippets/Fs/List/Accumulate)
 - [Snippets - F# - Regex - Extract](/posts/Snippets/Fs/Regex/Extract)

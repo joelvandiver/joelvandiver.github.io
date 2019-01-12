@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -6,126 +7,67 @@
     <title>F# Values
 </title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+
     <!-- Custom fonts for this template -->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
   </head>
+
   <body>
     <div class="container">
       <div class="sidebar">
-        <h1>
-          <a href="/">Joel Vandiver</a>
-        </h1>
+        <h1><a href="/">Joel Vandiver</a></h1>
         <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
       </div>
       <div class="main">
         <h1>F# Values</h1>
-        <h3>Value Definition</h3>
-        <p>Let's start our F# journey with a simple <code>let</code> value binding:</p>
-        <table class="pre">
-          <tr>
-            <td class="lines">
-              <pre class="fssnip">
-                <span class="l">1: </span>
-              </pre>
-            </td>
-            <td class="snippet">
-              <pre class="fssnip highlighted">
-                <code lang="fsharp">
-                  <span class="k">let</span>
-                  <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">x</span>
-                  <span class="o">=</span> ()
-</code>
-              </pre>
-            </td>
-          </tr>
-        </table>
-        <h4>Description</h4>
-        <p>
-          <code>let</code> instructs the F# compiler to set aside a memory location with a name of <code>x</code>.  The value in this case is <code>()</code> which is F#'s unit.  The F#'s unit value is the simplest possible value.  It's meaning is synonymous to <em>nothing</em> as in "<strong>Nothing</strong> meaningful happened."  This concept may seem strange at first, but it leads to greater flexibility later on.</p>
-        <blockquote>
-          <p>The use of the term <em>value</em> is preferrable over <em>variable</em> since <em>variable</em> implies that the value may change over time.</p>
-        </blockquote>
-        <h4>Note on Immutability</h4>
-        <p>F# enforces immutability on values by default.  Attempting to set a value to a new value after definition will not compile.  The <code>isImmuatable</code> value below will fail on the second line.</p>
-        <table class="pre">
-          <tr>
-            <td class="lines">
-              <pre class="fssnip">
-                <span class="l">1: </span>
-              </pre>
-            </td>
-            <td class="snippet">
-              <pre class="fssnip highlighted">
-                <code lang="fsharp">
-                  <span class="k">let</span>
-                  <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">isImmuatable</span>
-                  <span class="o">=</span>
-                  <span class="k">true</span>
-                </code>
-              </pre>
-            </td>
-          </tr>
-        </table>
-        <p>
-          <em>Output</em>:</p>
-        <table class="pre">
-          <tr>
-            <td class="lines">
-              <pre class="fssnip">
-                <span class="l">1: </span>
-              </pre>
-            </td>
-            <td class="snippet">
-              <pre class="fssnip">
-                <code lang="console">val isImmuatable : bool = true
-</code>
-              </pre>
-            </td>
-          </tr>
-        </table>
-        <p>Note the F# mutation operator <code>&lt;-</code> below.</p>
-        <table class="pre">
-          <tr>
-            <td class="lines">
-              <pre class="fssnip">
-                <span class="l">1: </span>
-              </pre>
-            </td>
-            <td class="snippet">
-              <pre class="fssnip highlighted">
-                <code lang="fsharp">
-                  <span class="i">isImmuatable</span>
-                  <span class="o">&lt;-</span>
-                  <span class="k">false</span>
-                </code>
-              </pre>
-            </td>
-          </tr>
-        </table>
-        <p>
-          <em>Output</em>:</p>
-        <table class="pre">
-          <tr>
-            <td class="lines">
-              <pre class="fssnip">
-                <span class="l">1: </span>
-              </pre>
-            </td>
-            <td class="snippet">
-              <pre class="fssnip">
-                <code lang="console">index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mutable keyword, e.g. 'let mutable isImmuatable = expression'.
-</code>
-              </pre>
-            </td>
-          </tr>
-        </table>
+<h3>Value Definition</h3>
+<p>Let's start our F# journey with a simple <code>let</code> value binding:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">x</span> <span class="o">=</span> ()
+</code></pre></td>
+</tr>
+</table>
+<h4>Description</h4>
+<p><code>let</code> instructs the F# compiler to set aside a memory location with a name of <code>x</code>.  The value in this case is <code>()</code> which is F#'s unit.  The F#'s unit value is the simplest possible value.  It's meaning is synonymous to <em>nothing</em> as in "<strong>Nothing</strong> meaningful happened."  This concept may seem strange at first, but it leads to greater flexibility later on.</p>
+<blockquote>
+<p>The use of the term <em>value</em> is preferrable over <em>variable</em> since <em>variable</em> implies that the value may change over time.</p>
+</blockquote>
+<h4>Note on Immutability</h4>
+<p>F# enforces immutability on values by default.  Attempting to set a value to a new value after definition will not compile.  The <code>isImmuatable</code> value below will fail on the second line.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">isImmuatable</span> <span class="o">=</span> <span class="k">true</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output</em>:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val isImmuatable : bool = true
+</code></pre></td></tr></table>
+<p>Note the F# mutation operator <code>&lt;-</code> below.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">isImmuatable</span> <span class="o">&lt;-</span> <span class="k">false</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output</em>:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mutable keyword, e.g. 'let mutable isImmuatable = expression'.
+</code></pre></td></tr></table>
+ 
         <div class="tip" id="fs1">val x : unit<br /><br />Full name: Index.x</div>
-        <div class="tip" id="fs2">val isImmuatable : bool<br /><br />Full name: Index.isImmuatable</div>
+<div class="tip" id="fs2">val isImmuatable : bool<br /><br />Full name: Index.isImmuatable</div>
+
       </div>
     </div>
+
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>

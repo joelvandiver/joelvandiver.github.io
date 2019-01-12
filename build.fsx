@@ -1,9 +1,7 @@
 #load @"packages/FSharp.Formatting/FSharp.Formatting.fsx"
-#r @"C:\git\joelvandiver.github.io\packages\System.Xml.Linq\lib\net20\System.Xml.Linq.dll"
 
 open System.IO
 open System.Text.RegularExpressions
-open System.Xml.Linq
 open FSharp.Literate
 
 // TODO:  Fix VSCode F# Intellisense
@@ -50,26 +48,8 @@ let writeHome () =
 
    Literate.ProcessMarkdown(home, template)
 
-let cleanAllHtml () : unit =
-   (Path.Combine(source, "index.html")) :: ("*.html" |> getPosts)
-   // 
-   |> List.iter(
-      fun file -> 
-         try 
-            printfn "%s" file
-            let clean =
-               file
-               |> File.ReadAllText
-               |> XElement.Parse 
-               |> string
-            File.WriteAllText(file, clean)         
-         with | ex -> printfn "%A" ex
-   )
-
 
 
 "index.fsx" |> getPosts |> List.iter (fun script -> Literate.ProcessScriptFile(script, template))
 "index.md" |> getPosts |> List.iter (fun script -> Literate.ProcessMarkdown(script, template))
 writeHome()
-cleanAllHtml()
-

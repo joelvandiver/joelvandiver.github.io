@@ -4,8 +4,6 @@ open System.IO
 open System.Text.RegularExpressions
 open FSharp.Literate
 
-// TODO:  Fix VSCode F# Intellisense
-
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 let home = Path.Combine(source, "index.md")

@@ -4,7 +4,6 @@
 
 ## Posts
 
-- [Design - Bootstrap](/posts/Design/Bootstrap)
 - [Explorations - Interview-Questions - Colum-Header-Number](/posts/Explorations/Interview-Questions/Colum-Header-Number)
 - [Explorations - Math - Functions - Domain-And-Range](/posts/Explorations/Math/Functions/Domain-And-Range)
 - [Explorations - Math - Functions - Relations-vs-Functions](/posts/Explorations/Math/Functions/Relations-vs-Functions)

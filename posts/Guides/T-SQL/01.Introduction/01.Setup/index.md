@@ -16,6 +16,11 @@ GO
 SELECT * FROM TestTable
 
 DELETE FROM TestTable
+
+USE master
+DROP DATABASE TestDB
+GO
+
 ```
 
 | Id |

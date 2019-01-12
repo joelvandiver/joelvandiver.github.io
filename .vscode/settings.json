@@ -6,7 +6,9 @@
 		"**/CVS": true,
 		"**/.DS_Store": true,
 		"**/paket-files": true,
-		"**/*.html": { "when": "$(basename).fsx" },
+		"**/*.html": {
+			"when": ["$(basename).md","$(basename).fsx"]
+		},
 		"**/build": true
 	}
 }

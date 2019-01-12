@@ -5,6 +5,8 @@ open System.Text.RegularExpressions
 open FSharp.Literate
 open FSharp.Markdown
 
+// TODO: Inject JS Post Files into Corresponding Posts
+
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 

@@ -12,7 +12,6 @@
 - [Fun - Art - Animations](/posts/Fun/Art/Animations)
 - [Fun - Art - Fractals](/posts/Fun/Art/Fractals)
 - [Fun - German - Conversation](/posts/Fun/German/Conversation)
-- [Guides - Canvas](/posts/Guides/Canvas)
 - [Guides - Expecto - 01.Basic Example](/posts/Guides/Expecto/01.Basic Example)
 - [Guides - F# - 01.Introduction - 01.Values](/posts/Guides/Fs/01.Introduction/01.Values)
 - [Guides - F# - 01.Introduction - 02.Implicit-vs-Explicit](/posts/Guides/Fs/01.Introduction/02.Implicit-vs-Explicit)

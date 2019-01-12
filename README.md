@@ -1,3 +1,4 @@
-# TODO
+# Joel Vandiver's Blog
 
-http://jv/posts/explorations/interview-questions/column-header-number/
+The url for this Blog is here:
+[https://joelvandiver.github.io/](https://joelvandiver.github.io/)

@@ -4,3 +4,4 @@ nuget FSharp.Core
 nuget FSharp.Data
 nuget FSharp.Formatting
 nuget Newtonsoft.Json
+nuget System.Xml.Linq

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -7,70 +6,132 @@
     <title>Accessing Command Line Arguments in an FSX Script
 </title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
-
     <!-- Custom fonts for this template -->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
   </head>
-
   <body>
     <div class="container">
       <div class="sidebar">
-        <h1><a href="/">Joel Vandiver</a></h1>
+        <h1>
+          <a href="/">Joel Vandiver</a>
+        </h1>
         <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
       </div>
       <div class="main">
         <h1>Accessing Command Line Arguments in an FSX Script</h1>
-<p>To access the command line arguments in an FSX script, simply use the provided fsi.CommandLineArgs.</p>
-<p>Let's use the following test lines in this script:</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">args</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">fsi</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">CommandLineArgs</span>
-
-<span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="f">printfn</span> <span class="s">&quot;</span><span class="pf">%A</span><span class="s">&quot;</span> <span onmouseout="hideTip(event, 'fs1', 5)" onmouseover="showTip(event, 'fs1', 5)" class="i">args</span>
-</code></pre></td>
-</tr>
-</table>
-<h2>Examples:</h2>
-<p>Current Script:  C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx</p>
-<blockquote>
-<p><em>Note</em> - Ensure access to FSI in your PATH. My FSI is located here:  C:\Program Files (x86)\Microsoft SDKs\F#\4.1\Framework\v4.0\fsi.exe</p>
-</blockquote>
-<h3>I. Basic</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="command">fsi C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx
-</code></pre></td></tr></table>
-<p><em>Ouput</em>:</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="command">[|"C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx"|]
-</code></pre></td></tr></table>
-<h3>II.  Pass Parameters</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="command">fsi C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx a b c d 1 2 3 4 
-</code></pre></td></tr></table>
-<p><em>Ouput</em>:</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="command">[|"C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx"; "a";
+        <p>To access the command line arguments in an FSX script, simply use the provided fsi.CommandLineArgs.</p>
+        <p>Let's use the following test lines in this script:</p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+                <span class="l">2: </span>
+                <span class="l">3: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip highlighted">
+                <code lang="fsharp">
+                  <span class="k">let</span>
+                  <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">args</span>
+                  <span class="o">=</span>
+                  <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">fsi</span>
+                  <span class="o">.</span>
+                  <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">CommandLineArgs</span>
+                  <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="f">printfn</span>
+                  <span class="s">"</span>
+                  <span class="pf">%A</span>
+                  <span class="s">"</span>
+                  <span onmouseout="hideTip(event, 'fs1', 5)" onmouseover="showTip(event, 'fs1', 5)" class="i">args</span>
+                </code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <h2>Examples:</h2>
+        <p>Current Script:  C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx</p>
+        <blockquote>
+          <p>
+            <em>Note</em> - Ensure access to FSI in your PATH. My FSI is located here:  C:\Program Files (x86)\Microsoft SDKs\F#\4.1\Framework\v4.0\fsi.exe</p>
+        </blockquote>
+        <h3>I. Basic</h3>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="command">fsi C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <em>Ouput</em>:</p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="command">[|"C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx"|]
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <h3>II.  Pass Parameters</h3>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="command">fsi C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx a b c d 1 2 3 4 
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <em>Ouput</em>:</p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+                <span class="l">2: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="command">[|"C:\git\joelvandiver.github.io\posts\tutorials\fs\fsx\cli-args\index.fsx"; "a";
   "b"; "c"; "d"; "1"; "2"; "3"; "4"|]
-</code></pre></td></tr></table>
- 
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
         <div class="tip" id="fs1">val args : string []<br /><br />Full name: Index.args</div>
-<div class="tip" id="fs2">val fsi : Compiler.Interactive.InteractiveSession<br /><br />Full name: Microsoft.FSharp.Compiler.Interactive.Settings.fsi</div>
-<div class="tip" id="fs3">property Compiler.Interactive.InteractiveSession.CommandLineArgs: string []</div>
-<div class="tip" id="fs4">val printfn : format:Printf.TextWriterFormat&lt;&#39;T&gt; -&gt; &#39;T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.printfn</div>
-
+        <div class="tip" id="fs2">val fsi : Compiler.Interactive.InteractiveSession<br /><br />Full name: Microsoft.FSharp.Compiler.Interactive.Settings.fsi</div>
+        <div class="tip" id="fs3">property Compiler.Interactive.InteractiveSession.CommandLineArgs: string []</div>
+        <div class="tip" id="fs4">val printfn : format:Printf.TextWriterFormat&lt;'T&gt; -&gt; 'T<br /><br />Full name: Microsoft.FSharp.Core.ExtraTopLevelOperators.printfn</div>
       </div>
     </div>
-
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>

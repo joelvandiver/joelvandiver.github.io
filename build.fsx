@@ -1,15 +1,16 @@
 #load @"packages/FSharp.Formatting/FSharp.Formatting.fsx"
+#r @"C:\git\joelvandiver.github.io\packages\System.Xml.Linq\lib\net20\System.Xml.Linq.dll"
 
 open System.IO
 open System.Text.RegularExpressions
+open System.Xml.Linq
 open FSharp.Literate
 
 // TODO:  Fix VSCode F# Intellisense
-// TODO:  Fix VS 2019 Preview
-// TODO:  Format HTML After Build
 
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
+let home = Path.Combine(source, "index.md")
 
 let getPosts (fileName: string) : string list =
    Directory.GetFiles(Path.Combine(source, "posts"), fileName, SearchOption.AllDirectories)
@@ -40,7 +41,6 @@ let writeHome () =
       |> List.sort
       |> List.distinct
       |> List.fold(fun a b -> a + "\r\n" + b) ""
-   let home = Path.Combine(source, "index.md")
    let contents = File.ReadAllText(home)
    let pattern = "## Posts(.|\n)*"
    let replaced = 
@@ -50,9 +50,26 @@ let writeHome () =
 
    Literate.ProcessMarkdown(home, template)
 
+let cleanAllHtml () : unit =
+   (Path.Combine(source, "index.html")) :: ("*.html" |> getPosts)
+   // 
+   |> List.iter(
+      fun file -> 
+         try 
+            printfn "%s" file
+            let clean =
+               file
+               |> File.ReadAllText
+               |> XElement.Parse 
+               |> string
+            File.WriteAllText(file, clean)         
+         with | ex -> printfn "%A" ex
+   )
+
+
 
 "index.fsx" |> getPosts |> List.iter (fun script -> Literate.ProcessScriptFile(script, template))
 "index.md" |> getPosts |> List.iter (fun script -> Literate.ProcessMarkdown(script, template))
 writeHome()
-
+cleanAllHtml()
 

@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -7,159 +6,299 @@
     <title>F# JSON List Deserialization
 </title>
     <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
-
     <!-- Custom fonts for this template -->
     <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
   </head>
-
   <body>
     <div class="container">
       <div class="sidebar">
-        <h1><a href="/">Joel Vandiver</a></h1>
+        <h1>
+          <a href="/">Joel Vandiver</a>
+        </h1>
         <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
       </div>
       <div class="main">
         <h1>F# JSON List Deserialization</h1>
-<p>F# promotes immutability and deemphasizes null checks that plague object oriented languages.
+        <p>F# promotes immutability and deemphasizes null checks that plague object oriented languages.
 However, though this is a guiding principle in coding in F#, F# does have some limitations.  Typically, these limitations arise at the boundaries of the system.</p>
-<p>Transferring messages via JSON over HTTP is one such example of a boundary that
+        <p>Transferring messages via JSON over HTTP is one such example of a boundary that
 presents a limitation in F#.</p>
-<p><strong>Limitation</strong>:  F# Lists are sometimes deserialized as null, and F# states that a list
+        <p>
+          <strong>Limitation</strong>:  F# Lists are sometimes deserialized as null, and F# states that a list
 does not have 'null' as a proper value.</p>
-<p>This limitation arose from an assumption I had when using the Newtonsoft deserializer:</p>
-<blockquote>
-<p><strong>Lists should default to an empty list during JSON Deserialization.</strong></p>
-</blockquote>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
-<span class="l"> 2: </span>
-<span class="l"> 3: </span>
-<span class="l"> 4: </span>
-<span class="l"> 5: </span>
-<span class="l"> 6: </span>
-<span class="l"> 7: </span>
-<span class="l"> 8: </span>
-<span class="l"> 9: </span>
-<span class="l">10: </span>
-<span class="l">11: </span>
-<span class="l">12: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="prep">#r</span> <span class="s">@&quot;C:\git\joelvandiver.github.io\packages\Newtonsoft.Json\lib\netstandard2.0\Newtonsoft.Json.dll&quot;</span>
+        <p>This limitation arose from an assumption I had when using the Newtonsoft deserializer:</p>
+        <blockquote>
+          <p>
+            <strong>Lists should default to an empty list during JSON Deserialization.</strong>
+          </p>
+        </blockquote>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l"> 1: </span>
+                <span class="l"> 2: </span>
+                <span class="l"> 3: </span>
+                <span class="l"> 4: </span>
+                <span class="l"> 5: </span>
+                <span class="l"> 6: </span>
+                <span class="l"> 7: </span>
+                <span class="l"> 8: </span>
+                <span class="l"> 9: </span>
+                <span class="l">10: </span>
+                <span class="l">11: </span>
+                <span class="l">12: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip highlighted">
+                <code lang="fsharp">
+                  <span class="prep">#r</span>
+                  <span class="s">@"C:\git\joelvandiver.github.io\packages\Newtonsoft.Json\lib\netstandard2.0\Newtonsoft.Json.dll"</span>
+                  <span class="k">open</span>
+                  <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">System</span>
+                  <span class="k">open</span>
+                  <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">Newtonsoft</span>
+                  <span class="o">.</span>
+                  <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">Json</span>
+                  <span class="k">type</span>
+                  <span class="i">A</span>
+                  <span class="o">=</span> 
+   {  <span class="i">Title</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="t">string</span><span class="i">Items</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="t">string</span><span onmouseout="hideTip(event, 'fs5', 6)" onmouseover="showTip(event, 'fs5', 6)" class="t">list</span> }
 
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">System</span>
-<span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">Newtonsoft</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">Json</span>
-
-<span class="k">type</span> <span class="i">A</span> <span class="o">=</span> 
-   {  <span class="i">Title</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="t">string</span>
-      <span class="i">Items</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="t">string</span> <span onmouseout="hideTip(event, 'fs5', 6)" onmouseover="showTip(event, 'fs5', 6)" class="t">list</span> }
-
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs6', 7)" onmouseover="showTip(event, 'fs6', 7)" class="i">json</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;{ &quot;Title&quot;: &quot;JSON A&quot; }&quot;&quot;&quot;</span>
-
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 8)" onmouseover="showTip(event, 'fs7', 8)" class="i">itemsIsNull</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 9)" onmouseover="showTip(event, 'fs8', 9)" class="i">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 10)" onmouseover="showTip(event, 'fs9', 10)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">A</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="i">json</span>)
-</code></pre></td>
-</tr>
-</table>
-<p><em>Output:</em></p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="console">val itemsIsNull : A = {Title = "JSON A";
+<span class="k">let</span><span onmouseout="hideTip(event, 'fs6', 7)" onmouseover="showTip(event, 'fs6', 7)" class="i">json</span><span class="o">=</span><span class="s">"""{ "Title": "JSON A" }"""</span><span class="k">let</span><span onmouseout="hideTip(event, 'fs7', 8)" onmouseover="showTip(event, 'fs7', 8)" class="i">itemsIsNull</span><span class="o">=</span><span onmouseout="hideTip(event, 'fs8', 9)" onmouseover="showTip(event, 'fs8', 9)" class="i">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 10)" onmouseover="showTip(event, 'fs9', 10)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">A</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="i">json</span>)
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <em>Output:</em>
+        </p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+                <span class="l">2: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="console">val itemsIsNull : A = {Title = "JSON A";
                         Items = null;}
-</code></pre></td></tr></table>
-<h3>Problem 1 - Use of the List will lead to an Object NullReferenceException.</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">willThrow</span> <span class="o">=</span> <span class="i">itemsIsNull</span><span class="o">.</span><span class="i">Items</span><span class="o">.</span><span class="i">Length</span>
-</code></pre></td>
-</tr>
-</table>
-<p><em>Output:</em></p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-<span class="l">4: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="console">System.NullReferenceException: Object reference not set to an instance of an object.
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <h3>Problem 1 - Use of the List will lead to an Object NullReferenceException.</h3>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip highlighted">
+                <code lang="fsharp">
+                  <span class="k">let</span>
+                  <span class="i">willThrow</span>
+                  <span class="o">=</span>
+                  <span class="i">itemsIsNull</span>
+                  <span class="o">.</span>
+                  <span class="i">Items</span>
+                  <span class="o">.</span>
+                  <span class="i">Length</span>
+                </code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <em>Output:</em>
+        </p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+                <span class="l">2: </span>
+                <span class="l">3: </span>
+                <span class="l">4: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="console">System.NullReferenceException: Object reference not set to an instance of an object.
    at &lt;StartupCode$FSI_0007&gt;.$FSI_0007.main@() in 
    c:\git\joelvandiver.github.io\posts\explorations\ideas\json-list-deserialization\index.fsx:line 170
 Stopped due to error
-</code></pre></td></tr></table>
-<h3>Problem 2 - Null lists cannot be checked for null directly.</h3>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">willNotCompile</span> <span class="o">=</span> <span class="i">itemsIsNull</span><span class="o">.</span><span class="i">Items</span> <span class="o">=</span> <span class="k">null</span>
-</code></pre></td>
-</tr>
-</table>
-<p><em>Output:</em></p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="console">index.fsx(28,42): error FS0043: The type 'string list' does not have 'null' as a proper value
-</code></pre></td></tr></table>
-<hr />
-<h3>Solution 1 - Use Object.ReferenceEquals to Check for Null</h3>
-<p><em>Drawback</em> -&gt; Implementation code is littered with noisy code.</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs10', 12)" onmouseover="showTip(event, 'fs10', 12)" class="i">willBeNull</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs11', 13)" onmouseover="showTip(event, 'fs11', 13)" class="t">Object</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs12', 14)" onmouseover="showTip(event, 'fs12', 14)" class="f">ReferenceEquals</span>(<span onmouseout="hideTip(event, 'fs7', 15)" onmouseover="showTip(event, 'fs7', 15)" class="i">itemsIsNull</span><span class="o">.</span><span class="i">Items</span>, <span class="k">null</span>)
-</code></pre></td>
-</tr>
-</table>
-<p><em>Output:</em></p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="console">val willBeNull : bool = true
-</code></pre></td></tr></table>
-<hr />
-<h3>Solution 2 - Change the Type Definition to Allow Option Types</h3>
-<p><em>Drawback</em> -&gt; Ambiguity is added to the system about the purpose of the optional list.</p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-<span class="l">3: </span>
-<span class="l">4: </span>
-<span class="l">5: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="i">B</span> <span class="o">=</span>
-   {  <span class="i">Title</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 16)" onmouseover="showTip(event, 'fs4', 16)" class="t">string</span>
-      <span class="i">Items</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 17)" onmouseover="showTip(event, 'fs4', 17)" class="t">string</span> <span onmouseout="hideTip(event, 'fs5', 18)" onmouseover="showTip(event, 'fs5', 18)" class="t">list</span> <span onmouseout="hideTip(event, 'fs13', 19)" onmouseover="showTip(event, 'fs13', 19)" class="t">option</span> }
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <h3>Problem 2 - Null lists cannot be checked for null directly.</h3>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip highlighted">
+                <code lang="fsharp">
+                  <span class="k">let</span>
+                  <span class="i">willNotCompile</span>
+                  <span class="o">=</span>
+                  <span class="i">itemsIsNull</span>
+                  <span class="o">.</span>
+                  <span class="i">Items</span>
+                  <span class="o">=</span>
+                  <span class="k">null</span>
+                </code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <em>Output:</em>
+        </p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="console">index.fsx(28,42): error FS0043: The type 'string list' does not have 'null' as a proper value
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <hr />
+        <h3>Solution 1 - Use Object.ReferenceEquals to Check for Null</h3>
+        <p>
+          <em>Drawback</em> -&gt; Implementation code is littered with noisy code.</p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip highlighted">
+                <code lang="fsharp">
+                  <span class="k">let</span>
+                  <span onmouseout="hideTip(event, 'fs10', 12)" onmouseover="showTip(event, 'fs10', 12)" class="i">willBeNull</span>
+                  <span class="o">=</span>
+                  <span onmouseout="hideTip(event, 'fs11', 13)" onmouseover="showTip(event, 'fs11', 13)" class="t">Object</span>
+                  <span class="o">.</span>
+                  <span onmouseout="hideTip(event, 'fs12', 14)" onmouseover="showTip(event, 'fs12', 14)" class="f">ReferenceEquals</span>(<span onmouseout="hideTip(event, 'fs7', 15)" onmouseover="showTip(event, 'fs7', 15)" class="i">itemsIsNull</span><span class="o">.</span><span class="i">Items</span>, <span class="k">null</span>)
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <em>Output:</em>
+        </p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="console">val willBeNull : bool = true
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <hr />
+        <h3>Solution 2 - Change the Type Definition to Allow Option Types</h3>
+        <p>
+          <em>Drawback</em> -&gt; Ambiguity is added to the system about the purpose of the optional list.</p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+                <span class="l">2: </span>
+                <span class="l">3: </span>
+                <span class="l">4: </span>
+                <span class="l">5: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip highlighted">
+                <code lang="fsharp">
+                  <span class="k">type</span>
+                  <span class="i">B</span>
+                  <span class="o">=</span>
+   {  <span class="i">Title</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 16)" onmouseover="showTip(event, 'fs4', 16)" class="t">string</span><span class="i">Items</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs4', 17)" onmouseover="showTip(event, 'fs4', 17)" class="t">string</span><span onmouseout="hideTip(event, 'fs5', 18)" onmouseover="showTip(event, 'fs5', 18)" class="t">list</span><span onmouseout="hideTip(event, 'fs13', 19)" onmouseover="showTip(event, 'fs13', 19)" class="t">option</span> }
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 20)" onmouseover="showTip(event, 'fs14', 20)" class="i">itemsIsNone</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 21)" onmouseover="showTip(event, 'fs8', 21)" class="i">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 22)" onmouseover="showTip(event, 'fs9', 22)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">B</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 23)" onmouseover="showTip(event, 'fs6', 23)" class="i">json</span>)
-</code></pre></td>
-</tr>
-</table>
-<p><em>Output:</em></p>
-<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
-<span class="l">2: </span>
-</pre></td>
-<td class="snippet"><pre class="fssnip"><code lang="console">val itemsIsNone : B = {Title = "JSON A";
+<span class="k">let</span><span onmouseout="hideTip(event, 'fs14', 20)" onmouseover="showTip(event, 'fs14', 20)" class="i">itemsIsNone</span><span class="o">=</span><span onmouseout="hideTip(event, 'fs8', 21)" onmouseover="showTip(event, 'fs8', 21)" class="i">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 22)" onmouseover="showTip(event, 'fs9', 22)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">B</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 23)" onmouseover="showTip(event, 'fs6', 23)" class="i">json</span>)
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <p>
+          <em>Output:</em>
+        </p>
+        <table class="pre">
+          <tr>
+            <td class="lines">
+              <pre class="fssnip">
+                <span class="l">1: </span>
+                <span class="l">2: </span>
+              </pre>
+            </td>
+            <td class="snippet">
+              <pre class="fssnip">
+                <code lang="console">val itemsIsNone : B = {Title = "JSON A";
                        Items = None;}
-</code></pre></td></tr></table>
-<hr />
-<h3>Solution 3 - Configure the Deserializer to Provide the Empty List</h3>
-<p><em>Drawback</em> -&gt; Difficult</p>
-<p>// TODO:  Add support for Empty Lists in the Deserializer</p>
-<hr />
- 
+</code>
+              </pre>
+            </td>
+          </tr>
+        </table>
+        <hr />
+        <h3>Solution 3 - Configure the Deserializer to Provide the Empty List</h3>
+        <p>
+          <em>Drawback</em> -&gt; Difficult</p>
+        <p>// TODO:  Add support for Empty Lists in the Deserializer</p>
+        <hr />
         <div class="tip" id="fs1">namespace System</div>
-<div class="tip" id="fs2">namespace Newtonsoft</div>
-<div class="tip" id="fs3">namespace Newtonsoft.Json</div>
-<div class="tip" id="fs4">Multiple items<br />val string : value:&#39;T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
-<div class="tip" id="fs5">type &#39;T list = List&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Collections.list&lt;_&gt;</div>
-<div class="tip" id="fs6">val json : string<br /><br />Full name: Index.json</div>
-<div class="tip" id="fs7">val itemsIsNull : obj<br /><br />Full name: Index.itemsIsNull</div>
-<div class="tip" id="fs8">type JsonConvert =<br />&#160;&#160;static val True : string<br />&#160;&#160;static val False : string<br />&#160;&#160;static val Null : string<br />&#160;&#160;static val Undefined : string<br />&#160;&#160;static val PositiveInfinity : string<br />&#160;&#160;static val NegativeInfinity : string<br />&#160;&#160;static val NaN : string<br />&#160;&#160;static member DefaultSettings : Func&lt;JsonSerializerSettings&gt; with get, set<br />&#160;&#160;static member DeserializeAnonymousType&lt;&#39;T&gt; : value:string * anonymousTypeObject:&#39;T -&gt; &#39;T + 1 overload<br />&#160;&#160;static member DeserializeObject : value:string -&gt; obj + 7 overloads<br />&#160;&#160;...<br /><br />Full name: Newtonsoft.Json.JsonConvert</div>
-<div class="tip" id="fs9"></div>
-<div class="tip" id="fs10">val willBeNull : bool<br /><br />Full name: Index.willBeNull</div>
-<div class="tip" id="fs11">Multiple items<br />type Object =<br />&#160;&#160;new : unit -&gt; obj<br />&#160;&#160;member Equals : obj:obj -&gt; bool<br />&#160;&#160;member GetHashCode : unit -&gt; int<br />&#160;&#160;member GetType : unit -&gt; Type<br />&#160;&#160;member ToString : unit -&gt; string<br />&#160;&#160;static member Equals : objA:obj * objB:obj -&gt; bool<br />&#160;&#160;static member ReferenceEquals : objA:obj * objB:obj -&gt; bool<br /><br />Full name: System.Object<br /><br />--------------------<br />Object() : unit</div>
-<div class="tip" id="fs12">Object.ReferenceEquals(objA: obj, objB: obj) : bool</div>
-<div class="tip" id="fs13">type &#39;T option = Option&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Core.option&lt;_&gt;</div>
-<div class="tip" id="fs14">val itemsIsNone : obj<br /><br />Full name: Index.itemsIsNone</div>
-
+        <div class="tip" id="fs2">namespace Newtonsoft</div>
+        <div class="tip" id="fs3">namespace Newtonsoft.Json</div>
+        <div class="tip" id="fs4">Multiple items<br />val string : value:'T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
+        <div class="tip" id="fs5">type 'T list = List&lt;'T&gt;<br /><br />Full name: Microsoft.FSharp.Collections.list&lt;_&gt;</div>
+        <div class="tip" id="fs6">val json : string<br /><br />Full name: Index.json</div>
+        <div class="tip" id="fs7">val itemsIsNull : obj<br /><br />Full name: Index.itemsIsNull</div>
+        <div class="tip" id="fs8">type JsonConvert =<br />  static val True : string<br />  static val False : string<br />  static val Null : string<br />  static val Undefined : string<br />  static val PositiveInfinity : string<br />  static val NegativeInfinity : string<br />  static val NaN : string<br />  static member DefaultSettings : Func&lt;JsonSerializerSettings&gt; with get, set<br />  static member DeserializeAnonymousType&lt;'T&gt; : value:string * anonymousTypeObject:'T -&gt; 'T + 1 overload<br />  static member DeserializeObject : value:string -&gt; obj + 7 overloads<br />  ...<br /><br />Full name: Newtonsoft.Json.JsonConvert</div>
+        <div class="tip" id="fs9"></div>
+        <div class="tip" id="fs10">val willBeNull : bool<br /><br />Full name: Index.willBeNull</div>
+        <div class="tip" id="fs11">Multiple items<br />type Object =<br />  new : unit -&gt; obj<br />  member Equals : obj:obj -&gt; bool<br />  member GetHashCode : unit -&gt; int<br />  member GetType : unit -&gt; Type<br />  member ToString : unit -&gt; string<br />  static member Equals : objA:obj * objB:obj -&gt; bool<br />  static member ReferenceEquals : objA:obj * objB:obj -&gt; bool<br /><br />Full name: System.Object<br /><br />--------------------<br />Object() : unit</div>
+        <div class="tip" id="fs12">Object.ReferenceEquals(objA: obj, objB: obj) : bool</div>
+        <div class="tip" id="fs13">type 'T option = Option&lt;'T&gt;<br /><br />Full name: Microsoft.FSharp.Core.option&lt;_&gt;</div>
+        <div class="tip" id="fs14">val itemsIsNone : obj<br /><br />Full name: Index.itemsIsNone</div>
       </div>
     </div>
-
     <script src="/assets/vendor/jquery/jquery.min.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>

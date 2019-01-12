@@ -4,13 +4,12 @@ open System.IO
 open System.Text.RegularExpressions
 open FSharp.Literate
 
-let source = __SOURCE_DIRECTORY__
-let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
-
-// TODO:  Build markdown pages.
 // TODO:  Separate links into sections by folders.
 // TODO:  Fix VSCode F# Intellisense
 // TODO:  Only build files that have changed after the template changed.
+
+let source = __SOURCE_DIRECTORY__
+let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 
 let getPosts (fileName: string) : string list =
    Directory.GetFiles(Path.Combine(source, "posts"), fileName, SearchOption.AllDirectories)
@@ -24,6 +23,7 @@ let writeHome () =
             .Replace(source, "")
             .Replace("\\index.fsx", "")
             .Replace("\\index.html", "")
+            .Replace("\\index.md", "")
       let dirs = 
          rel
             .Replace("\\posts\\", "")
@@ -51,6 +51,7 @@ let writeHome () =
    Literate.ProcessMarkdown(home, template)
 
 "index.fsx" |> getPosts |> List.iter (fun script -> Literate.ProcessScriptFile(script, template))
+"index.md" |> getPosts |> List.iter (fun script -> Literate.ProcessMarkdown(script, template))
 writeHome()
 
 

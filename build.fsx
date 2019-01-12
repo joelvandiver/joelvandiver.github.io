@@ -6,6 +6,7 @@ open FSharp.Literate
 
 // TODO:  Fix VSCode F# Intellisense
 // TODO:  Fix VS 2019 Preview
+// TODO:  Format HTML After Build
 
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
@@ -43,7 +44,7 @@ let writeHome () =
    let contents = File.ReadAllText(home)
    let pattern = "## Posts(.|\n)*"
    let replaced = 
-      let text = sprintf "## Posts\r\n%s\r\n\r\n" links
+      let text = sprintf "## Posts\r\n%s\r\n" links
       Regex.Replace(contents, pattern, text)
    File.WriteAllText(home, replaced)
 

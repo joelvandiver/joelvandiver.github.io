@@ -23,4 +23,7 @@ printfn "Running Build for File:  %s" file
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
 
-Literate.ProcessScriptFile(file, template)
+if file.EndsWith(".fsx") 
+then Literate.ProcessScriptFile(file, template)
+elif file.EndsWith(".md")
+then Literate.ProcessMarkdown(file, template)

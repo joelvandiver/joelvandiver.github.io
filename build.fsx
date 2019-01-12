@@ -6,7 +6,7 @@ open FSharp.Literate
 
 // TODO:  Separate links into sections by folders.
 // TODO:  Fix VSCode F# Intellisense
-// TODO:  Only build files that have changed after the template changed.
+// TODO:  Fix VS 2019 Preview
 
 let source = __SOURCE_DIRECTORY__
 let template = Path.Combine(__SOURCE_DIRECTORY__, @"content/template.html")
@@ -49,6 +49,7 @@ let writeHome () =
    File.WriteAllText(home, replaced)
 
    Literate.ProcessMarkdown(home, template)
+
 
 "index.fsx" |> getPosts |> List.iter (fun script -> Literate.ProcessScriptFile(script, template))
 "index.md" |> getPosts |> List.iter (fun script -> Literate.ProcessMarkdown(script, template))

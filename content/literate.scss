@@ -49,6 +49,8 @@ table.pre {
   }
 
   code {
+    white-space: pre-line;
+    
     .prep, .inactive {
       color: #aaa;
       font-weight: 800;

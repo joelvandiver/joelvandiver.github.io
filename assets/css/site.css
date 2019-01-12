@@ -6368,7 +6368,7 @@ blockquote p {
   background: #e9ecef;
   padding: 15px; }
 
-ol, ul {
+ul {
   list-style: none; }
 
 #fractal-logo {
@@ -6417,20 +6417,22 @@ table.pre {
     width: 30px; }
     table.pre .lines .l {
       color: #adb5bd; }
-  table.pre code .prep, table.pre code .inactive {
-    color: #aaa;
-    font-weight: 800; }
-  table.pre code .k {
-    color: #4da3ff; }
-  table.pre code .f {
-    color: #b389f9; }
-  table.pre code .t {
-    color: #52e3b8; }
-  table.pre code .i {
-    color: #36cee6; }
-  table.pre code .s {
-    color: #48d368; }
-  table.pre code .o {
-    color: #f8f9fa; }
-  table.pre code .n {
-    color: #ced4da; }
+  table.pre code {
+    white-space: pre-line; }
+    table.pre code .prep, table.pre code .inactive {
+      color: #aaa;
+      font-weight: 800; }
+    table.pre code .k {
+      color: #4da3ff; }
+    table.pre code .f {
+      color: #b389f9; }
+    table.pre code .t {
+      color: #52e3b8; }
+    table.pre code .i {
+      color: #36cee6; }
+    table.pre code .s {
+      color: #48d368; }
+    table.pre code .o {
+      color: #f8f9fa; }
+    table.pre code .n {
+      color: #ced4da; }

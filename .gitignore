@@ -1,6 +1,8 @@
 build
 public
 
+web.config
+
 refs/
 
 *.exe

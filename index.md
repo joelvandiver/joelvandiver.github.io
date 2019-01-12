@@ -14,6 +14,8 @@
 - [Fun - German - Conversation](/posts/Fun/German/Conversation)
 - [Guides - Canvas](/posts/Guides/Canvas)
 - [Guides - F# - 01.Introduction - 01.Values](/posts/Guides/Fs/01.Introduction/01.Values)
+- [Guides - F# - 01.Introduction - 02.Implicit-vs-Explicit](/posts/Guides/Fs/01.Introduction/02.Implicit-vs-Explicit)
+- [Guides - F# - 01.Introduction - 03.Primitives](/posts/Guides/Fs/01.Introduction/03.Primitives)
 - [Snippets - F# - FSX - CLI-Args](/posts/Snippets/Fs/FSX/CLI-Args)
 - [Snippets - F# - Html - Clean](/posts/Snippets/Fs/Html/Clean)
 - [Snippets - F# - List - Accumulate](/posts/Snippets/Fs/List/Accumulate)

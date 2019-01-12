@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>F# Implicit vs Explicit Value Declaration
+</title>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- Custom fonts for this template -->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h1><a href="/">Joel Vandiver</a></h1>
+        <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
+      </div>
+      <div class="main">
+        <h1>F# Implicit vs Explicit Value Declaration</h1>
+<p>Values can be defined in F# either implicitly or explicitly, as in the values below.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">implicitInt</span> <span class="o">=</span> <span class="n">1</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">explicitInt</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="t">int</span> <span class="o">=</span> <span class="n">1</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val implicit : int = 1
+val explicit : int = 1
+</code></pre></td></tr></table>
+<p>Choosing between implicit and explicit value declarations will largely depend on context.</p>
+<p>Simple value declarations are easier to work with as implicit declarations, but values involving complex type systems are generally easier to maintain with explicit declarations.</p>
+ 
+        <div class="tip" id="fs1">val implicitInt : int<br /><br />Full name: Index.implicitInt</div>
+<div class="tip" id="fs2">val explicitInt : int<br /><br />Full name: Index.explicitInt</div>
+<div class="tip" id="fs3">Multiple items<br />val int : value:&#39;T -&gt; int (requires member op_Explicit)<br /><br />Full name: Microsoft.FSharp.Core.Operators.int<br /><br />--------------------<br />type int = int32<br /><br />Full name: Microsoft.FSharp.Core.int<br /><br />--------------------<br />type int&lt;&#39;Measure&gt; = int<br /><br />Full name: Microsoft.FSharp.Core.int&lt;_&gt;</div>
+
+      </div>
+    </div>
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/assets/js/literate.js"></script>
+  </body>
+</html>

@@ -6443,3 +6443,5 @@ table.pre {
     color: #f8f9fa; }
   table.pre code .n {
     color: #ced4da; }
+  table.pre code .c {
+    color: #48d368; }

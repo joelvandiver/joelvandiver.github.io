@@ -17,6 +17,7 @@ This limitation arose from an assumption I had when using the Newtonsoft deseria
 
 *)
 
+#r @"C:\Users\joelv\.nuget\packages\NETStandard.Library\2.0.3\build\netstandard2.0\ref\netstandard.dll"
 #r @"C:\git\joelvandiver.github.io\packages\Newtonsoft.Json\lib\netstandard2.0\Newtonsoft.Json.dll"
 
 open System

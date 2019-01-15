@@ -45,8 +45,10 @@ does not have 'null' as a proper value.</p>
 <span class="l">10: </span>
 <span class="l">11: </span>
 <span class="l">12: </span>
+<span class="l">13: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="prep">#r</span> <span class="s">@&quot;C:\git\joelvandiver.github.io\packages\Newtonsoft.Json\lib\netstandard2.0\Newtonsoft.Json.dll&quot;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="prep">#r</span> <span class="s">@&quot;C:\Users\joelv\.nuget\packages\NETStandard.Library\2.0.3\build\netstandard2.0\ref\netstandard.dll&quot;</span>
+<span class="prep">#r</span> <span class="s">@&quot;C:\git\joelvandiver.github.io\packages\Newtonsoft.Json\lib\netstandard2.0\Newtonsoft.Json.dll&quot;</span>
 
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">System</span>
 <span class="k">open</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">Newtonsoft</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="i">Json</span>
@@ -57,7 +59,7 @@ does not have 'null' as a proper value.</p>
 
 <span class="k">let</span> <span onmouseout="hideTip(event, 'fs6', 7)" onmouseover="showTip(event, 'fs6', 7)" class="i">json</span> <span class="o">=</span> <span class="s">&quot;&quot;&quot;{ &quot;Title&quot;: &quot;JSON A&quot; }&quot;&quot;&quot;</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 8)" onmouseover="showTip(event, 'fs7', 8)" class="i">itemsIsNull</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 9)" onmouseover="showTip(event, 'fs8', 9)" class="i">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 10)" onmouseover="showTip(event, 'fs9', 10)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">A</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="i">json</span>)
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs7', 8)" onmouseover="showTip(event, 'fs7', 8)" class="i">itemsIsNull</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 9)" onmouseover="showTip(event, 'fs8', 9)" class="t">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 10)" onmouseover="showTip(event, 'fs9', 10)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">A</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="i">json</span>)
 </code></pre></td>
 </tr>
 </table>
@@ -125,7 +127,7 @@ Stopped due to error
    {  <span class="i">Title</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 16)" onmouseover="showTip(event, 'fs4', 16)" class="t">string</span>
       <span class="i">Items</span><span class="o">:</span> <span onmouseout="hideTip(event, 'fs4', 17)" onmouseover="showTip(event, 'fs4', 17)" class="t">string</span> <span onmouseout="hideTip(event, 'fs5', 18)" onmouseover="showTip(event, 'fs5', 18)" class="t">list</span> <span onmouseout="hideTip(event, 'fs13', 19)" onmouseover="showTip(event, 'fs13', 19)" class="t">option</span> }
 
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 20)" onmouseover="showTip(event, 'fs14', 20)" class="i">itemsIsNone</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 21)" onmouseover="showTip(event, 'fs8', 21)" class="i">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 22)" onmouseover="showTip(event, 'fs9', 22)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">B</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 23)" onmouseover="showTip(event, 'fs6', 23)" class="i">json</span>)
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 20)" onmouseover="showTip(event, 'fs14', 20)" class="i">itemsIsNone</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs8', 21)" onmouseover="showTip(event, 'fs8', 21)" class="t">JsonConvert</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 22)" onmouseover="showTip(event, 'fs9', 22)" class="i">DeserializeObject</span><span class="o">&lt;</span><span class="i">B</span><span class="o">&gt;</span>(<span onmouseout="hideTip(event, 'fs6', 23)" onmouseover="showTip(event, 'fs6', 23)" class="i">json</span>)
 </code></pre></td>
 </tr>
 </table>
@@ -150,10 +152,10 @@ Stopped due to error
 <div class="tip" id="fs6">val json : string<br /><br />Full name: Index.json</div>
 <div class="tip" id="fs7">val itemsIsNull : obj<br /><br />Full name: Index.itemsIsNull</div>
 <div class="tip" id="fs8">type JsonConvert =<br />&#160;&#160;static val True : string<br />&#160;&#160;static val False : string<br />&#160;&#160;static val Null : string<br />&#160;&#160;static val Undefined : string<br />&#160;&#160;static val PositiveInfinity : string<br />&#160;&#160;static val NegativeInfinity : string<br />&#160;&#160;static val NaN : string<br />&#160;&#160;static member DefaultSettings : Func&lt;JsonSerializerSettings&gt; with get, set<br />&#160;&#160;static member DeserializeAnonymousType&lt;&#39;T&gt; : value:string * anonymousTypeObject:&#39;T -&gt; &#39;T + 1 overload<br />&#160;&#160;static member DeserializeObject : value:string -&gt; obj + 7 overloads<br />&#160;&#160;...<br /><br />Full name: Newtonsoft.Json.JsonConvert</div>
-<div class="tip" id="fs9"></div>
+<div class="tip" id="fs9">JsonConvert.DeserializeObject&lt;&#39;T&gt;(value: string) : &#39;T<br />JsonConvert.DeserializeObject(value: string) : obj<br />JsonConvert.DeserializeObject&lt;&#39;T&gt;(value: string, settings: JsonSerializerSettings) : &#39;T<br />JsonConvert.DeserializeObject&lt;&#39;T&gt;(value: string, [&lt;ParamArray&gt;] converters: JsonConverter []) : &#39;T<br />JsonConvert.DeserializeObject(value: string, type: Type) : obj<br />JsonConvert.DeserializeObject(value: string, settings: JsonSerializerSettings) : obj<br />JsonConvert.DeserializeObject(value: string, type: Type, settings: JsonSerializerSettings) : obj<br />JsonConvert.DeserializeObject(value: string, type: Type, [&lt;ParamArray&gt;] converters: JsonConverter []) : obj</div>
 <div class="tip" id="fs10">val willBeNull : bool<br /><br />Full name: Index.willBeNull</div>
 <div class="tip" id="fs11">Multiple items<br />type Object =<br />&#160;&#160;new : unit -&gt; obj<br />&#160;&#160;member Equals : obj:obj -&gt; bool<br />&#160;&#160;member GetHashCode : unit -&gt; int<br />&#160;&#160;member GetType : unit -&gt; Type<br />&#160;&#160;member ToString : unit -&gt; string<br />&#160;&#160;static member Equals : objA:obj * objB:obj -&gt; bool<br />&#160;&#160;static member ReferenceEquals : objA:obj * objB:obj -&gt; bool<br /><br />Full name: System.Object<br /><br />--------------------<br />Object() : unit</div>
-<div class="tip" id="fs12">Object.ReferenceEquals(objA: obj, objB: obj) : bool</div>
+<div class="tip" id="fs12">Multiple items<br />Object.ReferenceEquals(objA: obj, objB: obj) : bool<br /><br />--------------------<br />Object.ReferenceEquals(objA: obj, objB: obj) : bool</div>
 <div class="tip" id="fs13">type &#39;T option = Option&lt;&#39;T&gt;<br /><br />Full name: Microsoft.FSharp.Core.option&lt;_&gt;</div>
 <div class="tip" id="fs14">val itemsIsNone : obj<br /><br />Full name: Index.itemsIsNone</div>
 

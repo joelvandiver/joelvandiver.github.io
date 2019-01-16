@@ -61,9 +61,43 @@
 </pre></td>
 <td class="snippet"><pre class="fssnip"><code lang="console">index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mutable keyword, e.g. 'let mutable isImmuatable = expression'.
 </code></pre></td></tr></table>
+<h4>Mutable Values</h4>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="k">mutable</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="v">mutableValue</span> <span class="o">=</span> <span class="k">true</span>
+<span onmouseout="hideTip(event, 'fs3', 4)" onmouseover="showTip(event, 'fs3', 4)" class="v">mutableValue</span> <span class="o">&lt;-</span> <span class="k">false</span>
+<span onmouseout="hideTip(event, 'fs3', 5)" onmouseover="showTip(event, 'fs3', 5)" class="v">mutableValue</span>;;
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val mutable mutableValue : bool = false
+val it : bool = false
+</code></pre></td></tr></table>
+<h4>Note on Different Types</h4>
+<p>A mutable value cannot be set to another value of another type.  The following will not compile:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">mutableValue</span> <span class="o">&lt;-</span> <span class="n">1</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Also, values of different types cannot be compared.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">willNotCompile</span> <span class="o">=</span> <span class="k">true</span> <span class="o">=</span> <span class="n">1</span>
+</code></pre></td>
+</tr>
+</table>
  
         <div class="tip" id="fs1">val x : unit<br /><br />Full name: Index.x</div>
 <div class="tip" id="fs2">val isImmuatable : bool<br /><br />Full name: Index.isImmuatable</div>
+<div class="tip" id="fs3">val mutable mutableValue : bool<br /><br />Full name: Index.mutableValue</div>
 
         
      <div class="row post-nav">

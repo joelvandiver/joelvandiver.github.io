@@ -37,3 +37,33 @@ index.fsx(25,1): error FS0027: This value is not mutable. Consider using the mut
 ``` 
 *)
 
+(**
+#### Mutable Values
+*)
+let mutable mutableValue = true
+mutableValue <- false
+mutableValue;;
+(**
+*Output:*
+```console
+val mutable mutableValue : bool = false
+val it : bool = false
+```
+*)
+
+(**
+#### Note on Different Types
+A mutable value cannot be set to another value of another type.  The following will not compile:
+
+```fsharp
+mutableValue <- 1
+```
+
+Also, values of different types cannot be compared.
+```fsharp
+let willNotCompile = true = 1
+```
+
+
+*)
+

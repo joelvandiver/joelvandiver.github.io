@@ -1,6 +1,8 @@
 (** 
 # List Accumulator Function 
 
+[GIST](https://gist.github.com/joelvandiver/d709141d3d18eeffcb2936f67ad23e9d)
+
 Create a new list by accumulating the 
 values in the list in ascending order.
 *)
@@ -36,15 +38,15 @@ val accumulate : accumulator:('T -> 'T -> 'T) -> l:'T list -> 'T list
 ## Example:  Mathematical Adder
 *)
 let adder = accumulate (+)
-let d = [0; 1; 2; 3; 4; 5]
-let r = adder d
+let addList = [0; 1; 2; 3; 4; 5]
+let addResult = adder addList
 
 (**
 > Output:
 ```fsharp
 val adder : (int list -> int list)
-val d : int list = [0; 1; 2; 3; 4; 5]
-val r : int list = [0; 1; 3; 6; 10; 15]
+val addList : int list = [0; 1; 2; 3; 4; 5]
+val addResult : int list = [0; 1; 3; 6; 10; 15]
 ```
 *)
 
@@ -53,15 +55,15 @@ val r : int list = [0; 1; 3; 6; 10; 15]
 ## Example:  Mathematical Multiplier
 *)
 let multiplier = accumulate (*)
-let d = [1; 2; 3; 4; 5]
-let r = multiplier d
+let multiList = [1; 2; 3; 4; 5]
+let multiResult = multiplier multiList
 
 (**
 > Output:
 ```fsharp
 val multiplier : (int list -> int list)
-val d : int list = [1; 2; 3; 4; 5]
-val r : int list = [1; 2; 6; 24; 120]
+val multiList : int list = [1; 2; 3; 4; 5]
+val multiResult : int list = [1; 2; 6; 24; 120]
 ```
 *)
 
@@ -74,7 +76,7 @@ let docAccumulator = accumulate dotConcat
 let alphabet = "abcdef"
 // let alphabet = "abcdefghijklmnopqrstuvwxyz"
 let alphaList = alphabet |> List.ofSeq |> List.map string
-let r = docAccumulator alphaList
+let alphaResult = docAccumulator alphaList
 
 (**
 > Output:
@@ -83,7 +85,7 @@ val dotConcat : a:string -> b:string -> string
 val docAccumulator : (string list -> string list)
 val alphabet : string = "abcdef"
 val alphaList : string list = ["a"; "b"; "c"; "d"; "e"; "f"]
-val r : string list =
+val alphaResult : string list =
   ["a"; "a.b"; "a.b.c"; "a.b.c.d"; "a.b.c.d.e"; "a.b.c.d.e.f"]
 ```
 *)

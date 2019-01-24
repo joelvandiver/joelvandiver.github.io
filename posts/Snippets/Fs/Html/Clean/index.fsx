@@ -3,6 +3,7 @@
 *)
 
 #r @"C:\git\joelvandiver.github.io\packages\System.Xml.Linq\lib\net20\System.Xml.Linq.dll"
+open System.IO
 open System.Xml.Linq
 
 let path = @"C:\git\joelvandiver.github.io\index.html"

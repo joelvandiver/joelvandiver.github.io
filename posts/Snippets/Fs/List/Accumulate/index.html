@@ -23,6 +23,7 @@
       </div>
       <div class="main">
         <h1>List Accumulator Function</h1>
+<p><a href="https://gist.github.com/joelvandiver/d709141d3d18eeffcb2936f67ad23e9d">GIST</a></p>
 <p>Create a new list by accumulating the
 values in the list in ascending order.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
@@ -80,8 +81,8 @@ values in the list in ascending order.</p>
 <span class="l">3: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs14', 41)" onmouseover="showTip(event, 'fs14', 41)" class="f">adder</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 42)" onmouseover="showTip(event, 'fs1', 42)" class="f">accumulate</span> (<span class="o">+</span>)
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 43)" onmouseover="showTip(event, 'fs15', 43)" class="i">d</span> <span class="o">=</span> [<span class="n">0</span>; <span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 44)" onmouseover="showTip(event, 'fs16', 44)" class="i">r</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs14', 45)" onmouseover="showTip(event, 'fs14', 45)" class="f">adder</span> <span onmouseout="hideTip(event, 'fs15', 46)" onmouseover="showTip(event, 'fs15', 46)" class="i">d</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 43)" onmouseover="showTip(event, 'fs15', 43)" class="i">addList</span> <span class="o">=</span> [<span class="n">0</span>; <span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 44)" onmouseover="showTip(event, 'fs16', 44)" class="i">addResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs14', 45)" onmouseover="showTip(event, 'fs14', 45)" class="f">adder</span> <span onmouseout="hideTip(event, 'fs15', 46)" onmouseover="showTip(event, 'fs15', 46)" class="i">addList</span>
 </code></pre></td>
 </tr>
 </table>
@@ -92,8 +93,8 @@ values in the list in ascending order.</p>
 <span class="l">3: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="i">adder</span> <span class="o">:</span> (<span onmouseout="hideTip(event, 'fs17', 47)" onmouseover="showTip(event, 'fs17', 47)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 48)" onmouseover="showTip(event, 'fs4', 48)" class="i">list</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs17', 49)" onmouseover="showTip(event, 'fs17', 49)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 50)" onmouseover="showTip(event, 'fs4', 50)" class="i">list</span>)
-<span class="k">val</span> <span class="i">d</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 51)" onmouseover="showTip(event, 'fs17', 51)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 52)" onmouseover="showTip(event, 'fs4', 52)" class="i">list</span> <span class="o">=</span> [<span class="n">0</span>; <span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
-<span class="k">val</span> <span class="i">r</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 53)" onmouseover="showTip(event, 'fs17', 53)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 54)" onmouseover="showTip(event, 'fs4', 54)" class="i">list</span> <span class="o">=</span> [<span class="n">0</span>; <span class="n">1</span>; <span class="n">3</span>; <span class="n">6</span>; <span class="n">10</span>; <span class="n">15</span>]
+<span class="k">val</span> <span class="i">addList</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 51)" onmouseover="showTip(event, 'fs17', 51)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 52)" onmouseover="showTip(event, 'fs4', 52)" class="i">list</span> <span class="o">=</span> [<span class="n">0</span>; <span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
+<span class="k">val</span> <span class="i">addResult</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 53)" onmouseover="showTip(event, 'fs17', 53)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 54)" onmouseover="showTip(event, 'fs4', 54)" class="i">list</span> <span class="o">=</span> [<span class="n">0</span>; <span class="n">1</span>; <span class="n">3</span>; <span class="n">6</span>; <span class="n">10</span>; <span class="n">15</span>]
 </code></pre></td>
 </tr>
 </table>
@@ -104,8 +105,8 @@ values in the list in ascending order.</p>
 <span class="l">3: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs18', 55)" onmouseover="showTip(event, 'fs18', 55)" class="f">multiplier</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 56)" onmouseover="showTip(event, 'fs1', 56)" class="f">accumulate</span> <span class="o">(*)</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs15', 57)" onmouseover="showTip(event, 'fs15', 57)" class="i">d</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs16', 58)" onmouseover="showTip(event, 'fs16', 58)" class="i">r</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs18', 59)" onmouseover="showTip(event, 'fs18', 59)" class="f">multiplier</span> <span onmouseout="hideTip(event, 'fs15', 60)" onmouseover="showTip(event, 'fs15', 60)" class="i">d</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs19', 57)" onmouseover="showTip(event, 'fs19', 57)" class="i">multiList</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs20', 58)" onmouseover="showTip(event, 'fs20', 58)" class="i">multiResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs18', 59)" onmouseover="showTip(event, 'fs18', 59)" class="f">multiplier</span> <span onmouseout="hideTip(event, 'fs19', 60)" onmouseover="showTip(event, 'fs19', 60)" class="i">multiList</span>
 </code></pre></td>
 </tr>
 </table>
@@ -116,8 +117,8 @@ values in the list in ascending order.</p>
 <span class="l">3: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="i">multiplier</span> <span class="o">:</span> (<span onmouseout="hideTip(event, 'fs17', 61)" onmouseover="showTip(event, 'fs17', 61)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 62)" onmouseover="showTip(event, 'fs4', 62)" class="i">list</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs17', 63)" onmouseover="showTip(event, 'fs17', 63)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 64)" onmouseover="showTip(event, 'fs4', 64)" class="i">list</span>)
-<span class="k">val</span> <span class="i">d</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 65)" onmouseover="showTip(event, 'fs17', 65)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 66)" onmouseover="showTip(event, 'fs4', 66)" class="i">list</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
-<span class="k">val</span> <span class="i">r</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 67)" onmouseover="showTip(event, 'fs17', 67)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 68)" onmouseover="showTip(event, 'fs4', 68)" class="i">list</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">6</span>; <span class="n">24</span>; <span class="n">120</span>]
+<span class="k">val</span> <span class="i">multiList</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 65)" onmouseover="showTip(event, 'fs17', 65)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 66)" onmouseover="showTip(event, 'fs4', 66)" class="i">list</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>]
+<span class="k">val</span> <span class="i">multiResult</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs17', 67)" onmouseover="showTip(event, 'fs17', 67)" class="i">int</span> <span onmouseout="hideTip(event, 'fs4', 68)" onmouseover="showTip(event, 'fs4', 68)" class="i">list</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">6</span>; <span class="n">24</span>; <span class="n">120</span>]
 </code></pre></td>
 </tr>
 </table>
@@ -130,12 +131,12 @@ values in the list in ascending order.</p>
 <span class="l">5: </span>
 <span class="l">6: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs19', 69)" onmouseover="showTip(event, 'fs19', 69)" class="f">dotConcat</span> <span onmouseout="hideTip(event, 'fs20', 70)" onmouseover="showTip(event, 'fs20', 70)" class="i">a</span> <span onmouseout="hideTip(event, 'fs21', 71)" onmouseover="showTip(event, 'fs21', 71)" class="i">b</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs20', 72)" onmouseover="showTip(event, 'fs20', 72)" class="i">a</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span> <span class="o">+</span> <span onmouseout="hideTip(event, 'fs21', 73)" onmouseover="showTip(event, 'fs21', 73)" class="i">b</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs22', 74)" onmouseover="showTip(event, 'fs22', 74)" class="f">docAccumulator</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 75)" onmouseover="showTip(event, 'fs1', 75)" class="f">accumulate</span> <span onmouseout="hideTip(event, 'fs19', 76)" onmouseover="showTip(event, 'fs19', 76)" class="f">dotConcat</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs23', 77)" onmouseover="showTip(event, 'fs23', 77)" class="i">alphabet</span> <span class="o">=</span> <span class="s">&quot;abcdef&quot;</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs21', 69)" onmouseover="showTip(event, 'fs21', 69)" class="f">dotConcat</span> <span onmouseout="hideTip(event, 'fs22', 70)" onmouseover="showTip(event, 'fs22', 70)" class="i">a</span> <span onmouseout="hideTip(event, 'fs23', 71)" onmouseover="showTip(event, 'fs23', 71)" class="i">b</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs22', 72)" onmouseover="showTip(event, 'fs22', 72)" class="i">a</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span> <span class="o">+</span> <span onmouseout="hideTip(event, 'fs23', 73)" onmouseover="showTip(event, 'fs23', 73)" class="i">b</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs24', 74)" onmouseover="showTip(event, 'fs24', 74)" class="f">docAccumulator</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 75)" onmouseover="showTip(event, 'fs1', 75)" class="f">accumulate</span> <span onmouseout="hideTip(event, 'fs21', 76)" onmouseover="showTip(event, 'fs21', 76)" class="f">dotConcat</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs25', 77)" onmouseover="showTip(event, 'fs25', 77)" class="i">alphabet</span> <span class="o">=</span> <span class="s">&quot;abcdef&quot;</span>
 <span class="c">// let alphabet = &quot;abcdefghijklmnopqrstuvwxyz&quot;</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs24', 78)" onmouseover="showTip(event, 'fs24', 78)" class="i">alphaList</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs23', 79)" onmouseover="showTip(event, 'fs23', 79)" class="i">alphabet</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs11', 80)" onmouseover="showTip(event, 'fs11', 80)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs12', 81)" onmouseover="showTip(event, 'fs12', 81)" class="i">ofSeq</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs11', 82)" onmouseover="showTip(event, 'fs11', 82)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs12', 83)" onmouseover="showTip(event, 'fs12', 83)" class="i">map</span> <span onmouseout="hideTip(event, 'fs25', 84)" onmouseover="showTip(event, 'fs25', 84)" class="i">string</span>
-<span class="k">let</span> <span onmouseout="hideTip(event, 'fs26', 85)" onmouseover="showTip(event, 'fs26', 85)" class="i">r</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs22', 86)" onmouseover="showTip(event, 'fs22', 86)" class="f">docAccumulator</span> <span onmouseout="hideTip(event, 'fs24', 87)" onmouseover="showTip(event, 'fs24', 87)" class="i">alphaList</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs26', 78)" onmouseover="showTip(event, 'fs26', 78)" class="i">alphaList</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs25', 79)" onmouseover="showTip(event, 'fs25', 79)" class="i">alphabet</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs11', 80)" onmouseover="showTip(event, 'fs11', 80)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs12', 81)" onmouseover="showTip(event, 'fs12', 81)" class="i">ofSeq</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs11', 82)" onmouseover="showTip(event, 'fs11', 82)" class="i">List</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs12', 83)" onmouseover="showTip(event, 'fs12', 83)" class="i">map</span> <span onmouseout="hideTip(event, 'fs27', 84)" onmouseover="showTip(event, 'fs27', 84)" class="i">string</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs28', 85)" onmouseover="showTip(event, 'fs28', 85)" class="i">alphaResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs24', 86)" onmouseover="showTip(event, 'fs24', 86)" class="f">docAccumulator</span> <span onmouseout="hideTip(event, 'fs26', 87)" onmouseover="showTip(event, 'fs26', 87)" class="i">alphaList</span>
 </code></pre></td>
 </tr>
 </table>
@@ -148,11 +149,11 @@ values in the list in ascending order.</p>
 <span class="l">5: </span>
 <span class="l">6: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="i">dotConcat</span> <span class="o">:</span> <span class="i">a</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs25', 88)" onmouseover="showTip(event, 'fs25', 88)" class="i">string</span> <span class="k">-&gt;</span> <span class="i">b</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs25', 89)" onmouseover="showTip(event, 'fs25', 89)" class="i">string</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs25', 90)" onmouseover="showTip(event, 'fs25', 90)" class="i">string</span>
-<span class="k">val</span> <span class="i">docAccumulator</span> <span class="o">:</span> (<span onmouseout="hideTip(event, 'fs25', 91)" onmouseover="showTip(event, 'fs25', 91)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 92)" onmouseover="showTip(event, 'fs4', 92)" class="i">list</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs25', 93)" onmouseover="showTip(event, 'fs25', 93)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 94)" onmouseover="showTip(event, 'fs4', 94)" class="i">list</span>)
-<span class="k">val</span> <span class="i">alphabet</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs25', 95)" onmouseover="showTip(event, 'fs25', 95)" class="i">string</span> <span class="o">=</span> <span class="s">&quot;abcdef&quot;</span>
-<span class="k">val</span> <span class="i">alphaList</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs25', 96)" onmouseover="showTip(event, 'fs25', 96)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 97)" onmouseover="showTip(event, 'fs4', 97)" class="i">list</span> <span class="o">=</span> [<span class="s">&quot;a&quot;</span>; <span class="s">&quot;b&quot;</span>; <span class="s">&quot;c&quot;</span>; <span class="s">&quot;d&quot;</span>; <span class="s">&quot;e&quot;</span>; <span class="s">&quot;f&quot;</span>]
-<span class="k">val</span> <span class="i">r</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs25', 98)" onmouseover="showTip(event, 'fs25', 98)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 99)" onmouseover="showTip(event, 'fs4', 99)" class="i">list</span> <span class="o">=</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="i">dotConcat</span> <span class="o">:</span> <span class="i">a</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs27', 88)" onmouseover="showTip(event, 'fs27', 88)" class="i">string</span> <span class="k">-&gt;</span> <span class="i">b</span><span class="o">:</span><span onmouseout="hideTip(event, 'fs27', 89)" onmouseover="showTip(event, 'fs27', 89)" class="i">string</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs27', 90)" onmouseover="showTip(event, 'fs27', 90)" class="i">string</span>
+<span class="k">val</span> <span class="i">docAccumulator</span> <span class="o">:</span> (<span onmouseout="hideTip(event, 'fs27', 91)" onmouseover="showTip(event, 'fs27', 91)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 92)" onmouseover="showTip(event, 'fs4', 92)" class="i">list</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs27', 93)" onmouseover="showTip(event, 'fs27', 93)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 94)" onmouseover="showTip(event, 'fs4', 94)" class="i">list</span>)
+<span class="k">val</span> <span class="i">alphabet</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs27', 95)" onmouseover="showTip(event, 'fs27', 95)" class="i">string</span> <span class="o">=</span> <span class="s">&quot;abcdef&quot;</span>
+<span class="k">val</span> <span class="i">alphaList</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs27', 96)" onmouseover="showTip(event, 'fs27', 96)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 97)" onmouseover="showTip(event, 'fs4', 97)" class="i">list</span> <span class="o">=</span> [<span class="s">&quot;a&quot;</span>; <span class="s">&quot;b&quot;</span>; <span class="s">&quot;c&quot;</span>; <span class="s">&quot;d&quot;</span>; <span class="s">&quot;e&quot;</span>; <span class="s">&quot;f&quot;</span>]
+<span class="k">val</span> <span class="i">alphaResult</span> <span class="o">:</span> <span onmouseout="hideTip(event, 'fs27', 98)" onmouseover="showTip(event, 'fs27', 98)" class="i">string</span> <span onmouseout="hideTip(event, 'fs4', 99)" onmouseover="showTip(event, 'fs4', 99)" class="i">list</span> <span class="o">=</span>
   [<span class="s">&quot;a&quot;</span>; <span class="s">&quot;a.b&quot;</span>; <span class="s">&quot;a.b.c&quot;</span>; <span class="s">&quot;a.b.c.d&quot;</span>; <span class="s">&quot;a.b.c.d.e&quot;</span>; <span class="s">&quot;a.b.c.d.e.f&quot;</span>]
 </code></pre></td>
 </tr>
@@ -173,18 +174,20 @@ values in the list in ascending order.</p>
 <div class="tip" id="fs12"></div>
 <div class="tip" id="fs13">val a : &#39;T</div>
 <div class="tip" id="fs14">val adder : (int list -&gt; int list)<br /><br />Full name: Index.adder</div>
-<div class="tip" id="fs15">val d : int list<br /><br />Full name: Index.d</div>
-<div class="tip" id="fs16">val r : int list<br /><br />Full name: Index.r</div>
+<div class="tip" id="fs15">val addList : int list<br /><br />Full name: Index.addList</div>
+<div class="tip" id="fs16">val addResult : int list<br /><br />Full name: Index.addResult</div>
 <div class="tip" id="fs17">Multiple items<br />val int : value:&#39;T -&gt; int (requires member op_Explicit)<br /><br />Full name: Microsoft.FSharp.Core.Operators.int<br /><br />--------------------<br />type int = int32<br /><br />Full name: Microsoft.FSharp.Core.int<br /><br />--------------------<br />type int&lt;&#39;Measure&gt; = int<br /><br />Full name: Microsoft.FSharp.Core.int&lt;_&gt;</div>
 <div class="tip" id="fs18">val multiplier : (int list -&gt; int list)<br /><br />Full name: Index.multiplier</div>
-<div class="tip" id="fs19">val dotConcat : a:string -&gt; b:string -&gt; string<br /><br />Full name: Index.dotConcat</div>
-<div class="tip" id="fs20">val a : string</div>
-<div class="tip" id="fs21">val b : string</div>
-<div class="tip" id="fs22">val docAccumulator : (string list -&gt; string list)<br /><br />Full name: Index.docAccumulator</div>
-<div class="tip" id="fs23">val alphabet : string<br /><br />Full name: Index.alphabet</div>
-<div class="tip" id="fs24">val alphaList : string list<br /><br />Full name: Index.alphaList</div>
-<div class="tip" id="fs25">Multiple items<br />val string : value:&#39;T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = System.String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
-<div class="tip" id="fs26">val r : string list<br /><br />Full name: Index.r</div>
+<div class="tip" id="fs19">val multiList : int list<br /><br />Full name: Index.multiList</div>
+<div class="tip" id="fs20">val multiResult : int list<br /><br />Full name: Index.multiResult</div>
+<div class="tip" id="fs21">val dotConcat : a:string -&gt; b:string -&gt; string<br /><br />Full name: Index.dotConcat</div>
+<div class="tip" id="fs22">val a : string</div>
+<div class="tip" id="fs23">val b : string</div>
+<div class="tip" id="fs24">val docAccumulator : (string list -&gt; string list)<br /><br />Full name: Index.docAccumulator</div>
+<div class="tip" id="fs25">val alphabet : string<br /><br />Full name: Index.alphabet</div>
+<div class="tip" id="fs26">val alphaList : string list<br /><br />Full name: Index.alphaList</div>
+<div class="tip" id="fs27">Multiple items<br />val string : value:&#39;T -&gt; string<br /><br />Full name: Microsoft.FSharp.Core.Operators.string<br /><br />--------------------<br />type string = System.String<br /><br />Full name: Microsoft.FSharp.Core.string</div>
+<div class="tip" id="fs28">val alphaResult : string list<br /><br />Full name: Index.alphaResult</div>
 
         
      <div class="row post-nav">

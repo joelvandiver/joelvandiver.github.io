@@ -5,9 +5,11 @@
 ## Posts
 
 - [Explorations - Interview-Questions - Colum-Header-Number](/posts/Explorations/Interview-Questions/Colum-Header-Number)
+- [Explorations - Math - Factorial](/posts/Explorations/Math/Factorial)
 - [Explorations - Math - Functions - Domain-And-Range](/posts/Explorations/Math/Functions/Domain-And-Range)
 - [Explorations - Math - Functions - Relations-vs-Functions](/posts/Explorations/Math/Functions/Relations-vs-Functions)
 - [Explorations - Math - Geometry](/posts/Explorations/Math/Geometry)
+- [Explorations - Math - Power-Definition](/posts/Explorations/Math/Power-Definition)
 - [Explorations - Perf - Collections - Contains](/posts/Explorations/Perf/Collections/Contains)
 - [Explorations - Problems - Json-List-Deserialization](/posts/Explorations/Problems/Json-List-Deserialization)
 - [Fun - Art - Animations](/posts/Fun/Art/Animations)

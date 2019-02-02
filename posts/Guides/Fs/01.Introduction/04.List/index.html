@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>F# List Values
+</title>
+    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
+
+    <!-- Custom fonts for this template -->
+    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h1><a href="/">Joel Vandiver</a></h1>
+        <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
+      </div>
+      <div class="main">
+        <h1>F# List Values</h1>
+<p>List are arguably one of the more important collection types in F#.<br />
+They represent an immutable collection of items of the same type.</p>
+<p>Lists can be initialized with <code>[]</code>.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">firstList</span> <span class="o">=</span> [<span class="n">1</span>; <span class="n">2</span>; <span class="n">3</span>; <span class="n">4</span>; <span class="n">5</span>;]
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val firstList : int list = [1; 2; 3; 4; 5]
+</code></pre></td></tr></table>
+<p>The <code>int list</code> syntax in the output is the type of an integer list that the compiler inferred from the declaration.</p>
+<p>Elements are accessed by the <code>.[i]</code> syntax where <code>i</code> is the index of the item.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">one</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 3)" onmouseover="showTip(event, 'fs1', 3)" class="i">firstList</span><span class="o">.</span>[<span class="n">0</span>]
+<span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 4)" onmouseover="showTip(event, 'fs3', 4)" class="i">two</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs1', 5)" onmouseover="showTip(event, 'fs1', 5)" class="i">firstList</span><span class="o">.</span>[<span class="n">1</span>]
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">&gt; let one = firstList.[0];;
+val one : int = 1
+
+&gt; let two = firstList.[1];;
+val two : int = 2
+</code></pre></td></tr></table>
+<p>Trying to access an element out of bounds of the list will result in an exception.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="i">outOfBounds</span> <span class="o">=</span> <span class="i">firstList</span><span class="o">.</span>[<span class="n">100</span>]
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">&gt; let outOfBounds = firstList.[100];;
+System.ArgumentException: The index was outside the range of elements in the list.
+Parameter name: n
+   at Microsoft.FSharp.Collections.PrivateListHelpers.nth[a](FSharpList`1 l, Int32 n)
+   at &lt;StartupCode$FSI_0006&gt;.$FSI_0006.main@() in c:\git\joelvandiver.github.io\posts\Guides\Fs\01.Introduction\04.List\index.fsx:line 6
+Stopped due to error
+</code></pre></td></tr></table>
+<p>Elements cannot be mutated to a new value.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="i">firstList</span><span class="o">.</span>[<span class="n">1</span>] <span class="o">&lt;-</span> <span class="n">5</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">index.fsx(8,1): error FS0810: Property 'Item' cannot be set
+</code></pre></td></tr></table>
+ 
+        <div class="tip" id="fs1">val firstList : int list<br /><br />Full name: Index.firstList</div>
+<div class="tip" id="fs2">val one : obj<br /><br />Full name: Index.one</div>
+<div class="tip" id="fs3">val two : obj<br /><br />Full name: Index.two</div>
+
+        
+     <div class="row post-nav">
+       <div class="col-md-6 post-nav-prev">
+         <h4>Previous</h4><ul>
+<li><a href="/posts/Guides/Fs/01.Introduction/03.Simple">Guides - F# - 01.Introduction - 03.Simple</a></li>
+</ul>
+
+       </div>
+       <div class="col-md-6 post-nav-next">
+         <h4>Next</h4><ul>
+<li><a href="/posts/Snippets/Fs/FSX/CLI-Args">Snippets - F# - FSX - CLI-Args</a></li>
+</ul>
+
+       </div>
+     </div>
+      </div>
+    </div>
+
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/assets/js/literate.js"></script>
+  </body>
+</html>

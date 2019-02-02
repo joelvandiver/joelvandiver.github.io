@@ -1,5 +1,5 @@
 (**
-# F# Primitive Values
+# F# Simple Values
 *)
 
 open System

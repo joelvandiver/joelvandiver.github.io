@@ -1,3 +1,7 @@
+source https://www.nuget.org/api/v2
+
+nuget FSharp.Core
+    
 // [ FAKE GROUP ]
 group Build
     storage none

@@ -17,7 +17,7 @@ nuget FSharp.Literate //"
 open System.IO
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-open FSharp.Markdown
+// open FSharp.Markdown
 open FSharp.Literate
 
 // let root = __SOURCE_DIRECTORY__ + @"\..\posts"
@@ -31,7 +31,7 @@ type Post = {
 let template post = 
   html [Lang "en"] [
       head [] [
-          title [] [ str ("Joel Vandiver / " + post.title) ]
+          title [] [ str ("Joel Vandiver 2 / " + post.title) ]
       ]
       body [] [
           RawText post.content
@@ -47,12 +47,16 @@ let render html =
 
 let parse source =
     let doc = 
+      let fsharpCoreDir = 
+        @"-I:C:\git\joelvandiver.github.io\packages\FSharp.Core\lib\net45\FSharp.Core.dll"
+        // "-I:" + __SOURCE_DIRECTORY__ + @"\packages\FSharp.Core\lib\netstandard1.6\FSharp.Core.dll"
+        // "-I:" + __SOURCE_DIRECTORY__ + @"\packages\FSharp.Core\lib\net45\FSharp.Core.dll"
       // let fsharpCoreDir = "-I:" + __SOURCE_DIRECTORY__ + @"\..\lib"
-      // let systemRuntime = "-r:System.Runtime"
+      let systemRuntime = "-r:System.Runtime"
       Literate.ParseScriptString(
-                  source
-                  // compilerOptions = systemRuntime + " " + fsharpCoreDir,
-                  // fsiEvaluator = FSharp.Literate.FsiEvaluator([|fsharpCoreDir|])
+                  source,
+                  compilerOptions = systemRuntime + " " + fsharpCoreDir,
+                  fsiEvaluator = FSharp.Literate.FsiEvaluator([|fsharpCoreDir|])
                 )
     FSharp.Literate.Literate.FormatLiterateNodes(doc, OutputKind.Html, "", true, true)
 let format (doc: LiterateDocument) =

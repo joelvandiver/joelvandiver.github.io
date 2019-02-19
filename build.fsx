@@ -56,7 +56,25 @@ let template post =
       body [
         Class "container"
       ] [
-          RawText post.content
+          div [
+            Class "sidebar"
+          ] [
+            h1 [] [
+              a [
+                Href "/"
+              ] [
+                Text "Joel Vandiver"
+              ]
+            ]
+            img [
+              Src "/posts/Fun/Art/Fractals/9.29.17.svg"
+            ]
+          ]
+          div [
+            Class "main"
+          ] [
+            RawText post.content
+          ]
       ]
   ]
 

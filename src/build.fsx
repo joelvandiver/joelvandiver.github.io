@@ -10,29 +10,43 @@ nuget FSharp.Literate //"
 
 #load ".fake/build.fsx/intellisense.fsx"
 
+#if !FAKE
+  #r "netstandard"
+#endif
+
+open System.IO
+open Fable.Helpers.React
+open Fable.Helpers.React.Props
+open FSharp.Markdown
 open FSharp.Literate
 
-let md = """# Markdown is cool
-especially with *FSharp.Formatting* ! """
-            |> FSharp.Markdown.Markdown.TransformHtml
+type Post = {
+    title: string
+    content: string
+}
 
-let snipet  =
-    """
-    (** # *F# literate* in action *)
-    printfn "Hello"
-    """
-let parse source =
-    let doc = 
-      let fsharpCoreDir = "-I:" + __SOURCE_DIRECTORY__ + @"\..\lib"
-      let systemRuntime = "-r:System.Runtime"
-      Literate.ParseScriptString(
-                  source, 
-                  compilerOptions = systemRuntime + " " + fsharpCoreDir,
-                  fsiEvaluator = FSharp.Literate.FsiEvaluator([|fsharpCoreDir|]))
-    FSharp.Literate.Literate.FormatLiterateNodes(doc, OutputKind.Html, "", true, true)
-let format (doc: LiterateDocument) =
-    Formatting.format doc.MarkdownDocument true OutputKind.Html
-let fs =
-    snipet 
-    |> parse
-    |> format
+let template post = 
+    html [Lang "en"] [
+        head [] [
+            title [] [ str ("Joel Vandiver / " + post.title) ]
+        ]
+        body [] [
+            RawText post.content
+        ]
+    ]
+
+let render html =
+  fragment [] [ 
+    RawText "<!doctype html>"
+    RawText "\n" 
+    html ]
+  |> Fable.Helpers.ReactServer.renderToString 
+
+let index =
+    { title = "Joel Vandiver's Blog"
+      content = Markdown.TransformHtml "# **interesting** things" }
+    |> template
+    |> render 
+
+File.WriteAllText(__SOURCE_DIRECTORY__ + @"\index.html", index)
+

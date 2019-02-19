@@ -1,52 +1,29 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Relations vs Functions
-</title>
-    <link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon" />
-
-    <!-- Custom fonts for this template -->
-    <link href="/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="/assets/css/site.css" />
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="sidebar">
-        <h1><a href="/">Joel Vandiver</a></h1>
-        <img src="/posts/Fun/Art/Fractals/9.29.17.svg" />
-      </div>
-      <div class="main">
-        <h1>Relations vs Functions</h1>
+<!doctype html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Joel Vandiver&#x27;s Blog</title></head><body><h1><a name="Relations-vs-Functions" class="anchor" href="#Relations-vs-Functions">Relations vs Functions</a></h1>
 <p>A relation of inputs and outputs as ordered pairs can be generated for every algorithm.</p>
 <p><strong>Conjecture</strong> -&gt; Algorithms with side effects cannot be precisely defined as a functions since the output may vary for a given input.</p>
 <p><strong>Key Idea</strong> -&gt; Strict functions lead to precision and predictability.</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, 'fs1', 1)" onmouseover="showTip(event, 'fs1', 1)" class="i">System</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">System</span>
 </code></pre></td>
 </tr>
 </table>
-<h2>Exploration of Functions as Data</h2>
+<h2><a name="Exploration-of-Functions-as-Data" class="anchor" href="#Exploration-of-Functions-as-Data">Exploration of Functions as Data</a></h2>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="t">``Exploration of Functions as Data``</span> <span class="o">=</span>
-   <span class="k">let</span> <span onmouseout="hideTip(event, 'fs2', 2)" onmouseover="showTip(event, 'fs2', 2)" class="i">x</span> <span class="o">=</span> <span class="n">3</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="m">``Exploration of Functions as Data``</span> <span class="o">=</span>
+   <span class="k">let</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">x</span> <span class="o">=</span> <span class="n">3</span>
 </code></pre></td>
 </tr>
 </table>
-<h2>Exploration of Relations and Functions</h2>
+<h2><a name="Exploration-of-Relations-and-Functions" class="anchor" href="#Exploration-of-Relations-and-Functions">Exploration of Relations and Functions</a></h2>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="t">``Exploration of Relations and Functions``</span> <span class="o">=</span> 
-   <span class="k">let</span> <span onmouseout="hideTip(event, 'fs3', 3)" onmouseover="showTip(event, 'fs3', 3)" class="f">f</span> <span onmouseout="hideTip(event, 'fs4', 4)" onmouseover="showTip(event, 'fs4', 4)" class="i">x</span> <span class="o">=</span> <span class="n">3</span> <span class="o">*</span> <span onmouseout="hideTip(event, 'fs4', 5)" onmouseover="showTip(event, 'fs4', 5)" class="i">x</span> <span class="o">+</span> <span class="n">4</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">module</span> <span class="m">``Exploration of Relations and Functions``</span> <span class="o">=</span> 
+   <span class="k">let</span> <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="fn">f</span> <span onmouseout="hideTip(event, '2', 4)" onmouseover="showTip(event, '2', 4)" class="id">x</span> <span class="o">=</span> <span class="n">3</span> <span class="o">*</span> <span onmouseout="hideTip(event, '2', 5)" onmouseover="showTip(event, '2', 5)" class="id">x</span> <span class="o">+</span> <span class="n">4</span>
 </code></pre></td>
 </tr>
 </table>
@@ -54,44 +31,10 @@
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">   <span class="k">let</span> <span onmouseout="hideTip(event, 'fs5', 6)" onmouseover="showTip(event, 'fs5', 6)" class="i">fD</span> <span class="o">=</span> { <span class="o">-</span><span class="n">2</span> <span class="o">..</span> <span class="n">2</span> } <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs6', 7)" onmouseover="showTip(event, 'fs6', 7)" class="t">Set</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs7', 8)" onmouseover="showTip(event, 'fs7', 8)" class="f">ofSeq</span>
-   <span class="k">let</span> <span onmouseout="hideTip(event, 'fs8', 9)" onmouseover="showTip(event, 'fs8', 9)" class="i">fRelation</span> <span class="o">=</span> <span onmouseout="hideTip(event, 'fs5', 10)" onmouseover="showTip(event, 'fs5', 10)" class="i">fD</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs6', 11)" onmouseover="showTip(event, 'fs6', 11)" class="t">Set</span><span class="o">.</span><span onmouseout="hideTip(event, 'fs9', 12)" onmouseover="showTip(event, 'fs9', 12)" class="f">map</span> (<span class="k">fun</span> <span onmouseout="hideTip(event, 'fs4', 13)" onmouseover="showTip(event, 'fs4', 13)" class="i">x</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, 'fs4', 14)" onmouseover="showTip(event, 'fs4', 14)" class="i">x</span>, <span onmouseout="hideTip(event, 'fs4', 15)" onmouseover="showTip(event, 'fs4', 15)" class="i">x</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, 'fs3', 16)" onmouseover="showTip(event, 'fs3', 16)" class="f">f</span>)
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp">   <span class="k">let</span> <span onmouseout="hideTip(event, '4', 6)" onmouseover="showTip(event, '4', 6)" class="id">fD</span> <span class="o">=</span> <span class="pn">{</span> <span class="o">-</span><span class="n">2</span> <span class="o">..</span> <span class="n">2</span> <span class="pn">}</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '5', 7)" onmouseover="showTip(event, '5', 7)" class="m">Set</span><span class="pn">.</span><span onmouseout="hideTip(event, '6', 8)" onmouseover="showTip(event, '6', 8)" class="id">ofSeq</span>
+   <span class="k">let</span> <span onmouseout="hideTip(event, '7', 9)" onmouseover="showTip(event, '7', 9)" class="id">fRelation</span> <span class="o">=</span> <span onmouseout="hideTip(event, '4', 10)" onmouseover="showTip(event, '4', 10)" class="id">fD</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '5', 11)" onmouseover="showTip(event, '5', 11)" class="m">Set</span><span class="pn">.</span><span onmouseout="hideTip(event, '8', 12)" onmouseover="showTip(event, '8', 12)" class="id">map</span> <span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, '2', 13)" onmouseover="showTip(event, '2', 13)" class="id">x</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '2', 14)" onmouseover="showTip(event, '2', 14)" class="id">x</span><span class="pn">,</span> <span onmouseout="hideTip(event, '2', 15)" onmouseover="showTip(event, '2', 15)" class="id">x</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '3', 16)" onmouseover="showTip(event, '3', 16)" class="fn">f</span><span class="pn">)</span>
 </code></pre></td>
 </tr>
 </table>
 <p>How can I test empirically &amp; prove deductively that for every input there is only one output for a given function?</p>
- 
-        <div class="tip" id="fs1">namespace System</div>
-<div class="tip" id="fs2">val x : int<br /><br />Full name: Index.Exploration of Functions as Data.x</div>
-<div class="tip" id="fs3">val f : x:int -&gt; int<br /><br />Full name: Index.Exploration of Relations and Functions.f</div>
-<div class="tip" id="fs4">val x : int</div>
-<div class="tip" id="fs5">val fD : Set&lt;int&gt;<br /><br />Full name: Index.Exploration of Relations and Functions.fD</div>
-<div class="tip" id="fs6">Multiple items<br />module Set<br /><br />from Microsoft.FSharp.Collections<br /><br />--------------------<br />type Set&lt;&#39;T (requires comparison)&gt; =<br />&#160;&#160;interface IComparable<br />&#160;&#160;interface IEnumerable<br />&#160;&#160;interface IEnumerable&lt;&#39;T&gt;<br />&#160;&#160;interface ICollection&lt;&#39;T&gt;<br />&#160;&#160;new : elements:seq&lt;&#39;T&gt; -&gt; Set&lt;&#39;T&gt;<br />&#160;&#160;member Add : value:&#39;T -&gt; Set&lt;&#39;T&gt;<br />&#160;&#160;member Contains : value:&#39;T -&gt; bool<br />&#160;&#160;override Equals : obj -&gt; bool<br />&#160;&#160;member IsProperSubsetOf : otherSet:Set&lt;&#39;T&gt; -&gt; bool<br />&#160;&#160;member IsProperSupersetOf : otherSet:Set&lt;&#39;T&gt; -&gt; bool<br />&#160;&#160;...<br /><br />Full name: Microsoft.FSharp.Collections.Set&lt;_&gt;<br /><br />--------------------<br />new : elements:seq&lt;&#39;T&gt; -&gt; Set&lt;&#39;T&gt;</div>
-<div class="tip" id="fs7">val ofSeq : elements:seq&lt;&#39;T&gt; -&gt; Set&lt;&#39;T&gt; (requires comparison)<br /><br />Full name: Microsoft.FSharp.Collections.Set.ofSeq</div>
-<div class="tip" id="fs8">val fRelation : Set&lt;int * int&gt;<br /><br />Full name: Index.Exploration of Relations and Functions.fRelation</div>
-<div class="tip" id="fs9">val map : mapping:(&#39;T -&gt; &#39;U) -&gt; set:Set&lt;&#39;T&gt; -&gt; Set&lt;&#39;U&gt; (requires comparison and comparison)<br /><br />Full name: Microsoft.FSharp.Collections.Set.map</div>
-
-        
-     <div class="row post-nav">
-       <div class="col-md-6 post-nav-prev">
-         <h4>Previous</h4><ul>
-<li><a href="/posts/Explorations/Math/Functions/Domain-And-Range">Explorations - Math - Functions - Domain-And-Range</a></li>
-</ul>
-
-       </div>
-       <div class="col-md-6 post-nav-next">
-         <h4>Next</h4><ul>
-<li><a href="/posts/Explorations/Math/Geometry">Explorations - Math - Geometry</a></li>
-</ul>
-
-       </div>
-     </div>
-      </div>
-    </div>
-
-    <script src="/assets/vendor/jquery/jquery.min.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="/assets/js/literate.js"></script>
-  </body>
-</html>
+</body></html>

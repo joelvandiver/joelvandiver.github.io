@@ -2,6 +2,7 @@
 source https://api.nuget.org/v3/index.json
 source https://ci.appveyor.com/nuget/fsharp-formatting
 
+nuget Fake.Core.Target
 nuget Fake.IO.FileSystem
 nuget Fake.Core.Trace
 nuget FSharp.Data
@@ -19,6 +20,7 @@ open Fable.Helpers.React
 open Fable.Helpers.React.Props
 // open FSharp.Markdown
 open FSharp.Literate
+open Fake.Core
 
 // let root = __SOURCE_DIRECTORY__ + @"\..\posts"
 let root = @"C:\git\joelvandiver.github.io\posts"
@@ -70,19 +72,21 @@ let convertFSXPost content =
   |> template
   |> render 
 
-let posts = 
-  Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
-  |> List.ofSeq
-  |> List.filter(fun f -> f.Contains("_archive") |> not)
-  |> List.map(
-    fun f -> 
-      let path = f.Replace(".fsx", ".html")
-      let content = File.ReadAllText f
-      let post = convertFSXPost content
-      (path, post)
-  )
+Target.create "Build" (fun _ -> 
 
+  let posts = 
+    Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
+    |> List.ofSeq
+    |> List.filter(fun f -> f.Contains("_archive") |> not)
+    |> List.map(
+      fun f -> 
+        let path = f.Replace(".fsx", ".html")
+        let content = File.ReadAllText f
+        let post = convertFSXPost content
+        (path, post)
+    )
 
-let work () = posts |> List.iter File.WriteAllText
+  posts |> List.iter File.WriteAllText
+)
 
-work()
+Target.runOrDefault "Build"

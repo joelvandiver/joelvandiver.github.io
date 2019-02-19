@@ -2,7 +2,6 @@
 source https://api.nuget.org/v3/index.json
 source https://ci.appveyor.com/nuget/fsharp-formatting
 
-nuget FSharpVSPowerTools.Core
 nuget Fake.IO.FileSystem
 nuget Fake.Core.Trace
 nuget FSharp.Data

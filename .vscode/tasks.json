@@ -7,20 +7,12 @@
          "label": "Build",
          "type": "shell",
          "windows": {
-            "command": "fsi build.fsx"
+            "command": "fake run build.fsx"
          },
          "group": {
             "kind": "build",
             "isDefault": true
          }
-      },
-      {
-         "label": "Build Single",
-         "type": "shell",
-         "windows": {
-            "command": "fsi build-single.fsx file:${file}"
-         },
-         "problemMatcher": []
       }
    ]
 }

@@ -49,12 +49,7 @@ let render html =
 
 let parse source =
     let doc = 
-      let fsharpCoreDir = 
-        // @"-I:C:\git\joelvandiver.github.io\packages\FSharp.Core\lib\net45\FSharp.Core.dll"
-        @"-I:C:\git\joelvandiver.github.io\packages\FSharp.Core\lib\netstandard1.6\FSharp.Core.dll"
-        // "-I:" + __SOURCE_DIRECTORY__ + @"\packages\FSharp.Core\lib\netstandard1.6\FSharp.Core.dll"
-        // "-I:" + __SOURCE_DIRECTORY__ + @"\packages\FSharp.Core\lib\net45\FSharp.Core.dll"
-      // let fsharpCoreDir = "-I:" + __SOURCE_DIRECTORY__ + @"\..\lib"
+      let fsharpCoreDir = @"-I:C:\git\joelvandiver.github.io\packages\FSharp.Core\lib\netstandard1.6\FSharp.Core.dll"
       let systemRuntime = "-r:System.Runtime"
       Literate.ParseScriptString(
                   source,

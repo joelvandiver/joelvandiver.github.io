@@ -34,15 +34,35 @@ let template post =
   html [Lang "en"] [
       head [] [
           title [] [ str ("Joel Vandiver / " + post.title) ]
+          meta [CharSet "utf-8"]
+          meta [
+            HttpEquiv "X-UA-Compatible"
+          ]
+          link [
+            Rel "shortcut icon"
+            Href "/assets/img/favicon.ico"
+            Type "image/x-icon"
+          ]
+          link [
+            Rel "stylesheet"
+            Href "/assets/vendor/fontawesome-free/css/all.min.css"
+          ]
+          link [
+            Rel "stylesheet"
+            Type "text/css"
+            Href "/assets/css/site.css"
+          ]
       ]
-      body [] [
+      body [
+        Class "container"
+      ] [
           RawText post.content
       ]
   ]
 
 let render html =
   fragment [] [ 
-    RawText "<!doctype html>"
+    RawText "<!DOCTYPE html>"
     RawText "\n" 
     html ]
   |> Fable.Helpers.ReactServer.renderToString 
@@ -61,14 +81,12 @@ let format (doc: LiterateDocument) =
     Formatting.format doc.MarkdownDocument true OutputKind.Html
 
 let convertFSXPost content =
-  { title = "Joel Vandiver's Blog"
-    content = content |> parse |> format
-      }
+  { title = "Blog"
+    content = content |> parse |> format }
   |> template
   |> render 
 
 Target.create "Build" (fun _ -> 
-
   let posts = 
     Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
     |> List.ofSeq

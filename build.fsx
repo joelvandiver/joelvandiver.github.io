@@ -31,7 +31,7 @@ type Post = {
 let template post = 
   html [Lang "en"] [
       head [] [
-          title [] [ str ("Joel Vandiver 2 / " + post.title) ]
+          title [] [ str ("Joel Vandiver / " + post.title) ]
       ]
       body [] [
           RawText post.content
@@ -84,3 +84,5 @@ let posts =
 
 
 let work () = posts |> List.iter File.WriteAllText
+
+work()

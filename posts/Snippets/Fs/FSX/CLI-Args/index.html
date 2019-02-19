@@ -1,14 +1,14 @@
 <!doctype html>
-<html data-reactroot="" lang="en"><head><title>Joel Vandiver 2 / Joel Vandiver&#x27;s Blog</title></head><body><h1><a name="Accessing-Command-Line-Arguments-in-an-FSX-Script" class="anchor" href="#Accessing-Command-Line-Arguments-in-an-FSX-Script">Accessing Command Line Arguments in an FSX Script</a></h1>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Joel Vandiver&#x27;s Blog</title></head><body><h1><a name="Accessing-Command-Line-Arguments-in-an-FSX-Script" class="anchor" href="#Accessing-Command-Line-Arguments-in-an-FSX-Script">Accessing Command Line Arguments in an FSX Script</a></h1>
 <p>To access the command line arguments in an FSX script, simply use the provided fsi.CommandLineArgs.</p>
 <p>Let's use the following test lines in this script:</p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
 <span class="l">2: </span>
 <span class="l">3: </span>
 </pre></td>
-<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">args</span> <span class="o">=</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">fsi</span><span class="pn">.</span><span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="id">CommandLineArgs</span>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">args</span> <span class="o">=</span> <span class="id">fsi</span><span class="pn">.</span><span class="id">CommandLineArgs</span>
 
-<span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="fn">printfn</span> <span class="s">&quot;</span><span class="pf">%A</span><span class="s">&quot;</span> <span onmouseout="hideTip(event, '1', 5)" onmouseover="showTip(event, '1', 5)" class="id">args</span>
+<span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="fn">printfn</span> <span class="s">&quot;%A&quot;</span> <span onmouseout="hideTip(event, '1', 3)" onmouseover="showTip(event, '1', 3)" class="id">args</span>
 </code></pre></td>
 </tr>
 </table>

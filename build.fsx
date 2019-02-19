@@ -16,11 +16,13 @@ nuget FSharp.Literate //"
 #load ".fake/build.fsx/intellisense.fsx"
 
 open System.IO
+open System.Text.RegularExpressions
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
-// open FSharp.Markdown
+open FSharp.Markdown
 open FSharp.Literate
 open Fake.Core
+open Fake.Core.TargetOperators
 
 // let root = __SOURCE_DIRECTORY__ + @"\..\posts"
 let root = @"C:\git\joelvandiver.github.io\posts"
@@ -89,24 +91,53 @@ let render html =
     html ]
   |> Fable.Helpers.ReactServer.renderToString 
 
-let parse source =
+let fsharpCoreDir = @"-I:C:\git\joelvandiver.github.io\packages\FSharp.Core\lib\netstandard1.6\"
+let systemRuntime = "-r:System.Runtime"
+let parseFSX source =
     let doc = 
-      let fsharpCoreDir = @"-I:C:\git\joelvandiver.github.io\packages\FSharp.Core\lib\netstandard1.6\FSharp.Core.dll"
-      let systemRuntime = "-r:System.Runtime"
       Literate.ParseScriptString(
                   source,
                   compilerOptions = systemRuntime + " " + fsharpCoreDir,
                   fsiEvaluator = FSharp.Literate.FsiEvaluator([|fsharpCoreDir|])
                 )
     FSharp.Literate.Literate.FormatLiterateNodes(doc, OutputKind.Html, "", true, true)
-let format (doc: LiterateDocument) =
-    Formatting.format doc.MarkdownDocument true OutputKind.Html
+
+let parseMD source = 
+    let doc = 
+        Literate.ParseMarkdownString(
+            source,
+            compilerOptions = systemRuntime + " " + fsharpCoreDir,
+            fsiEvaluator = FSharp.Literate.FsiEvaluator([|fsharpCoreDir|])
+        )
+    FSharp.Literate.Literate.FormatLiterateNodes(doc, OutputKind.Html, "", true, true)
+
+let format (doc: LiterateDocument) = Formatting.format doc.MarkdownDocument true OutputKind.Html
 
 let convertFSXPost content =
   { title = "Blog"
-    content = content |> parse |> format }
+    content = content |> parseFSX |> format }
   |> template
   |> render 
+
+let convertMDPost content =
+  { title = "Blog"
+    content = content |> parseMD |> format }
+  |> template
+  |> render 
+
+let convertToLink (path: string) : string = 
+   let source = __SOURCE_DIRECTORY__
+   let rel = 
+        path.Replace(source, "")
+            .Replace("\\index.fsx", "")
+            .Replace("\\index.html", "")
+            .Replace("\\index.md", "")
+   let dirs = 
+        rel.Replace("\\posts\\", "")
+           .Replace("\\", " - ")
+           .Replace(" Fs", " F#")
+   let clean = rel.Replace("\\", "/")
+   sprintf "- [%s](%s)" dirs clean
 
 Target.create "Build" (fun _ -> 
   Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
@@ -122,4 +153,27 @@ Target.create "Build" (fun _ ->
   |> List.iter File.WriteAllText
 )
 
-Target.runOrDefault "Build"
+Target.create "Home" (fun _ -> 
+    let source = __SOURCE_DIRECTORY__
+    let homeMD = source + @"\index.md"
+    let homeHtml = source + @"\index.html"
+    let html = Directory.GetFiles(root, "*.html", SearchOption.AllDirectories) |> List.ofSeq
+    let links = 
+        html
+        |> List.map convertToLink
+        |> List.fold(fun a b -> a + "\r\n" + b) ""
+    let contents = File.ReadAllText(homeMD)
+    let pattern = "## Posts(.|\n)*"
+    let replaced = 
+        let text = sprintf "## Posts\r\n%s\r\n" links
+        Regex.Replace(contents, pattern, text)
+    File.WriteAllText(homeMD, replaced)
+    let content = File.ReadAllText homeMD |> convertMDPost
+    File.WriteAllText(homeHtml, content)
+    ()
+)
+
+"Build"
+  ==> "Home"
+
+Target.runOrDefault "Home"

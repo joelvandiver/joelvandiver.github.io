@@ -105,19 +105,17 @@ let convertFSXPost content =
   |> render 
 
 Target.create "Build" (fun _ -> 
-  let posts = 
-    Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
-    |> List.ofSeq
-    |> List.filter(fun f -> f.Contains("_archive") |> not)
-    |> List.map(
-      fun f -> 
-        let path = f.Replace(".fsx", ".html")
-        let content = File.ReadAllText f
-        let post = convertFSXPost content
-        (path, post)
-    )
-
-  posts |> List.iter File.WriteAllText
+  Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
+  |> List.ofSeq
+  |> List.map(fun f -> (f, File.ReadAllText f))
+  |> List.map(
+    fun (f, content) -> 
+      printfn "%s" f
+      let path = f.Replace(".fsx", ".html")
+      let post = convertFSXPost content
+      (path, post)
+  )
+  |> List.iter File.WriteAllText
 )
 
 Target.runOrDefault "Build"

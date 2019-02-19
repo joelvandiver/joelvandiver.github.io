@@ -1,11 +1,18 @@
 source https://www.nuget.org/api/v2
 
+source https://api.nuget.org/v3/index.json
+nuget Fake.DotNet.Cli
+nuget Fake.IO.FileSystem
+nuget Fake.Core.Target
+
+source https://ci.appveyor.com/nuget/fsharp-formatting
 nuget FSharp.Core
+nuget Fake.IO.FileSystem
+nuget Fake.Core.Trace
+nuget FSharp.Data
+nuget Fable.React
+nuget FSharp.Literate
     
 // [ FAKE GROUP ]
 group Build
     storage none
-    source https://api.nuget.org/v3/index.json
-    nuget Fake.DotNet.Cli
-    nuget Fake.IO.FileSystem
-    nuget Fake.Core.Target

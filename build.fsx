@@ -74,6 +74,10 @@ let template post =
             Class "main"
           ] [
             RawText post.content
+            script [Src "/assets/vendor/jquery/jquery.min.js"] []
+            script [Src "/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"] []
+            script [Src "/assets/vendor/jquery-easing/jquery.easing.min.js"] []
+            script [Src "/assets/js/literate.js"] []
           ]
       ]
   ]

@@ -1,6 +1,5 @@
 ## Posts
 
-- [scratch.html](/posts/scratch.html)
 - [Explorations - Perf](/posts/Explorations/Perf)
 - [Guides - Expecto](/posts/Guides/Expecto)
 - [Explorations - Math - Factorial](/posts/Explorations/Math/Factorial)

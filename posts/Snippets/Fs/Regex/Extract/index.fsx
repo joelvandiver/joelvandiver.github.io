@@ -1,5 +1,5 @@
 (**
-# Extract a Text from a String
+# Extract Text from a String
 *)
 
 open System.Text.RegularExpressions

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><div class="sidebar"><h1><a href="/">Joel Vandiver</a></h1><img src="/posts/Fun/Art/Fractals/9.29.17.svg"/></div><div class="main"><h1><a name="Extract-Text-from-a-String" class="anchor" href="#Extract-Text-from-a-String">Extract Text from a String</a></h1>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><div class="sidebar"><h1><a href="/">Joel Vandiver</a></h1><img src="/assets/9.29.17.svg"/></div><div class="main"><h1><a name="Extract-Text-from-a-String" class="anchor" href="#Extract-Text-from-a-String">Extract Text from a String</a></h1>
+<p><a href="https://gist.github.com/joelvandiver/dc3693409136f4bf0bc48b6352d1ac5d">GIST</a></p>
 <table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
 <span class="l"> 2: </span>
 <span class="l"> 3: </span>
@@ -12,10 +13,8 @@
 <span class="l">10: </span>
 <span class="l">11: </span>
 <span class="l">12: </span>
-<span class="l">13: </span>
 </pre></td>
 <td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">System</span><span class="pn">.</span><span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">Text</span><span class="pn">.</span><span class="id">RegularExpressions</span>
-
 
 <span class="k">let</span> <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="id">contents</span> <span class="o">=</span> 
    <span class="s">&quot;&quot;&quot;(** </span>
@@ -24,7 +23,7 @@
 <span class="s">*)</span>
 <span class="s">   &quot;&quot;&quot;</span>
 
-<span class="k">let</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="id">regex</span> <span class="o">=</span> <span class="k">new</span> <span class="id">Regex</span><span class="pn">(</span><span class="s">&quot;\n# (?&lt;title&gt;.*?)\n&quot;</span><span class="pn">)</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="id">regex</span> <span class="o">=</span> <span class="id">Regex</span><span class="pn">(</span><span class="s">&quot;\n# (?&lt;title&gt;.*?)\n&quot;</span><span class="pn">)</span>
 <span class="k">let</span> <span onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)" class="id">m</span> <span class="o">=</span> <span onmouseout="hideTip(event, '4', 6)" onmouseover="showTip(event, '4', 6)" class="id">regex</span><span class="pn">.</span><span class="id">Match</span><span class="pn">(</span><span onmouseout="hideTip(event, '3', 7)" onmouseover="showTip(event, '3', 7)" class="id">contents</span><span class="pn">)</span>
 <span onmouseout="hideTip(event, '5', 8)" onmouseover="showTip(event, '5', 8)" class="id">m</span><span class="pn">.</span><span class="id">Groups</span><span class="pn">.</span><span class="pn">[</span><span class="s">&quot;title&quot;</span><span class="pn">]</span><span class="pn">.</span><span class="id">Value</span>
 </code></pre></td>

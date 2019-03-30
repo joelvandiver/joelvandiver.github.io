@@ -140,16 +140,12 @@ let convertToLink (path: string) : string =
    sprintf "- [%s](%s)" dirs clean
 
 Target.create "Build" (fun _ -> 
-  Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
-  |> List.ofSeq
-  |> List.map(fun f -> (f, File.ReadAllText f))
-  |> List.map(
-    fun (f, content) -> 
+  (List.map ((fun f -> (f, File.ReadAllText f)) >> (fun (f, content) -> 
       printfn "%s" f
       let path = f.Replace(".fsx", ".html")
       let post = convertFSXPost content
-      (path, post)
-  )
+      (path, post))) (Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
+  |> List.ofSeq))
   |> List.iter File.WriteAllText
 )
 

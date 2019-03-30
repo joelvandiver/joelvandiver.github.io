@@ -3,8 +3,7 @@
 
 [GIST](https://gist.github.com/joelvandiver/d709141d3d18eeffcb2936f67ad23e9d)
 
-Create a new list by accumulating the 
-values in the list in ascending order.
+Create a new list by accumulating the values in the list in ascending order.
 *)
 
 let accumulate<'T> (accumulator: 'T -> 'T -> 'T) (l: 'T list) : 'T list =

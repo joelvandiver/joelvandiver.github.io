@@ -1,9 +1,9 @@
 (**
 # Extract Text from a String
+[GIST](https://gist.github.com/joelvandiver/dc3693409136f4bf0bc48b6352d1ac5d)
 *)
 
 open System.Text.RegularExpressions
-
 
 let contents = 
    """(** 
@@ -12,6 +12,6 @@ let contents =
 *)
    """
 
-let regex = new Regex("\n# (?<title>.*?)\n")
+let regex = Regex("\n# (?<title>.*?)\n")
 let m = regex.Match(contents)
 m.Groups.["title"].Value

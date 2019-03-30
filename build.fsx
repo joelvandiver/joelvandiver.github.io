@@ -69,7 +69,7 @@ let template post =
               ]
             ]
             img [
-              Src "/posts/Fun/Art/Fractals/9.29.17.svg"
+              Src "/assets/9.29.17.svg"
             ]
           ]
           div [

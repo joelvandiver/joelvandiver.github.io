@@ -147,14 +147,27 @@ let convertToLink (path: string) : string =
    let clean = rel.Replace("\\", "/")
    sprintf "- [%s](%s)" dirs clean
 
-Target.create "Build" (fun _ -> 
+type SupportedExt =
+| MD
+| FSX
+
+let getCompiler = function
+    | MD  -> ".md", convertMDPost
+    | FSX -> ".fsx", convertFSXPost
+
+let compileExt ext =
+  let x, compiler = getCompiler ext
   (List.map ((fun f -> (f, File.ReadAllText f)) >> (fun (f, content) -> 
       printfn "%s" f
-      let path = f.Replace(".fsx", ".html")
-      let post = convertFSXPost content
-      (path, post))) (Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
+      let path = f.Replace(x, ".html")
+      let post = compiler content
+      (path, post))) (Directory.GetFiles(root, "*" + x, SearchOption.AllDirectories)
   |> List.ofSeq))
   |> List.iter File.WriteAllText
+
+Target.create "Build" (fun _ -> 
+  compileExt FSX
+  compileExt MD
 )
 
 Target.create "Section" (fun _ -> 

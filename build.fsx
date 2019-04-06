@@ -64,15 +64,12 @@ let template post =
       body [
         Class "container"
       ] [
-          div [
+          a [
             Class "sidebar"
+            Href "/"
           ] [
             h1 [] [
-              a [
-                Href "/"
-              ] [
                 Text "Joel Vandiver"
-              ]
             ]
             img [
               Src "/assets/fractal-logo.svg"

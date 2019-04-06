@@ -80,6 +80,14 @@ let template post =
             Class "main"
           ] [
             RawText post.content
+            a [
+                Href "javascript:history.back()"                
+            ] [
+                i [
+                    Class "fa fa-arrow-alt-circle-left"
+                ] []
+                Text "Back"
+            ]
             script [Src "/assets/vendor/jquery/jquery.min.js"] []
             script [Src "/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"] []
             script [Src "/assets/vendor/jquery-easing/jquery.easing.min.js"] []

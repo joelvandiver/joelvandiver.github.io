@@ -25,7 +25,13 @@ open Fake.Core
 open Fake.Core.TargetOperators
 
 // let root = __SOURCE_DIRECTORY__ + @"\..\posts"
-let root = @"C:\git\joelvandiver.github.io\posts"
+let root = @"C:\git\joelvandiver.github.io\posts\"
+let sections = 
+    [
+        "Daily"
+        "Explorations"
+        "Snippets"
+    ]
 
 type Post = {
   title: string
@@ -149,27 +155,31 @@ Target.create "Build" (fun _ ->
   |> List.iter File.WriteAllText
 )
 
-Target.create "Home" (fun _ -> 
-    let source = __SOURCE_DIRECTORY__
-    let homeMD = source + @"\index.md"
-    let homeHtml = source + @"\index.html"
-    let html = Directory.GetFiles(root, "*.html", SearchOption.AllDirectories) |> List.ofSeq
-    let links = 
-        html
-        |> List.map convertToLink
-        |> List.fold(fun a b -> a + "\r\n" + b) ""
-    let contents = File.ReadAllText(homeMD)
-    let pattern = "## Posts(.|\n)*"
-    let replaced = 
-        let text = sprintf "## Posts\r\n%s\r\n" links
-        Regex.Replace(contents, pattern, text)
-    File.WriteAllText(homeMD, replaced)
-    let content = File.ReadAllText homeMD |> convertMDPost
-    File.WriteAllText(homeHtml, content)
+Target.create "Section" (fun _ -> 
+    let addSectionLinks folder =
+        let sectionMD = folder + @"\index.md"
+        let sectionHtml = folder + @"\index.html"
+        let html = Directory.GetFiles(folder, "*.html", SearchOption.AllDirectories) |> List.ofSeq
+        let links = 
+            html
+            |> List.filter((<>) sectionHtml)
+            |> List.map convertToLink
+            |> List.fold(fun a b -> a + "\r\n" + b) ""
+        let contents = File.ReadAllText(sectionMD)
+        let pattern = "## (.*?)\r\n(.|\n)*"
+        let replaced = 
+            let text = sprintf "## $1\r\n%s\r\n" links
+            Regex.Replace(contents, pattern, text)
+        File.WriteAllText(sectionMD, replaced)
+        let content = File.ReadAllText sectionMD |> convertMDPost
+        File.WriteAllText(sectionHtml, content)
+    sections 
+    |> List.map ((+) root)
+    |> List.iter addSectionLinks
     ()
 )
 
 "Build"
-  ==> "Home"
+  ==> "Section"
 
-Target.runOrDefault "Home"
+Target.runOrDefault "Section"

@@ -15,6 +15,7 @@ nuget FSharp.Literate //"
 
 #load ".fake/build.fsx/intellisense.fsx"
 
+open System
 open System.IO
 open System.Text.RegularExpressions
 open Fable.Helpers.React
@@ -136,9 +137,13 @@ let convertToLink (path: string) : string =
             .Replace("\\index.html", "")
             .Replace("\\index.md", "")
    let dirs = 
-        rel.Replace("\\posts\\", "")
-           .Replace("\\", " - ")
-           .Replace(" Fs", " F#")
+        rel
+            .Replace("\\posts\\", "")
+            .Replace(" Fs", " F#")
+            .Split('\\')
+        |> List.ofSeq
+        |> List.tail
+        |> List.reduce(fun a b -> a + " - " + string b)
    let clean = rel.Replace("\\", "/")
    sprintf "- [%s](%s)" dirs clean
 

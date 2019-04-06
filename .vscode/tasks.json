@@ -19,10 +19,6 @@
             "type": "shell",
             "windows": {
                 "command": "fake build -t SinglePost ${file}"
-            },
-            "group": {
-                "kind": "build",
-                "isDefault": true
             }
         }
     ]

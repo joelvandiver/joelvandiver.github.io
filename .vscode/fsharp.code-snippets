@@ -4,6 +4,7 @@
         "body": [
             "(**",
             "# ${1:title}",
+            "${CURRENT_MONTH}-${CURRENT_DATE}-${CURRENT_YEAR}",
             "\r",
             "*)"
         ],

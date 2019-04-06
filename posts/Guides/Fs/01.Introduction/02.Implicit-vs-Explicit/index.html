@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="F-Implicit-vs-Explicit-Value-Declaration" class="anchor" href="#F-Implicit-vs-Explicit-Value-Declaration">F# Implicit vs Explicit Value Declaration</a></h1>
+<p>Values can be defined in F# either implicitly or explicitly, as in the values below.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">implicitInt</span> <span class="o">=</span> <span class="n">1</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">explicitInt</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="vt">int</span> <span class="o">=</span> <span class="n">1</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val implicit : int = 1
+val explicit : int = 1
+</code></pre></td></tr></table>
+<p>Choosing between implicit and explicit value declarations will largely depend on context.</p>
+<p>Simple value declarations are easier to work with as implicit declarations, but values involving complex type systems are generally easier to maintain with explicit declarations.</p>
+<a href="javascript:history.back()"><i class="fa fa-arrow-alt-circle-left"></i>Back</a><script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

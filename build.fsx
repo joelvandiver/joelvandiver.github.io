@@ -15,6 +15,7 @@ nuget FSharp.Literate //"
 
 #load ".fake/build.fsx/intellisense.fsx"
 
+open System
 open System.IO
 open System.Text.RegularExpressions
 open Fable.Helpers.React
@@ -25,7 +26,13 @@ open Fake.Core
 open Fake.Core.TargetOperators
 
 // let root = __SOURCE_DIRECTORY__ + @"\..\posts"
-let root = @"C:\git\joelvandiver.github.io\posts"
+let root = @"C:\git\joelvandiver.github.io\posts\"
+let sections = 
+    [
+        "Daily"
+        "Explorations"
+        "Guides"
+    ]
 
 type Post = {
   title: string
@@ -58,24 +65,29 @@ let template post =
       body [
         Class "container"
       ] [
-          div [
+          a [
             Class "sidebar"
+            Href "/"
           ] [
             h1 [] [
-              a [
-                Href "/"
-              ] [
                 Text "Joel Vandiver"
-              ]
             ]
             img [
-              Src "/assets/9.29.17.svg"
+              Src "/assets/fractal-logo.svg"
             ]
           ]
           div [
             Class "main"
           ] [
             RawText post.content
+            a [
+                Href "javascript:history.back()"                
+            ] [
+                i [
+                    Class "fa fa-arrow-alt-circle-left"
+                ] []
+                Text "Back"
+            ]
             script [Src "/assets/vendor/jquery/jquery.min.js"] []
             script [Src "/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"] []
             script [Src "/assets/vendor/jquery-easing/jquery.easing.min.js"] []
@@ -133,43 +145,87 @@ let convertToLink (path: string) : string =
             .Replace("\\index.html", "")
             .Replace("\\index.md", "")
    let dirs = 
-        rel.Replace("\\posts\\", "")
-           .Replace("\\", " - ")
-           .Replace(" Fs", " F#")
+        rel
+            .Replace("\\posts\\", "")
+            .Replace(" Fs", " F#")
+            .Split('\\')
+        |> List.ofSeq
+        |> List.tail
+        |> List.reduce(fun a b -> a + " - " + string b)
    let clean = rel.Replace("\\", "/")
    sprintf "- [%s](%s)" dirs clean
 
-Target.create "Build" (fun _ -> 
-  (List.map ((fun f -> (f, File.ReadAllText f)) >> (fun (f, content) -> 
-      printfn "%s" f
-      let path = f.Replace(".fsx", ".html")
-      let post = convertFSXPost content
-      (path, post))) (Directory.GetFiles(root, "*.fsx", SearchOption.AllDirectories)
-  |> List.ofSeq))
-  |> List.iter File.WriteAllText
+type SupportedExt =
+| MD
+| FSX
+
+let getCompiler = function
+    | MD  -> ".md", convertMDPost
+    | FSX -> ".fsx", convertFSXPost
+
+let compileFile compiler path =
+  printfn "%s" path
+  let content = File.ReadAllText path
+  let post = compiler content
+  let path' = 
+    let items = path.Split('.') |> List.ofSeq
+    let x = items.[0..items.Length - 2]
+    x
+    |> List.reduce(fun a b -> a + "." + b)
+  File.WriteAllText(path' + ".html", post)
+
+let compileExt ext =
+  let x, compiler = getCompiler ext
+  let files = Directory.GetFiles(root, "*" + x, SearchOption.AllDirectories) |> List.ofSeq
+  let compile = compileFile compiler
+  files |> List.iter compile
+
+Target.create "SinglePost" (fun arguments -> 
+  let ps = arguments.Context.Arguments
+  match ps with 
+  | [p] when p.EndsWith(".md") -> 
+    printfn "Building MD"
+    compileFile convertMDPost p
+    ()
+  | [p] when p.EndsWith(".fsx") -> 
+    printfn "Building FSX"
+    compileFile convertFSXPost p
+    ()
+  | _ -> raise (NotSupportedException(sprintf "The following arguments are not supported for building a file:  %A" p))
+  ()
 )
 
-Target.create "Home" (fun _ -> 
-    let source = __SOURCE_DIRECTORY__
-    let homeMD = source + @"\index.md"
-    let homeHtml = source + @"\index.html"
-    let html = Directory.GetFiles(root, "*.html", SearchOption.AllDirectories) |> List.ofSeq
-    let links = 
-        html
-        |> List.map convertToLink
-        |> List.fold(fun a b -> a + "\r\n" + b) ""
-    let contents = File.ReadAllText(homeMD)
-    let pattern = "## Posts(.|\n)*"
-    let replaced = 
-        let text = sprintf "## Posts\r\n%s\r\n" links
-        Regex.Replace(contents, pattern, text)
-    File.WriteAllText(homeMD, replaced)
-    let content = File.ReadAllText homeMD |> convertMDPost
-    File.WriteAllText(homeHtml, content)
+Target.create "Build" (fun _ -> 
+  compileExt FSX
+  compileExt MD
+)
+
+Target.create "Section" (fun _ -> 
+    let addSectionLinks folder =
+        let sectionMD = folder + @"\index.md"
+        let sectionHtml = folder + @"\index.html"
+        let html = Directory.GetFiles(folder, "*.html", SearchOption.AllDirectories) |> List.ofSeq
+        let links = 
+            html
+            |> List.filter((<>) sectionHtml)
+            |> List.map convertToLink
+            |> List.fold(fun a b -> a + "\r\n" + b) ""
+        let contents = File.ReadAllText(sectionMD)
+        let pattern = "## (.*?)\r\n(.|\n)*"
+        let replaced = 
+            let text = sprintf "## $1\r\n%s\r\n" links
+            Regex.Replace(contents, pattern, text)
+        File.WriteAllText(sectionMD, replaced)
+        let content = File.ReadAllText sectionMD |> convertMDPost
+        File.WriteAllText(sectionHtml, content)
+    sections 
+    |> List.map ((+) root)
+    |> List.iter addSectionLinks
     ()
 )
 
 "Build"
-  ==> "Home"
+  ==> "Section"
 
-Target.runOrDefault "Home"
+Target.runOrDefaultWithArguments "Section"
+// Target.runOrDefaultWithArguments "SinglePost"

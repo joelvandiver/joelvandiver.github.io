@@ -1,0 +1,14 @@
+## Daily Posts
+
+- [2019 - 01 - 10 - Domain-And-Range](/posts/Daily/2019/01/10/Domain-And-Range)
+- [2019 - 01 - 10 - Relations-vs-Functions](/posts/Daily/2019/01/10/Relations-vs-Functions)
+- [2019 - 01 - 12 - German](/posts/Daily/2019/01/12/German)
+- [2019 - 01 - 21 - Geometry](/posts/Daily/2019/01/21/Geometry)
+- [2019 - 01 - 24 - FSI-Args](/posts/Daily/2019/01/24/FSI-Args)
+- [2019 - 01 - 24 - HTML-Clean](/posts/Daily/2019/01/24/HTML-Clean)
+- [2019 - 01 - 24 - List-Previous-and-Next](/posts/Daily/2019/01/24/List-Previous-and-Next)
+- [2019 - 01 - 29 - Factorial](/posts/Daily/2019/01/29/Factorial)
+- [2019 - 01 - 30 - Power-Definition](/posts/Daily/2019/01/30/Power-Definition)
+- [2019 - 03 - 30 - Accumulate](/posts/Daily/2019/03/30/Accumulate)
+- [2019 - 03 - 30 - Regex-Extract](/posts/Daily/2019/03/30/Regex-Extract)
+- [2019 - 01 - 15 - Interview-Question - Colum-Header-Number](/posts/Daily/2019/01/15/Interview-Question/Colum-Header-Number)

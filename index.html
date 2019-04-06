@@ -12,15 +12,41 @@
 
 <body class="container">
     <div class="sidebar">
-        <h1><a href="/">Joel Vandiver</a></h1><img src="/assets/9.29.17.svg" />
+        <h1><a href="/">Joel Vandiver</a></h1><img src="/assets/fractal-logo.svg" />
     </div>
     <div class="main">
         <h2>Sections</h2>
-        <ul>
-            <li><a href="/posts/Explorations">Explorations</a></li>
-            <li><a href="/posts/Snippets">Snippets</a></li>
-            <li><a href="/posts/Daily">Daily Journal</a></li>
-        </ul>
+
+        <div class="list-group">
+            <a href="/posts/explorations" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Explorations</h5>
+                    <small class="text-muted">FSI</small>
+                </div>
+                <p class="mb-1">
+                    Experimentation informs theory.
+                </p>
+            </a>
+            <a href="/posts/daily" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Daily</h5>
+                    <small class="text-muted">F#</small>
+                </div>
+                <p class="mb-1">
+                    Reflection is key to synthesis of learning.
+                </p>
+            </a>
+            <a href="/posts/guides" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <h5 class="mb-1">Guides</h5>
+                    <small class="text-muted">F#, T-SQL, Fable, Bootstrap, Bulma</small>
+                </div>
+                <p class="mb-1">
+                    To be a master of anything, you must be able to show other's the way.
+                </p>
+            </a>
+        </div>
+
         <script src="/assets/vendor/jquery/jquery.min.js"></script>
         <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
         <script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script>

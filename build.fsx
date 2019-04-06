@@ -30,7 +30,7 @@ let sections =
     [
         "Daily"
         "Explorations"
-        "Snippets"
+        "Guides"
     ]
 
 type Post = {
@@ -75,7 +75,7 @@ let template post =
               ]
             ]
             img [
-              Src "/assets/9.29.17.svg"
+              Src "/assets/fractal-logo.svg"
             ]
           ]
           div [

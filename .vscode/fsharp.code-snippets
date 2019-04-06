@@ -1,0 +1,34 @@
+{
+    "post": {
+        "prefix": "post",
+        "body": [
+            "(**",
+            "# ${1:title}",
+            "\r",
+            "*)"
+        ],
+        "description": "Begin a post"
+    },
+    "mark": {
+        "prefix": "mark",
+        "body": [
+            "(**",
+            "$1",
+            "\r",
+            "*)"
+        ],
+        "description": "Begin a markdown comment"
+    },
+    "out": {
+        "prefix": "out",
+        "body": [
+            "(**",
+            "> Output:",
+            "```fsharp",
+            "$1",
+            "```",
+            "*)"
+        ],
+        "description": "Begin an output comment"
+    }
+}

@@ -163,15 +163,37 @@ let getCompiler = function
     | MD  -> ".md", convertMDPost
     | FSX -> ".fsx", convertFSXPost
 
+let compileFile compiler path =
+  printfn "%s" path
+  let content = File.ReadAllText path
+  let post = compiler content
+  let path' = 
+    let items = path.Split('.') |> List.ofSeq
+    let x = items.[0..items.Length - 2]
+    x
+    |> List.reduce(fun a b -> a + "." + b)
+  File.WriteAllText(path' + ".html", post)
+
 let compileExt ext =
   let x, compiler = getCompiler ext
-  (List.map ((fun f -> (f, File.ReadAllText f)) >> (fun (f, content) -> 
-      printfn "%s" f
-      let path = f.Replace(x, ".html")
-      let post = compiler content
-      (path, post))) (Directory.GetFiles(root, "*" + x, SearchOption.AllDirectories)
-  |> List.ofSeq))
-  |> List.iter File.WriteAllText
+  let files = Directory.GetFiles(root, "*" + x, SearchOption.AllDirectories) |> List.ofSeq
+  let compile = compileFile compiler
+  files |> List.iter compile
+
+Target.create "SinglePost" (fun arguments -> 
+  let ps = arguments.Context.Arguments
+  match ps with 
+  | [p] when p.EndsWith(".md") -> 
+    printfn "Building MD"
+    compileFile convertMDPost p
+    ()
+  | [p] when p.EndsWith(".fsx") -> 
+    printfn "Building FSX"
+    compileFile convertFSXPost p
+    ()
+  | _ -> raise (NotSupportedException(sprintf "The following arguments are not supported for building a file:  %A" p))
+  ()
+)
 
 Target.create "Build" (fun _ -> 
   compileExt FSX
@@ -205,4 +227,5 @@ Target.create "Section" (fun _ ->
 "Build"
   ==> "Section"
 
-Target.runOrDefault "Section"
+Target.runOrDefaultWithArguments "Section"
+// Target.runOrDefaultWithArguments "SinglePost"

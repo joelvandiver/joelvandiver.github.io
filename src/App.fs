@@ -35,7 +35,6 @@ let circle () =
     ctx.arc(x, x, r, 0., 360.)
     ctx.fill()
 
-
 let genFractal (gens: (float -> float * float * float * float) list) =
     let (_, ctx) = createCanvas("fractal1")
     ctx.fillStyle <- !^fill

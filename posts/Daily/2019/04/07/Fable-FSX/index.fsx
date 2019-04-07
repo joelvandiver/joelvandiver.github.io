@@ -72,8 +72,8 @@ webpack --config c:/git/joelvandiver.github.io/posts/Daily/2019/04/07/Fable-FSX/
 
 Next, I'll add a referenced to the bundle.js that was built from the code above.
 ```html
-<script src="./bundle.js" />
+<script src="./bundle.js"></script>
 ```
 
-<script src="./bundle.js" />
+<script src="./bundle.js"></script>
 *)

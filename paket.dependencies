@@ -12,6 +12,8 @@ nuget Fake.Core.Trace
 nuget FSharp.Data
 nuget Fable.React
 nuget FSharp.Literate
+nuget Fable.Compiler
+nuget dotnet-fable
     
 // [ FAKE GROUP ]
 group Build

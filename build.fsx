@@ -213,7 +213,7 @@ Target.create "Section" (fun _ ->
         let content = File.ReadAllText sectionMD |> convertMDPost
         File.WriteAllText(sectionHtml, content)
     sections 
-    |> List.map (fun (section, sorter) -> section + root, sorter)
+    |> List.map (fun (section, sorter) -> root + section, sorter)
     |> List.iter addSectionLinks
     ()
 )

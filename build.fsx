@@ -27,11 +27,12 @@ open Fake.Core.TargetOperators
 
 // let root = __SOURCE_DIRECTORY__ + @"\..\posts"
 let root = @"C:\git\joelvandiver.github.io\posts\"
+
 let sections = 
     [
-        "Daily"
-        "Explorations"
-        "Guides"
+        "Daily", List.sortDescending
+        "Explorations", List.sort
+        "Guides", List.sort
     ]
 
 type Post = {
@@ -193,7 +194,7 @@ Target.create "Build" (fun _ ->
 )
 
 Target.create "Section" (fun _ -> 
-    let addSectionLinks folder =
+    let addSectionLinks (folder, sorter) =
         let sectionMD = folder + @"\index.md"
         let sectionHtml = folder + @"\index.html"
         let html = Directory.GetFiles(folder, "*.html", SearchOption.AllDirectories) |> List.ofSeq
@@ -201,6 +202,7 @@ Target.create "Section" (fun _ ->
             html
             |> List.filter((<>) sectionHtml)
             |> List.map convertToLink
+            |> sorter
             |> List.fold(fun a b -> a + "\r\n" + b) ""
         let contents = File.ReadAllText(sectionMD)
         let pattern = "## (.*?)\r\n(.|\n)*"
@@ -211,7 +213,7 @@ Target.create "Section" (fun _ ->
         let content = File.ReadAllText sectionMD |> convertMDPost
         File.WriteAllText(sectionHtml, content)
     sections 
-    |> List.map ((+) root)
+    |> List.map (fun (section, sorter) -> section + root, sorter)
     |> List.iter addSectionLinks
     ()
 )

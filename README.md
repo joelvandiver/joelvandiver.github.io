@@ -38,6 +38,28 @@ The url for this Blog is here:
 - [ ] Backlog
   - [ ] Implement a General XML to Json Solution
 
+- [ ] Convert Blog to 
+```F#
+#load @"packages\FSharp.Formatting\FSharp.Formatting.fsx"
+open FSharp.Literate
+open System.IO
+
+let src = __SOURCE_DIRECTORY__ + "/test/src"
+let output = __SOURCE_DIRECTORY__ + "/test/output"
+let template = __SOURCE_DIRECTORY__ + "/template-project.html"
+
+// Load the template & specify project information
+let projInfo =
+ [ "page-description", "GCS Pro Documentation"
+   "page-author", "Joel Vandiver"
+   "project-name", "GCS Pro" ]
+
+// Process all files and save results to 'output' directory
+let x =
+   Literate.ProcessDirectory
+     (src, template, output, replacements = projInfo)
+```
+
 
 ### Posts
 

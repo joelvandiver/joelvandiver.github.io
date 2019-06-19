@@ -67,7 +67,7 @@ val workIsNone : string option = None
 
 
 (**
-Option values can be pattern matched to extract values.
+Option values can be extracted with pattern matching.
 ...
 *)
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="Discriminated-Unions" class="anchor" href="#Discriminated-Unions">Discriminated Unions</a></h1>
+<p>06-20-2019</p>
+<p>F# Discriminated Unions have labelled cases that can handle payloads of data.</p>
+<p>Take the following example:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="rt">Person</span> <span class="o">=</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="rt">string</span>
+
+<span class="k">type</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="rt">Family</span> <span class="o">=</span>
+<span class="pn">|</span> <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="uc">Dad</span> <span class="k">of</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="rt">Person</span>
+<span class="pn">|</span> <span onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)" class="uc">Mom</span> <span class="k">of</span> <span onmouseout="hideTip(event, '4', 6)" onmouseover="showTip(event, '4', 6)" class="rt">Person</span>
+<span class="pn">|</span> <span onmouseout="hideTip(event, '6', 7)" onmouseover="showTip(event, '6', 7)" class="uc">Siblings</span> <span class="k">of</span> <span onmouseout="hideTip(event, '4', 8)" onmouseover="showTip(event, '4', 8)" class="rt">Person</span> <span onmouseout="hideTip(event, '7', 9)" onmouseover="showTip(event, '7', 9)" class="rt">list</span>
+<span class="pn">|</span> <span onmouseout="hideTip(event, '8', 10)" onmouseover="showTip(event, '8', 10)" class="uc">Self</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Each of the discriminated cases behave like function in instantiating values:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '9', 11)" onmouseover="showTip(event, '9', 11)" class="id">dad</span> <span class="o">=</span> <span onmouseout="hideTip(event, '3', 12)" onmouseover="showTip(event, '3', 12)" class="uc">Dad</span> <span class="s">&quot;Tim&quot;</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '10', 13)" onmouseover="showTip(event, '10', 13)" class="id">mom</span> <span class="o">=</span> <span onmouseout="hideTip(event, '5', 14)" onmouseover="showTip(event, '5', 14)" class="uc">Mom</span> <span class="s">&quot;Joanna&quot;</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '11', 15)" onmouseover="showTip(event, '11', 15)" class="id">siblings</span> <span class="o">=</span> <span onmouseout="hideTip(event, '6', 16)" onmouseover="showTip(event, '6', 16)" class="uc">Siblings</span> <span class="pn">[</span><span class="s">&quot;Tim Jr.&quot;</span><span class="pn">;</span> <span class="s">&quot;Sarah&quot;</span><span class="pn">;</span> <span class="s">&quot;Bobby&quot;</span><span class="pn">]</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '12', 17)" onmouseover="showTip(event, '12', 17)" class="id">me</span> <span class="o">=</span> <span onmouseout="hideTip(event, '8', 18)" onmouseover="showTip(event, '8', 18)" class="uc">Self</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">dad</span> <span class="pn">:</span> <span class="id">Family</span> <span class="o">=</span> <span class="id">Dad</span> <span class="s">&quot;Tim&quot;</span>
+<span class="k">val</span> <span class="id">mom</span> <span class="pn">:</span> <span class="id">Family</span> <span class="o">=</span> <span class="id">Mom</span> <span class="s">&quot;Joanna&quot;</span>
+<span class="k">val</span> <span class="id">siblings</span> <span class="pn">:</span> <span class="id">Family</span> <span class="o">=</span> <span class="id">Siblings</span> <span class="pn">[</span><span class="s">&quot;Tim Jr.&quot;</span><span class="pn">;</span> <span class="s">&quot;Sarah&quot;</span><span class="pn">;</span> <span class="s">&quot;Bobby&quot;</span><span class="pn">]</span>
+<span class="k">val</span> <span class="id">me</span> <span class="pn">:</span> <span class="id">Family</span> <span class="o">=</span> <span class="id">Self</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>The <code>Family</code> cases are all of type <code>Family</code> so they can be packaged up in other values.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '13', 19)" onmouseover="showTip(event, '13', 19)" class="id">myFamily</span> <span class="o">=</span> 
+    <span class="pn">[</span>
+        <span onmouseout="hideTip(event, '9', 20)" onmouseover="showTip(event, '9', 20)" class="id">dad</span>
+        <span onmouseout="hideTip(event, '10', 21)" onmouseover="showTip(event, '10', 21)" class="id">mom</span>
+        <span onmouseout="hideTip(event, '11', 22)" onmouseover="showTip(event, '11', 22)" class="id">siblings</span>
+        <span onmouseout="hideTip(event, '12', 23)" onmouseover="showTip(event, '12', 23)" class="id">me</span>
+    <span class="pn">]</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">myFamily</span> <span class="pn">:</span> <span class="id">Family</span> <span onmouseout="hideTip(event, '7', 24)" onmouseover="showTip(event, '7', 24)" class="id">list</span> <span class="o">=</span>
+  <span class="pn">[</span><span class="id">Dad</span> <span class="s">&quot;Tim&quot;</span><span class="pn">;</span> <span class="id">Mom</span> <span class="s">&quot;Joanna&quot;</span><span class="pn">;</span> <span class="id">Siblings</span> <span class="pn">[</span><span class="s">&quot;Tim Jr.&quot;</span><span class="pn">;</span> <span class="s">&quot;Sarah&quot;</span><span class="pn">;</span> <span class="s">&quot;Bobby&quot;</span><span class="pn">]</span><span class="pn">;</span> <span class="id">Self</span><span class="pn">]</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>Discriminated Unions also support pattern matching in handling each of the cases.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '14', 25)" onmouseover="showTip(event, '14', 25)" class="fn">stateName</span> <span onmouseout="hideTip(event, '15', 26)" onmouseover="showTip(event, '15', 26)" class="id">person</span> <span class="o">=</span> 
+    <span class="k">match</span> <span onmouseout="hideTip(event, '15', 27)" onmouseover="showTip(event, '15', 27)" class="id">person</span> <span class="k">with</span> 
+    <span class="pn">|</span> <span onmouseout="hideTip(event, '3', 28)" onmouseover="showTip(event, '3', 28)" class="uc">Dad</span> <span onmouseout="hideTip(event, '16', 29)" onmouseover="showTip(event, '16', 29)" class="id">d</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '17', 30)" onmouseover="showTip(event, '17', 30)" class="fn">printfn</span> <span class="s">&quot;My dad&#39;s name is %s.&quot;</span> <span onmouseout="hideTip(event, '16', 31)" onmouseover="showTip(event, '16', 31)" class="id">d</span>
+    <span class="pn">|</span> <span onmouseout="hideTip(event, '5', 32)" onmouseover="showTip(event, '5', 32)" class="uc">Mom</span> <span onmouseout="hideTip(event, '18', 33)" onmouseover="showTip(event, '18', 33)" class="id">m</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '17', 34)" onmouseover="showTip(event, '17', 34)" class="fn">printfn</span> <span class="s">&quot;My mom&#39;s name is %s.&quot;</span> <span onmouseout="hideTip(event, '18', 35)" onmouseover="showTip(event, '18', 35)" class="id">m</span>
+    <span class="pn">|</span> <span onmouseout="hideTip(event, '6', 36)" onmouseover="showTip(event, '6', 36)" class="uc">Siblings</span> <span onmouseout="hideTip(event, '19', 37)" onmouseover="showTip(event, '19', 37)" class="id">sibs</span> <span class="k">-&gt;</span> 
+        <span onmouseout="hideTip(event, '19', 38)" onmouseover="showTip(event, '19', 38)" class="id">sibs</span>
+        <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '20', 39)" onmouseover="showTip(event, '20', 39)" class="m">List</span><span class="pn">.</span><span onmouseout="hideTip(event, '21', 40)" onmouseover="showTip(event, '21', 40)" class="id">iter</span><span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, '22', 41)" onmouseover="showTip(event, '22', 41)" class="id">s</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '17', 42)" onmouseover="showTip(event, '17', 42)" class="fn">printfn</span> <span class="s">&quot;My sibling&#39;s name is %s.&quot;</span> <span onmouseout="hideTip(event, '22', 43)" onmouseover="showTip(event, '22', 43)" class="id">s</span><span class="pn">)</span>
+    <span class="pn">|</span> <span onmouseout="hideTip(event, '8', 44)" onmouseover="showTip(event, '8', 44)" class="uc">Self</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '17', 45)" onmouseover="showTip(event, '17', 45)" class="fn">printfn</span> <span class="s">&quot;My name is John&quot;</span>
+</code></pre></td>
+</tr>
+</table>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

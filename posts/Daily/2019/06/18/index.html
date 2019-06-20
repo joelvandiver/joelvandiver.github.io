@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="Implicit-vs-Explicit-Type-Declarations" class="anchor" href="#Implicit-vs-Explicit-Type-Declarations">Implicit vs Explicit Type Declarations</a></h1>
+<p>06-18-2019</p>
+<h2><a name="Implicit" class="anchor" href="#Implicit">Implicit</a></h2>
+<p>F# supports implicit type declarations.  This can be a powerful technique because the F# type system will:
+1. Infer the Type - Inference allows for more succinct code with less <code>code noise</code>.
+2. Auto-Generalize Variable Types - Auto-Generalization leads to more efficient <code>code reuse</code>.</p>
+<h3><a name="Inference-Example" class="anchor" href="#Inference-Example">Inference Example:</a></h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="fn">inf1</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">x</span> <span class="o">=</span> <span class="n">3</span> <span class="o">*</span> <span onmouseout="hideTip(event, '2', 3)" onmouseover="showTip(event, '2', 3)" class="id">x</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">inf1</span> <span class="pn">:</span> <span class="id">x</span><span class="pn">:</span><span onmouseout="hideTip(event, '3', 4)" onmouseover="showTip(event, '3', 4)" class="id">int</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '3', 5)" onmouseover="showTip(event, '3', 5)" class="id">int</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Note:  The <code>x</code> has been inferred to be of type <code>int</code>.  The F# compiler is smart enough to know that only an <code>int</code> parameter type for <code>x</code> will suffice.</p>
+</blockquote>
+<h3><a name="Auto-Generalization-Example" class="anchor" href="#Auto-Generalization-Example">Auto-Generalization Example:</a></h3>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '4', 6)" onmouseover="showTip(event, '4', 6)" class="fn">auto1</span> <span onmouseout="hideTip(event, '5', 7)" onmouseover="showTip(event, '5', 7)" class="id">x</span> <span onmouseout="hideTip(event, '6', 8)" onmouseover="showTip(event, '6', 8)" class="id">y</span> <span class="o">=</span> <span onmouseout="hideTip(event, '5', 9)" onmouseover="showTip(event, '5', 9)" class="id">x</span> <span class="o">+</span> <span onmouseout="hideTip(event, '6', 10)" onmouseover="showTip(event, '6', 10)" class="id">y</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">auto1</span> <span class="pn">:</span> <span class="id">x</span><span class="pn">:</span><span onmouseout="hideTip(event, '3', 11)" onmouseover="showTip(event, '3', 11)" class="id">int</span> <span class="k">-&gt;</span> <span class="id">y</span><span class="pn">:</span><span onmouseout="hideTip(event, '3', 12)" onmouseover="showTip(event, '3', 12)" class="id">int</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '3', 13)" onmouseover="showTip(event, '3', 13)" class="id">int</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Note:  The types for <code>x</code> and <code>y</code> were declared to be of type <code>int</code>.  However, providing an implementation of float values <code>1.</code> and <code>2.</code> values below will resolve the types as <code>float</code>.</p>
+</blockquote>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '7', 14)" onmouseover="showTip(event, '7', 14)" class="id">auto2</span> <span class="o">=</span> <span onmouseout="hideTip(event, '4', 15)" onmouseover="showTip(event, '4', 15)" class="fn">auto1</span> <span class="n">1.</span> <span class="n">2.</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">auto1</span> <span class="pn">:</span> <span class="id">x</span><span class="pn">:</span><span onmouseout="hideTip(event, '8', 16)" onmouseover="showTip(event, '8', 16)" class="id">float</span> <span class="k">-&gt;</span> <span class="id">y</span><span class="pn">:</span><span onmouseout="hideTip(event, '8', 17)" onmouseover="showTip(event, '8', 17)" class="id">float</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '8', 18)" onmouseover="showTip(event, '8', 18)" class="id">float</span>
+</code></pre></td>
+</tr>
+</table>
+<p>Note:  The FSI environment will throw an error when defining a <code>resolved</code> generic function:
+Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="id">index</span><span class="pn">.</span><span class="id">fsx</span><span class="pn">(</span><span class="n">6</span><span class="pn">,</span><span class="n">19</span><span class="pn">)</span><span class="pn">:</span> <span class="id">error</span> <span class="id">FS0001</span><span class="pn">:</span> <span class="id">This</span> <span class="id">expression</span> <span class="id">was</span> <span class="id">expected</span> <span class="k">to</span> <span class="id">have</span> <span class="k">type</span>
+    <span class="id">&#39;</span><span class="id">int&#39;</span>    
+<span class="id">but</span> <span class="id">here</span> <span class="id">has</span> <span class="k">type</span>
+    <span class="id">&#39;</span><span class="id">float&#39;</span>  
+</code></pre></td>
+</tr>
+</table>
+<p>To avoid the error, send both the <code>auto</code> function value and the computed <code>auto2</code> value to FSI.</p>
+</blockquote>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

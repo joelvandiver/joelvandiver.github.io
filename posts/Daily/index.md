@@ -1,5 +1,9 @@
 ## Daily Posts
 
+- [2019 - 06 - 20](/posts/Daily/2019/06/20)
+- [2019 - 06 - 19](/posts/Daily/2019/06/19)
+- [2019 - 06 - 18](/posts/Daily/2019/06/18)
+- [2019 - 05 - 21](/posts/Daily/2019/05/21)
 - [2019 - 04 - 08 - Function-Values](/posts/Daily/2019/04/08/Function-Values)
 - [2019 - 04 - 07 - Fable-FSX](/posts/Daily/2019/04/07/Fable-FSX)
 - [2019 - 03 - 30 - Regex-Extract](/posts/Daily/2019/03/30/Regex-Extract)

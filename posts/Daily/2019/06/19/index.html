@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="Cloning-Records" class="anchor" href="#Cloning-Records">Cloning Records</a></h1>
+<p>06-19-2019</p>
+<p>F# supports a nice syntax for cloning records into new records.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="rt">User</span> <span class="o">=</span> 
+    <span class="pn">{</span>   <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">id</span>    <span class="pn">:</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="vt">int</span>
+        <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="id">name</span>  <span class="pn">:</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="rt">string</span> 
+        <span onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)" class="id">title</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '4', 6)" onmouseover="showTip(event, '4', 6)" class="rt">string</span>
+        <span class="pn">}</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, '6', 7)" onmouseover="showTip(event, '6', 7)" class="id">bob</span> <span class="o">=</span> <span class="pn">{</span> <span onmouseout="hideTip(event, '7', 8)" onmouseover="showTip(event, '7', 8)" class="id">id</span> <span class="o">=</span> <span class="n">1</span><span class="pn">;</span> <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Bob&quot;</span><span class="pn">;</span> <span class="id">title</span> <span class="o">=</span> <span class="s">&quot;Sr.&quot;</span><span class="pn">}</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '8', 9)" onmouseover="showTip(event, '8', 9)" class="id">bobJr</span> <span class="o">=</span> <span class="pn">{</span> <span onmouseout="hideTip(event, '6', 10)" onmouseover="showTip(event, '6', 10)" class="id">bob</span> <span class="k">with</span> <span onmouseout="hideTip(event, '7', 11)" onmouseover="showTip(event, '7', 11)" class="id">id</span> <span class="o">=</span> <span class="n">2</span><span class="pn">;</span> <span class="id">title</span> <span class="o">=</span> <span class="s">&quot;Jr.&quot;</span> <span class="pn">}</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span onmouseout="hideTip(event, '9', 12)" onmouseover="showTip(event, '9', 12)" class="rt">User</span> <span class="o">=</span>
+  <span class="pn">{</span><span onmouseout="hideTip(event, '1', 13)" onmouseover="showTip(event, '1', 13)" class="id">id</span><span class="pn">:</span> <span onmouseout="hideTip(event, '2', 14)" onmouseover="showTip(event, '2', 14)" class="vt">int</span><span class="pn">;</span>
+   <span onmouseout="hideTip(event, '3', 15)" onmouseover="showTip(event, '3', 15)" class="id">name</span><span class="pn">:</span> <span onmouseout="hideTip(event, '4', 16)" onmouseover="showTip(event, '4', 16)" class="rt">string</span><span class="pn">;</span>
+   <span onmouseout="hideTip(event, '5', 17)" onmouseover="showTip(event, '5', 17)" class="id">title</span><span class="pn">:</span> <span onmouseout="hideTip(event, '4', 18)" onmouseover="showTip(event, '4', 18)" class="rt">string</span><span class="pn">;</span><span class="pn">}</span>
+<span class="k">val</span> <span class="id">bob</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '9', 19)" onmouseover="showTip(event, '9', 19)" class="id">User</span> <span class="o">=</span> <span class="pn">{</span><span onmouseout="hideTip(event, '7', 20)" onmouseover="showTip(event, '7', 20)" class="id">id</span> <span class="o">=</span> <span class="n">1</span><span class="pn">;</span>
+                  <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Bob&quot;</span><span class="pn">;</span>
+                  <span class="id">title</span> <span class="o">=</span> <span class="s">&quot;Sr.&quot;</span><span class="pn">;</span><span class="pn">}</span>
+<span class="k">val</span> <span class="id">bobJr</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '9', 21)" onmouseover="showTip(event, '9', 21)" class="id">User</span> <span class="o">=</span> <span class="pn">{</span><span onmouseout="hideTip(event, '7', 22)" onmouseover="showTip(event, '7', 22)" class="id">id</span> <span class="o">=</span> <span class="n">2</span><span class="pn">;</span>
+                    <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Bob&quot;</span><span class="pn">;</span>
+                    <span class="id">title</span> <span class="o">=</span> <span class="s">&quot;Jr.&quot;</span><span class="pn">;</span><span class="pn">}</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>F# also supports deep clones of nested records.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span onmouseout="hideTip(event, '10', 23)" onmouseover="showTip(event, '10', 23)" class="rt">Child</span> <span class="o">=</span> 
+    <span class="pn">{</span>   <span onmouseout="hideTip(event, '11', 24)" onmouseover="showTip(event, '11', 24)" class="id">id</span>   <span class="pn">:</span> <span onmouseout="hideTip(event, '2', 25)" onmouseover="showTip(event, '2', 25)" class="vt">int</span>
+        <span onmouseout="hideTip(event, '12', 26)" onmouseover="showTip(event, '12', 26)" class="id">name</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '4', 27)" onmouseover="showTip(event, '4', 27)" class="rt">string</span>
+        <span class="pn">}</span>
+
+<span class="k">type</span> <span onmouseout="hideTip(event, '13', 28)" onmouseover="showTip(event, '13', 28)" class="rt">Parent</span> <span class="o">=</span> 
+    <span class="pn">{</span>   <span onmouseout="hideTip(event, '14', 29)" onmouseover="showTip(event, '14', 29)" class="id">id</span>       <span class="pn">:</span> <span onmouseout="hideTip(event, '2', 30)" onmouseover="showTip(event, '2', 30)" class="vt">int</span>
+        <span onmouseout="hideTip(event, '15', 31)" onmouseover="showTip(event, '15', 31)" class="id">name</span>     <span class="pn">:</span> <span onmouseout="hideTip(event, '4', 32)" onmouseover="showTip(event, '4', 32)" class="rt">string</span>
+        <span onmouseout="hideTip(event, '16', 33)" onmouseover="showTip(event, '16', 33)" class="id">children</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '10', 34)" onmouseover="showTip(event, '10', 34)" class="rt">Child</span> <span onmouseout="hideTip(event, '17', 35)" onmouseover="showTip(event, '17', 35)" class="rt">list</span>
+        <span class="pn">}</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, '18', 36)" onmouseover="showTip(event, '18', 36)" class="id">mom</span> <span class="o">=</span> 
+    <span class="pn">{</span>   <span onmouseout="hideTip(event, '7', 37)" onmouseover="showTip(event, '7', 37)" class="id">id</span>       <span class="o">=</span> <span class="n">1</span>
+        <span class="id">name</span>     <span class="o">=</span> <span class="s">&quot;Mom&quot;</span>
+        <span class="id">children</span> <span class="o">=</span> 
+            <span class="pn">[</span>
+                <span class="pn">{</span> <span onmouseout="hideTip(event, '7', 38)" onmouseover="showTip(event, '7', 38)" class="id">id</span> <span class="o">=</span> <span class="n">1</span><span class="pn">;</span> <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Bob&quot;</span> <span class="pn">}</span>
+                <span class="pn">{</span> <span onmouseout="hideTip(event, '7', 39)" onmouseover="showTip(event, '7', 39)" class="id">id</span> <span class="o">=</span> <span class="n">2</span><span class="pn">;</span> <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Sarah&quot;</span> <span class="pn">}</span>
+                <span class="pn">{</span> <span onmouseout="hideTip(event, '7', 40)" onmouseover="showTip(event, '7', 40)" class="id">id</span> <span class="o">=</span> <span class="n">3</span><span class="pn">;</span> <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Tim&quot;</span> <span class="pn">}</span>
+            <span class="pn">]</span><span class="pn">}</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, '19', 41)" onmouseover="showTip(event, '19', 41)" class="id">dad</span> <span class="o">=</span> 
+    <span class="pn">{</span> <span onmouseout="hideTip(event, '18', 42)" onmouseover="showTip(event, '18', 42)" class="id">mom</span> <span class="k">with</span> <span onmouseout="hideTip(event, '7', 43)" onmouseover="showTip(event, '7', 43)" class="id">id</span> <span class="o">=</span> <span class="n">2</span><span class="pn">;</span> <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Dad&quot;</span><span class="pn">}</span>    
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">type</span> <span class="id">Child</span> <span class="o">=</span>
+  <span class="pn">{</span><span onmouseout="hideTip(event, '7', 44)" onmouseover="showTip(event, '7', 44)" class="id">id</span><span class="pn">:</span> <span onmouseout="hideTip(event, '2', 45)" onmouseover="showTip(event, '2', 45)" class="id">int</span><span class="pn">;</span>
+   <span class="id">name</span><span class="pn">:</span> <span onmouseout="hideTip(event, '4', 46)" onmouseover="showTip(event, '4', 46)" class="id">string</span><span class="pn">;</span><span class="pn">}</span>
+<span class="k">type</span> <span class="id">Parent</span> <span class="o">=</span>
+  <span class="pn">{</span><span onmouseout="hideTip(event, '7', 47)" onmouseover="showTip(event, '7', 47)" class="id">id</span><span class="pn">:</span> <span onmouseout="hideTip(event, '2', 48)" onmouseover="showTip(event, '2', 48)" class="id">int</span><span class="pn">;</span>
+   <span class="id">name</span><span class="pn">:</span> <span onmouseout="hideTip(event, '4', 49)" onmouseover="showTip(event, '4', 49)" class="id">string</span><span class="pn">;</span>
+   <span class="id">children</span><span class="pn">:</span> <span class="id">Child</span> <span onmouseout="hideTip(event, '17', 50)" onmouseover="showTip(event, '17', 50)" class="id">list</span><span class="pn">;</span><span class="pn">}</span>
+<span class="k">val</span> <span class="id">mom</span> <span class="pn">:</span> <span class="id">Parent</span> <span class="o">=</span>
+  <span class="pn">{</span><span onmouseout="hideTip(event, '7', 51)" onmouseover="showTip(event, '7', 51)" class="id">id</span> <span class="o">=</span> <span class="n">1</span><span class="pn">;</span>
+   <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Mom&quot;</span><span class="pn">;</span>
+   <span class="id">children</span> <span class="o">=</span> <span class="pn">[</span><span class="pn">{</span><span onmouseout="hideTip(event, '7', 52)" onmouseover="showTip(event, '7', 52)" class="id">id</span> <span class="o">=</span> <span class="n">1</span><span class="pn">;</span>
+                <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Bob&quot;</span><span class="pn">;</span><span class="pn">}</span><span class="pn">;</span> <span class="pn">{</span><span onmouseout="hideTip(event, '7', 53)" onmouseover="showTip(event, '7', 53)" class="id">id</span> <span class="o">=</span> <span class="n">2</span><span class="pn">;</span>
+                                 <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Sarah&quot;</span><span class="pn">;</span><span class="pn">}</span><span class="pn">;</span> <span class="pn">{</span><span onmouseout="hideTip(event, '7', 54)" onmouseover="showTip(event, '7', 54)" class="id">id</span> <span class="o">=</span> <span class="n">3</span><span class="pn">;</span>
+                                                    <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Tim&quot;</span><span class="pn">;</span><span class="pn">}</span><span class="pn">]</span><span class="pn">;</span><span class="pn">}</span>
+<span class="k">val</span> <span class="id">dad</span> <span class="pn">:</span> <span class="id">Parent</span> <span class="o">=</span>
+  <span class="pn">{</span><span onmouseout="hideTip(event, '7', 55)" onmouseover="showTip(event, '7', 55)" class="id">id</span> <span class="o">=</span> <span class="n">2</span><span class="pn">;</span>
+   <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Dad&quot;</span><span class="pn">;</span>
+   <span class="id">children</span> <span class="o">=</span> <span class="pn">[</span><span class="pn">{</span><span onmouseout="hideTip(event, '7', 56)" onmouseover="showTip(event, '7', 56)" class="id">id</span> <span class="o">=</span> <span class="n">1</span><span class="pn">;</span>
+                <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Bob&quot;</span><span class="pn">;</span><span class="pn">}</span><span class="pn">;</span> <span class="pn">{</span><span onmouseout="hideTip(event, '7', 57)" onmouseover="showTip(event, '7', 57)" class="id">id</span> <span class="o">=</span> <span class="n">2</span><span class="pn">;</span>
+                                 <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Sarah&quot;</span><span class="pn">;</span><span class="pn">}</span><span class="pn">;</span> <span class="pn">{</span><span onmouseout="hideTip(event, '7', 58)" onmouseover="showTip(event, '7', 58)" class="id">id</span> <span class="o">=</span> <span class="n">3</span><span class="pn">;</span>
+                                                    <span class="id">name</span> <span class="o">=</span> <span class="s">&quot;Tim&quot;</span><span class="pn">;</span><span class="pn">}</span><span class="pn">]</span><span class="pn">;</span><span class="pn">}</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

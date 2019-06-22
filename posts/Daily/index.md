@@ -1,9 +1,9 @@
 ## Daily Posts
 
-- [2019 - 06 - 20](/posts/Daily/2019/06/20)
-- [2019 - 06 - 19](/posts/Daily/2019/06/19)
-- [2019 - 06 - 18](/posts/Daily/2019/06/18)
-- [2019 - 05 - 21](/posts/Daily/2019/05/21)
+- [2019 - 06 - 20 - Discriminated Unions](/posts/Daily/2019/06/20/Discriminated Unions)
+- [2019 - 06 - 19 - Cloning Records](/posts/Daily/2019/06/19/Cloning Records)
+- [2019 - 06 - 18 - Implicit vs Explicit Type](/posts/Daily/2019/06/18/Implicit vs Explicit Type)
+- [2019 - 05 - 21 - Microservices - Agents](/posts/Daily/2019/05/21/Microservices - Agents)
 - [2019 - 04 - 08 - Function-Values](/posts/Daily/2019/04/08/Function-Values)
 - [2019 - 04 - 07 - Fable-FSX](/posts/Daily/2019/04/07/Fable-FSX)
 - [2019 - 03 - 30 - Regex-Extract](/posts/Daily/2019/03/30/Regex-Extract)

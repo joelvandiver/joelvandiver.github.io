@@ -13,6 +13,7 @@ type Family =
 | Dad of Person
 | Mom of Person
 | Siblings of Person list
+| Twins of Person * Person
 | Self
 
 (**
@@ -23,6 +24,7 @@ Each of the discriminated cases behave like function in instantiating values:
 let dad = Dad "Tim"
 let mom = Mom "Joanna"
 let siblings = Siblings ["Tim Jr."; "Sarah"; "Bobby"]
+let twins = Twins ("Jane", "John")
 let me = Self
 
 (**
@@ -31,6 +33,7 @@ let me = Self
 val dad : Family = Dad "Tim"
 val mom : Family = Mom "Joanna"
 val siblings : Family = Siblings ["Tim Jr."; "Sarah"; "Bobby"]
+val twins : Family = Twins ("Jane","John")
 val me : Family = Self
 ```
 
@@ -42,6 +45,7 @@ let myFamily =
         dad
         mom
         siblings
+        twins
         me
     ]
 
@@ -49,7 +53,8 @@ let myFamily =
 > Output:
 ```fsharp
 val myFamily : Family list =
-  [Dad "Tim"; Mom "Joanna"; Siblings ["Tim Jr."; "Sarah"; "Bobby"]; Self]
+  [Dad "Tim"; Mom "Joanna"; Siblings ["Tim Jr."; "Sarah"; "Bobby"];
+   Twins ("Jane","John"); Self]
 ```
 
 Discriminated Unions also support pattern matching in handling each of the cases.
@@ -62,5 +67,42 @@ let stateName person =
     | Siblings sibs -> 
         sibs
         |> List.iter(fun s -> printfn "My sibling's name is %s." s)
+    | Twins (a, b) -> 
+        printfn "My first twin's name is %s" a
+        printfn "My second twin's name is %s" b
     | Self -> printfn "My name is John"
 
+(**
+> Output:
+```fsharp
+val stateName : person:Family -> unit
+```
+*)
+
+myFamily |> List.iter stateName
+
+(**
+> Output:
+```fsharp
+My dad's name is Tim.
+My mom's name is Joanna.
+My sibling's name is Tim Jr..
+My sibling's name is Sarah.
+My sibling's name is Bobby.
+My first twin's name is Jane
+My second twin's name is John
+My name is John
+```
+*)
+
+let isMyMom p = p = Mom "Joanna"
+isMyMom mom
+isMyMom dad
+
+(**
+> Output:
+```fsharp
+val isMyMom : p:Family -> bool
+val it : bool = false
+```
+*)

@@ -8,12 +8,71 @@ open Fable.Import.React
 open Fable.Helpers.React
 open Fable.Helpers.React.Props
 
-type WelcomeProps = { name: string }
+// Ref:  https://blog.vbfox.net/2018/02/06/fable-react-1-react-in-fable-land.html
 
-let Welcome { name = name } =
-    h1 [] [ str "Hello, "; str name ]
 
-let inline welcome name = ofFunction Welcome { name = name } []
+module StatelessExample = 
+    type WelcomeProps = { name: string }
+
+    let Welcome { name = name } =
+        h1 [] [ str "Hello, "; str name ]
+
+    let inline welcome name = ofFunction Welcome { name = name } []
+
+
+module StateExample = 
+    // A pure, stateless component that will simply display the counter
+    type CounterDisplayProps = { counter: int }
+
+    type CounterDisplay(initialProps) =
+        inherit PureStatelessComponent<CounterDisplayProps>(initialProps)
+        override this.render() =
+            div [] [ str "Counter = "; ofInt this.props.counter ]
+
+    let inline counterDisplay p = ofType<CounterDisplay,_,_> p []
+
+    // Another pure component displaying the buttons
+    type AddRemoveProps = { add: MouseEvent -> unit; remove: MouseEvent -> unit }
+
+    type AddRemove(initialProps) =
+        inherit PureStatelessComponent<AddRemoveProps>(initialProps)
+        override this.render() =
+            div [] [
+                button [OnClick this.props.add] [str "👍"]
+                button [OnClick this.props.remove] [str "👎"]
+            ]
+
+    let inline addRemove props = ofType<AddRemove,_,_> props []
+
+    // The counter itself using state to keep the count
+    type CounterState = { counter: int }
+
+    type Counter(initialProps) as this =
+        inherit Component<obj, CounterState>(initialProps)
+        do
+            this.setInitState({ counter = 0})
+
+        // This is the equivalent of doing `this.add = this.add.bind(this)`
+        // in javascript (Except for the fact that we can't reuse the name)
+        let add = this.Add
+        let remove = this.Remove
+
+        member this.Add(_:MouseEvent) =
+            this.setState({ counter = this.state.counter + 1 })
+
+        member this.Remove(_:MouseEvent) =
+            this.setState({ counter = this.state.counter - 1 })
+
+        override this.render() =
+            div [] [
+                counterDisplay { CounterDisplayProps.counter = this.state.counter }
+                addRemove { add = add; remove = remove }
+            ]
+
+    let inline counter props = ofType<Counter,_,_> props []
+
+
+
 
 let init() =
     let element =
@@ -26,7 +85,8 @@ let init() =
 
             // The second parameter is the list of children
             [
-                li [] [ welcome "🌍" ]
+                li [] [ StatelessExample.welcome "🌍" ]
+                li [] [ StateExample.counter createEmpty ]
                 // str is the helper for exposing a string to React as an element
                 li [] [ str "Hello 🌍" ]
 

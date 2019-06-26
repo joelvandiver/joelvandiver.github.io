@@ -81,31 +81,30 @@ let init() =
     let element =
         ul
             [ClassName "my-ul"; Id "unique-ul"]
-            [
-                li [] [ str "React Hook Example -> "; ReactHookExample.view {| initCount = 0 |} ]                
-                li [] [ str "Stateless Example -> "; StatelessExample.welcome {| message = "🌍" |} ]
-                li [] [ str "State Example -> "; StateExample.counter createEmpty ]
-                li [] [ str "String Example -> "; str "Hello 🌍" ]
-                li [] [ str "ofInt Example -> "; str "The answer is: "; ofInt 42 ]
-                li [] [ str "ofFloat Example -> "; str "π="; ofFloat 3.14 ]
-                li [] [ str "ofOption (null or something) Example -> "; str "🤐"; ofOption (Some (str "🔫")) ]
-                li [] [ str "ofOption (render nothing) Example -> "; str "😃"; ofOption None ]
-                li [] [ str "ofList Example -> "
-                        ul []
-                            [ [1;2;3]
-                                |> List.map(fun i ->
-                                    let si = i.ToString()
-                                    li [Key si] [str "🎯 "; str si])
-                                |> ofList ] ]
-
-                li [] 
-                    [ str "React Fragment Example -> "
+            [ li [] [ str "React Hook Example -> "; ReactHookExample.view {| initCount = 0 |} ]                
+              li [] [ str "Stateless Example -> "; StatelessExample.welcome {| message = "🌍" |} ]
+              li [] [ str "State Example -> "; StateExample.counter createEmpty ]
+              li [] [ str "String Example -> "; str "Hello 🌍" ]
+              li [] [ str "ofInt Example -> "; str "The answer is: "; ofInt 42 ]
+              li [] [ str "ofFloat Example -> "; str "π="; ofFloat 3.14 ]
+              li [] [ str "ofOption (null or something) Example -> "; str "🤐"; ofOption (Some (str "🔫")) ]
+              li [] [ str "ofOption (render nothing) Example -> "; str "😃"; ofOption None ]
+              li [] [ str "ofList Example -> "
                       ul []
                         [ [1;2;3]
                             |> List.map(fun i ->
                                 let si = i.ToString()
-                                li [] [str "🎲 "; str si])
-                            |> fragment [] ] ] ]
+                                li [Key si] [str "🎯 "; str si])
+                            |> ofList ] ]
+
+              li [] 
+                [ str "React Fragment Example -> "
+                  ul []
+                    [ [1;2;3]
+                        |> List.map(fun i ->
+                            let si = i.ToString()
+                            li [] [str "🎲 "; str si])
+                        |> fragment [] ] ] ]
     ReactDom.render(element, document.getElementById("root"))
 
 init()

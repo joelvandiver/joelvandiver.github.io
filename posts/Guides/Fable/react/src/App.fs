@@ -3,21 +3,23 @@ module App
 open Fable.Core
 open Fable.Core.JsInterop
 open Fable.Import
-open Fable.Import.Browser
-open Fable.Import.React
-open Fable.Helpers.React
-open Fable.Helpers.React.Props
+// open Fable.Import.Browser
+open Browser.Types
+open Browser.Dom
+open Fable.React
+open Fable.React.Props
+open Fable.Core.Util
+// open Fable.Import.React
+// open Fable.Helpers.React
+// open Fable.Helpers.React.Props
+open Fable.Core.Extensions
 
 // Ref:  https://blog.vbfox.net/2018/02/06/fable-react-1-react-in-fable-land.html
 
-
 module StatelessExample = 
-    type WelcomeProps = { name: string }
-
-    let Welcome { name = name } =
-        h1 [] [ str "Hello, "; str name ]
-
-    let inline welcome name = ofFunction Welcome { name = name } []
+    let welcome =    
+        FunctionComponent.Of(fun (props: {| message: string |}) ->
+            div [] [str props.message])
 
 
 module StateExample = 
@@ -58,10 +60,10 @@ module StateExample =
         let remove = this.Remove
 
         member this.Add(_:MouseEvent) =
-            this.setState({ counter = this.state.counter + 1 })
+            this.setState(fun counterState -> fun t -> { counter = counterState.counter + 1 })
 
         member this.Remove(_:MouseEvent) =
-            this.setState({ counter = this.state.counter - 1 })
+            this.setState(fun counterState -> fun t -> { counter = counterState.counter - 1 })
 
         override this.render() =
             div [] [
@@ -85,7 +87,7 @@ let init() =
 
             // The second parameter is the list of children
             [
-                li [] [ StatelessExample.welcome "🌍" ]
+                li [] [ StatelessExample.welcome {| message = "🌍" |} ]
                 li [] [ StateExample.counter createEmpty ]
                 // str is the helper for exposing a string to React as an element
                 li [] [ str "Hello 🌍" ]

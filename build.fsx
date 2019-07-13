@@ -228,4 +228,3 @@ Target.create "Section" (fun _ ->
   ==> "Section"
 
 Target.runOrDefaultWithArguments "Section"
-// Target.runOrDefaultWithArguments "SinglePost"

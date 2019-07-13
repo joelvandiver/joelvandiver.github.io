@@ -169,7 +169,10 @@ let compileFile compiler path =
 
 let compileExt ext =
   let x, compiler = getCompiler ext
-  let files = Directory.GetFiles(root, "*" + x, SearchOption.AllDirectories) |> List.ofSeq
+  let files = 
+    Directory.GetFiles(root, "*" + x, SearchOption.AllDirectories) 
+    |> List.ofSeq
+    |> List.filter(fun f -> f.Contains("node_modules") |> not)
   let compile = compileFile compiler
   files |> List.iter compile
 
@@ -197,7 +200,10 @@ Target.create "Section" (fun _ ->
     let addSectionLinks (folder, sorter) =
         let sectionMD = folder + @"\index.md"
         let sectionHtml = folder + @"\index.html"
-        let html = Directory.GetFiles(folder, "*.html", SearchOption.AllDirectories) |> List.ofSeq
+        let html = 
+            Directory.GetFiles(folder, "*.html", SearchOption.AllDirectories) 
+            |> List.ofSeq
+            |> List.filter(fun f -> f.Contains("node_modules") |> not)
         let links = 
             html
             |> List.filter((<>) sectionHtml)

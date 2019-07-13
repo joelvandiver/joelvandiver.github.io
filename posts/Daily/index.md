@@ -1,5 +1,8 @@
 ## Daily Posts
 
+- [2019 - 07 - 13 - Immutability Reduces Information Domain](/posts/Daily/2019/07/13/Immutability Reduces Information Domain)
+- [2019 - 07 - 13 - Functional Iteration](/posts/Daily/2019/07/13/Functional Iteration)
+- [2019 - 07 - 13 - Anonymous Records](/posts/Daily/2019/07/13/Anonymous Records)
 - [2019 - 06 - 20 - Discriminated Unions](/posts/Daily/2019/06/20/Discriminated Unions)
 - [2019 - 06 - 19 - Cloning Records](/posts/Daily/2019/06/19/Cloning Records)
 - [2019 - 06 - 18 - Implicit vs Explicit Type](/posts/Daily/2019/06/18/Implicit vs Explicit Type)

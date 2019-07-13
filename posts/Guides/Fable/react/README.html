@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="Fable-2-1-Minimal-App" class="anchor" href="#Fable-2-1-Minimal-App">Fable 2.1 Minimal App</a></h1>
+<p>This is a simple Fable 2.1 app including an <a href="https://elmish.github.io/">Elmish</a> counter with as little configuration as possible. If you want to see a more complex app including commonly used F# tools like Paket or Fake, check <a href="https://github.com/MangelMaxime/fulma-demo">the Fulma demo</a>.</p>
+<h2><a name="Requirements" class="anchor" href="#Requirements">Requirements</a></h2>
+<ul>
+<li><a href="https://www.microsoft.com/net/download/core">dotnet SDK</a> 2.1 or higher</li>
+<li><a href="https://nodejs.org">node.js</a> with <a href="https://www.npmjs.com/">npm</a></li>
+<li>An F# editor like Visual Studio, Visual Studio Code with <a href="http://ionide.io/">Ionide</a> or <a href="https://www.jetbrains.com/rider/">JetBrains Rider</a>.</li>
+</ul>
+<h2><a name="Building-and-running-the-app" class="anchor" href="#Building-and-running-the-app">Building and running the app</a></h2>
+<ul>
+<li>Install JS dependencies: <code>npm install</code></li>
+<li>Start Webpack dev server: <code>npx webpack-dev-server</code> or <code>npm start</code></li>
+<li>After the first compilation is finished, in your browser open: <a href="http://localhost:8080/">http://localhost:8080/</a></li>
+</ul>
+<p>Any modification you do to the F# code will be reflected in the web page after saving.</p>
+<h2><a name="Project-structure" class="anchor" href="#Project-structure">Project structure</a></h2>
+<h3><a name="npm" class="anchor" href="#npm">npm</a></h3>
+<p>JS dependencies are declared in <code>package.json</code>, while <code>package-lock.json</code> is a lock file automatically generated.</p>
+<h3><a name="Webpack" class="anchor" href="#Webpack">Webpack</a></h3>
+<p><a href="https://webpack.js.org">Webpack</a> is a JS bundler with extensions, like a static dev server that enables hot reloading on code changes. Fable interacts with Webpack through the <code>fable-loader</code>. Configuration for Webpack is defined in the <code>webpack.config.js</code> file. Note this sample only includes basic Webpack configuration for development mode, if you want to see a more comprehensive configuration check the <a href="https://github.com/fable-compiler/webpack-config-template/blob/master/webpack.config.js">Fable webpack-config-template</a>.</p>
+<h3><a name="F" class="anchor" href="#F">F#</a></h3>
+<p>The sample only contains two F# files: the project (.fsproj) and a source file (.fs) in the <code>src</code> folder.</p>
+<h3><a name="Web-assets" class="anchor" href="#Web-assets">Web assets</a></h3>
+<p>The <code>index.html</code> file and other assets like an icon can be found in the <code>public</code> folder.</p>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

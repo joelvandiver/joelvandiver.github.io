@@ -178,6 +178,7 @@ let compileExt ext =
 
 Target.create "SinglePost" (fun arguments -> 
   let ps = arguments.Context.Arguments
+  printfn "%A" ps
   match ps with 
   | [p] when p.EndsWith(".md") -> 
     printfn "Building MD"

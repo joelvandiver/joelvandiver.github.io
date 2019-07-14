@@ -15,10 +15,13 @@ let f x = x + 3
 let domainX = [-2;-1;0;1;2]
 let table = domainX |> List.map f
  
-(*
+(**
+> Output:
+```fsharp
 val f : x:int -> int
 val domainX : int list = [-2; -1; 0; 1; 2]
 val table : int list = [1; 2; 3; 4; 5]
+```
 
 Now, let's explore the same function with a mutable side-effect:
 *)

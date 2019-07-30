@@ -131,22 +131,22 @@ let convertMDPost content =
   |> render 
 
 let convertToLink (path: string) : string = 
-   let source = __SOURCE_DIRECTORY__
-   let rel = 
-        path.Replace(source, "")
-            .Replace("\\index.fsx", "")
-            .Replace("\\index.html", "")
-            .Replace("\\index.md", "")
-   let dirs = 
-        rel
-            .Replace("\\posts\\", "")
+   let link = 
+        path
+            .Replace(@"C:\git\joelvandiver.github.io", "")
+            .Replace("\\", "/")
+            .Replace("/index.fsx", "")
+            .Replace("/index.html", "")
+            .Replace("/index.md", "")
+   let title = 
+        link
+            .Replace("/posts/", "")
             .Replace(" Fs", " F#")
-            .Split('\\')
+            .Split('/')
         |> List.ofSeq
         |> List.tail
         |> List.reduce(fun a b -> a + " - " + string b)
-   let clean = rel.Replace("\\", "/")
-   sprintf "- [%s](%s)" dirs clean
+   sprintf "- [%s](%s)" title link
 
 type SupportedExt =
 | MD
@@ -225,7 +225,7 @@ Target.create "Section" (fun _ ->
     ()
 )
 
-"Build"
-  ==> "Section"
+// "Build"
+//   ==> "Section"
 
 Target.runOrDefaultWithArguments "Section"

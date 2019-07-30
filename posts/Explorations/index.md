@@ -1,7 +1,7 @@
 ## Explorations
 
-- [git - joelvandiver.github.ioExplorations - Perf - Collections](C:/git/joelvandiver.github.io/posts/Explorations/Perf/Collections)
-- [git - joelvandiver.github.ioExplorations - Perf - Reflection](C:/git/joelvandiver.github.io/posts/Explorations/Perf/Reflection)
-- [git - joelvandiver.github.ioExplorations - Perf](C:/git/joelvandiver.github.io/posts/Explorations/Perf)
-- [git - joelvandiver.github.ioExplorations - Precomputation](C:/git/joelvandiver.github.io/posts/Explorations/Precomputation)
-- [git - joelvandiver.github.ioExplorations - Problems - Json-List-Deserialization](C:/git/joelvandiver.github.io/posts/Explorations/Problems/Json-List-Deserialization)
+- [Perf - Collections](/posts/Explorations/Perf/Collections)
+- [Perf - Reflection](/posts/Explorations/Perf/Reflection)
+- [Perf](/posts/Explorations/Perf)
+- [Precomputation](/posts/Explorations/Precomputation)
+- [Problems - Json-List-Deserialization](/posts/Explorations/Problems/Json-List-Deserialization)

@@ -1,73 +1,23 @@
-# Joel Vandiver's Blog
+# Static Web Generator
 
-The url for this Blog is here:
-[https://joelvandiver.github.io/](https://joelvandiver.github.io/)
+Simple Fable Node.js app to generate static pages.The main advantages of this approach are:
 
-## TODO
+- Use the same **React API** that you use on the frontend with [Elmish](https://elmish.github.io/).
+- Use **Fable helpers** for UI, like [Fulma](https://mangelmaxime.github.io/Fulma/).
+- Access to all **npm packages**, like [marked](https://www.npmjs.com/package/marked) or [highlight.js](https://www.npmjs.com/package/highlight.js).
 
-### F# Guide
+## Requirements
 
-- [ ] F# Guide
-  - [ ] Option
-  - [ ] `function` keyword
-  - [ ] Lazy Values
-  - [ ] [Function-Values](https://joelvandiver.github.io/posts/Daily/2019/04/08/Function-Values/)
-  - [ ] Function-Values
-    - [ ] Function Pipelining
-    - [ ] Function Composition
-    - [ ] Compare with Type Members
+- [dotnet SDK](https://www.microsoft.com/net/download/core)
+- [node.js](https://nodejs.org)
+- [yarn](https://yarnpkg.com/en/)
 
-### Fable Canvas Guide
+> On macOS and Linux you'll need [Mono](http://www.mono-project.com/) to run Paket.
 
-- [ ] Start
+## Installing and building
 
-### Dev
+- [Clone this repository](https://github.com/fable-compiler/static-web-generator/)
+- Install dependencies: `yarn`
+- Start compilation and live server: `yarn start`
 
-- [ ] BUILD - Subsections
-  - [ ] Create a landing page per sub section and do not dynamically build the navigation
-- [ ] Handle Navbar for Phone Sizes
-- [ ] Build by section.md instead of index.md with static list of sections
-- [ ] Nav to section from postsPosts
-- [ ] Export F# Library Documentation https://fsprojects.github.io/FSharp.Formatting/metadata.html
-- [ ] Blog-Build Process
-  - [ ] Blog about the Blog-Build Process
-- [ ] Parsing Arithmetic Expressions into Polish Notation (p.52 VSI)
-- [ ] Implement an F# presentation with FsReveal http://fsprojects.github.io/FsReveal/
-- [ ] Questions
-  - [ ] How can I begin quantifying the goodness of the algorithms I create based on abstract criteria?
-- [ ] Backlog
-  - [ ] Implement a General XML to Json Solution
-
-- [ ] Convert Blog to 
-```F#
-#load @"packages\FSharp.Formatting\FSharp.Formatting.fsx"
-open FSharp.Literate
-open System.IO
-
-let src = __SOURCE_DIRECTORY__ + "/test/src"
-let output = __SOURCE_DIRECTORY__ + "/test/output"
-let template = __SOURCE_DIRECTORY__ + "/template-project.html"
-
-// Load the template & specify project information
-let projInfo =
- [ "page-description", "GCS Pro Documentation"
-   "page-author", "Joel Vandiver"
-   "project-name", "GCS Pro" ]
-
-// Process all files and save results to 'output' directory
-let x =
-   Literate.ProcessDirectory
-     (src, template, output, replacements = projInfo)
-```
-
-
-### Posts
-
-- [ ] Explore Tail Recursive (Ex. Factorial, Fibonacci, ...)
-- [ ] Restrict the Domain of a Function at Compile Time with Types
-- [ ] Explore Modular Arithmetic
-- [ ] Setup an API Gateway with Ocelot
-- [ ] Setup Giraffe with Swagger
-- [ ] Setup Windows Authentication with HTTP.sys
-- [ ] Setup [ML.NET](https://dotnet.microsoft.com/apps/machinelearning-ai)
-  - [ ] [Install](https://dotnet.microsoft.com/learn/machinelearning-ai/ml-dotnet-get-started-tutorial/install)
+To start your own website, use this project as scaffold. You can also take advantage of [Paket Github dependencies](https://fsprojects.github.io/Paket/github-dependencies.html) to link `src/Helpers` from your project and get new additions more easily. For a more comprehensive example check the [Fable website](https://github.com/fable-compiler/fable-compiler.github.io).

@@ -1,40 +1,23 @@
 {
-  "name": "joelvandiver.github.io",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "directories": {
-    "test": "test"
+  "private": true,
+  "scripts": {
+    "start-server": "live-server deploy",
+    "build-fable": "yarn fable-splitter src --run",
+    "start-fable": "yarn fable-splitter src -w --run",
+    "start": "concurrently yarn:start-*",
+    "build": "concurrently yarn:build-*",
+    "deploy": "yarn build && gh-pages -d deploy"
   },
   "dependencies": {
-    "@babel/core": "^7.1.2",
-    "bootstrap": "^4.1.3",
-    "bulma": "^0.7.2",
-    "fable-compiler": "^2.1.3",
-    "fable-core": "^0.7.30",
-    "fable-loader": "^2.1.0",
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "webpack": "^4.25.1",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
-  },
-  "devDependencies": {
-    "gulp-sass": "^4.0.2",
-    "node-sass": "^4.10.0"
-  },
-  "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack --mode production"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/joelvandiver/joelvandiver.github.io.git"
-  },
-  "author": "Joel Vandiver <joelvandiver@gmail.com>",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/joelvandiver/joelvandiver.github.io/issues"
-  },
-  "homepage": "https://github.com/joelvandiver/joelvandiver.github.io#readme"
+    "concurrently": "^4.0.1",
+    "fable-compiler": "^2.1.9",
+    "fable-splitter": "^2.1.2",
+    "fs-extra": "^7.0.1",
+    "gh-pages": "^2.0.1",
+    "highlight.js": "^9.13.1",
+    "live-server": "^1.2.0",
+    "marked": "^0.5.1",
+    "react": "^16.6.1",
+    "react-dom": "^16.6.1"
+  }
 }

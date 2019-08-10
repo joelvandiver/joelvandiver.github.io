@@ -14,36 +14,18 @@ type IPerson =
 // Make sure to always resolve paths to avoid conflicts in generated JS files
 // Check fable-splitter README for info about ${entryDir} macro
 
-let markdownPath = IO.resolve "${entryDir}/../README.md"
-let dataPath = IO.resolve "${entryDir}/../data/people.json"
+let markdownPath = IO.resolve "${entryDir}/../posts/index.md"
 let indexPath = IO.resolve "${entryDir}/../deploy/index.html"
+let filePaths = IO.resolve "${entryDir}/../data/files.json"
 
-let createTable() =
-    let createHead (headers: string list) =
-        thead [] [
-            tr [] [for header in headers do
-                    yield th [] [str header]]
-        ]
-    let people =
-        IO.readFile dataPath
+let readFiles() =
+    let files =
+        IO.readFile filePaths
         |> JS.JSON.parse
-        |> unbox<IPerson array>
+        |> unbox<string array>
     div [] [
-        hr []
-        p [] [str """The text above has been parsed from markdown,
-                the table below is generated from a React component."""]
-        br []
-        Table.table [ Table.IsStriped ] [
-            createHead ["First Name"; "Family Name"; "Birthday"]
-            tbody [] [
-                for person in people do
-                    yield tr [] [
-                        td [] [str person.firstName]
-                        td [] [str person.familyName]
-                        td [] [str person.birthday]
-                    ]
-            ]
-        ]
+        for file in files do
+            yield IO.readFile file |> parseMarkdownAsReactEl "content"
     ]
 
 let frame titleText content data =
@@ -72,7 +54,7 @@ let render() =
         IO.readFile markdownPath
         |> parseMarkdownAsReactEl "content"
     let data =
-        createTable()
+        readFiles()
     frame "My page" content data
     |> parseReactStatic
     |> IO.writeFile indexPath

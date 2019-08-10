@@ -1,7 +1,5 @@
 ## Guides
 
-- [Fable - react - README.html](/posts/Guides/Fable/react/README.html)
-- [Fable - react - public](/posts/Guides/Fable/react/public)
 - [Fs - 01.Introduction - 01.Values](/posts/Guides/Fs/01.Introduction/01.Values)
 - [Fs - 01.Introduction - 02.Implicit-vs-Explicit](/posts/Guides/Fs/01.Introduction/02.Implicit-vs-Explicit)
 - [Fs - 01.Introduction - 03.Simple](/posts/Guides/Fs/01.Introduction/03.Simple)

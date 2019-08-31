@@ -49,6 +49,7 @@
         </ul> -->
 
         <section id="main_content" class="inner">
+            {{ content }}
             <div id="main-nav-container">
                 {% for category in site.categories %}
                 <h3>{{ category[0] }}</h3>
@@ -59,7 +60,6 @@
                 </ul>
                 {% endfor %}
             </div>
-            {{ content }}
         </section>
     </div>
 

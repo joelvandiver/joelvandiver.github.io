@@ -1,5 +1,3 @@
-# Joel Vandiver's Blog
-
 ## TODO:
 
 - [ ] Guides:

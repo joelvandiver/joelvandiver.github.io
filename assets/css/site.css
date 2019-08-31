@@ -5,6 +5,7 @@
 
 #main-nav-container {
     position: absolute;
+    padding: 10px 13px;
 }
 
 #main-nav-container ul {

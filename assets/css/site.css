@@ -19,3 +19,7 @@
 #main-nav-container ul a {
     padding: 4px 10px;
 }
+
+.task-list {
+    list-style: none;
+}

@@ -35,9 +35,13 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
         <section id="main_content" class="inner">
-            {% for page in site.pages_list %}
-            &nbsp;&nbsp;&nbsp;
-            <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
+            {% for category in site.categories %}
+            <h3>{{ category[0] }}</h3>
+            <ul>
+                {% for post in category[1] %}
+                <li><a href="{{ post.url }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
             {% endfor %}
             </h3>
             {{ content }}

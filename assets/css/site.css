@@ -1,6 +1,6 @@
 #main_content {
     padding-top: 15px;
-    padding: 12px 23px;
+    padding: 10px 13px;
 }
 
 #main-nav-container {
@@ -9,4 +9,11 @@
 
 #main-nav-container ul {
     list-style: none;
+}
+
+#main-nav-container ul a {
+    color: black;
+    text-decoration: underline;
+    background: white;
+    padding: 4px 10px;
 }

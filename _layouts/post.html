@@ -34,12 +34,15 @@
 
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
-        <section id="main_content" class="inner">
-            {% for page in site.pages_list %}
-            &nbsp;&nbsp;&nbsp;
-            <small><a href="{{ page[1]  }}">{{ page[0] }}</a></small>
+        <ul>
+            {% for post in site.posts %}
+            <li>
+                <a href="{{ post.url }}">{{ post.title }}</a>
+            </li>
             {% endfor %}
-            </h3>
+        </ul>
+
+        <section id="main_content" class="inner">
             {{ content }}
         </section>
     </div>

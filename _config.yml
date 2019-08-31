@@ -2,6 +2,6 @@ theme: jekyll-theme-slate
 title: [Joel Vandiver]
 # description: [Joel Vandiver's Blog]
 
-pages_list:       
-  Guides: '/posts/Guides'
+# pages_list:       
+#   Guides: '/posts/Guides'
 

@@ -1,3 +1,12 @@
-.main-nav-container {
+#main_content {
+    padding-top: 15px;
+    padding: 12px 23px;
+}
+
+#main-nav-container {
     position: absolute;
+}
+
+#main-nav-container ul {
+    list-style: none;
 }

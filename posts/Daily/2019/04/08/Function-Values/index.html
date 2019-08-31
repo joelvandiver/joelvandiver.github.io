@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="F-Function-Values" class="anchor" href="#F-Function-Values">F# Function Values</a></h1>
+<p>04-08-2019</p>
+<p>F# Function values are synonymous with mathematical functions in that the function is not directly coupled to the data structures it operates on.</p>
+<p>The simplest function value is:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="fn">f</span> <span class="pn">(</span><span class="pn">)</span> <span class="o">=</span> <span class="pn">(</span><span class="pn">)</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">f</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">unit</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '2', 3)" onmouseover="showTip(event, '2', 3)" class="id">unit</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>But, this function takes unit (nothing) in and returns unit.  This function would only be useful if it had a side effect such as writing to a database, writing to a file, etc.</p>
+<p>Let's take another function value examples.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '3', 4)" onmouseover="showTip(event, '3', 4)" class="fn">g</span> <span onmouseout="hideTip(event, '4', 5)" onmouseover="showTip(event, '4', 5)" class="id">x</span> <span class="o">=</span> <span onmouseout="hideTip(event, '4', 6)" onmouseover="showTip(event, '4', 6)" class="id">x</span> <span class="o">*</span> <span class="n">2</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">g</span> <span class="pn">:</span> <span class="id">x</span><span class="pn">:</span><span onmouseout="hideTip(event, '5', 7)" onmouseover="showTip(event, '5', 7)" class="id">int</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '5', 8)" onmouseover="showTip(event, '5', 8)" class="id">int</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>The function <code>g</code> takes one parameter <code>x</code> and returns <code>x * 2</code>.  Since <code>g</code> is a first-class value, it can be passed around just like any other value.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '6', 9)" onmouseover="showTip(event, '6', 9)" class="fn">h</span> <span onmouseout="hideTip(event, '7', 10)" onmouseover="showTip(event, '7', 10)" class="fn">multiplier</span> <span onmouseout="hideTip(event, '8', 11)" onmouseover="showTip(event, '8', 11)" class="id">x</span> <span class="o">=</span> <span onmouseout="hideTip(event, '7', 12)" onmouseover="showTip(event, '7', 12)" class="fn">multiplier</span><span class="pn">(</span><span onmouseout="hideTip(event, '8', 13)" onmouseover="showTip(event, '8', 13)" class="id">x</span><span class="pn">)</span>
+<span onmouseout="hideTip(event, '6', 14)" onmouseover="showTip(event, '6', 14)" class="fn">h</span> <span onmouseout="hideTip(event, '3', 15)" onmouseover="showTip(event, '3', 15)" class="fn">g</span> <span class="n">3</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">h</span> <span class="pn">:</span> <span class="id">multiplier</span><span class="pn">:</span><span class="pn">(</span><span class="id">&#39;</span><span class="id">a</span> <span class="k">-&gt;</span> <span class="id">&#39;</span><span class="id">b</span><span class="pn">)</span> <span class="k">-&gt;</span> <span class="id">x</span><span class="pn">:</span><span class="id">&#39;</span><span class="id">a</span> <span class="k">-&gt;</span> <span class="id">&#39;</span><span class="id">b</span>
+<span class="k">val</span> <span class="id">it</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '5', 16)" onmouseover="showTip(event, '5', 16)" class="id">int</span> <span class="o">=</span> <span class="n">6</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>A function value can take two partially applied parameters.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '9', 17)" onmouseover="showTip(event, '9', 17)" class="fn">j</span> <span onmouseout="hideTip(event, '4', 18)" onmouseover="showTip(event, '4', 18)" class="id">x</span> <span onmouseout="hideTip(event, '10', 19)" onmouseover="showTip(event, '10', 19)" class="id">y</span> <span class="o">=</span> <span onmouseout="hideTip(event, '4', 20)" onmouseover="showTip(event, '4', 20)" class="id">x</span> <span class="o">+</span> <span onmouseout="hideTip(event, '10', 21)" onmouseover="showTip(event, '10', 21)" class="id">y</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">j</span> <span class="pn">:</span> <span class="id">x</span><span class="pn">:</span><span onmouseout="hideTip(event, '5', 22)" onmouseover="showTip(event, '5', 22)" class="id">int</span> <span class="k">-&gt;</span> <span class="id">y</span><span class="pn">:</span><span onmouseout="hideTip(event, '5', 23)" onmouseover="showTip(event, '5', 23)" class="id">int</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '5', 24)" onmouseover="showTip(event, '5', 24)" class="id">int</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>The function <code>g</code> takes two parameters: <code>x</code> and <code>y</code>.  The parameters can be partially applied from the left.  This allows for creating new functions with the partially applied parameters.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '11', 25)" onmouseover="showTip(event, '11', 25)" class="fn">add2</span> <span class="o">=</span> <span onmouseout="hideTip(event, '9', 26)" onmouseover="showTip(event, '9', 26)" class="fn">j</span> <span class="n">2</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">add2</span> <span class="pn">:</span> <span class="pn">(</span><span onmouseout="hideTip(event, '5', 27)" onmouseover="showTip(event, '5', 27)" class="id">int</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '5', 28)" onmouseover="showTip(event, '5', 28)" class="id">int</span><span class="pn">)</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>Function values can also be passed to collection functions as well.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '12', 29)" onmouseover="showTip(event, '12', 29)" class="id">numbers</span> <span class="o">=</span> 
+    <span class="pn">[</span>
+        <span class="n">1</span>
+        <span class="n">2</span>
+        <span class="n">3</span>
+        <span class="n">4</span>
+        <span class="n">5</span>
+        <span class="n">6</span>
+    <span class="pn">]</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, '13', 30)" onmouseover="showTip(event, '13', 30)" class="id">numbersPlus2</span> <span class="o">=</span> <span onmouseout="hideTip(event, '12', 31)" onmouseover="showTip(event, '12', 31)" class="id">numbers</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '14', 32)" onmouseover="showTip(event, '14', 32)" class="m">List</span><span class="pn">.</span><span onmouseout="hideTip(event, '15', 33)" onmouseover="showTip(event, '15', 33)" class="id">map</span> <span onmouseout="hideTip(event, '11', 34)" onmouseover="showTip(event, '11', 34)" class="fn">add2</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">numbers</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '5', 35)" onmouseover="showTip(event, '5', 35)" class="id">int</span> <span onmouseout="hideTip(event, '16', 36)" onmouseover="showTip(event, '16', 36)" class="id">list</span> <span class="o">=</span> <span class="pn">[</span><span class="n">1</span><span class="pn">;</span> <span class="n">2</span><span class="pn">;</span> <span class="n">3</span><span class="pn">;</span> <span class="n">4</span><span class="pn">;</span> <span class="n">5</span><span class="pn">;</span> <span class="n">6</span><span class="pn">]</span>
+<span class="k">val</span> <span class="id">numbersPlus2</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '5', 37)" onmouseover="showTip(event, '5', 37)" class="id">int</span> <span onmouseout="hideTip(event, '16', 38)" onmouseover="showTip(event, '16', 38)" class="id">list</span> <span class="o">=</span> <span class="pn">[</span><span class="n">3</span><span class="pn">;</span> <span class="n">4</span><span class="pn">;</span> <span class="n">5</span><span class="pn">;</span> <span class="n">6</span><span class="pn">;</span> <span class="n">7</span><span class="pn">;</span> <span class="n">8</span><span class="pn">]</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>Another useful technique is to put values behind a unit parameter.  This will delay the computation of the value until invocation of the funciton.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '4', 39)" onmouseover="showTip(event, '4', 39)" class="id">x</span> <span class="o">=</span> <span class="n">2</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '17', 40)" onmouseover="showTip(event, '17', 40)" class="fn">fx</span> <span class="pn">(</span><span class="pn">)</span> <span class="o">=</span> <span class="n">2</span>
+<span onmouseout="hideTip(event, '17', 41)" onmouseover="showTip(event, '17', 41)" class="fn">fx</span><span class="pn">(</span><span class="pn">)</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">x</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '5', 42)" onmouseover="showTip(event, '5', 42)" class="id">int</span> <span class="o">=</span> <span class="n">2</span>
+<span class="k">val</span> <span class="id">fx</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '2', 43)" onmouseover="showTip(event, '2', 43)" class="id">unit</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '5', 44)" onmouseover="showTip(event, '5', 44)" class="id">int</span>
+<span class="id">fx</span><span class="pn">(</span><span class="pn">)</span><span class="pn">;;</span>
+<span class="k">val</span> <span class="id">it</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '5', 45)" onmouseover="showTip(event, '5', 45)" class="id">int</span> <span class="o">=</span> <span class="n">2</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>The simple value <code>x</code> becomes a function value <code>fx</code> with a unit parameter.</p>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

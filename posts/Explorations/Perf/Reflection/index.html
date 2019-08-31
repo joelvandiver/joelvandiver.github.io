@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="Reflection-of-Types" class="anchor" href="#Reflection-of-Types">Reflection of Types</a></h1>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">System</span>
+
+<span class="k">type</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="rt">SomeTypeToReflect</span> <span class="o">=</span> 
+   <span class="pn">{</span>  <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="id">id</span>      <span class="pn">:</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="vt">float</span>
+      <span onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)" class="id">title</span>   <span class="pn">:</span> <span onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)" class="rt">string</span>
+      <span onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)" class="id">created</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)" class="vt">int64</span> <span class="pn">}</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)" class="id">instances</span> <span class="o">=</span> 
+   <span class="pn">{</span> <span class="n">0.</span> <span class="o">..</span> <span class="n">100000000000000000.</span> <span class="pn">}</span>
+   <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)" class="id">map</span><span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, '12', 12)" onmouseover="showTip(event, '12', 12)" class="id">i</span> <span class="k">-&gt;</span> <span class="pn">{</span> <span onmouseout="hideTip(event, '13', 13)" onmouseover="showTip(event, '13', 13)" class="id">id</span> <span class="o">=</span> <span onmouseout="hideTip(event, '12', 14)" onmouseover="showTip(event, '12', 14)" class="id">i</span><span class="pn">;</span> <span class="id">title</span> <span class="o">=</span> <span onmouseout="hideTip(event, '14', 15)" onmouseover="showTip(event, '14', 15)" class="fn">sprintf</span> <span class="s">&quot;#</span><span class="pf">%f</span><span class="s">&quot;</span> <span onmouseout="hideTip(event, '12', 16)" onmouseover="showTip(event, '12', 16)" class="id">i</span><span class="pn">;</span> <span class="id">created</span> <span class="o">=</span> <span onmouseout="hideTip(event, '15', 17)" onmouseover="showTip(event, '15', 17)" class="vt">DateTime</span><span class="pn">.</span><span onmouseout="hideTip(event, '16', 18)" onmouseover="showTip(event, '16', 18)" class="id">UtcNow</span><span class="pn">.</span><span onmouseout="hideTip(event, '17', 19)" onmouseover="showTip(event, '17', 19)" class="id">Ticks</span> <span class="pn">}</span><span class="pn">)</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">type SomeTypeToReflect =
+  {id: float;
+   title: string;
+   created: int64;}
+val instances : seq&lt;SomeTypeToReflect&gt;
+</code></pre></td></tr></table>
+<h2><a name="Reflecting-Each-Instance" class="anchor" href="#Reflecting-Each-Instance">Reflecting Each Instance</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#time</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '18', 20)" onmouseover="showTip(event, '18', 20)" class="id">reflectEach</span> <span class="o">=</span>
+   <span onmouseout="hideTip(event, '9', 21)" onmouseover="showTip(event, '9', 21)" class="id">instances</span> 
+   <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '10', 22)" onmouseover="showTip(event, '10', 22)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, '11', 23)" onmouseover="showTip(event, '11', 23)" class="id">map</span><span class="pn">(</span>
+      <span class="k">fun</span> <span onmouseout="hideTip(event, '19', 24)" onmouseover="showTip(event, '19', 24)" class="id">x</span> <span class="k">-&gt;</span> 
+         <span class="k">let</span> <span onmouseout="hideTip(event, '20', 25)" onmouseover="showTip(event, '20', 25)" class="id">props</span> <span class="o">=</span> <span onmouseout="hideTip(event, '19', 26)" onmouseover="showTip(event, '19', 26)" class="fn">x</span><span class="pn">.</span><span onmouseout="hideTip(event, '21', 27)" onmouseover="showTip(event, '21', 27)" class="id">GetType</span><span class="pn">(</span><span class="pn">)</span><span class="pn">.</span><span class="id">GetProperties</span><span class="pn">(</span><span class="pn">)</span>
+         <span class="k">let</span> <span onmouseout="hideTip(event, '22', 28)" onmouseover="showTip(event, '22', 28)" class="id">values</span> <span class="o">=</span> <span onmouseout="hideTip(event, '20', 29)" onmouseover="showTip(event, '20', 29)" class="id">props</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '10', 30)" onmouseover="showTip(event, '10', 30)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, '11', 31)" onmouseover="showTip(event, '11', 31)" class="id">map</span><span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, '23', 32)" onmouseover="showTip(event, '23', 32)" class="id">prop</span> <span class="k">-&gt;</span> <span class="pn">(</span><span onmouseout="hideTip(event, '23', 33)" onmouseover="showTip(event, '23', 33)" class="id">prop</span><span class="pn">.</span><span onmouseout="hideTip(event, '24', 34)" onmouseover="showTip(event, '24', 34)" class="id">Name</span><span class="pn">,</span> <span onmouseout="hideTip(event, '23', 35)" onmouseover="showTip(event, '23', 35)" class="fn">prop</span><span class="pn">.</span><span onmouseout="hideTip(event, '25', 36)" onmouseover="showTip(event, '25', 36)" class="id">GetValue</span><span class="pn">(</span><span onmouseout="hideTip(event, '19', 37)" onmouseover="showTip(event, '19', 37)" class="id">x</span><span class="pn">)</span><span class="pn">)</span><span class="pn">)</span>
+         <span onmouseout="hideTip(event, '22', 38)" onmouseover="showTip(event, '22', 38)" class="id">values</span>
+   <span class="pn">)</span>
+<span class="pp">#time</span>
+<span onmouseout="hideTip(event, '26', 39)" onmouseover="showTip(event, '26', 39)" class="fn">printfn</span> <span class="s">&quot;%A&quot;</span> <span onmouseout="hideTip(event, '18', 40)" onmouseover="showTip(event, '18', 40)" class="id">reflectEach</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">--&gt; Timing now on
+
+Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+val reflectEach : seq&lt;seq&lt;string * obj&gt;&gt;
+
+
+--&gt; Timing now off
+
+seq
+  [seq [("id", 0.0); ("title", "#0.000000"); ("created", 636847300273895338L)];
+   seq [("id", 1.0); ("title", "#1.000000"); ("created", 636847300273905300L)];
+   seq [("id", 2.0); ("title", "#2.000000"); ("created", 636847300273915271L)];
+   seq [("id", 3.0); ("title", "#3.000000"); ("created", 636847300273915271L)];
+   ...]
+val it : unit = ()
+</code></pre></td></tr></table>
+<h2><a name="Reflecting-the-Type" class="anchor" href="#Reflecting-the-Type">Reflecting the Type</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#time</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '27', 41)" onmouseover="showTip(event, '27', 41)" class="id">reflectOnce</span>  <span class="o">=</span>
+   <span class="k">let</span> <span onmouseout="hideTip(event, '20', 42)" onmouseover="showTip(event, '20', 42)" class="id">props</span> <span class="o">=</span> <span onmouseout="hideTip(event, '28', 43)" onmouseover="showTip(event, '28', 43)" class="k">typeof</span><span class="pn">&lt;</span><span onmouseout="hideTip(event, '2', 44)" onmouseover="showTip(event, '2', 44)" class="rt">SomeTypeToReflect</span><span class="pn">&gt;</span><span class="pn">.</span><span class="id">GetProperties</span><span class="pn">(</span><span class="pn">)</span>
+   <span onmouseout="hideTip(event, '9', 45)" onmouseover="showTip(event, '9', 45)" class="id">instances</span> 
+   <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '10', 46)" onmouseover="showTip(event, '10', 46)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, '11', 47)" onmouseover="showTip(event, '11', 47)" class="id">map</span><span class="pn">(</span>
+      <span class="k">fun</span> <span onmouseout="hideTip(event, '19', 48)" onmouseover="showTip(event, '19', 48)" class="id">x</span> <span class="k">-&gt;</span> 
+         <span class="k">let</span> <span onmouseout="hideTip(event, '22', 49)" onmouseover="showTip(event, '22', 49)" class="id">values</span> <span class="o">=</span> <span onmouseout="hideTip(event, '20', 50)" onmouseover="showTip(event, '20', 50)" class="id">props</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '10', 51)" onmouseover="showTip(event, '10', 51)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, '11', 52)" onmouseover="showTip(event, '11', 52)" class="id">map</span><span class="pn">(</span><span class="k">fun</span> <span onmouseout="hideTip(event, '23', 53)" onmouseover="showTip(event, '23', 53)" class="id">prop</span> <span class="k">-&gt;</span> <span class="pn">(</span><span onmouseout="hideTip(event, '23', 54)" onmouseover="showTip(event, '23', 54)" class="id">prop</span><span class="pn">.</span><span onmouseout="hideTip(event, '24', 55)" onmouseover="showTip(event, '24', 55)" class="id">Name</span><span class="pn">,</span> <span onmouseout="hideTip(event, '23', 56)" onmouseover="showTip(event, '23', 56)" class="fn">prop</span><span class="pn">.</span><span onmouseout="hideTip(event, '25', 57)" onmouseover="showTip(event, '25', 57)" class="id">GetValue</span><span class="pn">(</span><span onmouseout="hideTip(event, '19', 58)" onmouseover="showTip(event, '19', 58)" class="id">x</span><span class="pn">)</span><span class="pn">)</span><span class="pn">)</span>
+         <span onmouseout="hideTip(event, '22', 59)" onmouseover="showTip(event, '22', 59)" class="id">values</span>
+   <span class="pn">)</span>
+<span class="pp">#time</span>
+<span onmouseout="hideTip(event, '26', 60)" onmouseover="showTip(event, '26', 60)" class="fn">printfn</span> <span class="s">&quot;%A&quot;</span> <span onmouseout="hideTip(event, '27', 61)" onmouseover="showTip(event, '27', 61)" class="id">reflectOnce</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">--&gt; Timing now on
+
+Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+val reflectOnce : seq&lt;seq&lt;string * obj&gt;&gt;
+
+
+--&gt; Timing now off
+
+seq
+  [seq [("id", 0.0); ("title", "#0.000000"); ("created", 636847300392606574L)];
+   seq [("id", 1.0); ("title", "#1.000000"); ("created", 636847300392616546L)];
+   seq [("id", 2.0); ("title", "#2.000000"); ("created", 636847300392626512L)];
+   seq [("id", 3.0); ("title", "#3.000000"); ("created", 636847300392626512L)];
+   ...]
+val it : unit = ()
+</code></pre></td></tr></table>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

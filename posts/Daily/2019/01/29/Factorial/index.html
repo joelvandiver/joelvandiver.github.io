@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="Factorials" class="anchor" href="#Factorials">Factorials</a></h1>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="k">rec</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="fn">fact</span> <span class="o">=</span> <span class="k">function</span>
+   <span class="pn">|</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">n</span> <span class="k">when</span> <span onmouseout="hideTip(event, '2', 3)" onmouseover="showTip(event, '2', 3)" class="id">n</span> <span class="o">&lt;</span> <span class="n">0</span> <span class="k">-&gt;</span> <span class="n">0</span>
+   <span class="pn">|</span> <span class="n">0</span> <span class="k">-&gt;</span> <span class="n">1</span>
+   <span class="pn">|</span> <span onmouseout="hideTip(event, '2', 4)" onmouseover="showTip(event, '2', 4)" class="id">n</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '2', 5)" onmouseover="showTip(event, '2', 5)" class="id">n</span> <span class="o">*</span> <span onmouseout="hideTip(event, '1', 6)" onmouseover="showTip(event, '1', 6)" class="fn">fact</span> <span class="pn">(</span><span onmouseout="hideTip(event, '2', 7)" onmouseover="showTip(event, '2', 7)" class="id">n</span> <span class="o">-</span> <span class="n">1</span><span class="pn">)</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val fact : _arg1:int -&gt; int
+</code></pre></td></tr></table>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '3', 8)" onmouseover="showTip(event, '3', 8)" class="id">xs</span> <span class="o">=</span> <span class="pn">{</span> <span class="n">0</span> <span class="o">..</span> <span class="n">20</span> <span class="pn">}</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '4', 9)" onmouseover="showTip(event, '4', 9)" class="id">ys</span> <span class="o">=</span> <span onmouseout="hideTip(event, '3', 10)" onmouseover="showTip(event, '3', 10)" class="id">xs</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '5', 11)" onmouseover="showTip(event, '5', 11)" class="m">Seq</span><span class="pn">.</span><span onmouseout="hideTip(event, '6', 12)" onmouseover="showTip(event, '6', 12)" class="id">map</span> <span onmouseout="hideTip(event, '1', 13)" onmouseover="showTip(event, '1', 13)" class="fn">fact</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val xs : seq&lt;int&gt;
+val ys : seq&lt;int&gt;
+val it : seq&lt;int&gt; = seq [1; 1; 2; 6; ...]
+</code></pre></td></tr></table>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '7', 14)" onmouseover="showTip(event, '7', 14)" class="id">badValue</span> <span class="o">=</span> <span onmouseout="hideTip(event, '1', 15)" onmouseover="showTip(event, '1', 15)" class="fn">fact</span> <span class="o">-</span><span class="n">1</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val badValue : int = 0
+</code></pre></td></tr></table>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+<span class="l">8: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span class="k">rec</span> <span onmouseout="hideTip(event, '8', 16)" onmouseover="showTip(event, '8', 16)" class="fn">factPrinter</span> <span class="o">=</span> <span class="k">function</span>
+   <span class="pn">|</span> <span class="n">0</span> <span class="k">-&gt;</span> <span class="s">&quot;1&quot;</span><span class="pn">,</span> <span class="n">1</span>
+   <span class="pn">|</span> <span onmouseout="hideTip(event, '2', 17)" onmouseover="showTip(event, '2', 17)" class="id">n</span> <span class="k">-&gt;</span> 
+      <span class="k">let</span> <span onmouseout="hideTip(event, '9', 18)" onmouseover="showTip(event, '9', 18)" class="id">stmt&#39;</span><span class="pn">,</span> <span onmouseout="hideTip(event, '10', 19)" onmouseover="showTip(event, '10', 19)" class="id">value</span> <span class="o">=</span> <span onmouseout="hideTip(event, '8', 20)" onmouseover="showTip(event, '8', 20)" class="fn">factPrinter</span> <span class="pn">(</span><span onmouseout="hideTip(event, '2', 21)" onmouseover="showTip(event, '2', 21)" class="id">n</span> <span class="o">-</span> <span class="n">1</span><span class="pn">)</span>
+      <span class="k">let</span> <span onmouseout="hideTip(event, '11', 22)" onmouseover="showTip(event, '11', 22)" class="id">final</span> <span class="o">=</span> <span onmouseout="hideTip(event, '12', 23)" onmouseover="showTip(event, '12', 23)" class="fn">sprintf</span> <span class="s">&quot;</span><span class="pf">%d</span><span class="s"> * fact (</span><span class="pf">%s</span><span class="s">)&quot;</span> <span onmouseout="hideTip(event, '2', 24)" onmouseover="showTip(event, '2', 24)" class="id">n</span> <span onmouseout="hideTip(event, '9', 25)" onmouseover="showTip(event, '9', 25)" class="id">stmt&#39;</span>
+      <span onmouseout="hideTip(event, '11', 26)" onmouseover="showTip(event, '11', 26)" class="id">final</span><span class="pn">,</span> <span onmouseout="hideTip(event, '2', 27)" onmouseover="showTip(event, '2', 27)" class="id">n</span> <span class="o">*</span> <span onmouseout="hideTip(event, '10', 28)" onmouseover="showTip(event, '10', 28)" class="id">value</span>
+
+<span onmouseout="hideTip(event, '8', 29)" onmouseover="showTip(event, '8', 29)" class="fn">factPrinter</span> <span class="n">4</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val factPrinter : _arg1:int -&gt; string * int
+val it : string * int = ("4 * fact (3 * fact (2 * fact (1 * fact (1))))", 24)
+</code></pre></td></tr></table>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

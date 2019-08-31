@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="List-Accumulator-Function" class="anchor" href="#List-Accumulator-Function">List Accumulator Function</a></h1>
+<p><a href="https://gist.github.com/joelvandiver/d709141d3d18eeffcb2936f67ad23e9d">GIST</a></p>
+<p>Create a new list by accumulating the values in the list in ascending order.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="fn">accumulate</span><span class="pn">&lt;</span><span class="ta">&#39;</span><span class="id">T</span><span class="pn">&gt;</span> <span class="pn">(</span><span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="fn">accumulator</span><span class="pn">:</span> <span class="ta">&#39;</span><span class="id">T</span> <span class="k">-&gt;</span> <span class="ta">&#39;</span><span class="id">T</span> <span class="k">-&gt;</span> <span class="ta">&#39;</span><span class="id">T</span><span class="pn">)</span> <span class="pn">(</span><span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="id">l</span><span class="pn">:</span> <span class="ta">&#39;</span><span class="id">T</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="rt">list</span><span class="pn">)</span> <span class="pn">:</span> <span class="ta">&#39;</span><span class="id">T</span> <span onmouseout="hideTip(event, '4', 5)" onmouseover="showTip(event, '4', 5)" class="rt">list</span> <span class="o">=</span>
+  <span class="k">match</span> <span onmouseout="hideTip(event, '3', 6)" onmouseover="showTip(event, '3', 6)" class="id">l</span> <span class="k">with</span> 
+  <span class="pn">|</span> <span class="pn">[</span><span class="pn">]</span> <span class="k">-&gt;</span> <span class="pn">[</span><span class="pn">]</span>
+  <span class="pn">|</span> <span class="pn">[</span><span onmouseout="hideTip(event, '5', 7)" onmouseover="showTip(event, '5', 7)" class="id">h</span><span class="pn">]</span> <span class="k">-&gt;</span> <span class="pn">[</span><span onmouseout="hideTip(event, '5', 8)" onmouseover="showTip(event, '5', 8)" class="id">h</span><span class="pn">]</span>
+  <span class="pn">|</span> <span class="id">_</span> <span class="k">-&gt;</span> 
+
+    <span class="k">let</span> <span class="k">rec</span> <span onmouseout="hideTip(event, '6', 9)" onmouseover="showTip(event, '6', 9)" class="fn">accumulate</span> <span class="pn">(</span><span onmouseout="hideTip(event, '7', 10)" onmouseover="showTip(event, '7', 10)" class="id">g</span><span class="pn">:</span> <span class="ta">&#39;</span><span class="id">T</span> <span onmouseout="hideTip(event, '4', 11)" onmouseover="showTip(event, '4', 11)" class="rt">list</span><span class="pn">)</span> <span class="pn">(</span><span onmouseout="hideTip(event, '8', 12)" onmouseover="showTip(event, '8', 12)" class="id">accumulated</span><span class="pn">:</span> <span class="ta">&#39;</span><span class="id">T</span> <span onmouseout="hideTip(event, '4', 13)" onmouseover="showTip(event, '4', 13)" class="rt">list</span><span class="pn">)</span> <span class="pn">:</span> <span class="ta">&#39;</span><span class="id">T</span> <span onmouseout="hideTip(event, '4', 14)" onmouseover="showTip(event, '4', 14)" class="rt">list</span> <span class="o">=</span>
+        <span class="k">match</span> <span onmouseout="hideTip(event, '7', 15)" onmouseover="showTip(event, '7', 15)" class="id">g</span> <span class="k">with</span> 
+        <span class="pn">|</span> <span class="pn">[</span><span class="pn">]</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '8', 16)" onmouseover="showTip(event, '8', 16)" class="id">accumulated</span>
+        <span class="pn">|</span> <span onmouseout="hideTip(event, '5', 17)" onmouseover="showTip(event, '5', 17)" class="id">h</span> <span class="uc">::</span> <span onmouseout="hideTip(event, '9', 18)" onmouseover="showTip(event, '9', 18)" class="id">t</span> <span class="k">-&gt;</span> 
+            <span class="k">match</span> <span onmouseout="hideTip(event, '8', 19)" onmouseover="showTip(event, '8', 19)" class="id">accumulated</span> <span class="k">with</span> 
+            <span class="pn">|</span> <span class="pn">[</span><span class="pn">]</span> <span class="k">-&gt;</span> <span class="pn">[</span><span class="pn">]</span>
+            <span class="pn">|</span> <span class="id">_</span> <span class="k">-&gt;</span> 
+                <span class="k">let</span> <span onmouseout="hideTip(event, '10', 20)" onmouseover="showTip(event, '10', 20)" class="id">last</span> <span class="o">=</span> <span onmouseout="hideTip(event, '8', 21)" onmouseover="showTip(event, '8', 21)" class="id">accumulated</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '11', 22)" onmouseover="showTip(event, '11', 22)" class="m">List</span><span class="pn">.</span><span onmouseout="hideTip(event, '12', 23)" onmouseover="showTip(event, '12', 23)" class="id">rev</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '11', 24)" onmouseover="showTip(event, '11', 24)" class="m">List</span><span class="pn">.</span><span onmouseout="hideTip(event, '13', 25)" onmouseover="showTip(event, '13', 25)" class="id">head</span>
+                <span class="k">let</span> <span onmouseout="hideTip(event, '14', 26)" onmouseover="showTip(event, '14', 26)" class="id">a</span> <span class="o">=</span> <span class="pn">(</span><span onmouseout="hideTip(event, '10', 27)" onmouseover="showTip(event, '10', 27)" class="id">last</span><span class="pn">,</span> <span onmouseout="hideTip(event, '5', 28)" onmouseover="showTip(event, '5', 28)" class="id">h</span><span class="pn">)</span> <span class="o">||&gt;</span> <span onmouseout="hideTip(event, '2', 29)" onmouseover="showTip(event, '2', 29)" class="fn">accumulator</span>
+                <span onmouseout="hideTip(event, '6', 30)" onmouseover="showTip(event, '6', 30)" class="fn">accumulate</span> <span onmouseout="hideTip(event, '9', 31)" onmouseover="showTip(event, '9', 31)" class="id">t</span> <span class="pn">(</span><span onmouseout="hideTip(event, '8', 32)" onmouseover="showTip(event, '8', 32)" class="id">accumulated</span> <span class="o">@</span> <span class="pn">[</span><span onmouseout="hideTip(event, '14', 33)" onmouseover="showTip(event, '14', 33)" class="id">a</span><span class="pn">]</span><span class="pn">)</span>
+
+    <span onmouseout="hideTip(event, '6', 34)" onmouseover="showTip(event, '6', 34)" class="fn">accumulate</span> <span onmouseout="hideTip(event, '3', 35)" onmouseover="showTip(event, '3', 35)" class="id">l</span><span class="pn">.</span><span onmouseout="hideTip(event, '15', 36)" onmouseover="showTip(event, '15', 36)" class="id">Tail</span> <span class="pn">[</span><span onmouseout="hideTip(event, '3', 37)" onmouseover="showTip(event, '3', 37)" class="id">l</span><span class="pn">.</span><span onmouseout="hideTip(event, '16', 38)" onmouseover="showTip(event, '16', 38)" class="id">Head</span><span class="pn">]</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">accumulate</span> <span class="pn">:</span> <span class="id">accumulator</span><span class="pn">:</span><span class="pn">(</span><span class="id">&#39;</span><span class="id">T</span> <span class="k">-&gt;</span> <span class="id">&#39;</span><span class="id">T</span> <span class="k">-&gt;</span> <span class="id">&#39;</span><span class="id">T</span><span class="pn">)</span> <span class="k">-&gt;</span> <span class="id">l</span><span class="pn">:</span><span class="id">&#39;</span><span class="id">T</span> <span onmouseout="hideTip(event, '4', 39)" onmouseover="showTip(event, '4', 39)" class="id">list</span> <span class="k">-&gt;</span> <span class="id">&#39;</span><span class="id">T</span> <span onmouseout="hideTip(event, '4', 40)" onmouseover="showTip(event, '4', 40)" class="id">list</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<h2><a name="Example-Mathematical-Adder" class="anchor" href="#Example-Mathematical-Adder">Example:  Mathematical Adder</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '17', 41)" onmouseover="showTip(event, '17', 41)" class="fn">adder</span> <span class="o">=</span> <span onmouseout="hideTip(event, '1', 42)" onmouseover="showTip(event, '1', 42)" class="fn">accumulate</span> <span class="pn">(</span><span class="o">+</span><span class="pn">)</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '18', 43)" onmouseover="showTip(event, '18', 43)" class="id">addList</span> <span class="o">=</span> <span class="pn">[</span><span class="n">0</span><span class="pn">;</span> <span class="n">1</span><span class="pn">;</span> <span class="n">2</span><span class="pn">;</span> <span class="n">3</span><span class="pn">;</span> <span class="n">4</span><span class="pn">;</span> <span class="n">5</span><span class="pn">]</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '19', 44)" onmouseover="showTip(event, '19', 44)" class="id">addResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, '17', 45)" onmouseover="showTip(event, '17', 45)" class="fn">adder</span> <span onmouseout="hideTip(event, '18', 46)" onmouseover="showTip(event, '18', 46)" class="id">addList</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">adder</span> <span class="pn">:</span> <span class="pn">(</span><span onmouseout="hideTip(event, '20', 47)" onmouseover="showTip(event, '20', 47)" class="id">int</span> <span onmouseout="hideTip(event, '4', 48)" onmouseover="showTip(event, '4', 48)" class="id">list</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '20', 49)" onmouseover="showTip(event, '20', 49)" class="id">int</span> <span onmouseout="hideTip(event, '4', 50)" onmouseover="showTip(event, '4', 50)" class="id">list</span><span class="pn">)</span>
+<span class="k">val</span> <span class="id">addList</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '20', 51)" onmouseover="showTip(event, '20', 51)" class="id">int</span> <span onmouseout="hideTip(event, '4', 52)" onmouseover="showTip(event, '4', 52)" class="id">list</span> <span class="o">=</span> <span class="pn">[</span><span class="n">0</span><span class="pn">;</span> <span class="n">1</span><span class="pn">;</span> <span class="n">2</span><span class="pn">;</span> <span class="n">3</span><span class="pn">;</span> <span class="n">4</span><span class="pn">;</span> <span class="n">5</span><span class="pn">]</span>
+<span class="k">val</span> <span class="id">addResult</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '20', 53)" onmouseover="showTip(event, '20', 53)" class="id">int</span> <span onmouseout="hideTip(event, '4', 54)" onmouseover="showTip(event, '4', 54)" class="id">list</span> <span class="o">=</span> <span class="pn">[</span><span class="n">0</span><span class="pn">;</span> <span class="n">1</span><span class="pn">;</span> <span class="n">3</span><span class="pn">;</span> <span class="n">6</span><span class="pn">;</span> <span class="n">10</span><span class="pn">;</span> <span class="n">15</span><span class="pn">]</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<h2><a name="Example-Mathematical-Multiplier" class="anchor" href="#Example-Mathematical-Multiplier">Example:  Mathematical Multiplier</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '21', 55)" onmouseover="showTip(event, '21', 55)" class="fn">multiplier</span> <span class="o">=</span> <span onmouseout="hideTip(event, '1', 56)" onmouseover="showTip(event, '1', 56)" class="fn">accumulate</span> <span class="o">(*)</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '22', 57)" onmouseover="showTip(event, '22', 57)" class="id">multiList</span> <span class="o">=</span> <span class="pn">[</span><span class="n">1</span><span class="pn">;</span> <span class="n">2</span><span class="pn">;</span> <span class="n">3</span><span class="pn">;</span> <span class="n">4</span><span class="pn">;</span> <span class="n">5</span><span class="pn">]</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '23', 58)" onmouseover="showTip(event, '23', 58)" class="id">multiResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, '21', 59)" onmouseover="showTip(event, '21', 59)" class="fn">multiplier</span> <span onmouseout="hideTip(event, '22', 60)" onmouseover="showTip(event, '22', 60)" class="id">multiList</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">multiplier</span> <span class="pn">:</span> <span class="pn">(</span><span onmouseout="hideTip(event, '20', 61)" onmouseover="showTip(event, '20', 61)" class="id">int</span> <span onmouseout="hideTip(event, '4', 62)" onmouseover="showTip(event, '4', 62)" class="id">list</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '20', 63)" onmouseover="showTip(event, '20', 63)" class="id">int</span> <span onmouseout="hideTip(event, '4', 64)" onmouseover="showTip(event, '4', 64)" class="id">list</span><span class="pn">)</span>
+<span class="k">val</span> <span class="id">multiList</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '20', 65)" onmouseover="showTip(event, '20', 65)" class="id">int</span> <span onmouseout="hideTip(event, '4', 66)" onmouseover="showTip(event, '4', 66)" class="id">list</span> <span class="o">=</span> <span class="pn">[</span><span class="n">1</span><span class="pn">;</span> <span class="n">2</span><span class="pn">;</span> <span class="n">3</span><span class="pn">;</span> <span class="n">4</span><span class="pn">;</span> <span class="n">5</span><span class="pn">]</span>
+<span class="k">val</span> <span class="id">multiResult</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '20', 67)" onmouseover="showTip(event, '20', 67)" class="id">int</span> <span onmouseout="hideTip(event, '4', 68)" onmouseover="showTip(event, '4', 68)" class="id">list</span> <span class="o">=</span> <span class="pn">[</span><span class="n">1</span><span class="pn">;</span> <span class="n">2</span><span class="pn">;</span> <span class="n">6</span><span class="pn">;</span> <span class="n">24</span><span class="pn">;</span> <span class="n">120</span><span class="pn">]</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<h2><a name="Example-String-Concatenator" class="anchor" href="#Example-String-Concatenator">Example:  String Concatenator</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '24', 69)" onmouseover="showTip(event, '24', 69)" class="fn">dotConcat</span> <span onmouseout="hideTip(event, '25', 70)" onmouseover="showTip(event, '25', 70)" class="id">a</span> <span onmouseout="hideTip(event, '26', 71)" onmouseover="showTip(event, '26', 71)" class="id">b</span> <span class="o">=</span> <span onmouseout="hideTip(event, '25', 72)" onmouseover="showTip(event, '25', 72)" class="id">a</span> <span class="o">+</span> <span class="s">&quot;.&quot;</span> <span class="o">+</span> <span onmouseout="hideTip(event, '26', 73)" onmouseover="showTip(event, '26', 73)" class="id">b</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '27', 74)" onmouseover="showTip(event, '27', 74)" class="fn">docAccumulator</span> <span class="o">=</span> <span onmouseout="hideTip(event, '1', 75)" onmouseover="showTip(event, '1', 75)" class="fn">accumulate</span> <span onmouseout="hideTip(event, '24', 76)" onmouseover="showTip(event, '24', 76)" class="fn">dotConcat</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '28', 77)" onmouseover="showTip(event, '28', 77)" class="id">alphabet</span> <span class="o">=</span> <span class="s">&quot;abcdef&quot;</span>
+<span class="c">// let alphabet = &quot;abcdefghijklmnopqrstuvwxyz&quot;</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '29', 78)" onmouseover="showTip(event, '29', 78)" class="id">alphaList</span> <span class="o">=</span> <span onmouseout="hideTip(event, '28', 79)" onmouseover="showTip(event, '28', 79)" class="id">alphabet</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '11', 80)" onmouseover="showTip(event, '11', 80)" class="m">List</span><span class="pn">.</span><span onmouseout="hideTip(event, '30', 81)" onmouseover="showTip(event, '30', 81)" class="id">ofSeq</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '11', 82)" onmouseover="showTip(event, '11', 82)" class="m">List</span><span class="pn">.</span><span onmouseout="hideTip(event, '31', 83)" onmouseover="showTip(event, '31', 83)" class="id">map</span> <span onmouseout="hideTip(event, '32', 84)" onmouseover="showTip(event, '32', 84)" class="fn">string</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '33', 85)" onmouseover="showTip(event, '33', 85)" class="id">alphaResult</span> <span class="o">=</span> <span onmouseout="hideTip(event, '27', 86)" onmouseover="showTip(event, '27', 86)" class="fn">docAccumulator</span> <span onmouseout="hideTip(event, '29', 87)" onmouseover="showTip(event, '29', 87)" class="id">alphaList</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">val</span> <span class="id">dotConcat</span> <span class="pn">:</span> <span class="id">a</span><span class="pn">:</span><span onmouseout="hideTip(event, '32', 88)" onmouseover="showTip(event, '32', 88)" class="id">string</span> <span class="k">-&gt;</span> <span class="id">b</span><span class="pn">:</span><span onmouseout="hideTip(event, '32', 89)" onmouseover="showTip(event, '32', 89)" class="id">string</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '32', 90)" onmouseover="showTip(event, '32', 90)" class="id">string</span>
+<span class="k">val</span> <span class="id">docAccumulator</span> <span class="pn">:</span> <span class="pn">(</span><span onmouseout="hideTip(event, '32', 91)" onmouseover="showTip(event, '32', 91)" class="id">string</span> <span onmouseout="hideTip(event, '4', 92)" onmouseover="showTip(event, '4', 92)" class="id">list</span> <span class="k">-&gt;</span> <span onmouseout="hideTip(event, '32', 93)" onmouseover="showTip(event, '32', 93)" class="id">string</span> <span onmouseout="hideTip(event, '4', 94)" onmouseover="showTip(event, '4', 94)" class="id">list</span><span class="pn">)</span>
+<span class="k">val</span> <span class="id">alphabet</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '32', 95)" onmouseover="showTip(event, '32', 95)" class="id">string</span> <span class="o">=</span> <span class="s">&quot;abcdef&quot;</span>
+<span class="k">val</span> <span class="id">alphaList</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '32', 96)" onmouseover="showTip(event, '32', 96)" class="id">string</span> <span onmouseout="hideTip(event, '4', 97)" onmouseover="showTip(event, '4', 97)" class="id">list</span> <span class="o">=</span> <span class="pn">[</span><span class="s">&quot;a&quot;</span><span class="pn">;</span> <span class="s">&quot;b&quot;</span><span class="pn">;</span> <span class="s">&quot;c&quot;</span><span class="pn">;</span> <span class="s">&quot;d&quot;</span><span class="pn">;</span> <span class="s">&quot;e&quot;</span><span class="pn">;</span> <span class="s">&quot;f&quot;</span><span class="pn">]</span>
+<span class="k">val</span> <span class="id">alphaResult</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '32', 98)" onmouseover="showTip(event, '32', 98)" class="id">string</span> <span onmouseout="hideTip(event, '4', 99)" onmouseover="showTip(event, '4', 99)" class="id">list</span> <span class="o">=</span>
+  <span class="pn">[</span><span class="s">&quot;a&quot;</span><span class="pn">;</span> <span class="s">&quot;a.b&quot;</span><span class="pn">;</span> <span class="s">&quot;a.b.c&quot;</span><span class="pn">;</span> <span class="s">&quot;a.b.c.d&quot;</span><span class="pn">;</span> <span class="s">&quot;a.b.c.d.e&quot;</span><span class="pn">;</span> <span class="s">&quot;a.b.c.d.e.f&quot;</span><span class="pn">]</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

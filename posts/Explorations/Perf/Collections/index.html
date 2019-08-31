@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="PERF-Experiments-for-F-Collection-Types" class="anchor" href="#PERF-Experiments-for-F-Collection-Types">PERF Experiments for F# Collection Types</a></h1>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">System</span>
+
+<span class="c">// Define the expected power operator:</span>
+<span class="k">let</span> <span class="pn">(</span><span class="o">^</span><span class="pn">)</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="id">x</span> <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="id">n</span> <span class="o">=</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="fn">pown</span> <span onmouseout="hideTip(event, '2', 5)" onmouseover="showTip(event, '2', 5)" class="id">x</span> <span onmouseout="hideTip(event, '3', 6)" onmouseover="showTip(event, '3', 6)" class="id">n</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '5', 7)" onmouseover="showTip(event, '5', 7)" class="id">max</span> <span class="o">=</span> <span onmouseout="hideTip(event, '6', 8)" onmouseover="showTip(event, '6', 8)" class="rt">Math</span><span class="pn">.</span><span onmouseout="hideTip(event, '7', 9)" onmouseover="showTip(event, '7', 9)" class="id">Pow</span><span class="pn">(</span><span class="n">10.</span><span class="pn">,</span> <span class="n">6.</span><span class="pn">)</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">val ( ^ ) : x:int -&gt; n:int -&gt; int
+val max : float = 1000000.0
+</code></pre></td></tr></table>
+<h2><a name="Initialize-a-Sequence" class="anchor" href="#Initialize-a-Sequence">Initialize a Sequence</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#time</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '8', 10)" onmouseover="showTip(event, '8', 10)" class="id">aSeq</span>    <span class="o">=</span> <span class="pn">{</span> <span class="pn">(</span><span class="o">-</span><span class="n">1.</span><span class="o">*</span><span onmouseout="hideTip(event, '5', 11)" onmouseover="showTip(event, '5', 11)" class="id">max</span><span class="pn">)</span> <span class="o">..</span> <span onmouseout="hideTip(event, '5', 12)" onmouseover="showTip(event, '5', 12)" class="id">max</span> <span class="pn">}</span>
+<span class="pp">#time</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">--&gt; Timing now on
+
+Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+val aSeq : seq&lt;float&gt;
+
+
+--&gt; Timing now off
+</code></pre></td></tr></table>
+<h2><a name="Map-to-a-List" class="anchor" href="#Map-to-a-List">Map to a List</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#time</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '9', 13)" onmouseover="showTip(event, '9', 13)" class="id">aList</span>   <span class="o">=</span> <span onmouseout="hideTip(event, '8', 14)" onmouseover="showTip(event, '8', 14)" class="id">aSeq</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '10', 15)" onmouseover="showTip(event, '10', 15)" class="m">List</span><span class="pn">.</span><span onmouseout="hideTip(event, '11', 16)" onmouseover="showTip(event, '11', 16)" class="id">ofSeq</span>
+<span class="pp">#time</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">--&gt; Timing now on
+
+Real: 00:00:00.291, CPU: 00:00:00.312, GC gen0: 11, gen1: 6, gen2: 1
+val aList : float list =
+  [-1000000.0; -999999.0; -999998.0; -999997.0; -999996.0; -999995.0;
+   -999994.0; -999993.0; -999992.0; -999991.0; -999990.0; -999989.0; -999988.0;
+   -999987.0; -999986.0; -999985.0; -999984.0; -999983.0; -999982.0; -999981.0;
+   -999980.0; -999979.0; -999978.0; -999977.0; -999976.0; -999975.0; -999974.0;
+   -999973.0; -999972.0; -999971.0; -999970.0; -999969.0; -999968.0; -999967.0;
+   -999966.0; -999965.0; -999964.0; -999963.0; -999962.0; -999961.0; -999960.0;
+   -999959.0; -999958.0; -999957.0; -999956.0; -999955.0; -999954.0; -999953.0;
+   -999952.0; -999951.0; -999950.0; -999949.0; -999948.0; -999947.0; -999946.0;
+   -999945.0; -999944.0; -999943.0; -999942.0; -999941.0; -999940.0; -999939.0;
+   -999938.0; -999937.0; -999936.0; -999935.0; -999934.0; -999933.0; -999932.0;
+   -999931.0; -999930.0; -999929.0; -999928.0; -999927.0; -999926.0; -999925.0;
+   -999924.0; -999923.0; -999922.0; -999921.0; -999920.0; -999919.0; -999918.0;
+   -999917.0; -999916.0; -999915.0; -999914.0; -999913.0; -999912.0; -999911.0;
+   -999910.0; -999909.0; -999908.0; -999907.0; -999906.0; -999905.0; -999904.0;
+   -999903.0; -999902.0; -999901.0; ...]
+
+
+--&gt; Timing now off
+</code></pre></td></tr></table>
+<h2><a name="Map-to-a-Set" class="anchor" href="#Map-to-a-Set">Map to a Set</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#time</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '12', 17)" onmouseover="showTip(event, '12', 17)" class="id">aSet</span>    <span class="o">=</span> <span onmouseout="hideTip(event, '8', 18)" onmouseover="showTip(event, '8', 18)" class="id">aSeq</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '13', 19)" onmouseover="showTip(event, '13', 19)" class="m">Set</span><span class="pn">.</span><span onmouseout="hideTip(event, '14', 20)" onmouseover="showTip(event, '14', 20)" class="id">ofSeq</span>
+<span class="pp">#time</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">--&gt; Timing now on
+
+Real: 00:00:03.272, CPU: 00:00:03.281, GC gen0: 1028, gen1: 27, gen2: 1
+val aSet : Set&lt;float&gt; =
+  set
+    [-1000000.0; -999999.0; -999998.0; -999997.0; -999996.0; -999995.0;
+     -999994.0; -999993.0; -999992.0; ...]
+
+
+--&gt; Timing now off
+</code></pre></td></tr></table>
+<h2><a name="Map-to-a-Array" class="anchor" href="#Map-to-a-Array">Map to a Array</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pp">#time</span>
+<span class="k">let</span> <span onmouseout="hideTip(event, '15', 21)" onmouseover="showTip(event, '15', 21)" class="id">aArray</span>  <span class="o">=</span> <span onmouseout="hideTip(event, '8', 22)" onmouseover="showTip(event, '8', 22)" class="id">aSeq</span> <span class="o">|&gt;</span> <span onmouseout="hideTip(event, '16', 23)" onmouseover="showTip(event, '16', 23)" class="m">Array</span><span class="pn">.</span><span onmouseout="hideTip(event, '17', 24)" onmouseover="showTip(event, '17', 24)" class="id">ofSeq</span>
+<span class="pp">#time</span>
+</code></pre></td>
+</tr>
+</table>
+<p><em>Output:</em></p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+<span class="l">17: </span>
+<span class="l">18: </span>
+<span class="l">19: </span>
+<span class="l">20: </span>
+<span class="l">21: </span>
+<span class="l">22: </span>
+<span class="l">23: </span>
+<span class="l">24: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip"><code lang="console">--&gt; Timing now on
+
+Real: 00:00:00.101, CPU: 00:00:00.109, GC gen0: 0, gen1: 0, gen2: 0
+val aArray : float [] =
+  [|-1000000.0; -999999.0; -999998.0; -999997.0; -999996.0; -999995.0;
+    -999994.0; -999993.0; -999992.0; -999991.0; -999990.0; -999989.0;
+    -999988.0; -999987.0; -999986.0; -999985.0; -999984.0; -999983.0;
+    -999982.0; -999981.0; -999980.0; -999979.0; -999978.0; -999977.0;
+    -999976.0; -999975.0; -999974.0; -999973.0; -999972.0; -999971.0;
+    -999970.0; -999969.0; -999968.0; -999967.0; -999966.0; -999965.0;
+    -999964.0; -999963.0; -999962.0; -999961.0; -999960.0; -999959.0;
+    -999958.0; -999957.0; -999956.0; -999955.0; -999954.0; -999953.0;
+    -999952.0; -999951.0; -999950.0; -999949.0; -999948.0; -999947.0;
+    -999946.0; -999945.0; -999944.0; -999943.0; -999942.0; -999941.0;
+    -999940.0; -999939.0; -999938.0; -999937.0; -999936.0; -999935.0;
+    -999934.0; -999933.0; -999932.0; -999931.0; -999930.0; -999929.0;
+    -999928.0; -999927.0; -999926.0; -999925.0; -999924.0; -999923.0;
+    -999922.0; -999921.0; -999920.0; -999919.0; -999918.0; -999917.0;
+    -999916.0; -999915.0; -999914.0; -999913.0; -999912.0; -999911.0;
+    -999910.0; -999909.0; -999908.0; -999907.0; -999906.0; -999905.0;
+    -999904.0; -999903.0; -999902.0; -999901.0; ...|]
+
+
+--&gt; Timing now off
+</code></pre></td></tr></table>
+<h2><a name="Summary" class="anchor" href="#Summary">Summary</a></h2>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th><p>Type</p></th>
+<th><p>Metrics</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p>1</p></td>
+<td><p>Seq</p></td>
+<td><p>Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0</p></td>
+</tr>
+<tr class="even">
+<td><p>2</p></td>
+<td><p>List</p></td>
+<td><p>Real: 00:00:00.291, CPU: 00:00:00.312, GC gen0: 11, gen1: 6, gen2: 1</p></td>
+</tr>
+<tr class="odd">
+<td><p>3</p></td>
+<td><p>Set</p></td>
+<td><p>Real: 00:00:03.272, CPU: 00:00:03.281, GC gen0: 1028, gen1: 27, gen2: 1</p></td>
+</tr>
+<tr class="even">
+<td><p>4</p></td>
+<td><p>Array</p></td>
+<td><p>Real: 00:00:00.101, CPU: 00:00:00.109, GC gen0: 0, gen1: 0, gen2: 0</p></td>
+</tr>
+</tbody>
+</table>
+
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

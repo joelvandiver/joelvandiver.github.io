@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html data-reactroot="" lang="en"><head><title>Joel Vandiver / Blog</title><meta charset="utf-8"/><meta http-equiv="X-UA-Compatible"/><link rel="shortcut icon" href="/assets/img/favicon.ico" type="image/x-icon"/><link rel="stylesheet" href="/assets/vendor/fontawesome-free/css/all.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body class="container"><a class="sidebar" href="/"><h1>Joel Vandiver</h1><img src="/assets/fractal-logo.svg"/></a><div class="main"><h1><a name="Test-with-Clone-and-Generator" class="anchor" href="#Test-with-Clone-and-Generator">Test with Clone and Generator</a></h1>
+<p>04-06-2019</p>
+<p>One of the primary goals of each unit test is to ensure that the test code is as decoupled from the source code as possible.  Usually, the test should only have code specific to its concerns.</p>
+<blockquote>
+<p><strong>Key Problem:</strong> Generating test data is usually where the largest amount of coupling to production code exits.</p>
+</blockquote>
+<p>Let's setup some code to test.</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">open</span> <span onmouseout="hideTip(event, '1', 1)" onmouseover="showTip(event, '1', 1)" class="id">System</span>
+
+<span class="k">type</span> <span onmouseout="hideTip(event, '2', 2)" onmouseover="showTip(event, '2', 2)" class="rt">Role</span> <span class="o">=</span>
+<span class="pn">|</span> <span onmouseout="hideTip(event, '3', 3)" onmouseover="showTip(event, '3', 3)" class="uc">Senator</span>
+<span class="pn">|</span> <span onmouseout="hideTip(event, '4', 4)" onmouseover="showTip(event, '4', 4)" class="uc">Jedi</span>
+<span class="pn">|</span> <span onmouseout="hideTip(event, '5', 5)" onmouseover="showTip(event, '5', 5)" class="uc">Sith</span>
+
+<span class="k">type</span> <span onmouseout="hideTip(event, '6', 6)" onmouseover="showTip(event, '6', 6)" class="rt">Character</span> <span class="o">=</span>
+    <span class="pn">{</span>   <span onmouseout="hideTip(event, '7', 7)" onmouseover="showTip(event, '7', 7)" class="id">id</span>          <span class="pn">:</span> <span onmouseout="hideTip(event, '8', 8)" onmouseover="showTip(event, '8', 8)" class="vt">Guid</span>
+        <span onmouseout="hideTip(event, '9', 9)" onmouseover="showTip(event, '9', 9)" class="id">firstname</span>   <span class="pn">:</span> <span onmouseout="hideTip(event, '10', 10)" onmouseover="showTip(event, '10', 10)" class="rt">string</span>
+        <span onmouseout="hideTip(event, '11', 11)" onmouseover="showTip(event, '11', 11)" class="id">lastname</span>    <span class="pn">:</span> <span onmouseout="hideTip(event, '10', 12)" onmouseover="showTip(event, '10', 12)" class="rt">string</span>
+        <span onmouseout="hideTip(event, '12', 13)" onmouseover="showTip(event, '12', 13)" class="id">role</span>        <span class="pn">:</span> <span onmouseout="hideTip(event, '2', 14)" onmouseover="showTip(event, '2', 14)" class="rt">Role</span>
+        <span class="pn">}</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, '13', 15)" onmouseover="showTip(event, '13', 15)" class="fn">isSithLord</span> <span onmouseout="hideTip(event, '14', 16)" onmouseover="showTip(event, '14', 16)" class="id">character</span> <span class="o">=</span> <span onmouseout="hideTip(event, '14', 17)" onmouseover="showTip(event, '14', 17)" class="id">character</span><span class="pn">.</span><span onmouseout="hideTip(event, '12', 18)" onmouseover="showTip(event, '12', 18)" class="id">role</span> <span class="o">=</span> <span onmouseout="hideTip(event, '5', 19)" onmouseover="showTip(event, '5', 19)" class="uc">Sith</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p><strong>Requirement</strong>:  isSithLord should return true if the role is Sith.</p>
+</blockquote>
+<h2><a name="Creating-Test-Data-in-the-Test" class="anchor" href="#Creating-Test-Data-in-the-Test">Creating Test Data in the Test</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '15', 20)" onmouseover="showTip(event, '15', 20)" class="id">testA</span> <span class="o">=</span> 
+    <span class="k">let</span> <span onmouseout="hideTip(event, '16', 21)" onmouseover="showTip(event, '16', 21)" class="id">palpatine</span> <span class="o">=</span>
+        <span class="pn">{</span>   <span onmouseout="hideTip(event, '17', 22)" onmouseover="showTip(event, '17', 22)" class="id">id</span>          <span class="o">=</span> <span onmouseout="hideTip(event, '8', 23)" onmouseover="showTip(event, '8', 23)" class="vt">Guid</span><span class="pn">.</span><span onmouseout="hideTip(event, '18', 24)" onmouseover="showTip(event, '18', 24)" class="id">NewGuid</span><span class="pn">(</span><span class="pn">)</span>
+            <span class="id">firstname</span>   <span class="o">=</span> <span class="s">&quot;Darth&quot;</span>
+            <span class="id">lastname</span>    <span class="o">=</span> <span class="s">&quot;Sidious&quot;</span>
+            <span class="id">role</span>        <span class="o">=</span> <span onmouseout="hideTip(event, '5', 25)" onmouseover="showTip(event, '5', 25)" class="uc">Sith</span>
+            <span class="pn">}</span>
+    <span onmouseout="hideTip(event, '19', 26)" onmouseover="showTip(event, '19', 26)" class="fn">printfn</span> <span class="s">&quot;%A&quot;</span> <span onmouseout="hideTip(event, '16', 27)" onmouseover="showTip(event, '16', 27)" class="id">palpatine</span>
+    <span class="k">let</span> <span onmouseout="hideTip(event, '20', 28)" onmouseover="showTip(event, '20', 28)" class="id">actual</span> <span class="o">=</span> <span onmouseout="hideTip(event, '13', 29)" onmouseover="showTip(event, '13', 29)" class="fn">isSithLord</span> <span onmouseout="hideTip(event, '16', 30)" onmouseover="showTip(event, '16', 30)" class="id">palpatine</span>
+    <span onmouseout="hideTip(event, '19', 31)" onmouseover="showTip(event, '19', 31)" class="fn">printfn</span> <span class="s">&quot;Palpatine is a Sith Lord:  %b&quot;</span> <span onmouseout="hideTip(event, '20', 32)" onmouseover="showTip(event, '20', 32)" class="id">actual</span>
+    <span onmouseout="hideTip(event, '20', 33)" onmouseover="showTip(event, '20', 33)" class="id">actual</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pn">{</span><span onmouseout="hideTip(event, '17', 34)" onmouseover="showTip(event, '17', 34)" class="id">id</span> <span class="o">=</span> <span class="n">489c7a10</span><span class="o">-</span><span class="id">f872</span><span class="o">-</span><span class="n">4cfa</span><span class="o">-</span><span class="id">a79f</span><span class="o">-</span><span class="id">cf0e48fbb2d1</span><span class="pn">;</span>
+ <span class="id">firstname</span> <span class="o">=</span> <span class="s">&quot;Darth&quot;</span><span class="pn">;</span>
+ <span class="id">lastname</span> <span class="o">=</span> <span class="s">&quot;Sidious&quot;</span><span class="pn">;</span>
+ <span class="id">role</span> <span class="o">=</span> <span class="id">Sith</span><span class="pn">;</span><span class="pn">}</span>
+<span class="id">Palpatine</span> <span class="id">is</span> <span class="id">a</span> <span class="id">Sith</span> <span class="id">Lord</span><span class="pn">:</span>  <span class="k">true</span>
+<span class="k">val</span> <span class="id">testA</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '21', 35)" onmouseover="showTip(event, '21', 35)" class="id">bool</span> <span class="o">=</span> <span class="k">true</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>Key Points:</p>
+<ol>
+<li>The data for the test (palpatine) was created within the test itself.</li>
+<li>The only necessary data to test is that the role of Palpatine is Sith.</li>
+</ol>
+<h2><a name="Abstracting-Test-Data-Creation-into-a-Generator" class="anchor" href="#Abstracting-Test-Data-Creation-into-a-Generator">Abstracting Test Data Creation into a Generator</a></h2>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l"> 1: </span>
+<span class="l"> 2: </span>
+<span class="l"> 3: </span>
+<span class="l"> 4: </span>
+<span class="l"> 5: </span>
+<span class="l"> 6: </span>
+<span class="l"> 7: </span>
+<span class="l"> 8: </span>
+<span class="l"> 9: </span>
+<span class="l">10: </span>
+<span class="l">11: </span>
+<span class="l">12: </span>
+<span class="l">13: </span>
+<span class="l">14: </span>
+<span class="l">15: </span>
+<span class="l">16: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="k">let</span> <span onmouseout="hideTip(event, '22', 36)" onmouseover="showTip(event, '22', 36)" class="fn">generateCharacter</span> <span class="pn">(</span><span class="pn">)</span> <span class="o">=</span>
+    <span class="pn">{</span>   <span onmouseout="hideTip(event, '17', 37)" onmouseover="showTip(event, '17', 37)" class="id">id</span>          <span class="o">=</span> <span onmouseout="hideTip(event, '8', 38)" onmouseover="showTip(event, '8', 38)" class="vt">Guid</span><span class="pn">.</span><span onmouseout="hideTip(event, '18', 39)" onmouseover="showTip(event, '18', 39)" class="id">NewGuid</span><span class="pn">(</span><span class="pn">)</span>
+        <span class="id">firstname</span>   <span class="o">=</span> <span class="s">&quot;Some First Name&quot;</span>
+        <span class="id">lastname</span>    <span class="o">=</span> <span class="s">&quot;Some Last Name&quot;</span>
+        <span class="id">role</span>        <span class="o">=</span> <span onmouseout="hideTip(event, '3', 40)" onmouseover="showTip(event, '3', 40)" class="uc">Senator</span>
+        <span class="pn">}</span>
+
+<span class="k">let</span> <span onmouseout="hideTip(event, '23', 41)" onmouseover="showTip(event, '23', 41)" class="id">testB</span> <span class="o">=</span> 
+    <span class="k">let</span> <span onmouseout="hideTip(event, '14', 42)" onmouseover="showTip(event, '14', 42)" class="id">character</span> <span class="o">=</span>
+        <span class="pn">{</span> <span onmouseout="hideTip(event, '22', 43)" onmouseover="showTip(event, '22', 43)" class="fn">generateCharacter</span><span class="pn">(</span><span class="pn">)</span> <span class="k">with</span>  
+            <span class="id">role</span> <span class="o">=</span> <span onmouseout="hideTip(event, '5', 44)" onmouseover="showTip(event, '5', 44)" class="uc">Sith</span>
+            <span class="pn">}</span>
+    <span onmouseout="hideTip(event, '19', 45)" onmouseover="showTip(event, '19', 45)" class="fn">printfn</span> <span class="s">&quot;%A&quot;</span> <span onmouseout="hideTip(event, '14', 46)" onmouseover="showTip(event, '14', 46)" class="id">character</span>
+    <span class="k">let</span> <span onmouseout="hideTip(event, '20', 47)" onmouseover="showTip(event, '20', 47)" class="id">actual</span> <span class="o">=</span> <span onmouseout="hideTip(event, '13', 48)" onmouseover="showTip(event, '13', 48)" class="fn">isSithLord</span> <span onmouseout="hideTip(event, '14', 49)" onmouseover="showTip(event, '14', 49)" class="id">character</span>
+    <span onmouseout="hideTip(event, '19', 50)" onmouseover="showTip(event, '19', 50)" class="fn">printfn</span> <span class="s">&quot;A Sith Character is a Sith Lord:  %b&quot;</span> <span onmouseout="hideTip(event, '20', 51)" onmouseover="showTip(event, '20', 51)" class="id">actual</span>
+    <span onmouseout="hideTip(event, '20', 52)" onmouseover="showTip(event, '20', 52)" class="id">actual</span>
+</code></pre></td>
+</tr>
+</table>
+<blockquote>
+<p>Output:</p>
+<table class="pre"><tr><td class="lines"><pre class="fssnip"><span class="l">1: </span>
+<span class="l">2: </span>
+<span class="l">3: </span>
+<span class="l">4: </span>
+<span class="l">5: </span>
+<span class="l">6: </span>
+<span class="l">7: </span>
+</pre></td>
+<td class="snippet"><pre class="fssnip highlighted"><code lang="fsharp"><span class="pn">{</span><span onmouseout="hideTip(event, '17', 53)" onmouseover="showTip(event, '17', 53)" class="id">id</span> <span class="o">=</span> <span class="n">1aa8abac</span><span class="o">-</span><span class="n">57e4</span><span class="o">-</span><span class="n">4fcd</span><span class="o">-</span><span class="id">ac15</span><span class="o">-</span><span class="id">f0f05509f8cf</span><span class="pn">;</span>
+ <span class="id">firstname</span> <span class="o">=</span> <span class="s">&quot;Some First Name&quot;</span><span class="pn">;</span>
+ <span class="id">lastname</span> <span class="o">=</span> <span class="s">&quot;Some Last Name&quot;</span><span class="pn">;</span>
+ <span class="id">role</span> <span class="o">=</span> <span class="id">Sith</span><span class="pn">;</span><span class="pn">}</span>
+<span class="id">A</span> <span class="id">Sith</span> <span class="id">Character</span> <span class="id">is</span> <span class="id">a</span> <span class="id">Sith</span> <span class="id">Lord</span><span class="pn">:</span>  <span class="k">true</span>
+<span class="k">val</span> <span class="id">generateCharacter</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '24', 54)" onmouseover="showTip(event, '24', 54)" class="id">unit</span> <span class="k">-&gt;</span> <span class="id">Character</span>
+<span class="k">val</span> <span class="id">testB</span> <span class="pn">:</span> <span onmouseout="hideTip(event, '21', 55)" onmouseover="showTip(event, '21', 55)" class="id">bool</span> <span class="o">=</span> <span class="k">true</span>
+</code></pre></td>
+</tr>
+</table>
+</blockquote>
+<p>Key Points:</p>
+<ol>
+<li>Generating the data has been abstracted in a utility function.</li>
+<li>testB is only coupled to the role field of the Character type.</li>
+<li>The test data is more generic in that it doesn't reference a specific character such as Palpatine.</li>
+</ol>
+<p>Abstracting generation of test data can go further by generating all strings with a Random string generator.  This will aide in testing uniqueness of a given string.</p>
+<script src="/assets/vendor/jquery/jquery.min.js"></script><script src="/assets/vendor/jquery-easing/jquery.easing.min.js"></script><script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script><script src="/assets/js/literate.js"></script></div></body></html>

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-categories: [blog, travel]
+categories: [Exploration]
 tags: [hot, summer]
 ---
 

@@ -1,3 +1,7 @@
+---
+pages_list:       
+  Guides: '/posts/Daily'
+---
 ## Guides
 
 F# Guide

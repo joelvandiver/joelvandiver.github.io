@@ -1,5 +1,5 @@
 ## Daily Posts
-
+<!-- 
 - [2019 - 07 - 30 - Single-Case-Discriminated-Unions](/posts/Daily/2019/07/30/Single-Case-Discriminated-Unions)
 - [2019 - 07 - 13 - Immutability-Reduces-Information-Domain](/posts/Daily/2019/07/13/Immutability-Reduces-Information-Domain)
 - [2019 - 07 - 13 - Functional-Iteration](/posts/Daily/2019/07/13/Functional-Iteration)
@@ -21,4 +21,4 @@
 - [2019 - 01 - 15 - Interview-Question - Colum-Header-Number](/posts/Daily/2019/01/15/Interview-Question/Colum-Header-Number)
 - [2019 - 01 - 12 - German](/posts/Daily/2019/01/12/German)
 - [2019 - 01 - 10 - Relations-vs-Functions](/posts/Daily/2019/01/10/Relations-vs-Functions)
-- [2019 - 01 - 10 - Domain-And-Range](/posts/Daily/2019/01/10/Domain-And-Range)
+- [2019 - 01 - 10 - Domain-And-Range](/posts/Daily/2019/01/10/Domain-And-Range) -->

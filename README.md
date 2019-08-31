@@ -7,6 +7,7 @@
     - [ ] Basics
     - [ ] Expecto
   - [ ] TypeScript
+  - [ ] React
   - [ ] SQL SERVER
 - [ ] Explorations:
   - [ ] Performance

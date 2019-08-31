@@ -10,11 +10,9 @@
 
 #main-nav-container ul {
     list-style: none;
+    padding-left: 4px;
 }
 
 #main-nav-container ul a {
-    color: black;
-    text-decoration: underline;
-    background: white;
     padding: 4px 10px;
 }

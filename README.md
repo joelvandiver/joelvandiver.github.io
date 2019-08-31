@@ -10,4 +10,7 @@
   - [ ] SQL SERVER
 - [ ] Explorations:
   - [ ] Performance
+- [ ] Hello-Worlds:
+  - [ ] Swagger
+  - [ ] Jekyll Setup
 

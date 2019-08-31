@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-categories: [Exploration]
+categories: [Hello-World]
 tags: [hot, summer]
 ---
 
@@ -17,7 +17,7 @@ I hope you like it!
 ---
 layout: post
 title:  "Welcome to Jekyll!"
-categories: [Exploration]
+categories: [Hello-World]
 tags: [hot, summer]
 ---
 

@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "T-SQL Introduction!"
-categories: [Guide T-SQL]
+title:  "T-SQL Introduction"
+categories: [Guide]
 tags: [hot, summer]
 ---
 

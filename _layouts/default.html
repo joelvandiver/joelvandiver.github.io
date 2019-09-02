@@ -81,7 +81,7 @@
                     var container = document.getElementById("nasa-img-container");
                     var img = document.createElement('img');
                     img.src = src;
-                    img.title = json.explanation;
+                    container.title = json.explanation;
                     container.appendChild(img);
                 });
         })();

@@ -1,6 +1,6 @@
 ---
 title: F# Cloning Records
-categories: [F#-Guide]
+categories: [F#-Topics]
 tags: []
 ---
 

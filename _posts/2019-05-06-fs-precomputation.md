@@ -1,28 +1,28 @@
 ---
-title: 
-categories: [Guide-F#]
+title: F# Precomputation Exploration
+categories: [Exploration-PERF]
 tags: []
 ---
 
 # Precomputation Exploration
-05-06-2019
-
-
-
-open System
-
 
 Create Test Data with Search for the Worst (Last) Value
 
+```fsharp
+open System
+
 let data = [0 .. 1000000]
 let search = 1000000
+```
 
 
 ## List Search
 
+```fsharp
 #time
 data |> List.contains (search)
 #time
+```
 
 
 > Output:
@@ -35,10 +35,12 @@ val it : bool = true
 
 ## Set Search
 
+```fsharp
 let set = data |> Set.ofList
 #time
 set.Contains(search)
 #time
+```
 
 
 > Output:
@@ -52,6 +54,7 @@ val it : bool = true
 ## Precompute Set with Partial Application
 
 
+```fsharp
 let partiallyApplied (listToSearch: int list) (value: int) : bool = 
     let setToSearch = listToSearch |> Set.ofList
     setToSearch.Contains(value)
@@ -60,6 +63,7 @@ let searcher = partiallyApplied data
 #time
 searcher search
 #time
+```
 
 
 > Output:
@@ -73,6 +77,7 @@ val it : bool = true
 ## Precompute Set with Function Computation
 
 
+```fsharp
 let returnFunction (listToSearch: int list) : int -> bool =
     let setToSearch = listToSearch |> Set.ofList
     fun v -> setToSearch.Contains(v)
@@ -81,6 +86,7 @@ let searcher' = returnFunction data
 #time
 searcher' search
 #time
+```
 
 
 > Output:
@@ -94,6 +100,7 @@ val it : bool = true
 ## Test Partial Application with Printer
 
 
+```fsharp
 let printer (items: int list) (item: int) : bool =
     printfn "Starting Partially Applied Printer"
     let set = items |> Set.ofList
@@ -103,6 +110,7 @@ let printer (items: int list) (item: int) : bool =
     r
     
 let printerTest = printer data
+```
 
 > Output:
 ```fsharp
@@ -110,9 +118,11 @@ val printerTest : (int -> bool)
 ```
 
 
+```fsharp
 #time
 printerTest search
 #time
+```
 
 
 > Output:
@@ -129,6 +139,7 @@ val it : bool = true
 ## Test Precomputation with Printer
 
 
+```fsharp
 let printer' (items: int list) : int -> bool =
     printfn "Starting Precomputation Printer"
     let set = items |> Set.ofList
@@ -141,6 +152,7 @@ let printer' (items: int list) : int -> bool =
     compute
 
 let printerTest' = printer' data
+```
 
 
 > Output:
@@ -151,9 +163,11 @@ val printerTest' : (int -> bool)
 ```
 
 
+```fsharp
 #time
 printerTest' search
 #time
+```
 
 
 > Output:

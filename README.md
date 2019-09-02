@@ -1,5 +1,6 @@
 ## TODO:
-1. [ ] Add Fractal Logo
+1. [ ] Load a local version of the Slack Jekyll Template
+2. [ ] Add Fractal Logo
 
 ## Planned OSS Github Repos:
 1. F# SQL SERVER Schema Generator

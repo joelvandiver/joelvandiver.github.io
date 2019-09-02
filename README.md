@@ -1,1 +1,1 @@
-![Fractal](!assets/img/fractal-logo.svg)
+![Fractal](/assets/img/fractal-logo.svg)

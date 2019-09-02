@@ -25,13 +25,13 @@ div#header_wrap {
     z-index: 1;
 }
 
-div#header_wrap::after {
+div#header_wrap::before {
     background-image: url(/assets/img/fractal-logo.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: top;
     content: "";
-    opacity: 0.15;
+    opacity: 0.2;
     top: 0;
     left: 0;
     bottom: 0;

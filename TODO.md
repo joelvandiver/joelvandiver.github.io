@@ -1,7 +1,6 @@
 ## TODO:
-1. Load a local version of the Slack Jekyll Template
-2. Translate all *.fsx to *.md
-3. Allow commenting ?
+1. Translate all *.fsx to *.md
+2. Allow commenting ?
 
 ## Planned OSS Github Repos:
 1. F# SQL SERVER Schema Generator

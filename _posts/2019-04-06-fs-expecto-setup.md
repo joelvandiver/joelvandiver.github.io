@@ -1,25 +1,32 @@
-(**
+---
+title: Basic Expecto Example
+categories: [Basic]
+tags: []
+---
+
+
 # Basic Expecto Example
 
 First, let's gather our dependencies.
-*)
 
+```fsharp
 #r @"C:\Users\joelv\.nuget\packages\NETStandard.Library\2.0.3\build\netstandard2.0\ref\netstandard.dll"
 #r @"C:\git\joelvandiver.github.io\packages\Expecto\lib\netstandard2.0\Expecto.dll"
 
 open Expecto
 
-(**
+
 ## Define a simple test case.
-*)
+
 let toBeTest =
   testCase "To be or not to be" <| fun () ->
     let toBe = true
     Expect.isTrue toBe "You do not exist."
 
 runTests defaultConfig toBeTest
+```
 
-(**
+
 *Output:*
 ```console
 [15:36:13 INF] EXPECTO? Running tests... <Expecto>
@@ -29,13 +36,14 @@ val toBeTest : Test =
     ("To be or not to be",TestCase (Sync <fun:toBeTest@5-1>,Normal),Normal)
 val it : int = 0
 ```
-*)
 
 
-(**
+
+
 ## Combine multiple tests into a list.
-*)
 
+
+```fsharp
 let toThinkTest =
   test "I think therefore I am." {
     let iThink = true
@@ -45,8 +53,9 @@ let toThinkTest =
 let existenceTests = testList "Test for Existence" [toBeTest; toThinkTest]
 
 runTests defaultConfig existenceTests
+```
 
-(**
+
 *Output:*
 ```console
 [15:36:46 INF] EXPECTO? Running tests... <Expecto>
@@ -68,5 +77,5 @@ val existenceTests : Test =
      Normal)
 val it : int = 0
 ```
-*)
+
 

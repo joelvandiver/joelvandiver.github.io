@@ -1,0 +1,610 @@
+[33mcommit 102c132a150539d6f63bd5855a6c77a9fa001edb[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 14:37:43 2019 -0400
+
+    fsx-
+
+[33mcommit ac8bd6e6b05f3698c86fb0289ff77fb034fba40c[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 14:18:29 2019 -0400
+
+    todo
+
+[33mcommit 537c380473e14cdc16eccf7f67adc81148acb203[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 14:17:12 2019 -0400
+
+    img
+
+[33mcommit 6e57e17da2901dc45fe38154042902031eefd905[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 14:10:55 2019 -0400
+
+    cleaup
+
+[33mcommit 8d28f16ec411dca0d1d0cd4729825eb99fdbe793[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 14:10:00 2019 -0400
+
+    README
+
+[33mcommit 7b1f547ba36c0e6109583f07059bb37a6506aed4[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:51:32 2019 -0400
+
+    logo
+
+[33mcommit b78edbc50511d440bdc02de39d7afd95f2a5433f[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:48:11 2019 -0400
+
+    drafts
+
+[33mcommit 19baf17c89ae3c575f59930e9a44f7d48400f356[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:44:26 2019 -0400
+
+    Add
+
+[33mcommit 3a4039be6007dfc72cd3a18f0b63d3f2be80bc62[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:35:55 2019 -0400
+
+    fractal
+
+[33mcommit 1744db7208c3282b3f130f76d331e2f7ed434967[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:27:29 2019 -0400
+
+    fractal
+
+[33mcommit ca58f3db1ea048b71888ca20263f2af9a885e66b[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:26:57 2019 -0400
+
+    fractal
+
+[33mcommit b7e017be84b397aab1201f919ffffec0ba5f87ba[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:25:43 2019 -0400
+
+    fractal
+
+[33mcommit 3d66c749b4d3362b0b226bb98b3bf46f7e4fc7b6[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 13:21:19 2019 -0400
+
+    cleanup
+
+[33mcommit c76847486f547b681d332677af30736ed0e778b9[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:49:47 2019 -0400
+
+    favicon
+
+[33mcommit ee70d45eda4a080483cf7e063259d7a1588a1607[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:44:25 2019 -0400
+
+    cleanup
+
+[33mcommit 6551bf3eb8b9abd6accd1f8f9c26f54fbab8772f[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:43:54 2019 -0400
+
+    cleanup
+
+[33mcommit 917f4ee47d0edce4b9bce6c0d15d231f287f1a35[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:43:16 2019 -0400
+
+    cleanup
+
+[33mcommit 1bd1bbca5b9087b77207a07d026e48fabcc9eaa1[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:40:06 2019 -0400
+
+    cleanup
+
+[33mcommit 0c28d73cf8abd76bb0818380fb2bfc2a00650d5f[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:38:19 2019 -0400
+
+    cleanup
+
+[33mcommit 19423867cfc74bfb841c4d1f4f3d6533a07bd708[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:33:05 2019 -0400
+
+    cleanup
+
+[33mcommit aa742d91ea2d38cf6083d5bf6b3a584d4955ffa0[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:31:31 2019 -0400
+
+    TODO
+
+[33mcommit f81dac577feeaa7e345d5e7db1eaf3383efd520f[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Mon Sep 2 12:15:25 2019 -0400
+
+    README
+
+[33mcommit 78bd256b5668ded34bf5fc3a8d9d2f1a0234fcfa[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:23:21 2019 -0400
+
+    updates
+
+[33mcommit 8ba84b01156647361e7906a83b851ed44dc670eb[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:22:17 2019 -0400
+
+    updates
+
+[33mcommit f0979f52c53310274b8a266f4a7d881479d84c76[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:21:28 2019 -0400
+
+    updates
+
+[33mcommit 47cd49bf97b545d75d6a5a085ee243f930bac001[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:20:06 2019 -0400
+
+    updates
+
+[33mcommit 539deab85b1e5258cdd6031dcf8f08997aba2fe6[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:19:22 2019 -0400
+
+    updates
+
+[33mcommit 9508fbb19a27ef328e2295ae61947a9497e5dfcb[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:18:04 2019 -0400
+
+    updates
+
+[33mcommit 81a7179ac9bfb2021efa66d20d9fff5a0f0fce0f[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:11:07 2019 -0400
+
+    cleanup
+
+[33mcommit 9827b1dfa41e9e5a1a646abecc05896fb1f083d4[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:09:55 2019 -0400
+
+    cleanup
+
+[33mcommit 64798f0b565bb447330594968b44cdb005ebb6bc[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:09:03 2019 -0400
+
+    cleanup
+
+[33mcommit df48367d19d72cb527428358360ac06a8c2bf957[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:08:04 2019 -0400
+
+    cleanup
+
+[33mcommit 59f17d25868e919f1bb49b9bc7ab923092ca3cee[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:04:37 2019 -0400
+
+    cleanup
+
+[33mcommit 36ff27eba533704edbef1ec69030b4637dc98b4a[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:03:45 2019 -0400
+
+    cleanup
+
+[33mcommit 8c5e4a31fbacbfb1dd5cad1e667353b5c5168773[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:02:33 2019 -0400
+
+    cleanup
+
+[33mcommit f324f25f5e5e94da0c8eb6777297d25c048327b2[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:01:32 2019 -0400
+
+    cleanup
+
+[33mcommit dc10b422c6b62734ee7319fd4fdba2e870b3ee2b[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 19:00:35 2019 -0400
+
+    cleanup
+
+[33mcommit 203199f24214bdd92dcc9a3d03eb961d3698d33f[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:59:46 2019 -0400
+
+    cleanup
+
+[33mcommit 27736b000686d60083a9efca8a7d5bfe6872f6fd[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:58:56 2019 -0400
+
+    cleanup
+
+[33mcommit 4a298cc2b7b86cab31d564a02b83d5e4b34671e4[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:58:41 2019 -0400
+
+    cleanup
+
+[33mcommit ffa852ddda7919a4498eefe3019b573d886f2dd8[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:57:19 2019 -0400
+
+    cleanup
+
+[33mcommit 9df7af547cd3d3142c10b32a738077ff64d21146[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:54:41 2019 -0400
+
+    cleanup
+
+[33mcommit a241d1ab973f42f2f93f5cc99dab17c08ce5c8a4[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:53:48 2019 -0400
+
+    cleanup
+
+[33mcommit bea76ee721bb80aacc5151e69173cf2469988432[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:52:16 2019 -0400
+
+    cleanup
+
+[33mcommit 302403e1d1cacf534ea2de8bb007ca2654405cec[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:50:55 2019 -0400
+
+    cleanup
+
+[33mcommit 4ceab118097bf2f532da5c54c4b58e33713ab7ba[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:49:26 2019 -0400
+
+    cleanup
+
+[33mcommit bb874673385c2d190a3b1c32bc3634128ae3057c[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:48:49 2019 -0400
+
+    cleanup
+
+[33mcommit 48cc9dfa215654b99eba62e3134d11b8b1d37b98[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:45:48 2019 -0400
+
+    cleanup
+
+[33mcommit c03cab9efbbc87f4748cd8501ec9567d6f893c43[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:44:24 2019 -0400
+
+    cleanup
+
+[33mcommit f2c558762b229f3426df79f7c127da63d95e9e85[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:43:14 2019 -0400
+
+    cleanup
+
+[33mcommit fd54a305ef6a9d10f2c824c2240fccbf1d111149[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:41:02 2019 -0400
+
+    cleanup
+
+[33mcommit 63203de9754f43873b53e28e5d28547d2e45d260[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:39:44 2019 -0400
+
+    cleanup
+
+[33mcommit 178f884d7b4613c63f6e57f4be4ba0d477dc3228[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:39:28 2019 -0400
+
+    cleanup
+
+[33mcommit 0e924ebd6c3f562c29cf25aa925e5dbb62326b74[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:39:06 2019 -0400
+
+    cleanup
+
+[33mcommit 894f6fe0b5f73e3640cc031dcfb53d3ffc043ec2[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:37:19 2019 -0400
+
+    cleanup
+
+[33mcommit fe0b64f852264e6e02b619ac21a643baf784465b[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:36:28 2019 -0400
+
+    cleanup
+
+[33mcommit a310332afa664788bbcb95e11b045ec3fe596acd[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:35:37 2019 -0400
+
+    cleanup
+
+[33mcommit 95ca49924195368c171b1e7b5f15aa6337239ff3[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:35:12 2019 -0400
+
+    cleanup
+
+[33mcommit 8be4f00bc9ce731090edec839949ff3036ad139b[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:34:12 2019 -0400
+
+    cleanup
+
+[33mcommit 4936a99e3a246c5f3fe1e5b17afd33045937fa07[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:33:09 2019 -0400
+
+    cleanup
+
+[33mcommit 7aac6a10bbcfbda7792eefaa74482808d1252255[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:32:04 2019 -0400
+
+    t-sql
+
+[33mcommit ab8e47305aedabb7e025c95fafb2963f0797b908[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:30:14 2019 -0400
+
+    cleanup
+
+[33mcommit 29033d5a898541316b2404f39e511ba0be83501b[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:29:13 2019 -0400
+
+    cleanup
+
+[33mcommit 42aa064e483dcd5362f3c2fd59180b6b7792b253[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:28:58 2019 -0400
+
+    updates
+
+[33mcommit f164f327bbe80de980049cf5a987ec8bc44a1b99[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:28:08 2019 -0400
+
+    updates
+
+[33mcommit 2f4668d25393aa25a79ba4081fec3a78741595d5[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:26:01 2019 -0400
+
+    updates
+
+[33mcommit 34ce1dd9f0790d70fe6a2f41bf89075440830720[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:19:23 2019 -0400
+
+    CLEANUP
+
+[33mcommit 16cac883c66e7f66876edabdc320c5227f114036[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:18:11 2019 -0400
+
+    CLEANUP
+
+[33mcommit 4409a8509604738a4c7e0214e50860f79e54b8aa[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:14:52 2019 -0400
+
+    CLEANUP
+
+[33mcommit 51d3881c0f8516e7faee084df02cb1b3637d8f49[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:12:23 2019 -0400
+
+    default template
+
+[33mcommit 92f874568191427a1f52058d6b5dd2cf6165210d[m
+Merge: 10a5017 98187d2
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 18:00:26 2019 -0400
+
+    _config.yml
+
+[33mcommit 10a5017ebfdd9585b3aa2f863ef20b39a2318be3[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 17:59:26 2019 -0400
+
+    _config.yml
+
+[33mcommit 98187d266977968f4bb9d4480a94989b50d58d18[m
+Author: Joel Vandiver <joelvandiver@gmail.com>
+Date:   Sat Aug 31 17:50:48 2019 -0400
+
+    Set theme jekyll-theme-slate
+
+[33mcommit 38bd84f111bad7e006d427aaf06150b8b1eec76c[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 17:48:45 2019 -0400
+
+    README
+
+[33mcommit 0c64b5a5c6fd5217a976bd7afb9857ba13bcb1cb[m
+Merge: 07cf5b2 c519545
+Author: Joel Vandiver <joelvandiver@gmail.com>
+Date:   Sat Aug 31 17:46:24 2019 -0400
+
+    Merge pull request #11 from joelvandiver/gh_pages
+    
+    Setup default gh-pages
+
+[33mcommit c519545b19cdabdf7bc8c8f2c296aea53de3999f[m[33m ([m[1;31morigin/gh_pages[m[33m)[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 17:44:26 2019 -0400
+
+    cleanup
+
+[33mcommit 537cbe61774caaafa889b298e8395775962dc56c[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 17:43:31 2019 -0400
+
+    cleanup
+
+[33mcommit 26a4ee8a2c8dc42b379691d01252ea5c6a6764ee[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 17:42:07 2019 -0400
+
+    removing index.html
+
+[33mcommit 8231ef40f228c6b2fe8ab7c7fe193513897e58f6[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 17:38:58 2019 -0400
+
+    CLEANUP
+
+[33mcommit d06cc1eecef248b6534f9e55490b6fb4927cffcb[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 31 17:35:09 2019 -0400
+
+    incorporating master/ posts
+
+[33mcommit 411f8d8bc67231a7ae23b919bb7a8ea9b214091c[m[33m ([m[1;31morigin/Fable_Static_Site[m[33m)[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 10 17:53:52 2019 -0400
+
+    UPDATES
+
+[33mcommit 31ddac345ad852ef08eec0e2021a6c6af20ceff0[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 10 17:49:43 2019 -0400
+
+    testing files.json
+
+[33mcommit 5b8cee832c9a00f497c6ebdb7273e4cdd2ce7440[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 10 17:33:41 2019 -0400
+
+    Sample Posts
+
+[33mcommit 5f7526acb69cee3d497ec5db66765f6af5d220af[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 10 17:30:14 2019 -0400
+
+    Update symbolCache.db
+
+[33mcommit 0403010dc133420705472a71580609e8ac3121e3[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 10 17:28:04 2019 -0400
+
+    Initializing the Fable static-site-generator
+
+[33mcommit 055694ee392c31383ccae8a4ec4a6db70b53221f[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Aug 10 17:24:45 2019 -0400
+
+    BUILD
+
+[33mcommit 07cf5b29229c9b4e8b96a366c191c895067b5445[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Tue Jul 30 08:53:58 2019 -0400
+
+    New Posts
+
+[33mcommit 85a03b2cc5b419fd16456e7fbe47bdcd9207aaeb[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Jul 13 20:05:43 2019 -0400
+
+    CLEANUP
+
+[33mcommit 80155d40b981d618b04326cbb460fca924220a93[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Jul 13 19:55:29 2019 -0400
+
+    CLEANUP
+
+[33mcommit e68dd2b5ca3f8d0e38ba468b44db8236c1564c10[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Jul 13 19:54:56 2019 -0400
+
+    posts
+
+[33mcommit 40243cc23f8e91acdad21269baed0182411e44f8[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Wed Jun 26 08:24:01 2019 -0400
+
+    CLEANUP
+
+[33mcommit a661658ae5848bbf490626b5be68764b310d0544[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Wed Jun 26 08:22:07 2019 -0400
+
+    Implement a React Hook
+
+[33mcommit ddf13607a66f28e7b04d0f1e3500711681c752fb[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Wed Jun 26 08:08:08 2019 -0400
+
+    Upgrade to latest Fable
+
+[33mcommit c632cb23189505b46a10e9c973a98500ad5a3075[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Tue Jun 25 08:43:11 2019 -0400
+
+    Fable Guide - React Updates
+
+[33mcommit ef346215eaba625f7dfcf8d4bb5e1cf246d58c81[m[33m ([m[1;31morigin/develop[m[33m)[m
+Merge: ad9481c b81b50e
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Tue Jun 25 08:36:49 2019 -0400
+
+    Merge remote-tracking branch 'origin/master' into develop
+
+[33mcommit ad9481c2fba0d9a8f09c61dc4d8e2b2e0cfd947a[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Tue Jun 25 08:36:32 2019 -0400
+
+    Fable Guide - React Example
+
+[33mcommit b81b50e4e285648a3b0142c3685a616ea10ebb0d[m
+Merge: 4a782ae 0295a65
+Author: Joel Vandiver <joelvandiver@gmail.com>
+Date:   Sat Jun 22 13:08:59 2019 -0400
+
+    Merge pull request #10 from joelvandiver/develop
+    
+    Develop
+
+[33mcommit 0295a650996da8384820df192713446b828bc877[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Jun 22 13:06:47 2019 -0400
+
+    reorganize daily posts
+
+[33mcommit 88f5b94844ce2b7979786f831c3d6d9a23a2023a[m
+Author: Joel Vandiver <joelvandiver@hotmail.com>
+Date:   Sat Jun 22 13:03:09 2019 -0400
+
+    DU Post Updates
+
+[33mcommit 4a782ae81073f30ed13c17ed0615e29b2971423d[m
+Merge: f676ed4 1cf78f3
+Author: Joel Vandiver <joelvandiver@gmail.com>
+Date:   Thu Jun 20 07:59:44 2019 -0400
+
+    Merge pull request #9 from joelvandiver/develop
+    
+    Develop

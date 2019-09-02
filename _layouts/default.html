@@ -35,6 +35,9 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
         <section id="main_content" class="inner">
+
+            <div id="nasa-img-container"></div>
+
             {{ content }}
             <div id="main-nav-container">
                 {% for category in site.categories %}
@@ -64,6 +67,23 @@
             <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
         </footer>
     </div>
+
+    <script type="text/javascript">
+        (function () {
+            debugger;
+            fetch("https://api.nasa.gov/planetary/apod?api_key=5VhLWB6JaWs6m11mLfrNKply8naxchfbWb0Nu2Q9")
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (json) {
+                    var src = json.url;
+                    var container = document.getElementById("nasa-img-container");
+                    var img = document.createElement('img');
+                    img.src = src;
+                    container.appendChild(img);
+                });
+        })();
+    </script>
 </body>
 
 </html>

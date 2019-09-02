@@ -1,11 +1,7 @@
-## TODO:
-1. Translate all *.fsx to *.md
-2. Allow commenting ?
-
 ## Planned OSS Github Repos:
-1. F# SQL SERVER Schema Generator
+1. F# Swagger Client
+2. F# SQL SERVER Schema Generator
    1. Create a Lazy F# Type Proivder for SQL Queries
-2. Implement a General XML to Json Solution
 
 ## Planned Github Seed Repos:
 1. Fable
@@ -29,7 +25,6 @@
 ## Planned Github Fun Repos:
 1. F# Sound Synthesis
 2. F# Fractal Generator 
-
 
 # Backlog
 - [ ] Guides:

@@ -1,7 +1,7 @@
 ---
 title:  "Welcome to Jekyll!"
 categories: [Hello-World]
-tags: [hot, summer]
+tags: [Jekyll, Static]
 ---
 
 # Welcome
@@ -14,10 +14,9 @@ I hope you like it!
 
 ```markdown
 ---
-layout: post
 title:  "Welcome to Jekyll!"
 categories: [Hello-World]
-tags: [hot, summer]
+tags: [Jekyll, Static]
 ---
 
 # Welcome

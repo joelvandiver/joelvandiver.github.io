@@ -39,3 +39,9 @@ div#header_wrap::before {
     position: absolute;
     z-index: 0;
 }
+
+img[alt="Fractal"] {
+    height: 200px;
+    padding: 5%;
+    background-color: black;
+}

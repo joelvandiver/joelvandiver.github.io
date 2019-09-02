@@ -1,5 +1,5 @@
 ---
-title: F# Implicit vs Explicit Value Declaration
+title: 02 F# Implicit vs Explicit Value Declaration
 categories: [Guide-F#]
 tags: []
 ---

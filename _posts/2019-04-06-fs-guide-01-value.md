@@ -1,5 +1,5 @@
 ---
-title: F# Values
+title: 01 F# Values
 categories: [Guide-F#]
 tags: []
 ---

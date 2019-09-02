@@ -1,7 +1,12 @@
-(**
-# Reflection of Types
-*)
+---
+title:  Reflection of Types
+categories: [Exploration-PERF]
+tags: []
+---
 
+# Reflection of Types
+
+```fsharp
 open System
 
 type SomeTypeToReflect = 
@@ -12,8 +17,8 @@ type SomeTypeToReflect =
 let instances = 
    { 0. .. 100000000000000000. }
    |> Seq.map(fun i -> { id = i; title = sprintf "#%f" i; created = DateTime.UtcNow.Ticks })
+```
 
-(**
 *Output:*
 ```console
 type SomeTypeToReflect =
@@ -22,14 +27,15 @@ type SomeTypeToReflect =
    created: int64;}
 val instances : seq<SomeTypeToReflect>
 ```
-*)
 
 
 
 
-(**
+
+
 ## Reflecting Each Instance
-*)
+
+```fsharp
 #time
 let reflectEach =
    instances 
@@ -41,8 +47,8 @@ let reflectEach =
    )
 #time
 printfn "%A" reflectEach
+```
 
-(**
 *Output:*
 ```console
 --> Timing now on
@@ -61,14 +67,15 @@ seq
    ...]
 val it : unit = ()
 ```
-*)
 
 
 
 
-(**
+
+
 ## Reflecting the Type
-*)
+
+```fsharp
 #time
 let reflectOnce  =
    let props = typeof<SomeTypeToReflect>.GetProperties()
@@ -80,8 +87,9 @@ let reflectOnce  =
    )
 #time
 printfn "%A" reflectOnce
+```
 
-(**
+
 *Output:*
 ```console
 --> Timing now on
@@ -100,6 +108,6 @@ seq
    ...]
 val it : unit = ()
 ```
-*)
+
 
 

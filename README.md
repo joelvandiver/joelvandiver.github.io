@@ -1,6 +1,5 @@
 ## TODO:
 1. [ ] Add Fractal Logo
-2. [ ] Add favicon.ico
 
 ## Planned OSS Github Repos:
 1. F# SQL SERVER Schema Generator

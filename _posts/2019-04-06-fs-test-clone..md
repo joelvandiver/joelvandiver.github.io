@@ -1,6 +1,6 @@
 ---
 title: Test with Clone and Generator
-categories: [Guide-F#]
+categories: [F#-Guide]
 tags: []
 ---
 

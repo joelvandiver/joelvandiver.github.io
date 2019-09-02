@@ -1,6 +1,6 @@
 ---
 title: 01 F# Values
-categories: [Guide-F#]
+categories: [F#-Guide]
 tags: []
 ---
 

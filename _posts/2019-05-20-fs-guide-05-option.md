@@ -1,6 +1,6 @@
 ---
 title: 05 F# Option
-categories: [Guide-F#]
+categories: [F#-Guide]
 tags: []
 ---
 

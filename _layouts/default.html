@@ -37,11 +37,6 @@
         <section id="main_content" class="inner">
             {{ content }}
             <div id="main-nav-container">
-                <h3 id="misc">Misc</h3>
-                <ul>
-                    <li><a href="https://gist.github.com/joelvandiver">My Gists</a></li>
-                    <li><a href="/TODO">TODO</a></li>
-                </ul>
                 {% for category in site.categories %}
                 <h3>{{ category[0] }}</h3>
                 <ul>
@@ -50,6 +45,11 @@
                     {% endfor %}
                 </ul>
                 {% endfor %}
+                <h3 id="misc">Misc</h3>
+                <ul>
+                    <li><a href="https://gist.github.com/joelvandiver">My Gists</a></li>
+                    <li><a href="/TODO">TODO</a></li>
+                </ul>
             </div>
         </section>
     </div>

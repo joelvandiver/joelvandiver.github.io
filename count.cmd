@@ -1,0 +1,1 @@
+dir/b/a-d "_posts" | find /v /c "::"

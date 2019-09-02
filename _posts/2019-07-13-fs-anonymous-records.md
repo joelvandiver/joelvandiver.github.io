@@ -1,6 +1,6 @@
 ---
 title: F# Anonymous Records
-categories: [F#-Guide]
+categories: [F#-Topics]
 tags: [F#-Topics]
 ---
 

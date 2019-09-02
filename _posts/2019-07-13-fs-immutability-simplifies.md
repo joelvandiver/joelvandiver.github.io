@@ -1,11 +1,10 @@
 ---
-title: 
-categories: [Guide-F#]
+title: F# Immutability Reduces Information Domain
+categories: [F#-Topics]
 tags: []
 ---
 
 # Immutability Reduces Information Domain
-07-13-2019
 
 I have heard many developers who come from non-functional programming languages such as C++ and C# claim that immutability is overly restrictive.  It is true that immutability is a restrictive, but this restriction comes at one huge benefit:  reduction of possible outcomes.  
 
@@ -15,10 +14,11 @@ Mutability at its core allows for surprise.
 
 Let's take a simple mathematical function and restricted domain for example.
 
-
+```fsharp
 let f x = x + 3
 let domainX = [-2;-1;0;1;2]
 let table = domainX |> List.map f
+```
  
 
 > Output:
@@ -31,6 +31,7 @@ val table : int list = [1; 2; 3; 4; 5]
 Now, let's explore the same function with a mutable side-effect:
 
  
+```fsharp
 let mutable X = 4
  
 let f' x =
@@ -39,6 +40,7 @@ let f' x =
  
 let table' = domainX |> List.map f'
 let table'2 = domainX |> List.map f'
+```
 
 
 > Output:
@@ -55,7 +57,9 @@ This may seem simple when you can *read* the source code as we are doing here, b
 The `f'` can be restructured to make the behavior less of a surprise:
 
  
+```fsharp
 let f'' x y = y + x + 3
+```
 
 
 Here, we've removed the mutable call, and instead declared a new param, `y`, that declares the dependency for `f''` to operate.  
@@ -63,16 +67,20 @@ Here, we've removed the mutable call, and instead declared a new param, `y`, tha
 Now, we can provide another restricted domain for the `y` param:
 
 
+```fsharp
 let domainY = [4;5;6;7;8;9]
+```
 
 
 This has the effect of combining both `domainX` and `domainY` through a cartesian product:
 
  
+```fsharp
 let table'3 =
     domainX
     |> List.map(fun x -> domainY |> List.map (f'' x))
     |> List.concat
+```
  
 
 > Output:

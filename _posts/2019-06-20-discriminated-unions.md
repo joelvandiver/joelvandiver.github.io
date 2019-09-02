@@ -1,17 +1,16 @@
 ---
-title: 
-categories: [Guide-F#]
+title: F# Discriminated Unions
+categories: [F#-Topics]
 tags: []
 ---
 
 # Discriminated Unions
-06-20-2019
 
 F# Discriminated Unions have labelled cases that can handle payloads of data.
 
 Take the following example:
 
-
+```fsharp
 type Person = string
 
 type Family =
@@ -20,17 +19,20 @@ type Family =
 | Siblings of Person list
 | Twins of Person * Person
 | Self
+```
 
 
 Each of the discriminated cases behave like function in instantiating values: 
 
 
 
+```fsharp
 let dad = Dad "Tim"
 let mom = Mom "Joanna"
 let siblings = Siblings ["Tim Jr."; "Sarah"; "Bobby"]
 let twins = Twins ("Jane", "John")
 let me = Self
+```
 
 
 > Output:
@@ -45,6 +47,7 @@ val me : Family = Self
 The `Family` cases are all of type `Family` so they can be packaged up in other values.
 
 
+```fsharp
 let myFamily = 
     [
         dad
@@ -53,6 +56,7 @@ let myFamily =
         twins
         me
     ]
+```
 
 
 > Output:
@@ -65,6 +69,7 @@ val myFamily : Family list =
 Discriminated Unions also support pattern matching in handling each of the cases.
 
 
+```fsharp
 let stateName person = 
     match person with 
     | Dad d -> printfn "My dad's name is %s." d
@@ -76,6 +81,7 @@ let stateName person =
         printfn "My first twin's name is %s" a
         printfn "My second twin's name is %s" b
     | Self -> printfn "My name is John"
+```
 
 
 > Output:
@@ -100,9 +106,11 @@ My name is John
 ```
 
 
+```fsharp
 let isMyMom p = p = Mom "Joanna"
 isMyMom mom
 isMyMom dad
+```
 
 
 > Output:

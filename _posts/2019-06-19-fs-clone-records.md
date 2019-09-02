@@ -5,12 +5,11 @@ tags: []
 ---
 
 # Cloning Records
-06-19-2019
 
 F# supports a nice syntax for cloning records into new records.
 
 
-
+```fsharp
 type User = 
     {   id    : int
         name  : string 
@@ -19,6 +18,7 @@ type User =
 
 let bob = { id = 1; name = "Bob"; title = "Sr."}
 let bobJr = { bob with id = 2; title = "Jr." }
+```
 
 
 > Output:
@@ -38,6 +38,7 @@ val bobJr : User = {id = 2;
 F# also supports deep clones of nested records.
 
 
+```fsharp
 type Child = 
     {   id   : int
         name : string
@@ -61,6 +62,7 @@ let mom =
 
 let dad = 
     { mom with id = 2; name = "Dad"}    
+```
 
 
 > Output:

@@ -1,16 +1,17 @@
 ---
-title: 
+title: F# Single Case Discriminated Unions
 categories: [Guide-F#]
 tags: []
 ---
 
 # Single Case Discriminated Unions
-07-30-2019
 
 First, let's start with a simple tuple of two integers:
 
 
+```fsharp
 let xy = 1, 3
+```
 
 
 > Output:
@@ -24,9 +25,11 @@ If you would like to describe the type more thoroughly, than you could use a rec
 
 Let's compare a simple point record and a single case discriminated union.
 
+```fsharp
 type Point = { x: int; y: int }
 
 let point = { x = 1; y = 3 }
+```
 
 
 > Output:
@@ -42,9 +45,11 @@ We have a definition that labels the type, `Point`, and labels the fields, `x` a
 
 Now, let's compare the record type to a discriminated union of single case:
 
+```fsharp
 type Point' = Cartesian of int * int
 
 let point' = Cartesian (1, 3)
+```
 
 
 > Output:
@@ -58,7 +63,9 @@ Here, we are only describing the type and the case and not the fields themselves
 We can use the single case with a pattern match.
 
 
+```fsharp
 let translate a b = function Cartesian (x, y) -> (x + a, y + b)
+```
 
 
 > Output:
@@ -73,7 +80,9 @@ let translate a b = function
 ```
 
 
+```fsharp
 let point'' = translate 1 2 point'
+```
 
 
 > Output:

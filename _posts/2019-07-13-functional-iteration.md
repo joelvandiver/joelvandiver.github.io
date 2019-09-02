@@ -1,11 +1,10 @@
 ---
-title: 
-categories: [Guide-F#]
+title: F# Functional Iteration
+categories: [F#-Topics]
 tags: []
 ---
 
 # Functional Iteration
-07-13-2019
 
 .NET has a few instances of collections types that do not inherit from IEnumberable<'T>.  The [Seq<'T> is an alias of the IEnumerable<'T>](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/sequences).  In dealing with these collection types that do not have a correlation to sequences, you will likely have to iterate through the collection.
 
@@ -15,7 +14,7 @@ For example, the .NET type, DataTable and DataTableCollection, do not support IE
 
 Suppose, we had loaded the following data from a remote data connection:
 
-
+```fsharp
 let set = new System.Data.DataSet("Superheros")
 let table = new System.Data.DataTable("Avengers")
 set.Tables.Add(table)
@@ -25,11 +24,13 @@ table.Rows.Add(1, "Tony Stark")
 table.Rows.Add(2, "Captain America")
 table.Rows.Add(3, "Thor")
 table.Rows.Add(4, "4")
+```
 
 
 Then, to process the data into a normal F# type, we can use the `yield` to extract the values we desire:
 
 
+```fsharp
 let heros = 
     seq { 
         for i in 0 .. set.Tables.Count - 1 do 
@@ -46,6 +47,7 @@ let heros =
     |> List.ofSeq
 
 printfn "%A" heros
+```
 
 
 > Output:

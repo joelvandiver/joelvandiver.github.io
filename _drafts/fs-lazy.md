@@ -6,8 +6,6 @@ tags: []
 
 ```fsharp
  
-// p.82
- 
 let x = lazy (5 + 4)
  
 printfn "%A" x

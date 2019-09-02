@@ -1,51 +1,56 @@
-(**
+---
+title: 
+categories: [Guide-F#]
+tags: []
+---
+
 # Precomputation Exploration
 05-06-2019
 
-*)
+
 
 open System
 
-(**
+
 Create Test Data with Search for the Worst (Last) Value
-*)
+
 let data = [0 .. 1000000]
 let search = 1000000
 
-(**
+
 ## List Search
-*)
+
 #time
 data |> List.contains (search)
 #time
 
-(**
+
 > Output:
 ```fsharp
 Real: 00:00:00.101, CPU: 00:00:00.109, GC gen0: 29, gen1: 1, gen2: 1
 val it : bool = true
 ```
-*)
 
-(**
+
+
 ## Set Search
-*)
+
 let set = data |> Set.ofList
 #time
 set.Contains(search)
 #time
 
-(**
+
 > Output:
 ```fsharp
 Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
 val it : bool = true
 ```
-*)
 
-(**
+
+
 ## Precompute Set with Partial Application
-*)
+
 
 let partiallyApplied (listToSearch: int list) (value: int) : bool = 
     let setToSearch = listToSearch |> Set.ofList
@@ -56,17 +61,17 @@ let searcher = partiallyApplied data
 searcher search
 #time
 
-(**
+
 > Output:
 ```fsharp
 Real: 00:00:01.568, CPU: 00:00:01.562, GC gen0: 410, gen1: 13, gen2: 0
 val it : bool = true
 ```
-*)
 
-(**
+
+
 ## Precompute Set with Function Computation
-*)
+
 
 let returnFunction (listToSearch: int list) : int -> bool =
     let setToSearch = listToSearch |> Set.ofList
@@ -77,17 +82,17 @@ let searcher' = returnFunction data
 searcher' search
 #time
 
-(**
+
 > Output:
 ```fsharp
 Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
 val it : bool = true
 ```
-*)
 
-(**
+
+
 ## Test Partial Application with Printer
-*)
+
 
 let printer (items: int list) (item: int) : bool =
     printfn "Starting Partially Applied Printer"
@@ -98,18 +103,18 @@ let printer (items: int list) (item: int) : bool =
     r
     
 let printerTest = printer data
-(**
+
 > Output:
 ```fsharp
 val printerTest : (int -> bool)
 ```
-*)
+
 
 #time
 printerTest search
 #time
 
-(**
+
 > Output:
 ```fsharp
 Starting Partially Applied Printer
@@ -118,11 +123,11 @@ After Search
 Real: 00:00:01.488, CPU: 00:00:01.468, GC gen0: 411, gen1: 13, gen2: 0
 val it : bool = true
 ```
-*)
 
-(**
+
+
 ## Test Precomputation with Printer
-*)
+
 
 let printer' (items: int list) : int -> bool =
     printfn "Starting Precomputation Printer"
@@ -137,20 +142,20 @@ let printer' (items: int list) : int -> bool =
 
 let printerTest' = printer' data
 
-(**
+
 > Output:
 ```fsharp
 Starting Precomputation Printer
 After Set Creation
 val printerTest' : (int -> bool)
 ```
-*)
+
 
 #time
 printerTest' search
 #time
 
-(**
+
 > Output:
 ```fsharp
 Before Search
@@ -158,11 +163,10 @@ After Search
 Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
 val it : bool = true
 ```
-*)
 
-(**
+
+
 ## Conclusion
 
 Precomputation is only applied when a new function is returned from a function.  Partial application does not precompute any encapsulated state.
 
-*)

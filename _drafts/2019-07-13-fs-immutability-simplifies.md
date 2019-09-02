@@ -1,4 +1,9 @@
-(**
+---
+title: 
+categories: [Guide-F#]
+tags: []
+---
+
 # Immutability Reduces Information Domain
 07-13-2019
 
@@ -9,13 +14,13 @@ I have heard many developers who come from non-functional programming languages 
 Mutability at its core allows for surprise.  
 
 Let's take a simple mathematical function and restricted domain for example.
-*)
+
 
 let f x = x + 3
 let domainX = [-2;-1;0;1;2]
 let table = domainX |> List.map f
  
-(**
+
 > Output:
 ```fsharp
 val f : x:int -> int
@@ -24,7 +29,7 @@ val table : int list = [1; 2; 3; 4; 5]
 ```
 
 Now, let's explore the same function with a mutable side-effect:
-*)
+
  
 let mutable X = 4
  
@@ -35,7 +40,7 @@ let f' x =
 let table' = domainX |> List.map f'
 let table'2 = domainX |> List.map f'
 
-(**
+
 > Output:
 ```fsharp
 val mutable X : int = 14
@@ -48,28 +53,28 @@ Note the `table'2` has different values from the values in `table'` as expected.
 This may seem simple when you can *read* the source code as we are doing here, but if you did not have access to the source code, this behavior would surely be a **surprise**.
 
 The `f'` can be restructured to make the behavior less of a surprise:
-*)
+
  
 let f'' x y = y + x + 3
 
-(**
+
 Here, we've removed the mutable call, and instead declared a new param, `y`, that declares the dependency for `f''` to operate.  
 
 Now, we can provide another restricted domain for the `y` param:
-*)
+
 
 let domainY = [4;5;6;7;8;9]
 
-(**
+
 This has the effect of combining both `domainX` and `domainY` through a cartesian product:
-*)
+
  
 let table'3 =
     domainX
     |> List.map(fun x -> domainY |> List.map (f'' x))
     |> List.concat
  
-(**
+
 > Output:
 ```fsharp
 val f'' : x:int -> y:int -> int
@@ -82,5 +87,5 @@ val table'3 : int list =
 By allowing mutation, we've increased the element of surprise.  I have found this aspect of mutation especially difficult to reason about in large code bases.  
 
 Restrictions are not always an inhibitor, rather they can play a central role in improving the speed and effeciency in development.
-*)
+
 

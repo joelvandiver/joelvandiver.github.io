@@ -1,11 +1,16 @@
-(**
+---
+title: 
+categories: [Guide-F#]
+tags: []
+---
+
 # Discriminated Unions
 06-20-2019
 
 F# Discriminated Unions have labelled cases that can handle payloads of data.
 
 Take the following example:
-*)
+
 
 type Person = string
 
@@ -16,10 +21,10 @@ type Family =
 | Twins of Person * Person
 | Self
 
-(**
+
 Each of the discriminated cases behave like function in instantiating values: 
 
-*)
+
 
 let dad = Dad "Tim"
 let mom = Mom "Joanna"
@@ -27,7 +32,7 @@ let siblings = Siblings ["Tim Jr."; "Sarah"; "Bobby"]
 let twins = Twins ("Jane", "John")
 let me = Self
 
-(**
+
 > Output:
 ```fsharp
 val dad : Family = Dad "Tim"
@@ -38,7 +43,7 @@ val me : Family = Self
 ```
 
 The `Family` cases are all of type `Family` so they can be packaged up in other values.
-*)
+
 
 let myFamily = 
     [
@@ -49,7 +54,7 @@ let myFamily =
         me
     ]
 
-(**
+
 > Output:
 ```fsharp
 val myFamily : Family list =
@@ -58,7 +63,7 @@ val myFamily : Family list =
 ```
 
 Discriminated Unions also support pattern matching in handling each of the cases.
-*)
+
 
 let stateName person = 
     match person with 
@@ -72,16 +77,16 @@ let stateName person =
         printfn "My second twin's name is %s" b
     | Self -> printfn "My name is John"
 
-(**
+
 > Output:
 ```fsharp
 val stateName : person:Family -> unit
 ```
-*)
+
 
 myFamily |> List.iter stateName
 
-(**
+
 > Output:
 ```fsharp
 My dad's name is Tim.
@@ -93,16 +98,15 @@ My first twin's name is Jane
 My second twin's name is John
 My name is John
 ```
-*)
+
 
 let isMyMom p = p = Mom "Joanna"
 isMyMom mom
 isMyMom dad
 
-(**
+
 > Output:
 ```fsharp
 val isMyMom : p:Family -> bool
 val it : bool = false
 ```
-*)

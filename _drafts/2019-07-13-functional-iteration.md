@@ -1,4 +1,9 @@
-(**
+---
+title: 
+categories: [Guide-F#]
+tags: []
+---
+
 # Functional Iteration
 07-13-2019
 
@@ -9,7 +14,7 @@ One way to do so without maintaining mutable state is to use the `yield` keyword
 For example, the .NET type, DataTable and DataTableCollection, do not support IEnumerable.
 
 Suppose, we had loaded the following data from a remote data connection:
-*)
+
 
 let set = new System.Data.DataSet("Superheros")
 let table = new System.Data.DataTable("Avengers")
@@ -21,9 +26,9 @@ table.Rows.Add(2, "Captain America")
 table.Rows.Add(3, "Thor")
 table.Rows.Add(4, "4")
 
-(**
+
 Then, to process the data into a normal F# type, we can use the `yield` to extract the values we desire:
-*)
+
 
 let heros = 
     seq { 
@@ -42,10 +47,9 @@ let heros =
 
 printfn "%A" heros
 
-(**
+
 > Output:
 ```fsharp
 val heros : obj list list =
   [["1"; "Tony Stark"]; ["2"; "Captain America"]; ["3"; "Thor"]; ["4"; "4"]]
 ```
-*)

@@ -7,6 +7,7 @@ tags: []
 # PERF Experiments for F# Collection Types
 
 > Define the expected power operator:
+
 ```fsharp
 open System
 

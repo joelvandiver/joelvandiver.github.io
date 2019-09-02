@@ -1,7 +1,11 @@
-## OSS Github Repos:
-- [ ] F# SQL SERVER Schema Generator
-  - [ ] Create a Lazy F# Type Proivder for SQL Queries
-- [ ] Implement a General XML to Json Solution
+## TODO:
+1. [ ] Add Fractal Logo
+2. [ ] Add favicon.ico
+
+## Planned OSS Github Repos:
+1. F# SQL SERVER Schema Generator
+   1. Create a Lazy F# Type Proivder for SQL Queries
+2. Implement a General XML to Json Solution
 
 ## Planned Github Seed Repos:
 1. Fable
@@ -21,3 +25,7 @@
 4. Microservices
    1. Fs.RabbitMQ
 5. Haskell-VSCode
+
+## Planned Github Fun Repos:
+1. F# Sound Synthesis
+2. F# Fractal Generator 

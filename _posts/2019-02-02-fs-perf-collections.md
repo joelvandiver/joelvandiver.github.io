@@ -1,6 +1,6 @@
 ---
 title:  PERF Experiments for F# Collection Types
-categories: [Exploration, PERF]
+categories: [Exploration-PERF]
 tags: []
 ---
 

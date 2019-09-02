@@ -1,9 +1,3 @@
-background-image: url(/assets/img/fractal-logo.svg);
-background-repeat: no-repeat;
-background-size: cover;
-background-position-y: top;
-opacity: 0.5;
-
 # TODO
 - [ ] Setup Jekyll Site
   - [ ] https://github.com/pages-themes/slate

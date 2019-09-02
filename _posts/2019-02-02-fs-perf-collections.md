@@ -1,29 +1,33 @@
-(**
-# PERF Experiments for F# Collection Types
-*)
+---
+title:  PERF Experiments for F# Collection Types
+categories: [Exploration, PERF]
+tags: []
+---
 
+# PERF Experiments for F# Collection Types
+
+> Define the expected power operator:
+```fsharp
 open System
 
-// Define the expected power operator:
 let (^) x n = pown x n
 let max = Math.Pow(10., 6.)
+```
 
-(**
 *Output:*
 ```console
 val ( ^ ) : x:int -> n:int -> int
 val max : float = 1000000.0
 ```
-*)
 
-
-(**
 ## Initialize a Sequence
-*)
+
+```fsharp
 #time
 let aSeq    = { (-1.*max) .. max }
 #time
-(**
+```
+
 *Output:*
 ```console
 --> Timing now on
@@ -34,16 +38,15 @@ val aSeq : seq<float>
 
 --> Timing now off
 ```
-*)
 
-
-(**
 ## Map to a List
-*)
+
+```fsharp
 #time
 let aList   = aSeq |> List.ofSeq
 #time
-(**
+```
+
 *Output:*
 ```console
 --> Timing now on
@@ -69,16 +72,15 @@ val aList : float list =
 
 --> Timing now off
 ```
-*)
 
-
-(**
 ## Map to a Set
-*)
+
+```fsharp
 #time
 let aSet    = aSeq |> Set.ofSeq
 #time
-(**
+```
+
 *Output:*
 ```console
 --> Timing now on
@@ -92,16 +94,18 @@ val aSet : Set<float> =
 
 --> Timing now off
 ```
-*)
 
 
-(**
+
+
 ## Map to a Array
-*)
+
+```fsharp
 #time
 let aArray  = aSeq |> Array.ofSeq
 #time
-(**
+```
+
 *Output:*
 ```console
 --> Timing now on
@@ -129,17 +133,16 @@ val aArray : float [] =
 
 --> Timing now off
 ```
-*)
 
-(**
+
+
 
 ## Summary
 
-|   | Type  | Metrics                                                                 |
-| - | ----- | ----------------------------------------------------------------------- |
-| 1 | Seq   | Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0     |
-| 2 | List  | Real: 00:00:00.291, CPU: 00:00:00.312, GC gen0: 11, gen1: 6, gen2: 1    |
-| 3 | Set   | Real: 00:00:03.272, CPU: 00:00:03.281, GC gen0: 1028, gen1: 27, gen2: 1 |
-| 4 | Array | Real: 00:00:00.101, CPU: 00:00:00.109, GC gen0: 0, gen1: 0, gen2: 0     |
+|     | Type  | Metrics                                                                 |
+| --- | ----- | ----------------------------------------------------------------------- |
+| 1   | Seq   | Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0     |
+| 2   | List  | Real: 00:00:00.291, CPU: 00:00:00.312, GC gen0: 11, gen1: 6, gen2: 1    |
+| 3   | Set   | Real: 00:00:03.272, CPU: 00:00:03.281, GC gen0: 1028, gen1: 27, gen2: 1 |
+| 4   | Array | Real: 00:00:00.101, CPU: 00:00:00.109, GC gen0: 0, gen1: 0, gen2: 0     |
 
-*)

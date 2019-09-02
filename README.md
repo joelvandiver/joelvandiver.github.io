@@ -1,4 +1,3 @@
-## TODO:
 ## OSS Github Repos:
 - [ ] F# SQL SERVER Schema Generator
   - [ ] Create a Lazy F# Type Proivder for SQL Queries

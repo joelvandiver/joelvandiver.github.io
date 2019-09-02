@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Welcome to Jekyll!"
 categories: [Hello-World]
 tags: [hot, summer]

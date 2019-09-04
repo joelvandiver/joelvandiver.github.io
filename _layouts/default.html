@@ -76,6 +76,7 @@
                     return response.json();
                 })
                 .then(function (json) {
+                    if (!json.media_type === "image") { return; }
                     var src = json.url;
                     var container = document.getElementById("nasa-img-container");
                     var img = document.createElement('img');

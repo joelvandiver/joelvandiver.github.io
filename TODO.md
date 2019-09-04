@@ -4,6 +4,7 @@
    1. Create a Lazy F# Type Proivder for SQL Queries
 
 ## Planned Github Seed Repos:
+1. NPM Local Library Package Development
 1. Fable
     1. Fable.React.ASPNETCore
     2. Fable.React.Jest

@@ -45,3 +45,7 @@ img[alt="Fractal"] {
     padding: 5%;
     background-color: black;
 }
+
+img {
+    width: 100%;
+}

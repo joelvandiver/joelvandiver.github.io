@@ -1,8 +1,6 @@
 ## DEV
-1. Abstract site.js
-2. APOD Updates
-   1. Cache photo url for the day
-   2. Fallback on Jupiter image when media_type !== "image"
+1. APOD Updates
+   1. Fallback on Jupiter image when media_type !== "image"
 
 ## Posts
 1. F# ASP.NET Core Dependency Injection with Composition

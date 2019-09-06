@@ -3,7 +3,7 @@
     const today = date.toISOString().split("T")[0]
     const key = "APOD_RESULT";
     const last = localStorage.getItem(key);
-    const lastDate = last ? JSON.parse(last) : undefined;
+    const lastJson = last ? JSON.parse(last) : undefined;
 
     function renderImg(json) {
         // Fallback on Jupiter if the media_type is not an image.
@@ -18,13 +18,13 @@
         localStorage.setItem(key, JSON.stringify(json));
     }
 
-    if (!lastDate || lastDate.date !== today) {
+    if (!lastJson || lastJson.date !== today) {
         fetch("https://api.nasa.gov/planetary/apod?api_key=5VhLWB6JaWs6m11mLfrNKply8naxchfbWb0Nu2Q9")
             .then(function (response) {
                 return response.json();
             })
             .then(renderImg);
     } else {
-        renderImg(last);
+        renderImg(lastJson);
     }
 })();

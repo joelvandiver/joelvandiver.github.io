@@ -1,7 +1,3 @@
-## DEV
-1. APOD Updates
-   1. Fallback on Jupiter image when media_type !== "image"
-
 ## Posts
 1. F# ASP.NET Core Dependency Injection with Composition
 2. Why F#? 

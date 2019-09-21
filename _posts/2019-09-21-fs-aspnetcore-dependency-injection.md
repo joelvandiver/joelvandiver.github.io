@@ -45,7 +45,7 @@ val getFirstUser : users:User list -> User
 val getFirstUserName : (User list -> string)
 ```
 
-Here, we have a `getUserName` function that takes a `User` and another function `getFirstUserName` that returns a `User`.  This allows us to compose a new function `getFirstUserName` from `getFirstUser >> getUserName`.  
+Here, we have a `getUserName` function that takes a `User` and another function `getFirstUser` that returns a `User`.  This allows us to compose a new function `getFirstUserName` from `getFirstUser >> getUserName`.  
 
 The lego-brick like functionality is very useful for defining more complex functionalities from little building blocks.
 

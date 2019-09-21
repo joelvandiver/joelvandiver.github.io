@@ -1,7 +1,3 @@
-## Posts
-1. F# ASP.NET Core Dependency Injection with Composition
-2. Why F#? 
-
 ## Planned OSS Github Repos:
 1. F# Swagger Client
 2. F# SQL SERVER Schema Generator

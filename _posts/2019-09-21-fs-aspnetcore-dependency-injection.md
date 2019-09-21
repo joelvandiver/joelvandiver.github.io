@@ -22,7 +22,7 @@ val g : x:int -> int
 val fg : (int -> int)
 ```
 
-`f` and `g` are functions taking one integer and returning another integer.  The output of `g` is an integer which is the same type of input for `f`.  This allows us to compose `f >> g`.
+`f` and `g` are functions taking one integer and returning another integer.  The output of `f` is an integer which is the same type of input for `g`.  This allows us to compose `f >> g`.
 
 Note the sample data below.
 

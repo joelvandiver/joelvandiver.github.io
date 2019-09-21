@@ -8,7 +8,7 @@
     - include index rendering with Giraffe
     - include swagger yaml docs
 2. Fs.Giraffe.Swagger
-3. NPM Local Library Package Development2. 
+3. NPM Local Library Package Development 
 4. Fable.React.ASPNETCore
 5. Fable.React.Jest
 6. Fs.SignalR.WebSockets
@@ -218,19 +218,13 @@
   - [ ] Mixins
   - [ ] Triple-Slash Directives
   - [ ] Type Checking JavaScript Files
-- [ ] Explorations:
-  - [ ] Performance
 - [ ] Topics:
   - [ ] WebHooks, WebSockets, & SignalR
+  - [ ] Explore Tail Recursive (Ex. Factorial, Fibonacci, ...)
 - [ ] Hello-Worlds:
   - [ ] Swagger
-  - [ ] Jekyll Setup
-  - [ ] Explore Tail Recursive (Ex. Factorial, Fibonacci, ...)
   - [ ] Restrict the Domain of a Function at Compile Time with Types
   - [ ] Explore Modular Arithmetic
-  - [ ] Setup an API Gateway with Ocelot
-  - [ ] Setup Giraffe with Swagger
-  - [ ] Setup Windows Authentication with HTTP.sys
   - [ ] Setup F# ML.NET
   - [ ] Setup RabbitMQ
   - [ ] Setup Docker

@@ -37,10 +37,10 @@ let logger =
 
 let requiresDependency = RequiresDependency logger
 let getAndMultiplyBy2 = requiresDependency.GetNumbers >> multiplyBy2
-let expected = [ 2; 4; 6; 8 ]
-let actual = getAndMultiplyBy2()
 
-expected = actual
+// This is when the dependency will actually be run.
+getAndMultiplyBy2()
+
 ```
 
 > Output
@@ -61,10 +61,8 @@ val multiplyBy2 : data:int list -> int list
 val logger : IDependency
 val requiresDependency : RequiresDependency
 val getAndMultiplyBy2 : (unit -> int list)
-val expected : int list = [2; 4; 6; 8]
 
 Getting data.
 Disposing connection.
-val actual : int list = [2; 4; 6; 8]
-val it : bool = true
+[2; 4; 6; 8]
 ```

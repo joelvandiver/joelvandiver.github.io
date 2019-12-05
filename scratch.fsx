@@ -1,13 +1,21 @@
-open System
+let x = lazy (5 + 4)
 
-let f x = x + 3
-let g x = x + 5
+printfn "%A" x
 
-let fg = f >> g
+let y = x.Force()
 
-[1;2;3;4;5] |> List.map fg
 
-type User = { first: string; last: string }
-let getUserName (user: User) = user.first + " " + user.last
-let getFirstUser (users: User list) : User = users |> List.head
-let getFirstUserName = getFirstUser >> getUserName
+
+let mutable workNumCount = 0
+
+let workNum() =
+    printfn "Starting Num %i" workNumCount
+    workNumCount <- workNumCount + 1
+    workNumCount
+
+let numVal = lazy (workNum())
+let numVals =
+    [ numVal; numVal; numVal; numVal; numVal; numVal; numVal; numVal ] |> List.map (fun numVal -> numVal.Force())
+
+numVal.Force()
+)

@@ -1,20 +1,26 @@
+## Next
+
+1. Hasker Docker - Hello World
+
 ## Planned OSS Github Repos:
+
 1. F# Swagger Client
 2. F# SQL SERVER Schema Generator
    1. Create a Lazy F# Type Proivder for SQL Queries
 
 ## Planned Github Seed Repos:
-1. *Fs.Ocelot.Gateway*
-    - include index rendering with Giraffe
-    - include swagger yaml docs
+
+1. _Fs.Ocelot.Gateway_
+   - include index rendering with Giraffe
+   - include swagger yaml docs
 2. Fs.Giraffe.Swagger
-3. NPM Local Library Package Development 
+3. NPM Local Library Package Development
 4. Fable.React.ASPNETCore
 5. Fable.React.Jest
 6. Fs.SignalR.WebSockets
 7. Fs.ASPNETCore.Saturn
 8. Fs.ASPNETCore.Swagger
-9.  Fs.ASPNETCore.NSwag
+9. Fs.ASPNETCore.NSwag
 10. Fs.Saturn.Swagger
 11. QSwag
 12. Swagger to TypeScript
@@ -22,10 +28,12 @@
 14. Haskell-VSCode
 
 ## Planned Github Fun Repos:
+
 1. F# Sound Synthesis
-2. F# Fractal Generator 
+2. F# Fractal Generator
 
 # Backlog
+
 - [ ] Guides:
   - [ ] F#
     - [ ] Comparison to C#
@@ -237,25 +245,25 @@
 - [ ] Databases
   - [ ] NoSQL
   - [ ] Graph Databases
-- [ ] Security 
+- [ ] Security
   - [ ] WireShark
   - [ ] Microsoft Threat Modeling Tool 2006 -> C:\Program Files (x86)\Microsoft Threat Modeling Tool 2016\TMT7.exe
 - [ ] Cloud Challenges
-  - [ ] ASP.NET Core               
-  - [ ] API Documentation          
-  - [ ] Authentication - SSO       
-  - [ ] Authentication - Windows   
-  - [ ] Authorization              
-  - [ ] CI/CD                      
-  - [ ] Messaging                  
-  - [ ] Json Serializer            
-  - [ ] Paket Pack - GWC API       
-  - [ ] API Gateway                
-  - [ ] WebSockets & SignalR       
-  - [ ] Route Config               
-  - [ ] Host/Container             
-  - [ ] SteelToe                   
+  - [ ] ASP.NET Core
+  - [ ] API Documentation
+  - [ ] Authentication - SSO
+  - [ ] Authentication - Windows
+  - [ ] Authorization
+  - [ ] CI/CD
+  - [ ] Messaging
+  - [ ] Json Serializer
+  - [ ] Paket Pack - GWC API
+  - [ ] API Gateway
+  - [ ] WebSockets & SignalR
+  - [ ] Route Config
+  - [ ] Host/Container
+  - [ ] SteelToe
   - [ ] API Versioning & Change Log
-  - [ ] Logging                    
-  - [ ] Service Contract           
+  - [ ] Logging
+  - [ ] Service Contract
   - [ ] Micro Apps

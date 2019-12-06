@@ -1,6 +1,6 @@
 ---
 title: F# Destructuring Params
-categories: [Fs-Guide]
+categories: [Fs-Topics]
 tags: []
 ---
 

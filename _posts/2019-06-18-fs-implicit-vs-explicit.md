@@ -1,6 +1,6 @@
 ---
 title: F# Implicit vs Explicit Type Declarations
-categories: [F#-Topics]
+categories: [Fs-Topics]
 tags: []
 ---
 

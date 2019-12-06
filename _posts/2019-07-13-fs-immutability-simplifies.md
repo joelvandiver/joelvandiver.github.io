@@ -1,6 +1,6 @@
 ---
 title: F# Immutability Reduces Information Domain
-categories: [F#-Topics]
+categories: [Fs-Topics]
 tags: []
 ---
 

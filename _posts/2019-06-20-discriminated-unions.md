@@ -1,6 +1,6 @@
 ---
 title: F# Discriminated Unions
-categories: [F#-Topics]
+categories: [Fs-Topics]
 tags: []
 ---
 

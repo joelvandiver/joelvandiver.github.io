@@ -1,6 +1,6 @@
 ---
 title:  F# ASP.NET Core Dependency Injection
-categories: [F#-Topics]
+categories: [Fs-Topics]
 tags: [ASP.NETCore]
 ---
 

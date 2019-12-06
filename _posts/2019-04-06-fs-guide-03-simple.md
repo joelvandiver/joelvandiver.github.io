@@ -1,6 +1,6 @@
 ---
 title: 03 F# Simple Values
-categories: [F#-Guide]
+categories: [Fs-Guide]
 tags: []
 ---
 

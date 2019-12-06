@@ -1,6 +1,6 @@
 ---
 title:  F# Type Method Composition
-categories: [F#-Topics]
+categories: [Fs-Topics]
 tags: []
 ---
 

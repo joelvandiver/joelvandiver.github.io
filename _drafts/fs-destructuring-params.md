@@ -1,6 +1,6 @@
 ---
 title: 
-categories: [F#-Guide]
+categories: [Fs-Guide]
 tags: []
 ---
 

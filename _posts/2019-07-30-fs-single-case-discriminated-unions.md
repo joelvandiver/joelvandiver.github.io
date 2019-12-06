@@ -1,6 +1,6 @@
 ---
 title: F# Single Case Discriminated Unions
-categories: [F#-Topics]
+categories: [Fs-Topics]
 tags: []
 ---
 

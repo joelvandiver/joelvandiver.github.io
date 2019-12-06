@@ -1,6 +1,6 @@
 ---
 title: F# Functional Iteration
-categories: [F#-Topics]
+categories: [Fs-Topics]
 tags: []
 ---
 

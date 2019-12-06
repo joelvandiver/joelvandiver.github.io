@@ -1,7 +1,7 @@
 ---
 title: F# Anonymous Records
-categories: [F#-Topics]
-tags: [F#-Topics]
+categories: [Fs-Topics]
+tags: [Fs-Topics]
 ---
 
 # F# Anonymous Records

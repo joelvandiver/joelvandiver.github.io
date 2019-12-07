@@ -30,7 +30,7 @@ docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=<YourStrong@Passw0rd>" `
 
 Now, you are free to connect to it with **sqlcmd**, or you can connect directly from SQL SERVER Management Studio:
 
-![docker-sql-login](~\assets\img\docker-sql-login.png)
+![docker-sql-login](\assets\img\docker-sql-login.png)
 
 Be sure to use the `hostname` as the **Server name**.
 

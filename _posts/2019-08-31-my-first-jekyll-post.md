@@ -1,6 +1,6 @@
 ---
 title:  "Welcome to Jekyll!"
-categories: [Hello-World]
+categories: [DevOps]
 tags: [Jekyll, Static]
 ---
 
@@ -15,7 +15,7 @@ I hope you like it!
 ```markdown
 ---
 title:  "Welcome to Jekyll!"
-categories: [Hello-World]
+categories: [DevOps]
 tags: [Jekyll, Static]
 ---
 

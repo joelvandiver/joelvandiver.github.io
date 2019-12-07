@@ -137,7 +137,7 @@ let meta() =
 Convert the repetitive code above into a template.  This is where we treat ***code as data***!
 
 ```fsharp
-let requiredStringTemplate (x: ColumnSchemaColumnSchema list = 
+let requiredStringTemplate (x: ColumnSchema list = 
     let name = x.COLUMN_NAME
     let max = x.CHARACTER_MAXIMUM_LENGTH.Value
     sprintf """

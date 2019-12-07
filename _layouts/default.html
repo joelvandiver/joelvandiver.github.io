@@ -33,15 +33,6 @@
         </header>
     </div>
     
-    <script src="https://utteranc.es/client.js"
-        repo="joelvandiver/joelvandiver.github.io"
-        issue-term="pathname"
-        label="comment"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-    </script>
-    
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
         <section id="main_content" class="inner">
@@ -50,6 +41,16 @@
             </div>
 
             {{ content }}
+                    
+            <script src="https://utteranc.es/client.js"
+                repo="joelvandiver/joelvandiver.github.io"
+                issue-term="pathname"
+                label="comment"
+                theme="github-dark"
+                crossorigin="anonymous"
+                async>
+            </script>
+            
             <div id="main-nav-container">
                 {% for category in site.categories %}
                 <h3>{{ category[0] }}</h3>

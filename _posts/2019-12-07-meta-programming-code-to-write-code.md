@@ -1,10 +1,10 @@
 ---
-title: Meta Programming with SQL
+title: Meta Programming - Code to Write Code
 categories: [Fs-Topics]
 tags: []
 ---
 
-# Meta Programming with SQL
+# Meta Programming - Code to Write Code
 
 As I'm sure any .NET programmer would know, .NET offers a pretty expansive reflection api.  Asking a system to provide reflection information is both a powerful and expensive technique.  It can dramatically reduce the quantity of code, but it comes with the extra overhead in runtime performance.  
 

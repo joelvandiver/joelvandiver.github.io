@@ -44,7 +44,6 @@
       - [ ] `function` keyword
       - [ ] Lazy Values
       - [ ] Function-Values
-      - [ ] Function-Values
       - [ ] Function Pipelining
       - [ ] Function Composition
       - [ ] Download File through Web API
@@ -155,7 +154,6 @@
       - [ ] Caller Information
       - [ ] Verbose Syntax
       - [ ] Code Formatting Guidelines
-      - [ ] Quoted Expressions
       - [ ] Async & Parallel Computations
     - [ ] Expecto
   - [ ] TypeScript

@@ -6,3 +6,4 @@ node_modules/
 paket-files/
 .paket/
 .fable/
+*.exe

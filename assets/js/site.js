@@ -11,6 +11,10 @@
             json.url :
             "https://www.nasa.gov/sites/default/files/styles/full_width_feature/public/thumbnails/image/pia22949.jpg";
         var container = document.getElementById("nasa-img-container");
+        if (!container) {
+            console.log("#nasa-img-container is missing!");
+            return;
+        }
         var img = document.createElement('img');
         img.src = src;
         container.title = json.explanation;

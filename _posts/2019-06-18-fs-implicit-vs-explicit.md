@@ -1,9 +1,3 @@
----
-title: F# Implicit vs Explicit Type Declarations
-categories: [Fs-Topics]
-tags: []
----
-
 # Implicit vs Explicit Type Declarations
 
 ## Implicit

@@ -1,9 +1,3 @@
----
-title: Reflection in Leadership
-categories: [LEAD]
-tags: []
----
-
 # Reflection in Leadership
 
 > True leadership requires reflection.  

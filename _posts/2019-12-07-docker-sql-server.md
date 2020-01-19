@@ -1,9 +1,3 @@
----
-title: SQL SERVER on Docker
-categories: [DevOps]
-tags: []
----
-
 # SQL SERVER on Docker
 
 Setting up SQL SERVER on a Docker Container is so ***easy*** that I cringe at all of the times that I have installed a full-blown SQL SERVER instance on my systems in the past.  

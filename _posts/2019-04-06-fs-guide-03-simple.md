@@ -1,10 +1,3 @@
----
-title: 03 F# Simple Values
-categories: [Fs-Guide]
-tags: []
----
-
-
 # F# Simple Values
 
 ### Numbers

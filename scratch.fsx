@@ -1,1 +1,0 @@
-let GetUserNameAnon {| FirstName = fn; LastName = ln |}) = fn + " " + ln

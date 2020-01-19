@@ -1,9 +1,3 @@
----
-title: F# Precomputation Exploration
-categories: [Exploration-PERF]
-tags: []
----
-
 # Precomputation Exploration
 
 Create Test Data with Search for the Worst (Last) Value

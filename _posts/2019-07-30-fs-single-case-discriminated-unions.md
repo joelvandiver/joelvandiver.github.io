@@ -1,9 +1,3 @@
----
-title: F# Single Case Discriminated Unions
-categories: [Fs-Topics]
-tags: []
----
-
 # Single Case Discriminated Unions
 
 First, let's start with a simple tuple of two integers:

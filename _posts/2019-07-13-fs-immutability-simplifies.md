@@ -1,9 +1,3 @@
----
-title: F# Immutability Reduces Information Domain
-categories: [Fs-Topics]
-tags: []
----
-
 # Immutability Reduces Information Domain
 
 I have heard many developers who come from non-functional programming languages such as C++ and C# claim that immutability is overly restrictive.  It is true that immutability is a restrictive, but this restriction comes at one huge benefit:  reduction of possible outcomes.  

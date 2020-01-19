@@ -1,9 +1,3 @@
----
-title: F# Destructuring Params
-categories: [Fs-Topics]
-tags: []
----
-
 # F# Destructuring Params
 
 F# has another useful technique to help add clarity to code.  

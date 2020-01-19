@@ -1,9 +1,3 @@
----
-title: F# Cloning Records
-categories: [Fs-Topics]
-tags: []
----
-
 # Cloning Records
 
 F# supports a nice syntax for cloning records into new records.

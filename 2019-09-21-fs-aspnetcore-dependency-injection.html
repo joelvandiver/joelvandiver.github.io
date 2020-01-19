@@ -1,0 +1,58 @@
+<html><head><title>Joel Vandiver Blog</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body><section class="hero is-black"><div class="hero-body"><div class="container"><h1 class="title"><a href="/index.html">Joel Vandiver</a></h1><h2 class="subtitle">Full Stack Web Developer</h2></div></div></section><section class="section"><div class="container"><div class="columns"><div class="column is-4"><aside class="menu"><p class="menu-label"><p class="menu-label"><a href="/index.html">Home</a></p></p><p class="menu-label"><p class="menu-label">F# Guide</p></p><ul class="menu-list"><li><a href="/2019-04-06-fs-guide-01-value.html">01 Values</a></li><li><a href="/2019-04-06-fs-guide-02-implicit-vs-explicit.html">02 Implicit vs Explicit Value Declaration</a></li><li><a href="/2019-04-06-fs-guide-03-simple.html">03 Simple Values</a></li><li><a href="/2019-04-06-fs-guide-04-list.html">04 List Values</a></li><li><a href="/2019-05-20-fs-guide-05-option.html">05 Option</a></li></ul><p class="menu-label"><p class="menu-label">Topics</p></p><ul class="menu-list"><li><a href="/2019-12-05-fs-type-method-composition.html">F# Type Method Composition</a></li><li><a href="/2019-09-21-fs-aspnetcore-dependency-injection.html">F# ASP.NET Core Dependency Injection</a></li><li><a href="/2019-12-06-fs-destructuring-params.html">Destructuring Params</a></li><li><a href="/2019-12-06-destructuring-anonymous-records.html">Destructuring Anonymous Records</a></li><li><a href="/2019-12-06-fs-lazy.html">Lazy F#</a></li><li><a href="/2019-12-24-fable-fsx.html">Fable FSX Canvas</a></li><li><a href="/2019-12-07-meta-programming-code-to-write-code.html">META Programming   Code to Write Code</a></li><li><a href="/2019-07-13-functional-iteration.html">Functional Iteration</a></li><li><a href="/2019-12-06-why-fs.html">Why F#?</a></li><li><a href="">Use F# Lazy Evaulation for Integration Testing</a></li><li><a href="/2019-06-18-fs-implicit-vs-explicit.html">F# Implicit vs Explicit</a></li><li><a href="/2019-05-06-fs-precomputation.html">F# Precomputation</a></li><li><a href="/2019-06-19-fs-clone-records.html">F# Clone Records</a></li><li><a href="/2019-06-20-discriminated-unions.html">Discriminated Unions</a></li><li><a href="/2019-07-13-fs-anonymous-records.html">F# Anonymous Records</a></li><li><a href="/2019-07-13-fs-immutability-simplifies.html">F# Immutability Simplifies</a></li><li><a href="/2019-07-30-fs-single-case-discriminated-unions.html">F# Single Case Discriminated Unions</a></li></ul><p class="menu-label"><p class="menu-label">DevOps</p></p><ul class="menu-list"><li><a href="/2019-12-07-github-blog-comments.html">GitHub Blog Comments</a></li><li><a href="/2019-12-07-docker-sql-server.html">SQL SERVER on Docker</a></li><li><a href="/2019-08-31-my-first-jekyll-post.html">Welcome to Jekyll!</a></li></ul><p class="menu-label"><p class="menu-label">Fun</p></p><ul class="menu-list"><li><a href="/2019-09-04-nasa-apod.html">NASA APOD</a></li></ul><p class="menu-label"><p class="menu-label">LEAD</p></p><ul class="menu-list"><li><a href="/2019-12-06-reflection-in-leadership.html">Reflection on Leadership</a></li></ul></aside></div><div class="column is-8"><div id="nasa-img-container"></div><div class="content"><h1><a name="f-asp-net-core-dependency-injection" class="anchor" href="#f-asp-net-core-dependency-injection">F# ASP.NET Core Dependency Injection</a></h1><p>ASP.NET Core has a nice dependency injection system that works great for object-oriented languages like C#.  F# can be written in an object-oriented way, but is there a way to inject dependencies in a functional style?</p>
+<p>First off, let&#39;s review the F# function composition that comes out-of-the-box.  For example, </p>
+<pre><code class="language-fsharp"><span class="hljs-keyword">let</span> f x = x + <span class="hljs-number">3</span>
+<span class="hljs-keyword">let</span> g x = x + <span class="hljs-number">5</span>
+
+<span class="hljs-keyword">let</span> fg = f &gt;&gt; g
+
+<span class="hljs-comment">// Output</span>
+<span class="hljs-keyword">val</span> f : x:int -&gt; int
+<span class="hljs-keyword">val</span> g : x:int -&gt; int
+<span class="hljs-keyword">val</span> fg : (int -&gt; int)</code></pre>
+<p><code>f</code> and <code>g</code> are functions taking one integer and returning another integer.  The output of <code>f</code> is an integer which is the same type of input for <code>g</code>.  This allows us to compose <code>f &gt;&gt; g</code>.</p>
+<p>Note the sample data below.</p>
+<pre><code class="language-fsharp">[<span class="hljs-number">1</span>;<span class="hljs-number">2</span>;<span class="hljs-number">3</span>;<span class="hljs-number">4</span>;<span class="hljs-number">5</span>] |&gt; List.map fg
+<span class="hljs-keyword">val</span> it : int list = [<span class="hljs-number">9</span>; <span class="hljs-number">10</span>; <span class="hljs-number">11</span>; <span class="hljs-number">12</span>; <span class="hljs-number">13</span>]</code></pre>
+<p>Let&#39;s expand on the idea to a larger domain than Mathematics.</p>
+<pre><code class="language-fsharp"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">User</span> </span>= { first: string; last: string }
+<span class="hljs-keyword">let</span> getUserName (user: User) = user.first + <span class="hljs-string">" "</span> + user.last
+<span class="hljs-keyword">let</span> getFirstUser (users: User list) : User = users |&gt; List.head
+<span class="hljs-keyword">let</span> getFirstUserName = getFirstUser &gt;&gt; getUserName
+<span class="hljs-keyword">let</span> getUserList () : User list = [] <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span>  Get users.</span>
+
+<span class="hljs-comment">// Output</span>
+<span class="hljs-keyword">val</span> getUserName : user:User -&gt; string
+<span class="hljs-keyword">val</span> getFirstUser : users:User list -&gt; User
+<span class="hljs-keyword">val</span> getFirstUserName : (User list -&gt; string)</code></pre>
+<p>Here, we have a <code>getUserName</code> function that takes a <code>User</code> and another function <code>getFirstUser</code> that returns a <code>User</code>.  This allows us to compose a new function <code>getFirstUserName</code> from <code>getFirstUser &gt;&gt; getUserName</code>.  </p>
+<p>The lego-brick like functionality is very useful for defining more complex functionalities from little building blocks.</p>
+<p>In the course of developing ASP.NET, I have found that the API usually sits on top of a fairly large codebase.  It is useful to compose more complex functions just before creating API constrollers.  This can be solved by injecting dependencies into controllers using the <code>IControllerActivator</code> interface.  This interface is effectively an override of the default dependency injection system.</p>
+<p>Here&#39;s a sample to get you going with an activator.  I usually put the activator and controllers in the same module, since the controller declares the dependencies and the activator composes those dependencies.</p>
+<pre><code class="language-fsharp"><span class="hljs-meta">[&lt;ApiController&gt;]</span>
+<span class="hljs-meta">[&lt;Route("/api/[controller]")&gt;]</span>
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">UserController</span> </span>(getLastCreatedUserName: unit -&gt; string) =
+    <span class="hljs-keyword">inherit</span> ControllerBase()
+
+    <span class="hljs-meta">[&lt;HttpGet&gt;]</span>
+    <span class="hljs-keyword">member</span> __.Get() = getLastCreatedUserName()
+
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">MyActivator</span> </span>(config: IConfiguration) = 
+    <span class="hljs-keyword">interface</span> IControllerActivator <span class="hljs-keyword">with</span>
+        <span class="hljs-keyword">member</span> __.Create(context: ControllerContext) =
+            <span class="hljs-keyword">let</span> controllerType = context.ActionDescriptor.ControllerTypeInfo.AsType()
+            <span class="hljs-keyword">match</span> controllerType <span class="hljs-keyword">with</span> 
+            | c <span class="hljs-keyword">when</span> c = typeof&lt;UserController&gt; -&gt; 
+                <span class="hljs-comment">// Function Composition</span>
+                <span class="hljs-keyword">let</span> getLastCreatedUserName = 
+                    getUserList
+                    &gt;&gt; getFirstUser
+                    &gt;&gt; getUserName
+                <span class="hljs-comment">// Dependency Injection</span>
+                UserController(getLastCreatedUserName) 
+                    |&gt; box
+            | _ -&gt; failwith (sprintf <span class="hljs-string">"The controller type, %s, could not be found."</span> controllerType)
+</code></pre>
+<p>Lastly, you will need to register this <code>MyActivator</code> in the <code>ConfigureServices</code> method of <code>Startup</code>.</p>
+<pre><code class="language-fsharp">services.AddSingleton&lt;IControllerActivator&gt;(<span class="hljs-keyword">new</span> Activator(configuration))</code></pre>
+<p>That&#39;s it!  This helps to keep your core library functional while using object oriented techniques for the controllers and startup only.  Very nice!</p>
+</div></div></div></div></section><script src="/assets/js/site.js"></script></body></html>

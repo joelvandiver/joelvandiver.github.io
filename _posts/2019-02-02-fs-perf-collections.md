@@ -1,9 +1,3 @@
----
-title:  PERF Experiments for F# Collection Types
-categories: [Exploration-PERF]
-tags: []
----
-
 # PERF Experiments for F# Collection Types
 
 > Define the expected power operator:

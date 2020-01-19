@@ -1,10 +1,3 @@
----
-title: 02 F# Implicit vs Explicit Value Declaration
-categories: [Fs-Guide]
-tags: []
----
-
-
 # F# Implicit vs Explicit Value Declaration
 
 Values can be defined in F# either implicitly or explicitly, as in the values below.

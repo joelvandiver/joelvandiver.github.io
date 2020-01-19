@@ -1,9 +1,3 @@
----
-title: GitHub Blog Comments
-categories: [DevOps]
-tags: []
----
-
 # GitHub Blog Comments
 
 Let's get some comments added to my posts.  

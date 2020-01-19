@@ -1,9 +1,3 @@
----
-title: Destructuring Anonymous Records
-categories: [Fs-Topics]
-tags: []
----
-
 # Destructuring Anonymous Records
 
 Does F# support destructuring anonymous types in the same manner as record types?

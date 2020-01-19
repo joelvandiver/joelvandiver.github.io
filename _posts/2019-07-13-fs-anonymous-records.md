@@ -1,9 +1,3 @@
----
-title: F# Anonymous Records
-categories: [Fs-Topics]
-tags: [Fs-Topics]
----
-
 # F# Anonymous Records
 
 I recently discovered F#'s new Anonymous Records as of version 4.6.

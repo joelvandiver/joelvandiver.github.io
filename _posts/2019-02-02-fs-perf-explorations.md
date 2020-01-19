@@ -1,9 +1,3 @@
----
-title:  Reflection of Types
-categories: [Exploration-PERF]
-tags: []
----
-
 # Reflection of Types
 
 ```fsharp

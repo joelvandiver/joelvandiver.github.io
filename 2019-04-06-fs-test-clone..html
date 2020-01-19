@@ -1,0 +1,83 @@
+<html><head><title>Joel Vandiver Blog</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body><section class="hero is-black"><div class="hero-body"><div class="container"><h1 class="title"><a href="/index.html">Joel Vandiver</a></h1><h2 class="subtitle">Full Stack Web Developer</h2></div></div></section><section class="section"><div class="container"><div class="columns"><div class="column is-4"><aside class="menu"><p class="menu-label"><p class="menu-label"><a href="/index.html">Home</a></p></p><p class="menu-label"><p class="menu-label">F# Guide</p></p><ul class="menu-list"><li><a href="/2019-04-06-fs-guide-01-value.html">01 Values</a></li><li><a href="/2019-04-06-fs-guide-02-implicit-vs-explicit.html">02 Implicit vs Explicit Value Declaration</a></li><li><a href="/2019-04-06-fs-guide-03-simple.html">03 Simple Values</a></li><li><a href="/2019-04-06-fs-guide-04-list.html">04 List Values</a></li><li><a href="/2019-05-20-fs-guide-05-option.html">05 Option</a></li></ul><p class="menu-label"><p class="menu-label">Topics</p></p><ul class="menu-list"><li><a href="/2019-12-05-fs-type-method-composition.html">F# Type Method Composition</a></li><li><a href="/2019-09-21-fs-aspnetcore-dependency-injection.html">F# ASP.NET Core Dependency Injection</a></li><li><a href="/2019-12-06-fs-destructuring-params.html">Destructuring Params</a></li><li><a href="/2019-12-06-destructuring-anonymous-records.html">Destructuring Anonymous Records</a></li><li><a href="/2019-12-06-fs-lazy.html">Lazy F#</a></li><li><a href="/2019-12-24-fable-fsx.html">Fable FSX Canvas</a></li><li><a href="/2019-12-07-meta-programming-code-to-write-code.html">META Programming   Code to Write Code</a></li><li><a href="/2019-07-13-functional-iteration.html">Functional Iteration</a></li><li><a href="/2019-12-06-why-fs.html">Why F#?</a></li><li><a href="">Use F# Lazy Evaulation for Integration Testing</a></li><li><a href="/2019-06-18-fs-implicit-vs-explicit.html">F# Implicit vs Explicit</a></li><li><a href="/2019-05-06-fs-precomputation.html">F# Precomputation</a></li><li><a href="/2019-06-19-fs-clone-records.html">F# Clone Records</a></li><li><a href="/2019-06-20-discriminated-unions.html">Discriminated Unions</a></li><li><a href="/2019-07-13-fs-anonymous-records.html">F# Anonymous Records</a></li><li><a href="/2019-07-13-fs-immutability-simplifies.html">F# Immutability Simplifies</a></li><li><a href="/2019-07-30-fs-single-case-discriminated-unions.html">F# Single Case Discriminated Unions</a></li></ul><p class="menu-label"><p class="menu-label">DevOps</p></p><ul class="menu-list"><li><a href="/2019-12-07-github-blog-comments.html">GitHub Blog Comments</a></li><li><a href="/2019-12-07-docker-sql-server.html">SQL SERVER on Docker</a></li><li><a href="/2019-08-31-my-first-jekyll-post.html">Welcome to Jekyll!</a></li></ul><p class="menu-label"><p class="menu-label">Fun</p></p><ul class="menu-list"><li><a href="/2019-09-04-nasa-apod.html">NASA APOD</a></li></ul><p class="menu-label"><p class="menu-label">LEAD</p></p><ul class="menu-list"><li><a href="/2019-12-06-reflection-in-leadership.html">Reflection on Leadership</a></li></ul></aside></div><div class="column is-8"><div id="nasa-img-container"></div><div class="content"><h1><a name="test-with-clone-and-generator" class="anchor" href="#test-with-clone-and-generator">Test with Clone and Generator</a></h1><p>04-06-2019</p>
+<p>One of the primary goals of each unit test is to ensure that the test code is as decoupled from the source code as possible.  Usually, the test should only have code specific to its concerns.  </p>
+<blockquote>
+<p><strong>Key Problem:</strong> Generating test data is usually where the largest amount of coupling to production code exits.</p>
+</blockquote>
+<p>Let&#39;s setup some code to test.</p>
+<pre><code class="language-fsharp"><span class="hljs-keyword">open</span> System
+
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Role</span> </span>=
+| Senator
+| Jedi
+| Sith
+
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Character</span> </span>=
+    {   id          : Guid
+        firstname   : string
+        lastname    : string
+        role        : Role
+        }
+
+<span class="hljs-keyword">let</span> isSithLord character = character.role = Sith</code></pre>
+<blockquote>
+<p><strong>Requirement</strong>:  isSithLord should return true if the role is Sith.</p>
+</blockquote>
+<h2><a name="creating-test-data-in-the-test" class="anchor" href="#creating-test-data-in-the-test">Creating Test Data in the Test</a></h2><pre><code class="language-fsharp"><span class="hljs-keyword">let</span> testA = 
+    <span class="hljs-keyword">let</span> palpatine =
+        {   id          = Guid.NewGuid()
+            firstname   = <span class="hljs-string">"Darth"</span>
+            lastname    = <span class="hljs-string">"Sidious"</span>
+            role        = Sith
+            }
+    printfn <span class="hljs-string">"%A"</span> palpatine
+    <span class="hljs-keyword">let</span> actual = isSithLord palpatine
+    printfn <span class="hljs-string">"Palpatine is a Sith Lord:  %b"</span> actual
+    actual</code></pre>
+<blockquote>
+<p>Output:</p>
+<pre><code class="language-fsharp">{id = <span class="hljs-number">489</span>c7a10-f872<span class="hljs-number">-4</span>cfa-a79f-cf0e48fbb2d1;
+ firstname = <span class="hljs-string">"Darth"</span>;
+ lastname = <span class="hljs-string">"Sidious"</span>;
+ role = Sith;}
+Palpatine is a Sith Lord:  <span class="hljs-keyword">true</span>
+<span class="hljs-keyword">val</span> testA : bool = <span class="hljs-keyword">true</span></code></pre>
+</blockquote>
+<p>Key Points:</p>
+<ol>
+<li>The data for the test (palpatine) was created within the test itself.  </li>
+<li>The only necessary data to test is that the role of Palpatine is Sith.</li>
+</ol>
+<h2><a name="abstracting-test-data-creation-into-a-generator" class="anchor" href="#abstracting-test-data-creation-into-a-generator">Abstracting Test Data Creation into a Generator</a></h2><pre><code class="language-fsharp"><span class="hljs-keyword">let</span> generateCharacter () =
+    {   id          = Guid.NewGuid()
+        firstname   = <span class="hljs-string">"Some First Name"</span>
+        lastname    = <span class="hljs-string">"Some Last Name"</span>
+        role        = Senator
+        }
+
+<span class="hljs-keyword">let</span> testB = 
+    <span class="hljs-keyword">let</span> character =
+        { generateCharacter() <span class="hljs-keyword">with</span>  
+            role = Sith
+            }
+    printfn <span class="hljs-string">"%A"</span> character
+    <span class="hljs-keyword">let</span> actual = isSithLord character
+    printfn <span class="hljs-string">"A Sith Character is a Sith Lord:  %b"</span> actual
+    actual</code></pre>
+<blockquote>
+<p>Output:</p>
+<pre><code class="language-fsharp">{id = <span class="hljs-number">1</span>aa8abac<span class="hljs-number">-57e4</span><span class="hljs-number">-4</span>fcd-ac15-f0f05509f8cf;
+ firstname = <span class="hljs-string">"Some First Name"</span>;
+ lastname = <span class="hljs-string">"Some Last Name"</span>;
+ role = Sith;}
+A Sith Character is a Sith Lord:  <span class="hljs-keyword">true</span>
+<span class="hljs-keyword">val</span> generateCharacter : unit -&gt; Character
+<span class="hljs-keyword">val</span> testB : bool = <span class="hljs-keyword">true</span></code></pre>
+</blockquote>
+<p>Key Points:</p>
+<ol>
+<li>Generating the data has been abstracted in a utility function.</li>
+<li>testB is only coupled to the role field of the Character type.</li>
+<li>The test data is more generic in that it doesn&#39;t reference a specific character such as Palpatine.</li>
+</ol>
+<p>Abstracting generation of test data can go further by generating all strings with a Random string generator.  This will aide in testing uniqueness of a given string.</p>
+</div></div></div></div></section><script src="/assets/js/site.js"></script></body></html>

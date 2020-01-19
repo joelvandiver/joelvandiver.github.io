@@ -1,9 +1,3 @@
----
-title: 04 F# List Values
-categories: [Fs-Guide]
-tags: []
----
-
 # F# List Values
 
 List are arguably one of the more important collection types in F#.  

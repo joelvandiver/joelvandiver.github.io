@@ -1,10 +1,3 @@
----
-title: 01 F# Values
-categories: [Fs-Guide]
-tags: []
----
-
-
 # F# Values
 
 ### Value Definition

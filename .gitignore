@@ -1,9 +1,0 @@
-./.ionide
-/.ionide/symbolCache.db
-.fake/
-packages/
-node_modules/
-paket-files/
-.paket/
-.fable/
-*.exe

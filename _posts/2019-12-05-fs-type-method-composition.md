@@ -1,9 +1,3 @@
----
-title:  F# Type Method Composition
-categories: [Fs-Topics]
-tags: []
----
-
 # F# Type Method Composition
 
 I regularly implement F# function composition with function values.  This feature of the language has helped me to focus on the building blocks of an application.  Usually, I will compose those simpler functions into more complex functions at the boundary to the system.

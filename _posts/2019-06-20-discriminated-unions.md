@@ -1,9 +1,3 @@
----
-title: F# Discriminated Unions
-categories: [Fs-Topics]
-tags: []
----
-
 # Discriminated Unions
 
 F# Discriminated Unions have labelled cases that can handle payloads of data.

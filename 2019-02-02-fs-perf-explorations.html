@@ -1,0 +1,71 @@
+<html><head><title>Joel Vandiver Blog</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body><section class="hero is-black"><div class="hero-body"><div class="container"><h1 class="title"><a href="/index.html">Joel Vandiver</a></h1><h2 class="subtitle">Full Stack Web Developer</h2></div></div></section><section class="section"><div class="container"><div class="columns"><div class="column is-4"><aside class="menu"><p class="menu-label"><p class="menu-label"><a href="/index.html">Home</a></p></p><p class="menu-label"><p class="menu-label">F# Guide</p></p><ul class="menu-list"><li><a href="/2019-04-06-fs-guide-01-value.html">01 Values</a></li><li><a href="/2019-04-06-fs-guide-02-implicit-vs-explicit.html">02 Implicit vs Explicit Value Declaration</a></li><li><a href="/2019-04-06-fs-guide-03-simple.html">03 Simple Values</a></li><li><a href="/2019-04-06-fs-guide-04-list.html">04 List Values</a></li><li><a href="/2019-05-20-fs-guide-05-option.html">05 Option</a></li></ul><p class="menu-label"><p class="menu-label">Topics</p></p><ul class="menu-list"><li><a href="/2019-12-05-fs-type-method-composition.html">F# Type Method Composition</a></li><li><a href="/2019-09-21-fs-aspnetcore-dependency-injection.html">F# ASP.NET Core Dependency Injection</a></li><li><a href="/2019-12-06-fs-destructuring-params.html">Destructuring Params</a></li><li><a href="/2019-12-06-destructuring-anonymous-records.html">Destructuring Anonymous Records</a></li><li><a href="/2019-12-06-fs-lazy.html">Lazy F#</a></li><li><a href="/2019-12-24-fable-fsx.html">Fable FSX Canvas</a></li><li><a href="/2019-12-07-meta-programming-code-to-write-code.html">META Programming   Code to Write Code</a></li><li><a href="/2019-07-13-functional-iteration.html">Functional Iteration</a></li><li><a href="/2019-12-06-why-fs.html">Why F#?</a></li><li><a href="">Use F# Lazy Evaulation for Integration Testing</a></li><li><a href="/2019-06-18-fs-implicit-vs-explicit.html">F# Implicit vs Explicit</a></li><li><a href="/2019-05-06-fs-precomputation.html">F# Precomputation</a></li><li><a href="/2019-06-19-fs-clone-records.html">F# Clone Records</a></li><li><a href="/2019-06-20-discriminated-unions.html">Discriminated Unions</a></li><li><a href="/2019-07-13-fs-anonymous-records.html">F# Anonymous Records</a></li><li><a href="/2019-07-13-fs-immutability-simplifies.html">F# Immutability Simplifies</a></li><li><a href="/2019-07-30-fs-single-case-discriminated-unions.html">F# Single Case Discriminated Unions</a></li></ul><p class="menu-label"><p class="menu-label">DevOps</p></p><ul class="menu-list"><li><a href="/2019-12-07-github-blog-comments.html">GitHub Blog Comments</a></li><li><a href="/2019-12-07-docker-sql-server.html">SQL SERVER on Docker</a></li><li><a href="/2019-08-31-my-first-jekyll-post.html">Welcome to Jekyll!</a></li></ul><p class="menu-label"><p class="menu-label">Fun</p></p><ul class="menu-list"><li><a href="/2019-09-04-nasa-apod.html">NASA APOD</a></li></ul><p class="menu-label"><p class="menu-label">LEAD</p></p><ul class="menu-list"><li><a href="/2019-12-06-reflection-in-leadership.html">Reflection on Leadership</a></li></ul></aside></div><div class="column is-8"><div id="nasa-img-container"></div><div class="content"><h1><a name="reflection-of-types" class="anchor" href="#reflection-of-types">Reflection of Types</a></h1><pre><code class="language-fsharp"><span class="hljs-keyword">open</span> System
+
+<span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">SomeTypeToReflect</span> </span>= 
+   {  id      : float
+      title   : string
+      created : int64 }
+
+<span class="hljs-keyword">let</span> instances = 
+   { <span class="hljs-number">0.</span> .. <span class="hljs-number">100000000000000000.</span> }
+   |&gt; Seq.map(<span class="hljs-keyword">fun</span> i -&gt; { id = i; title = sprintf <span class="hljs-string">"#%f"</span> i; created = DateTime.UtcNow.Ticks })</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console">type SomeTypeToReflect =
+  {id: float;
+   title: string;
+   created: int64;}
+val instances : seq&lt;SomeTypeToReflect&gt;</code></pre>
+<h2><a name="reflecting-each-instance" class="anchor" href="#reflecting-each-instance">Reflecting Each Instance</a></h2><pre><code class="language-fsharp">#time
+<span class="hljs-keyword">let</span> reflectEach =
+   instances 
+   |&gt; Seq.map(
+      <span class="hljs-keyword">fun</span> x -&gt; 
+         <span class="hljs-keyword">let</span> props = x.GetType().GetProperties()
+         <span class="hljs-keyword">let</span> values = props |&gt; Seq.map(<span class="hljs-keyword">fun</span> prop -&gt; (prop.Name, prop.GetValue(x)))
+         values
+   )
+#time
+printfn <span class="hljs-string">"%A"</span> reflectEach</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console"><span class="hljs-meta">--&gt;</span><span class="bash"> Timing now on</span>
+
+Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+val reflectEach : seq&lt;seq&lt;string * obj&gt;&gt;
+<span class="hljs-meta">
+
+--&gt;</span><span class="bash"> Timing now off</span>
+
+seq
+  [seq [("id", 0.0); ("title", "#0.000000"); ("created", 636847300273895338L)];
+   seq [("id", 1.0); ("title", "#1.000000"); ("created", 636847300273905300L)];
+   seq [("id", 2.0); ("title", "#2.000000"); ("created", 636847300273915271L)];
+   seq [("id", 3.0); ("title", "#3.000000"); ("created", 636847300273915271L)];
+   ...]
+val it : unit = ()</code></pre>
+<h2><a name="reflecting-the-type" class="anchor" href="#reflecting-the-type">Reflecting the Type</a></h2><pre><code class="language-fsharp">#time
+<span class="hljs-keyword">let</span> reflectOnce  =
+   <span class="hljs-keyword">let</span> props = typeof&lt;SomeTypeToReflect&gt;.GetProperties()
+   instances 
+   |&gt; Seq.map(
+      <span class="hljs-keyword">fun</span> x -&gt; 
+         <span class="hljs-keyword">let</span> values = props |&gt; Seq.map(<span class="hljs-keyword">fun</span> prop -&gt; (prop.Name, prop.GetValue(x)))
+         values
+   )
+#time
+printfn <span class="hljs-string">"%A"</span> reflectOnce</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console"><span class="hljs-meta">--&gt;</span><span class="bash"> Timing now on</span>
+
+Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+val reflectOnce : seq&lt;seq&lt;string * obj&gt;&gt;
+<span class="hljs-meta">
+
+--&gt;</span><span class="bash"> Timing now off</span>
+
+seq
+  [seq [("id", 0.0); ("title", "#0.000000"); ("created", 636847300392606574L)];
+   seq [("id", 1.0); ("title", "#1.000000"); ("created", 636847300392616546L)];
+   seq [("id", 2.0); ("title", "#2.000000"); ("created", 636847300392626512L)];
+   seq [("id", 3.0); ("title", "#3.000000"); ("created", 636847300392626512L)];
+   ...]
+val it : unit = ()</code></pre>
+</div></div></div></div></section><script src="/assets/js/site.js"></script></body></html>

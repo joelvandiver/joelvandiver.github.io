@@ -1,10 +1,3 @@
----
-title: Basic Expecto Example
-categories: [Basic]
-tags: []
----
-
-
 # Basic Expecto Example
 
 First, let's gather our dependencies.

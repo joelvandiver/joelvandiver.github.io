@@ -1,51 +1,13 @@
-#project_title a {
-    color: white;
-}
-
-#main-nav-container {
-    padding: 10px 13px;
-}
-
-#main-nav-container ul {
-    list-style: none;
-    padding-left: 4px;
-}
-
-#main-nav-container ul a {
-    padding: 4px 10px;
-}
-
-.task-list {
-    list-style: none;
-}
-
-div#header_wrap {
-    display: block;
-    position: relative;
-    z-index: 1;
-}
-
-div#header_wrap::before {
+.hero {
     background-image: url(/assets/img/fractal-logo.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position-y: top;
     content: "";
-    opacity: 0.2;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    z-index: 0;
+    -webkit-filter: contrast(65%); /* Safari 6.0 - 9.0 */
+    filter: contrast(65%);
 }
 
-img[alt="Fractal"] {
-    height: 200px;
-    padding: 5%;
-    background-color: black;
-}
-
-img {
-    width: 100%;
+#nasa-img-container {
+    margin-bottom: 20px;
 }

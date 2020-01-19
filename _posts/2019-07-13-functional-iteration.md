@@ -1,9 +1,3 @@
----
-title: F# Functional Iteration
-categories: [Fs-Topics]
-tags: []
----
-
 # Functional Iteration
 
 .NET has a few instances of collections types that do not inherit from IEnumberable<'T>.  The [Seq<'T> is an alias of the IEnumerable<'T>](https://docs.microsoft.com/en-us/dotnet/fsharp/language-reference/sequences).  In dealing with these collection types that do not have a correlation to sequences, you will likely have to iterate through the collection.

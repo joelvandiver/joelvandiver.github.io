@@ -1,9 +1,3 @@
----
-title: 05 F# Option
-categories: [Fs-Guide]
-tags: []
----
-
 # F# Option
 
 Option values in F# provide the ability to decribe a value as either `Some` or `None`.  Typically, in imperative languages such as C#, `null` is used to convey the same meaning.  However, the use of `null` may also indicate other procedural meanings such as "incomplete" or "not yet".  This overloading of meaning creates ambiguity.  

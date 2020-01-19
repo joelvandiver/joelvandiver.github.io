@@ -1,9 +1,3 @@
----
-title:  "Welcome to Jekyll!"
-categories: [DevOps]
-tags: [Jekyll, Static]
----
-
 # Welcome
 
 **Hello world**, this is my first Jekyll blog post.

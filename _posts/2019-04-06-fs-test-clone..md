@@ -1,9 +1,3 @@
----
-title: Test with Clone and Generator
-categories: [Fs-Topics]
-tags: []
----
-
 # Test with Clone and Generator
 04-06-2019
 

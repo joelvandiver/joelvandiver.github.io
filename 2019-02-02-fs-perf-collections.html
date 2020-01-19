@@ -1,0 +1,119 @@
+<html><head><title>Joel Vandiver Blog</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body><section class="hero is-black"><div class="hero-body"><div class="container"><h1 class="title"><a href="/index.html">Joel Vandiver</a></h1><h2 class="subtitle">Full Stack Web Developer</h2></div></div></section><section class="section"><div class="container"><div class="columns"><div class="column is-4"><aside class="menu"><p class="menu-label"><p class="menu-label"><a href="/index.html">Home</a></p></p><p class="menu-label"><p class="menu-label">F# Guide</p></p><ul class="menu-list"><li><a href="/2019-04-06-fs-guide-01-value.html">01 Values</a></li><li><a href="/2019-04-06-fs-guide-02-implicit-vs-explicit.html">02 Implicit vs Explicit Value Declaration</a></li><li><a href="/2019-04-06-fs-guide-03-simple.html">03 Simple Values</a></li><li><a href="/2019-04-06-fs-guide-04-list.html">04 List Values</a></li><li><a href="/2019-05-20-fs-guide-05-option.html">05 Option</a></li></ul><p class="menu-label"><p class="menu-label">Topics</p></p><ul class="menu-list"><li><a href="/2019-12-05-fs-type-method-composition.html">F# Type Method Composition</a></li><li><a href="/2019-09-21-fs-aspnetcore-dependency-injection.html">F# ASP.NET Core Dependency Injection</a></li><li><a href="/2019-12-06-fs-destructuring-params.html">Destructuring Params</a></li><li><a href="/2019-12-06-destructuring-anonymous-records.html">Destructuring Anonymous Records</a></li><li><a href="/2019-12-06-fs-lazy.html">Lazy F#</a></li><li><a href="/2019-12-24-fable-fsx.html">Fable FSX Canvas</a></li><li><a href="/2019-12-07-meta-programming-code-to-write-code.html">META Programming   Code to Write Code</a></li><li><a href="/2019-07-13-functional-iteration.html">Functional Iteration</a></li><li><a href="/2019-12-06-why-fs.html">Why F#?</a></li><li><a href="">Use F# Lazy Evaulation for Integration Testing</a></li><li><a href="/2019-06-18-fs-implicit-vs-explicit.html">F# Implicit vs Explicit</a></li><li><a href="/2019-05-06-fs-precomputation.html">F# Precomputation</a></li><li><a href="/2019-06-19-fs-clone-records.html">F# Clone Records</a></li><li><a href="/2019-06-20-discriminated-unions.html">Discriminated Unions</a></li><li><a href="/2019-07-13-fs-anonymous-records.html">F# Anonymous Records</a></li><li><a href="/2019-07-13-fs-immutability-simplifies.html">F# Immutability Simplifies</a></li><li><a href="/2019-07-30-fs-single-case-discriminated-unions.html">F# Single Case Discriminated Unions</a></li></ul><p class="menu-label"><p class="menu-label">DevOps</p></p><ul class="menu-list"><li><a href="/2019-12-07-github-blog-comments.html">GitHub Blog Comments</a></li><li><a href="/2019-12-07-docker-sql-server.html">SQL SERVER on Docker</a></li><li><a href="/2019-08-31-my-first-jekyll-post.html">Welcome to Jekyll!</a></li></ul><p class="menu-label"><p class="menu-label">Fun</p></p><ul class="menu-list"><li><a href="/2019-09-04-nasa-apod.html">NASA APOD</a></li></ul><p class="menu-label"><p class="menu-label">LEAD</p></p><ul class="menu-list"><li><a href="/2019-12-06-reflection-in-leadership.html">Reflection on Leadership</a></li></ul></aside></div><div class="column is-8"><div id="nasa-img-container"></div><div class="content"><h1><a name="perf-experiments-for-f-collection-types" class="anchor" href="#perf-experiments-for-f-collection-types">PERF Experiments for F# Collection Types</a></h1><blockquote>
+<p>Define the expected power operator:</p>
+</blockquote>
+<pre><code class="language-fsharp"><span class="hljs-keyword">open</span> System
+
+<span class="hljs-keyword">let</span> (^) x n = pown x n
+<span class="hljs-keyword">let</span> max = Math.Pow(<span class="hljs-number">10.</span>, <span class="hljs-number">6.</span>)</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console">val ( ^ ) : x:int -&gt; n:int -&gt; int
+val max : float = 1000000.0</code></pre>
+<h2><a name="initialize-a-sequence" class="anchor" href="#initialize-a-sequence">Initialize a Sequence</a></h2><pre><code class="language-fsharp">#time
+<span class="hljs-keyword">let</span> aSeq    = { (<span class="hljs-number">-1.</span>*max) .. max }
+#time</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console"><span class="hljs-meta">--&gt;</span><span class="bash"> Timing now on</span>
+
+Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0
+val aSeq : seq&lt;float&gt;
+<span class="hljs-meta">
+
+--&gt;</span><span class="bash"> Timing now off</span></code></pre>
+<h2><a name="map-to-a-list" class="anchor" href="#map-to-a-list">Map to a List</a></h2><pre><code class="language-fsharp">#time
+<span class="hljs-keyword">let</span> aList   = aSeq |&gt; List.ofSeq
+#time</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console"><span class="hljs-meta">--&gt;</span><span class="bash"> Timing now on</span>
+
+Real: 00:00:00.291, CPU: 00:00:00.312, GC gen0: 11, gen1: 6, gen2: 1
+val aList : float list =
+  [-1000000.0; -999999.0; -999998.0; -999997.0; -999996.0; -999995.0;
+   -999994.0; -999993.0; -999992.0; -999991.0; -999990.0; -999989.0; -999988.0;
+   -999987.0; -999986.0; -999985.0; -999984.0; -999983.0; -999982.0; -999981.0;
+   -999980.0; -999979.0; -999978.0; -999977.0; -999976.0; -999975.0; -999974.0;
+   -999973.0; -999972.0; -999971.0; -999970.0; -999969.0; -999968.0; -999967.0;
+   -999966.0; -999965.0; -999964.0; -999963.0; -999962.0; -999961.0; -999960.0;
+   -999959.0; -999958.0; -999957.0; -999956.0; -999955.0; -999954.0; -999953.0;
+   -999952.0; -999951.0; -999950.0; -999949.0; -999948.0; -999947.0; -999946.0;
+   -999945.0; -999944.0; -999943.0; -999942.0; -999941.0; -999940.0; -999939.0;
+   -999938.0; -999937.0; -999936.0; -999935.0; -999934.0; -999933.0; -999932.0;
+   -999931.0; -999930.0; -999929.0; -999928.0; -999927.0; -999926.0; -999925.0;
+   -999924.0; -999923.0; -999922.0; -999921.0; -999920.0; -999919.0; -999918.0;
+   -999917.0; -999916.0; -999915.0; -999914.0; -999913.0; -999912.0; -999911.0;
+   -999910.0; -999909.0; -999908.0; -999907.0; -999906.0; -999905.0; -999904.0;
+   -999903.0; -999902.0; -999901.0; ...]
+<span class="hljs-meta">
+
+--&gt;</span><span class="bash"> Timing now off</span></code></pre>
+<h2><a name="map-to-a-set" class="anchor" href="#map-to-a-set">Map to a Set</a></h2><pre><code class="language-fsharp">#time
+<span class="hljs-keyword">let</span> aSet    = aSeq |&gt; Set.ofSeq
+#time</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console"><span class="hljs-meta">--&gt;</span><span class="bash"> Timing now on</span>
+
+Real: 00:00:03.272, CPU: 00:00:03.281, GC gen0: 1028, gen1: 27, gen2: 1
+val aSet : Set&lt;float&gt; =
+  set
+    [-1000000.0; -999999.0; -999998.0; -999997.0; -999996.0; -999995.0;
+     -999994.0; -999993.0; -999992.0; ...]
+<span class="hljs-meta">
+
+--&gt;</span><span class="bash"> Timing now off</span></code></pre>
+<h2><a name="map-to-a-array" class="anchor" href="#map-to-a-array">Map to a Array</a></h2><pre><code class="language-fsharp">#time
+<span class="hljs-keyword">let</span> aArray  = aSeq |&gt; Array.ofSeq
+#time</code></pre>
+<p><em>Output:</em></p>
+<pre><code class="language-console"><span class="hljs-meta">--&gt;</span><span class="bash"> Timing now on</span>
+
+Real: 00:00:00.101, CPU: 00:00:00.109, GC gen0: 0, gen1: 0, gen2: 0
+val aArray : float [] =
+  [|-1000000.0; -999999.0; -999998.0; -999997.0; -999996.0; -999995.0;
+    -999994.0; -999993.0; -999992.0; -999991.0; -999990.0; -999989.0;
+    -999988.0; -999987.0; -999986.0; -999985.0; -999984.0; -999983.0;
+    -999982.0; -999981.0; -999980.0; -999979.0; -999978.0; -999977.0;
+    -999976.0; -999975.0; -999974.0; -999973.0; -999972.0; -999971.0;
+    -999970.0; -999969.0; -999968.0; -999967.0; -999966.0; -999965.0;
+    -999964.0; -999963.0; -999962.0; -999961.0; -999960.0; -999959.0;
+    -999958.0; -999957.0; -999956.0; -999955.0; -999954.0; -999953.0;
+    -999952.0; -999951.0; -999950.0; -999949.0; -999948.0; -999947.0;
+    -999946.0; -999945.0; -999944.0; -999943.0; -999942.0; -999941.0;
+    -999940.0; -999939.0; -999938.0; -999937.0; -999936.0; -999935.0;
+    -999934.0; -999933.0; -999932.0; -999931.0; -999930.0; -999929.0;
+    -999928.0; -999927.0; -999926.0; -999925.0; -999924.0; -999923.0;
+    -999922.0; -999921.0; -999920.0; -999919.0; -999918.0; -999917.0;
+    -999916.0; -999915.0; -999914.0; -999913.0; -999912.0; -999911.0;
+    -999910.0; -999909.0; -999908.0; -999907.0; -999906.0; -999905.0;
+    -999904.0; -999903.0; -999902.0; -999901.0; ...|]
+<span class="hljs-meta">
+
+--&gt;</span><span class="bash"> Timing now off</span></code></pre>
+<h2><a name="summary" class="anchor" href="#summary">Summary</a></h2><table>
+<thead>
+<tr>
+<th></th>
+<th>Type</th>
+<th>Metrics</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Seq</td>
+<td>Real: 00:00:00.000, CPU: 00:00:00.000, GC gen0: 0, gen1: 0, gen2: 0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>List</td>
+<td>Real: 00:00:00.291, CPU: 00:00:00.312, GC gen0: 11, gen1: 6, gen2: 1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Set</td>
+<td>Real: 00:00:03.272, CPU: 00:00:03.281, GC gen0: 1028, gen1: 27, gen2: 1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Array</td>
+<td>Real: 00:00:00.101, CPU: 00:00:00.109, GC gen0: 0, gen1: 0, gen2: 0</td>
+</tr>
+</tbody></table>
+</div></div></div></div></section><script src="/assets/js/site.js"></script></body></html>

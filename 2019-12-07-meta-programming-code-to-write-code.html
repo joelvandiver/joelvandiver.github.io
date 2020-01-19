@@ -1,0 +1,167 @@
+<html><head><title>Joel Vandiver Blog</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/><link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.1/css/bulma.min.css"/><link rel="stylesheet" type="text/css" href="/assets/css/site.css"/></head><body><section class="hero is-black"><div class="hero-body"><div class="container"><h1 class="title"><a href="/index.html">Joel Vandiver</a></h1><h2 class="subtitle">Full Stack Web Developer</h2></div></div></section><section class="section"><div class="container"><div class="columns"><div class="column is-4"><aside class="menu"><p class="menu-label"><p class="menu-label"><a href="/index.html">Home</a></p></p><p class="menu-label"><p class="menu-label">F# Guide</p></p><ul class="menu-list"><li><a href="/2019-04-06-fs-guide-01-value.html">01 Values</a></li><li><a href="/2019-04-06-fs-guide-02-implicit-vs-explicit.html">02 Implicit vs Explicit Value Declaration</a></li><li><a href="/2019-04-06-fs-guide-03-simple.html">03 Simple Values</a></li><li><a href="/2019-04-06-fs-guide-04-list.html">04 List Values</a></li><li><a href="/2019-05-20-fs-guide-05-option.html">05 Option</a></li></ul><p class="menu-label"><p class="menu-label">Topics</p></p><ul class="menu-list"><li><a href="/2019-12-05-fs-type-method-composition.html">F# Type Method Composition</a></li><li><a href="/2019-09-21-fs-aspnetcore-dependency-injection.html">F# ASP.NET Core Dependency Injection</a></li><li><a href="/2019-12-06-fs-destructuring-params.html">Destructuring Params</a></li><li><a href="/2019-12-06-destructuring-anonymous-records.html">Destructuring Anonymous Records</a></li><li><a href="/2019-12-06-fs-lazy.html">Lazy F#</a></li><li><a href="/2019-12-24-fable-fsx.html">Fable FSX Canvas</a></li><li><a href="/2019-12-07-meta-programming-code-to-write-code.html">META Programming   Code to Write Code</a></li><li><a href="/2019-07-13-functional-iteration.html">Functional Iteration</a></li><li><a href="/2019-12-06-why-fs.html">Why F#?</a></li><li><a href="">Use F# Lazy Evaulation for Integration Testing</a></li><li><a href="/2019-06-18-fs-implicit-vs-explicit.html">F# Implicit vs Explicit</a></li><li><a href="/2019-05-06-fs-precomputation.html">F# Precomputation</a></li><li><a href="/2019-06-19-fs-clone-records.html">F# Clone Records</a></li><li><a href="/2019-06-20-discriminated-unions.html">Discriminated Unions</a></li><li><a href="/2019-07-13-fs-anonymous-records.html">F# Anonymous Records</a></li><li><a href="/2019-07-13-fs-immutability-simplifies.html">F# Immutability Simplifies</a></li><li><a href="/2019-07-30-fs-single-case-discriminated-unions.html">F# Single Case Discriminated Unions</a></li></ul><p class="menu-label"><p class="menu-label">DevOps</p></p><ul class="menu-list"><li><a href="/2019-12-07-github-blog-comments.html">GitHub Blog Comments</a></li><li><a href="/2019-12-07-docker-sql-server.html">SQL SERVER on Docker</a></li><li><a href="/2019-08-31-my-first-jekyll-post.html">Welcome to Jekyll!</a></li></ul><p class="menu-label"><p class="menu-label">Fun</p></p><ul class="menu-list"><li><a href="/2019-09-04-nasa-apod.html">NASA APOD</a></li></ul><p class="menu-label"><p class="menu-label">LEAD</p></p><ul class="menu-list"><li><a href="/2019-12-06-reflection-in-leadership.html">Reflection on Leadership</a></li></ul></aside></div><div class="column is-8"><div id="nasa-img-container"></div><div class="content"><h1><a name="meta-programming-code-to-write-code" class="anchor" href="#meta-programming-code-to-write-code">META Programming - Code to Write Code</a></h1><p>As I&#39;m sure any .NET programmer would know, .NET offers a pretty expansive reflection api.  Asking a system to provide reflection information is both a powerful and expensive technique.  It can dramatically reduce the quantity of code, but it comes with the extra overhead in runtime performance.  </p>
+<p>I have come across situations many times where the code I am writing is very repetitive, and the only way to stop the repetition <em>at runtime</em> is with reflection.  </p>
+<h2><a name="validation-example" class="anchor" href="#validation-example">Validation Example</a></h2><p>One common example is validation against table schemas.  If you need to ensure the incoming .NET object will not raise a SQL exception, then you will typically have to check each of the properties on the record <em>per table</em>.  </p>
+<p>Take the following <code>dbo.visits</code> table:</p>
+<pre><code class="language-sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> dbo.visits (
+    visit_id <span class="hljs-built_in">INT</span> PRIMARY <span class="hljs-keyword">KEY</span> <span class="hljs-keyword">IDENTITY</span> (<span class="hljs-number">1</span>, <span class="hljs-number">1</span>),
+    first_name <span class="hljs-built_in">VARCHAR</span> (<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    last_name <span class="hljs-built_in">VARCHAR</span> (<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+    visited_at DATETIME,
+    phone <span class="hljs-built_in">VARCHAR</span>(<span class="hljs-number">20</span>)
+);</code></pre>
+<p>and corresponding F# record:</p>
+<pre><code class="language-fsharp"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">Visits</span> </span>=
+    {   visit_id: int
+        first_name: string
+        last_name: string
+        visite_at: DateTime
+        phone: string
+        store_id: int
+        }</code></pre>
+<p>To ensure a successful transaction with this record against the database, then you will need to check:</p>
+<ol>
+<li><code>first_name</code> is not null and is 50 characters or less.</li>
+<li><code>last_name</code> is not null and is 50 characters or less.</li>
+<li><code>visited_at</code> is greater than the SQL minimum date.</li>
+<li>...</li>
+</ol>
+<p>This might look something like:</p>
+<pre><code class="language-fsharp"><span class="hljs-keyword">let</span> validate visit = 
+    <span class="hljs-keyword">let</span> errors = 
+        [
+            <span class="hljs-string">"first_name"</span>, visit.first_name &lt;&gt; <span class="hljs-keyword">null</span> &amp;&amp; visit.first_name.Length &lt;= <span class="hljs-number">50</span>, <span class="hljs-string">"The first_name is required and must be less than or equal to 50 characters."</span>
+            <span class="hljs-string">"last_name"</span>, visit.last_name &lt;&gt; <span class="hljs-keyword">null</span> &amp;&amp; visit.last_name.Length &lt;= <span class="hljs-number">50</span>, <span class="hljs-string">"The last_name is required and must be less than or equal to 50 characters."</span>
+            <span class="hljs-comment">// ...</span>
+        ]
+
+    <span class="hljs-keyword">match</span> errors <span class="hljs-keyword">with</span> 
+    | [] -&gt; Ok visit
+    | _ -&gt; Error errors</code></pre>
+<blockquote>
+<p>Note:  You will need to include unit tests of the validation rules from the table schema.</p>
+</blockquote>
+<p>You can see from the <code>validate</code> function above that the pattern of checking each of the fields is <em>very</em> repetitive.</p>
+<blockquote>
+<p><strong><em>&#39;Ain&#39;t no body got time for that!&#39;</em></strong></p>
+</blockquote>
+<h2><a name="keep-it-d-r-y-" class="anchor" href="#keep-it-d-r-y-">Keep it D.R.Y.</a></h2><h3><a name="information_schema" class="anchor" href="#information_schema">INFORMATION_SCHEMA</a></h3><p>The information that we are extracting from the <code>CREATE TABLE</code> can be found in the <code>INFORMATION_SCHEMA</code> in SQL SERVER.  (<em>Other database providers have their own schema querying views.</em>)</p>
+<pre><code class="language-sql"><span class="hljs-keyword">SELECT</span> COLUMN_NAME, IS_NULLABLE, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH
+<span class="hljs-keyword">FROM</span> INFORMATION_SCHEMA.COLUMNS</code></pre>
+<table>
+<thead>
+<tr>
+<th>COLUMN_NAME</th>
+<th>IS_NULLABLE</th>
+<th>DATA_TYPE</th>
+<th>CHARACTER_MAXIMUM_LENGTH</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>visit_id</td>
+<td>NO</td>
+<td>int</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>first_name</td>
+<td>NO</td>
+<td>varchar</td>
+<td>50</td>
+</tr>
+<tr>
+<td>last_name</td>
+<td>NO</td>
+<td>varchar</td>
+<td>50</td>
+</tr>
+<tr>
+<td>visited_at</td>
+<td>YES</td>
+<td>datetime</td>
+<td>NULL</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>YES</td>
+<td>varchar</td>
+<td>20</td>
+</tr>
+</tbody></table>
+<h3><a name="f-schema" class="anchor" href="#f-schema">F# Schema</a></h3><p>Use your standard ORM to query this data out in an <code>fsx</code> script into an F# type:</p>
+<pre><code class="language-fsharp"><span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">ColumnSchema</span> </span>=
+    {   COLUMN_NAME: string
+        IS_NULLABLE: string
+        DATA_TYPE: string
+        CHARACTER_MAXIMUM_LENGTH: int option
+        }
+
+<span class="hljs-keyword">let</span> meta() = 
+
+    <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Run query...</span>
+
+    [
+        {   COLUMN_NAME = <span class="hljs-string">"visit_id"</span>
+            IS_NULLABLE = <span class="hljs-string">"NO"</span>
+            DATA_TYPE = <span class="hljs-string">"int"</span>
+            CHARACTER_MAXIMUM_LENGTH = None
+            }
+        {   COLUMN_NAME = <span class="hljs-string">"first_name"</span>
+            IS_NULLABLE = <span class="hljs-string">"NO"</span>
+            DATA_TYPE = <span class="hljs-string">"varchar"</span>
+            CHARACTER_MAXIMUM_LENGTH = Some <span class="hljs-number">50</span>
+            }
+        {   COLUMN_NAME = <span class="hljs-string">"last_name"</span>
+            IS_NULLABLE = <span class="hljs-string">"NO"</span>
+            DATA_TYPE = <span class="hljs-string">"varchar"</span>
+            CHARACTER_MAXIMUM_LENGTH = Some <span class="hljs-number">50</span>
+            }
+        {   COLUMN_NAME = <span class="hljs-string">"visited_at"</span>
+            IS_NULLABLE = <span class="hljs-string">"YES"</span>
+            DATA_TYPE = <span class="hljs-string">"datetime"</span>
+            CHARACTER_MAXIMUM_LENGTH = None
+            }
+        {   COLUMN_NAME = <span class="hljs-string">"phone"</span>
+            IS_NULLABLE = <span class="hljs-string">"YES"</span>
+            DATA_TYPE = <span class="hljs-string">"varchar"</span>
+            CHARACTER_MAXIMUM_LENGTH = Some <span class="hljs-number">20</span>
+            }
+    ]</code></pre>
+<h2><a name="let-39-s-get-meta" class="anchor" href="#let-39-s-get-meta">Let&#39;s Get META</a></h2><p>Convert the repetitive code above into a template.  This is where we treat <strong><em>code as data</em></strong>!</p>
+<pre><code class="language-fsharp"><span class="hljs-keyword">let</span> requiredStringTemplate (x: ColumnSchema list = 
+    <span class="hljs-keyword">let</span> name = x.COLUMN_NAME
+    <span class="hljs-keyword">let</span> max = x.CHARACTER_MAXIMUM_LENGTH.Value
+    sprintf <span class="hljs-string">"""
+    "%s", x.%s &lt;&gt; null &amp;&amp; x.%s.Length &lt;= %i, "The %s is required and must be less than or equal to %i characters."
+    """</span> name name name max name max
+
+<span class="hljs-comment">// <span class="hljs-doctag">TODO:</span>  Provide other rules.</span>
+
+<span class="hljs-keyword">let</span> template (xs: ColumnSchema list) = 
+    <span class="hljs-keyword">let</span> rules = 
+        xs 
+        |&gt; List.map(<span class="hljs-keyword">fun</span> x -&gt; 
+            <span class="hljs-keyword">match</span> (x.DATA_TYPE, x.IS_NULLABLE, x.CHARACTER_MAXIMUM_LENGTH) <span class="hljs-keyword">with</span> 
+            | (<span class="hljs-string">"varchar"</span>, <span class="hljs-string">"NO"</span>, Some _) -&gt; requiredStringTemplate x |&gt; Some
+            <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span>  Call other rules.</span>
+            | _ -&gt; None)
+        |&gt; List.filter Option.isSome
+        |&gt; List.map Option.get
+        |&gt; List.fold (<span class="hljs-keyword">fun</span> a b -&gt; a + <span class="hljs-string">"\r\n            "</span> + b) <span class="hljs-string">""</span>
+    <span class="hljs-string">"""
+let validate x = 
+    let errors = 
+        [
+            %s
+        ]
+
+    match errors with 
+    | [] -&gt; Ok x
+    | _ -&gt; Error errors
+"""</span> rules</code></pre>
+<h2><a name="meta-benefits" class="anchor" href="#meta-benefits">META Benefits</a></h2><ol>
+<li><strong>META Test</strong> - We can now safely delete our unit tests since we would only need to test the META code.</li>
+<li><strong>Schema Changes</strong> - As the schema evolves in the future, you can simply run this job to generate the final validation code.  This ensures that the database schema is the lone, authoritative source of schema information.</li>
+</ol>
+<h2><a name="side-note" class="anchor" href="#side-note">Side Note</a></h2><p>If you prefer to keep your database schema <em>dumb</em>, then you can move the authoritative source to another format such as <code>yaml</code>.  Then, use that source as your input into the <code>ColumnSchema</code> above.</p>
+<p><strong><em>Pretty sweet!</em></strong></p>
+</div></div></div></div></section><script src="/assets/js/site.js"></script></body></html>

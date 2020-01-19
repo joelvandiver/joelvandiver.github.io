@@ -1,0 +1,154 @@
+[
+    {
+        "title": "Home",
+        "link": "/index.html"
+    },
+    {
+        "title": "F# Guide",
+        "navs": [
+            {
+                "title": "01 Values",
+                "link": "/2019-04-06-fs-guide-01-value.html"
+            },
+            {
+                "title": "02 Implicit vs Explicit Value Declaration",
+                "link": "/2019-04-06-fs-guide-02-implicit-vs-explicit.html"
+            },
+            {
+                "title": "03 Simple Values",
+                "link": "/2019-04-06-fs-guide-03-simple.html"
+            },
+            {
+                "title": "04 List Values",
+                "link": "/2019-04-06-fs-guide-04-list.html"
+            },
+            {
+                "title": "05 Option",
+                "link": "/2019-05-20-fs-guide-05-option.html"
+            }
+        ]
+    },
+    {
+        "title": "Topics",
+        "navs": [
+            {
+                "title": "F# Type Method Composition",
+                "link": "/2019-12-05-fs-type-method-composition.html",
+                "navs": null
+            },
+            {
+                "title": "F# ASP.NET Core Dependency Injection",
+                "link": "/2019-09-21-fs-aspnetcore-dependency-injection.html",
+                "navs": null
+            },
+            {
+                "title": "Destructuring Params",
+                "link": "/2019-12-06-fs-destructuring-params.html",
+                "navs": null
+            },
+            {
+                "title": "Destructuring Anonymous Records",
+                "link": "/2019-12-06-destructuring-anonymous-records.html",
+                "navs": null
+            },
+            {
+                "title": "Lazy F#",
+                "link": "/2019-12-06-fs-lazy.html",
+                "navs": null
+            },
+            {
+                "title": "Fable FSX Canvas",
+                "link": "/2019-12-24-fable-fsx.html"
+            },
+            {
+                "title": "META Programming   Code to Write Code",
+                "link": "/2019-12-07-meta-programming-code-to-write-code.html"
+            },
+            {
+                "title": "Functional Iteration",
+                "link": "/2019-07-13-functional-iteration.html",
+                "navs": null
+            },
+            {
+                "title": "Why F#?",
+                "link": "/2019-12-06-why-fs.html"
+            },
+            {
+                "title": "Use F# Lazy Evaulation for Integration Testing",
+                "link": ""
+            },
+            {
+                "title": "F# Implicit vs Explicit",
+                "link": "/2019-06-18-fs-implicit-vs-explicit.html",
+                "navs": null
+            },
+            {
+                "title": "F# Precomputation",
+                "link": "/2019-05-06-fs-precomputation.html",
+                "navs": null
+            },
+            {
+                "title": "F# Clone Records",
+                "link": "/2019-06-19-fs-clone-records.html",
+                "navs": null
+            },
+            {
+                "title": "Discriminated Unions",
+                "link": "/2019-06-20-discriminated-unions.html",
+                "navs": null
+            },
+            {
+                "title": "F# Anonymous Records",
+                "link": "/2019-07-13-fs-anonymous-records.html",
+                "navs": null
+            },
+            {
+                "title": "F# Immutability Simplifies",
+                "link": "/2019-07-13-fs-immutability-simplifies.html",
+                "navs": null
+            },
+            {
+                "title": "F# Single Case Discriminated Unions",
+                "link": "/2019-07-30-fs-single-case-discriminated-unions.html",
+                "navs": null
+            }
+        ]
+    },
+    {
+        "title": "DevOps",
+        "navs": [
+            {
+                "title": "GitHub Blog Comments",
+                "link": "/2019-12-07-github-blog-comments.html"
+            },
+            {
+                "title": "SQL SERVER on Docker",
+                "link": "/2019-12-07-docker-sql-server.html"
+            },
+            {
+                "title": "Welcome to Jekyll!",
+                "link": "/2019-08-31-my-first-jekyll-post.html",
+                "navs": null
+            }
+        ]
+    },
+    {
+        "title": "Fun",
+        "navs": [
+            {
+                "title": "NASA APOD",
+                "link": "/2019-09-04-nasa-apod.html"
+            }
+        ]
+    },
+    {
+        "title": "LEAD",
+        "navs": [
+            {
+                "title": "Reflection on Leadership",
+                "link": "/2019-12-06-reflection-in-leadership.html",
+                "navs": null
+            }
+        ]
+    }
+]

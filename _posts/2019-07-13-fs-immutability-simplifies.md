@@ -1,6 +1,6 @@
 # Immutability Reduces Information Domain
 
-I have heard many developers who come from non-functional programming languages such as C++ and C# claim that immutability is overly restrictive.  It is true that immutability is a restrictive, but this restriction comes at one huge benefit:  reduction of possible outcomes.  
+I have heard many developers who come from non-functional programming languages such as C++ and C# claim that immutability is overly restrictive.  It is true that immutability is restrictive, but this restriction comes at one huge benefit:  reduction of possible outcomes.  
 
 `Information` may be informally defined as the element of surprise.  The more surprises a system has, the more information it contains.  Note the distinction between actual information and possible information.  Typically as developers we focus our algorithms on the actual information that our system processes.  But, of equal (or greater) concern is of the possible information the system will proccess.  Let's call this the `Information Domain`.  Effectively, it is the concern of the developer to process the Information Domain.  We have to anticipate all of the possible outcomes of our system.  
 

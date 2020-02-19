@@ -1,4 +1,4 @@
-# Basic Expecto Example
+# Basic F# Expecto Example
 
 First, let's gather our dependencies.
 

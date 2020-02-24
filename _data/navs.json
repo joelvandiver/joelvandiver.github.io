@@ -32,6 +32,11 @@
         "title": "Topics",
         "navs": [
             {
+                "title": "TSQL Recursive CTE",
+                "link": "/2020-02-24-TSQL-Recursive-CTE.html",
+                "navs": null
+            },
+            {
                 "title": "F# Type Method Composition",
                 "link": "/2019-12-05-fs-type-method-composition.html",
                 "navs": null

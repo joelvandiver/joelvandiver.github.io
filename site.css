@@ -266,7 +266,7 @@ html {
   -webkit-font-smoothing: antialiased;
   min-width: 300px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   text-rendering: optimizeLegibility;
   text-size-adjust: 100%; }
 
@@ -7100,15 +7100,3 @@ label.panel-block {
       flex: none;
       width: 100%; } }
 
-.hero {
-  background-image: url(/assets/img/fractal-logo.svg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-y: top;
-  content: "";
-  -webkit-filter: contrast(65%);
-  /* Safari 6.0 - 9.0 */
-  filter: contrast(65%); }
-
-#nasa-img-container {
-  margin-bottom: 20px; }

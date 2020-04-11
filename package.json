@@ -1,0 +1,22 @@
+{
+  "name": "joelvandiver.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/.bin/browser-sync"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelvandiver/joelvandiver.github.io.git"
+  },
+  "author": "Joel Vandiver <joelvandiver@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelvandiver/joelvandiver.github.io/issues"
+  },
+  "homepage": "https://github.com/joelvandiver/joelvandiver.github.io#readme",
+  "devDependencies": {
+    "browser-sync": "^2.26.7"
+  }
+}

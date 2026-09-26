@@ -109,7 +109,7 @@ WORKDIR /workspaces
     - Note how my user on my host system, `joel`, is different than when mounted in through the dev container `node`:
     ```bash
     # From my host OS:
-    joel@jarch ~/git/joelvandiver.github.com/blog (feature/jv_setup*)$ ls -al
+    joel@jarch ~/git/joelvandiver.github.io/blog (feature/jv_setup*)$ ls -al
     total 32
     drwxr-xr-x 7 joel joel 4096 Jan 24 11:58 .
     drwxr-xr-x 7 joel joel 4096 Jan 17 15:04 ..
@@ -120,7 +120,7 @@ WORKDIR /workspaces
     -rw-r--r-- 1 joel joel  150 Jan 24 11:26 README.md
     drwxr-xr-x 3 joel joel 4096 Jan 24 11:26 docs
 
-    joel@jarch ~/git/joelvandiver.github.com/blog (feature/jv_setup*)$ id
+    joel@jarch ~/git/joelvandiver.github.io/blog (feature/jv_setup*)$ id
     uid=1000(joel) gid=1000(joel) groups=1000(joel),957(docker),998(wheel)
 
     # From within the devcontainer:
@@ -135,7 +135,7 @@ WORKDIR /workspaces
     -rw-r--r-- 1 node node  150 Jan 24 17:26 README.md
     drwxr-xr-x 3 node node 4096 Jan 24 17:26 docs
 
-    joel@jarch ~/git/joelvandiver.github.com/blog (feature/jv_setup*)$ id
+    joel@jarch ~/git/joelvandiver.github.io/blog (feature/jv_setup*)$ id
     uid=1000(joel) gid=1000(joel) groups=1000(joel),957(docker),998(wheel)
     ```
 

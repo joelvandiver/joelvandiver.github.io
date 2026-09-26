@@ -8,12 +8,11 @@
   {{ section.content | safe }}
 </section>
 
-{% if config.extra.home_list_latest_blog_posts %}
+{% if config.extra.home_list_blog_posts %}
 {% set blog = get_section(path="blog/_index.md") %}
 <section>
-  <h2>Latest posts</h2>
-  {{ macros::post_list(pages=blog.pages | slice(end=5)) }}
-  <p><a href="{{ blog.permalink }}">All posts &rarr;</a></p>
+  <h2>Posts</h2>
+  {{ macros::post_list(pages=blog.pages) }}
 </section>
 {% endif %}
 {% endblock content %}

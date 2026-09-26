@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Dev·stopian — Keep the Edge</title>
+  <meta name="description" content="A browser game about being a developer in the age of AI. Consume the flood, stay rough, keep the edge.">
+  <meta name="theme-color" content="#0c0f1a">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="game.css">
+</head>
+<body>
+  <canvas id="stage" aria-label="Game area"></canvas>
+
+  <!-- HUD -->
+  <header class="hud" id="hud" hidden>
+    <div class="hud__left">
+      <div class="hud__year"><span class="label">Year</span> <b id="hud-year">2022</b></div>
+      <div class="hud__progress"><i id="hud-year-bar"></i></div>
+      <div class="hud__score"><span class="label">Shipped</span> <b id="hud-score">0</b> <span class="mult" id="hud-mult">×1.0</span></div>
+    </div>
+    <div class="hud__center">
+      <div class="edge" id="edge">
+        <span class="label">Edge</span>
+        <div class="edge__track">
+          <i class="edge__fill" id="edge-fill"></i>
+          <i class="edge__notch" title="Sharp: catch hallucinations"></i>
+        </div>
+        <span class="edge__state" id="edge-state">sharp</span>
+      </div>
+    </div>
+    <div class="hud__right">
+      <div class="trust" id="trust" aria-label="Trust"></div>
+      <button class="icon-btn" id="btn-mute" aria-label="Toggle sound">♪</button>
+      <button class="icon-btn" id="btn-pause" aria-label="Pause">❚❚</button>
+    </div>
+  </header>
+
+  <button class="write-btn" id="btn-write" hidden>Write</button>
+  <div class="banner" id="banner" aria-live="polite"></div>
+
+  <!-- Title -->
+  <section class="screen" id="screen-title">
+    <div class="panel panel--title">
+      <p class="eyebrow">// The future for devs in the age of AI</p>
+      <h1 class="wordmark">Dev<span class="dot">·</span>stopian</h1>
+      <p class="sub">Keep the Edge</p>
+      <p class="lead">It's the end of 2022 and the AI flood has started. Every token you consume makes you ship faster, and makes you <em>smoother</em>. Stay rough. Keep the edge.</p>
+      <ul class="legend">
+        <li><i class="sw sw--token"></i><span><b>Tokens</b>: AI output. Ship them for points, but each one dulls your edge.</span></li>
+        <li><i class="sw sw--shard"></i><span><b>Rough ideas</b>: your own thinking. They restore your edge.</span></li>
+        <li><i class="sw sw--hall"></i><span><b>Hallucinations</b>: if you're sharp, you catch them. When you're dull, they look like real output and cost you trust.</span></li>
+        <li><i class="sw sw--write"></i><span><b>Write</b>: slow down and write to regain your edge. You can't consume tokens while writing.</span></li>
+      </ul>
+      <div class="controls">
+        <span><kbd>Mouse</kbd> / <kbd>Touch</kbd> / <kbd>WASD</kbd> move</span>
+        <span><kbd>Space</kbd> / <kbd>Hold click</kbd> / <kbd>Write</kbd> button: write</span>
+        <span><kbd>P</kbd> pause · <kbd>M</kbd> mute</span>
+      </div>
+      <button class="btn btn--primary btn--lg" id="btn-start">Start writing <kbd>Enter</kbd></button>
+      <p class="best" id="title-best"></p>
+    </div>
+  </section>
+
+  <!-- Pause -->
+  <section class="screen" id="screen-pause" hidden>
+    <div class="panel">
+      <p class="eyebrow">Paused</p>
+      <h2>Take a breath.</h2>
+      <button class="btn btn--primary btn--lg" id="btn-resume">Resume <kbd>P</kbd></button>
+      <button class="btn btn--ghost" id="btn-quit">Quit to title</button>
+    </div>
+  </section>
+
+  <!-- Game over -->
+  <section class="screen" id="screen-over" hidden>
+    <div class="panel">
+      <p class="eyebrow" id="over-eyebrow">Game over</p>
+      <h2 id="over-title">You went smooth.</h2>
+      <p class="lead" id="over-lead"></p>
+      <dl class="stats" id="over-stats"></dl>
+      <p class="best" id="over-best"></p>
+      <button class="btn btn--primary btn--lg" id="btn-again">Write again <kbd>Enter</kbd></button>
+    </div>
+  </section>
+
+  <script src="game.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block title %}{{ section.title }} · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+{{ section.content | safe }}
+
+{% if paginator %}
+  {{ macros::post_list(pages=paginator.pages) }}
+  <nav class="pagination">
+    {% if paginator.previous %}<a href="{{ paginator.previous }}">&larr; Newer</a>{% endif %}
+    <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+    {% if paginator.next %}<a href="{{ paginator.next }}">Older &rarr;</a>{% endif %}
+  </nav>
+{% else %}
+  {{ macros::post_list(pages=section.pages) }}
+{% endif %}
+{% endblock content %}

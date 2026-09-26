@@ -1,0 +1,55 @@
+$bg: #1a1b26;
+$fg: #c0caf5;
+$muted: #787c99;
+$accent: #7aa2f7;
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 42rem;
+  padding: 1.5rem 1rem;
+  background: $bg;
+  color: $fg;
+  font: 1.0625rem/1.65 system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+a { color: $accent; }
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 2rem;
+  nav a { margin-left: 1rem; }
+  .brand { font-weight: 700; text-decoration: none; }
+}
+
+.site-footer {
+  margin-top: 3rem;
+  color: $muted;
+  font-size: 0.9rem;
+}
+
+.lead { font-size: 1.2rem; }
+.meta, time { color: $muted; font-size: 0.9rem; }
+
+.post-list, .tag-list {
+  list-style: none;
+  padding: 0;
+  li { margin: 0.4rem 0; }
+  time { display: inline-block; min-width: 6.5rem; font-variant-numeric: tabular-nums; }
+}
+
+.pagination { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+code { font-family: ui-monospace, "SF Mono", Menlo, monospace; }
+img { max-width: 100%; height: auto; }
+blockquote { margin-left: 0; padding-left: 1rem; border-left: 3px solid $muted; color: $muted; }

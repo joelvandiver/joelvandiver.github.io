@@ -1,0 +1,10 @@
+{% macro post_list(pages) %}
+<ul class="post-list">
+  {% for p in pages %}
+  <li>
+    <time datetime="{{ p.date }}">{{ p.date | date(format="%Y-%m-%d") }}</time>
+    <a href="{{ p.permalink }}">{{ p.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endmacro post_list %}

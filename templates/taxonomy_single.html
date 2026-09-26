@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% import "macros.html" as macros %}
+
+{% block title %}#{{ term.name }} · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<h1>#{{ term.name }}</h1>
+{{ macros::post_list(pages=term.pages) }}
+<p><a href="{{ get_url(path='tags') }}">All tags</a></p>
+{% endblock content %}

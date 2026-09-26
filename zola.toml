@@ -1,0 +1,20 @@
+base_url = "https://joelvandiver.github.io"
+title = "Joel Vandiver"
+description = "Joel Vandiver"
+compile_sass = true
+build_search_index = true
+generate_feeds = true
+feed_limit = 10
+feed_filenames = ["atom.xml"]
+taxonomies = [
+    { name = "tags" }
+]
+
+[extra]
+home_list_latest_blog_posts = true
+
+[markdown]
+render_emoji = true
+
+[markdown.highlighting]
+theme = "catppuccin-mocha" # Code highlighting theme

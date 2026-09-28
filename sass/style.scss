@@ -42,6 +42,11 @@ a { color: $accent; }
   time { display: inline-block; min-width: 6.5rem; font-variant-numeric: tabular-nums; }
 }
 
+.guide-toc {
+  padding-left: 1.5rem;
+  li { margin: 0.4rem 0; }
+}
+
 .pagination { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
 
 pre {

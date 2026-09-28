@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} · {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+{% set guide = get_section(path=page.ancestors | last) %}
+{% set chapters = guide.pages | sort(attribute="relative_path") %}
+{% set_global current = 0 %}
+{% for p in chapters %}{% if p.relative_path == page.relative_path %}{% set_global current = loop.index0 %}{% endif %}{% endfor %}
+
+<article>
+  <p class="meta"><a href="{{ guide.permalink }}">&larr; {{ guide.title }}</a></p>
+  <h1>{{ page.title }}</h1>
+  {{ page.content | safe }}
+</article>
+
+<nav class="pagination">
+  {% if current > 0 %}{% set prev = chapters | nth(n=current - 1) %}<a href="{{ prev.permalink }}">&larr; {{ prev.title }}</a>{% else %}<span></span>{% endif %}
+  {% if current < chapters | length - 1 %}{% set next = chapters | nth(n=current + 1) %}<a href="{{ next.permalink }}">{{ next.title }} &rarr;</a>{% endif %}
+</nav>
+{% endblock content %}

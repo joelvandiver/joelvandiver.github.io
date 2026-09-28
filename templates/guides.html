@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<h1>{{ section.title }}</h1>
+{{ section.content | safe }}
+
+<ul class="post-list">
+  {% for path in section.subsections %}
+  {% set guide = get_section(path=path, metadata_only=true) %}
+  <li>
+    <a href="{{ guide.permalink }}">{{ guide.title }}</a>
+    {% if guide.description %}&mdash; {{ guide.description }}{% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

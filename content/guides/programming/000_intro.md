@@ -16,7 +16,9 @@ So it is with programming. Let's peek under the hood and unpack the ideas so cen
 
 Any discussion on programming must be grounded in an actual language to program. [Python](https://www.python.org/) seems to be the de facto language to teach programming because of its ease of use. While I agree that it’s a great language, I think it’s better to start your journey in [Rust](https://rust-lang.org/). There are many reasons Rust is a great language of choice for learning to program. Rust’s strictness forces you to deal with how information is defined and flows through the system. Higher level languages like Python hide these details from you.
 
+## Questions
 
+If you have any questions, feel free to raise an [issue for me](https://github.com/joelvandiver/joelvandiver.github.io/issues)!
 
 
 

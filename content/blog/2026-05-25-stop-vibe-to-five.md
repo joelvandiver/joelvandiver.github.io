@@ -3,7 +3,7 @@ title = "Stop Vibe to Five"
 date = 2026-05-25
 description = "Stop Vibe to Five"
 slug = "2026-05-25-stop-vibe-to-five"
-taxonomies = { tags = ["Dev", "AI"] }
+taxonomies = { tags = ["Dev", "Agentic"] }
 +++
 
 > Just stop vibing from 9 to 5. End of story. 

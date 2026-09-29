@@ -3,7 +3,7 @@ title = "Agentic Demos"
 date = 2026-06-20
 description = "Agentic Demos"
 slug = "2026-06-20-agentic-demo"
-taxonomies = { tags = ["AI", "Frontend"] }
+taxonomies = { tags = ["Agentic", "Frontend"] }
 +++
 
 ## From Vibe to Demo

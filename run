@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Create a help doc to print usage.
+help=$(cat << EOF
+
+Usage: $0 [command]
+
+Commands:
+  start     Run the application.
+EOF
+)
+
+cmd=$1
+
+# Remove the first argument (shift left)
+shift
+
+# Switch on the commands to run.
+case $cmd in
+    "start")
+        pid=$(lsof -t -i:1111)
+        [[ -n "$pid" ]] && kill -9 "$pid"
+        zola serve &
+        sleep 2
+        xdg-open http://localhost:1111
+        ;;
+    *)
+        # Print the help doc.
+        echo "$help"
+        ;;
+esac

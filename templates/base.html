@@ -20,6 +20,10 @@
       <a href="{{ get_url(path='tags') }}">Tags</a>
       <a href="{{ get_url(path='@/about.md') }}">About</a>
     </nav>
+    <div class="search">
+      <input id="search" type="search" placeholder="Search…" aria-label="Search" autocomplete="off">
+      <ul id="search-results" class="search-results" hidden></ul>
+    </div>
   </header>
   <main>
     {% block content %}{% endblock content %}
@@ -27,5 +31,59 @@
   <footer class="site-footer">
     <a href="{{ get_url(path='atom.xml', trailing_slash=false) }}">Feed</a>
   </footer>
+  <script src="{{ get_url(path='elasticlunr.min.js') }}"></script>
+  <script src="{{ get_url(path='search_index.en.js') }}"></script>
+  <script>
+    (function () {
+      var input = document.getElementById("search");
+      var list = document.getElementById("search-results");
+      var index = elasticlunr.Index.load(window.searchIndex);
+      var options = { bool: "AND", expand: true, fields: { title: { boost: 2 }, body: { boost: 1 } } };
+      var active = -1;
+
+      function links() { return list.querySelectorAll("a"); }
+
+      function setActive(i) {
+        var items = links();
+        if (!items.length) return;
+        if (active >= 0 && items[active]) items[active].parentNode.classList.remove("active");
+        active = (i + items.length) % items.length;
+        items[active].parentNode.classList.add("active");
+        items[active].scrollIntoView({ block: "nearest" });
+      }
+
+      input.addEventListener("input", function () {
+        var term = input.value.trim();
+        list.innerHTML = "";
+        active = -1;
+        if (term.length < 2) { list.hidden = true; return; }
+        var results = index.search(term, options).slice(0, 10);
+        if (!results.length) {
+          list.innerHTML = "<li class=\"search-empty\">No results</li>";
+        }
+        results.forEach(function (r) {
+          var doc = index.documentStore.getDoc(r.ref);
+          var li = document.createElement("li");
+          var a = document.createElement("a");
+          a.href = r.ref;
+          a.textContent = doc.title || r.ref;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+        list.hidden = false;
+      });
+
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowDown" && !list.hidden) { e.preventDefault(); setActive(active + 1); }
+        else if (e.key === "ArrowUp" && !list.hidden) { e.preventDefault(); setActive(active - 1); }
+        else if (e.key === "Enter") {
+          var items = links();
+          var target = items[active >= 0 ? active : 0];
+          if (!list.hidden && target) { e.preventDefault(); window.location.href = target.href; }
+        }
+        else if (e.key === "Escape") { input.value = ""; list.innerHTML = ""; list.hidden = true; active = -1; }
+      });
+    })();
+  </script>
 </body>
 </html>

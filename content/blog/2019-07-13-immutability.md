@@ -81,7 +81,7 @@ let range = domain_x
 assert_eq!(range, vec![6, 8, 10, 12, 14]);
 ```
 
-In this example, the `y` parameter was added to the `f` function to make the extra state of information transparent. It might not have been clear from the mutable example that the changing values of `a` over time were the values of the the vector, `vec![5, 6, 7, 8, 9, 10]`. But, that's the new dimension of data that the mutability introduced.
+In this example, the `y` parameter was added to the `f` function to make the extra state of information transparent. It might not have been clear from the mutable example that the changing values of `a` over time were the values of the vector, `vec![5, 6, 7, 8, 9, 10]`. But, that's the new dimension of data that the mutability introduced.
 
 The extra complexity can also be seen by the use of the `zip` function above. The `zip` is effectively a cartesian product of `domain_x` and `domain_y`.
 
@@ -106,7 +106,7 @@ Restrictions are not always an inhibitor, they can reduce complexity!
 
 ## Caveats
 
-The purist in me strives to keep everything immutable, but the pragmatist in me realizes that copying memory to support immutability can be prohibitively non-performant. So, in Rust, just as I try to confine the `unsafe` operations, I also try to confine the `mut` values and `.into` operations to a minimum.
+The purist in me strives to keep everything immutable, but the pragmatist in me realizes that copying memory to support immutability can be prohibitively non-performant. So, in Rust, I try to confine the `mut` values to a minimum.
 
 ## Update Log
 

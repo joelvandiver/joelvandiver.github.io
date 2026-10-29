@@ -10,7 +10,7 @@ There's a little fact about Rust that has transformed the way I view other tech 
 
 > You can build Rust container images [`FROM scratch`](https://hub.docker.com/_/scratch/)!
 
-Yes, you heard me right. Just drop a statically linked Rust binary in a scratch image, and voila!, the application is deployable to Kubernetes with minimal dependencies. To be clear, other languages can perform this same feat, but when compared to languages like Python and NodeJS, this feels like magic! This impact of building `FROM scratch` is far reaching! Most images are built with a distro base to provide some OS utilities. For example, in my team we debated for years whether we should deploy Python images based on Debian or Alpine. We finally landed on Alpine for all images security reasons, but I mean just look at the options for the Python images on [Docker Hub](https://hub.docker.com/_/python/).
+Yes, you heard me right. Just drop a statically linked Rust binary in a scratch image, and voila!, the application is deployable to Kubernetes with minimal dependencies. To be clear, other languages can perform this same feat, but when compared to languages like Python and NodeJS, this feels like magic! This impact of building `FROM scratch` is far reaching! Most images are built with a distro base to provide some OS utilities. For example, in my team we debated for years whether we should deploy Python images based on Debian or Alpine. We finally landed on Alpine for all images for security reasons, but I mean just look at the options for the Python images on [Docker Hub](https://hub.docker.com/_/python/).
 
 ## Scratch: Secure
 
